@@ -1,0 +1,19 @@
+---
+layout: layout.njk
+title: "Location matériel événementiel pour comité d'entreprise à Amiens | Event'Light"
+description: "Sonorisation, éclairage et structures pour vos événements d'entreprise à Amiens : séminaires, soirées, conférences."
+usage_filtre: "comite-entreprise"
+permalink: "/nos-formules/comite-entreprise/"
+---
+<h1>Comité d'entreprise</h1>
+<p>Fête d'entreprise, séminaire ou conférence : Event'Light propose une solution technique complète et professionnelle à Amiens et dans la Somme.</p>
+
+<h2>Matériel recommandé pour un événement d'entreprise</h2>
+<ul class="catalogue-liste">
+{% for p in produits %}
+  {% if usage_filtre in p.usages %}
+  <li><a href="/location/{{ p.slug }}/">{{ p.nom }}</a> — {{ p.prix }}</li>
+  {% endif %}
+{% endfor %}
+</ul>
+<a class="cta" href="/devis/">Demander un devis entreprise</a>

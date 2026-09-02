@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="https://www.eventlight.net{{ page.url }}">
+
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.eventlight.net{{ page.url }}">
+  <meta property="og:locale" content="fr_FR">
+
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Event'Light",
+    "image": "https://www.eventlight.net/images/logo.jpg",
+    "description": "Location de matériel son, lumière, effets, structures et vidéo mapping pour événements à Amiens et sa région.",
+    "areaServed": {
+      "@type": "City",
+      "name": "Amiens"
+    },
+    "url": "https://www.eventlight.net",
+    "priceRange": "€€",
+    "email": "eventlight80@gmail.com"
+  }
+  </script>
+
+  {% if produit %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{ produit.nom }}",
+    "description": "{{ produit.description }}",
+    "category": "{{ produit.categorie }}",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "{{ produit.prix }}",
+      "availability": "https://schema.org/InStock",
+      "areaServed": "Amiens"
+    }
+  }
+  </script>
+  {% endif %}
+</head>
+<body>
+  <header class="site-header">
+    <a href="/" class="logo">Event'Light</a>
+    <nav>
+      <a href="/">Accueil</a>
+      <a href="/nos-formules/">Nos formules</a>
+      <a href="/location/">Location matériel</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/devis/">Devis</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <p>Event'Light — Location son, lumière, effets & vidéo mapping — Secteur Amiens (80)</p>
+    <p><a href="/mentions-legales/">Mentions légales / CGV</a></p>
+  </footer>
+</body>
+</html>

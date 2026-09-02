@@ -1,0 +1,27 @@
+---
+layout: layout.njk
+pagination:
+  data: produits
+  size: 1
+  alias: produit
+permalink: "/location/{{ produit.slug }}/"
+eleventyComputed:
+  title: "{{ produit.nom }} — Location {{ produit.prix }} | Event'Light Amiens"
+  description: "{{ produit.description }}"
+---
+
+<nav class="breadcrumb"><a href="/location/">Location</a> / {{ produit.categorie }} / {{ produit.nom }}</nav>
+
+<h1>{{ produit.nom }}</h1>
+<p class="prix">{{ produit.prix }}</p>
+<p class="categorie">Catégorie : {{ produit.categorie }}</p>
+
+<p>{{ produit.description }}</p>
+
+{% if produit.usages.length %}
+<p class="usages">Idéal pour : {{ produit.usages | join(", ") }}</p>
+{% endif %}
+
+<a class="cta" href="/devis/">Demander un devis pour ce matériel</a>
+
+<p><a href="/location/">&larr; Retour au catalogue</a></p>

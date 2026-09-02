@@ -1,0 +1,23 @@
+---
+layout: layout.njk
+title: "Location matériel son, lumière, effets & structures à Amiens | Event'Light"
+description: "Catalogue complet de location : projecteurs robotisés, sonorisation, machines à effets, structures. Livraison possible dès 25€ dans le secteur d'Amiens."
+---
+
+<h1>Location de matériel événementiel à Amiens</h1>
+<p>En cas de besoin particulier, <a href="/devis/">contactez-nous via l'onglet devis</a>.</p>
+
+{% set categories = produits | groupby("categorie") %}
+{% for cat, items in categories %}
+  <h2>{{ cat }}</h2>
+  <ul class="catalogue-liste">
+  {% for p in items %}
+    <li>
+      <a href="/location/{{ p.slug }}/"><strong>{{ p.nom }}</strong></a> — {{ p.prix }}
+      <p>{{ p.description }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+{% endfor %}
+
+<p><em>Tous nos prix sont TTC. Tous nos prix de location journalier sont aussi les prix pour le week-end.</em></p>

@@ -1,0 +1,19 @@
+---
+layout: layout.njk
+title: "Location sono & lumière pour anniversaire à Amiens | Event'Light"
+description: "Éclairage, sonorisation et effets pour réussir votre anniversaire à Amiens. Location de matériel professionnel avec livraison possible."
+usage_filtre: "anniversaire"
+permalink: "/nos-formules/anniversaire/"
+---
+<h1>Anniversaire</h1>
+<p>Event'Light dimensionne l'ambiance sonore et lumineuse de votre anniversaire, à votre effigie et entièrement personnalisable.</p>
+
+<h2>Matériel recommandé pour un anniversaire</h2>
+<ul class="catalogue-liste">
+{% for p in produits %}
+  {% if usage_filtre in p.usages %}
+  <li><a href="/location/{{ p.slug }}/">{{ p.nom }}</a> — {{ p.prix }}</li>
+  {% endif %}
+{% endfor %}
+</ul>
+<a class="cta" href="/devis/">Demander un devis anniversaire</a>

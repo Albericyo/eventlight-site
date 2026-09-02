@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "jb-challenger-bsw",
+    "nom": "JB Challenger BSW",
+    "categorie": "Projecteurs robotisés",
+    "prix": "40,00€/j",
+    "description": "Le CHALLENGER BSW de chez JB SYSTEMS est une lyre 150W Beam/Spot/Wash exceptionnelle, équipée d'un zoom motorisé, d'une mise au point automatique et d'un prisme rotatif à 3 facettes.",
+    "usages": ["mariage", "anniversaire", "manifestation-sportive"]
+  },
+  {
+    "slug": "evolite-moving-beam1r",
+    "nom": "EVOLITE - Moving Beam1R",
+    "categorie": "Projecteurs robotisés",
+    "prix": "35,00€/j",
+    "description": "Lyre motorisée type beam conçue pour les spectacles et événements professionnels. Lampe 230W, faisceau serré (~2,5°), roues de couleurs et gobos, prismes rotatifs, focus motorisé. Contrôle DMX, W-DMX sans fil, automatique ou via la musique.",
+    "usages": ["mariage", "comite-entreprise", "manifestation-sportive"]
+  },
+  {
+    "slug": "mac-mah-lyre-wash-740z",
+    "nom": "MAC MAH - Lyre Wash 740Z",
+    "categorie": "Projecteurs robotisés",
+    "prix": "35,00€/j",
+    "description": "Lyre LED RGBW de haute puissance, polyvalente et performante. LED, mouvements PAN & TILT précis, angle de zoom réglable, nombreux effets disponibles.",
+    "usages": ["mariage", "comite-entreprise"]
+  },
+  {
+    "slug": "eurolite-parled-sls-7-hcl-floor",
+    "nom": "EUROLITE - ParLED SLS-7 HCL Floor",
+    "categorie": "Projecteurs statiques",
+    "prix": "9,00€/j",
+    "description": "Projecteur LED plat et compact, idéal pour créer des ambiances lumineuses sur scène, en soirée ou en installation fixe. 7 LED 10W 6-en-1 (RGBAW/UV). Mode autonome, DMX, maître/esclave ou détection sonore, télécommande infrarouge.",
+    "usages": ["anniversaire", "mariage"]
+  },
+  {
+    "slug": "boomtone-ez-box-4x15w",
+    "nom": "Boomtone EZ - Box 4x15W",
+    "categorie": "Projecteurs statiques",
+    "prix": "20,00€/j",
+    "description": "Projecteur LED sur batterie avec connexion Wi-Fi pour piloter à distance et transmettre le signal DMX sans fil.",
+    "usages": ["anniversaire", "mariage", "comite-entreprise"]
+  },
+  {
+    "slug": "eurolite-led-pix-144-rgb-bar",
+    "nom": "EUROLITE - LED PIX-144 RGB Bar",
+    "categorie": "Projecteurs statiques",
+    "prix": "15,00€/j",
+    "description": "Barre LED d'environ 1 mètre dotée de 144 LEDs SMD RGB, réparties en 8 segments pixelisés pour des effets de lumière dynamiques et précis.",
+    "usages": ["mariage", "comite-entreprise"]
+  },
+  {
+    "slug": "elokance-800c",
+    "nom": "ELOKANCE - 800C",
+    "categorie": "Son",
+    "prix": "50,00€/j",
+    "description": "Système amplifié 3 voies 800W RMS, composé de 2 ELO 10C et 1 ELO SUB15AC. Livré avec 2 pieds d'enceintes et 2 câbles speakon 6m.",
+    "usages": ["mariage", "anniversaire", "manifestation-sportive"]
+  },
+  {
+    "slug": "fbt-x-lite-110a",
+    "nom": "FBT X-Lite 110A",
+    "categorie": "Son",
+    "prix": "45,00€/j",
+    "description": "Enceinte active compacte et puissante, 1500W Class D, haut-parleur 10\", SPL max 127dB. 13kg, mixer 3 voies intégré, Bluetooth 5.0, DSP 4 presets.",
+    "usages": ["mariage", "comite-entreprise"]
+  },
+  {
+    "slug": "fbt-x-sub-115sa",
+    "nom": "FBT X-Sub 115 SA",
+    "categorie": "Son",
+    "prix": "55,00€/j",
+    "description": "Caisson de basse amplifié, 1200 watt, Bass Reflex avec haut-parleur de 15\", boîtier en contreplaqué de bouleau de 15mm.",
+    "usages": ["mariage", "manifestation-sportive"]
+  },
+  {
+    "slug": "mac-mah-micro-sans-fil",
+    "nom": "MAC MAH - Micro Sans Fil",
+    "categorie": "Son",
+    "prix": "20,00€/j",
+    "description": "Système complet micro sans fil main simple récepteur/émetteur UHF 100M, idéal pour animations, chant, conférences, salles de spectacle. Transmission UHF haute fidélité, portée 50-80 mètres, mallette ABS robuste.",
+    "usages": ["comite-entreprise", "mariage", "manifestation-sportive"]
+  },
+  {
+    "slug": "evolite-hazebox",
+    "nom": "EVOLITE - HazeBox 1500",
+    "categorie": "Effets",
+    "prix": "40,00€/j",
+    "description": "Machine à brouillard professionnelle 1500W en flight case, produit un brouillard très fin qui sublime vos éclairages.",
+    "usages": ["mariage", "anniversaire"]
+  },
+  {
+    "slug": "fogspray-3000-rgb",
+    "nom": "MAC MAH - Fog Spray RGB 3000",
+    "categorie": "Effets",
+    "prix": "30,00€/j",
+    "description": "Machine à fumée verticale et horizontale de 3000W, LED rouges/vertes/bleues pour colorer les projections de fumée sur plus de 6 mètres de hauteur.",
+    "usages": ["mariage", "manifestation-sportive"]
+  },
+  {
+    "slug": "evo-spark-600",
+    "nom": "EVOLITE - Evo Spark 600",
+    "categorie": "Effets",
+    "prix": "110,00€/j (la paire)",
+    "description": "Machine à étincelles professionnelle haute qualité, hauteur du jet réglable de 1 à 6 mètres, pilotable par télécommande ou en DMX.",
+    "usages": ["mariage", "anniversaire"]
+  },
+  {
+    "slug": "pack-structure-f24200",
+    "nom": "Pack structure F24200 (3m ou 4m)",
+    "categorie": "Structures",
+    "prix": "40,00€/j",
+    "description": "Pack complet : 2x Varytec Wind up 85kg, 2x Varytec Truss Adapter, 2x Truss F24200.",
+    "usages": ["mariage", "comite-entreprise", "manifestation-sportive"]
+  },
+  {
+    "slug": "global-truss-4-points",
+    "nom": "Global Truss - 4 points (1m50 ou 2m)",
+    "categorie": "Structures",
+    "prix": "11,00€/j",
+    "description": "Longueur 1,5m ou 2m, distance des tubes 22cm, diamètre tube principal 35mm.",
+    "usages": ["mariage", "manifestation-sportive"]
+  },
+  {
+    "slug": "totem-4-points",
+    "nom": "Totem - 4 points (1m50 ou 2m)",
+    "categorie": "Structures",
+    "prix": "25,00€/j",
+    "description": "Embase 450x450mm, structure 1m50 ou 2m, platine 29cm, habillage Lycra blanc.",
+    "usages": ["mariage", "anniversaire"]
+  },
+  {
+    "slug": "plugger-monotube",
+    "nom": "Plugger - Monotube",
+    "categorie": "Structures",
+    "prix": "12,00€/j",
+    "description": "Support pour enceinte ou éclairage, embase carrée en acier, tube 35mm télescopique, pas de vis M10 femelle. Hauteur ajustable 110-180cm, charge max 25kg.",
+    "usages": ["mariage", "comite-entreprise"]
+  }
+]

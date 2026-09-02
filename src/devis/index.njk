@@ -1,0 +1,29 @@
+---
+layout: layout.njk
+title: "Demander un devis | Event'Light Amiens"
+description: "Demandez votre devis gratuit pour la location de matériel son, lumière et effets à Amiens."
+permalink: "/devis/"
+---
+<h1>Demander un devis</h1>
+<p>Décrivez votre événement, nous revenons vers vous rapidement.</p>
+
+<form name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="devis">
+  <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
+
+  <label>Nom / Prénom<br><input type="text" name="nom" required></label><br>
+  <label>Email<br><input type="email" name="email" required></label><br>
+  <label>Téléphone<br><input type="tel" name="telephone"></label><br>
+  <label>Type d'événement<br>
+    <select name="type_evenement">
+      <option>Mariage</option>
+      <option>Anniversaire</option>
+      <option>Comité d'entreprise</option>
+      <option>Manifestation sportive</option>
+      <option>Autre</option>
+    </select>
+  </label><br>
+  <label>Date de l'événement<br><input type="date" name="date_evenement"></label><br>
+  <label>Votre demande<br><textarea name="message" rows="5"></textarea></label><br>
+  <button type="submit">Envoyer ma demande</button>
+</form>

@@ -1,0 +1,54 @@
+:root {
+  --brand: #003E60;
+  --text: #1a1a1a;
+  --bg: #ffffff;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.6;
+}
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--brand);
+  color: #fff;
+}
+.site-header .logo { color: #fff; font-weight: bold; font-size: 1.3rem; text-decoration: none; }
+.site-header nav a {
+  color: #fff;
+  margin-left: 1.2rem;
+  text-decoration: none;
+}
+.site-header nav a:hover { text-decoration: underline; }
+main { max-width: 960px; margin: 0 auto; padding: 2rem; }
+h1 { color: var(--brand); }
+.cta {
+  display: inline-block;
+  background: var(--brand);
+  color: #fff;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+.cards { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem; }
+.cards li a {
+  display: block;
+  padding: 1rem 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--brand);
+}
+.catalogue-liste { list-style: none; padding: 0; }
+.catalogue-liste li { padding: 0.8rem 0; border-bottom: 1px solid #eee; }
+.site-footer { text-align: center; padding: 2rem; background: #f5f5f5; margin-top: 3rem; }
+.hidden { display: none; }
+form label { display: block; margin: 0.8rem 0; }
+form input, form select, form textarea { width: 100%; padding: 0.5rem; margin-top: 0.3rem; }
+form button { margin-top: 1rem; padding: 0.7rem 1.4rem; background: var(--brand); color: #fff; border: none; border-radius: 6px; cursor: pointer; }
