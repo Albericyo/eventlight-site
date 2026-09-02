@@ -1,9 +1,29 @@
+const fs = require("fs");
+const path = require("path");
+
+function mediaFiles(kind, slug) {
+  if (!slug) return [];
+  const dir = path.join("src/images", kind, slug);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => /\.(jpe?g|png|webp|gif)$/i.test(f))
+    .sort()
+    .map((f) => `/images/${kind}/${slug}/${f}`);
+}
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/player.js");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
   eleventyConfig.addPassthroughCopy("src/images");
+
+  eleventyConfig.addFilter("cover", (slug, kind) => mediaFiles(kind, slug)[0] || "");
+  eleventyConfig.addFilter("gallery", (slug, kind) => mediaFiles(kind, slug));
+  eleventyConfig.addFilter("firstOfCat", (produits, catName) =>
+    (produits || []).find((p) => p.categorie === catName) || null
+  );
 
   eleventyConfig.addFilter("usageLabel", function (slug) {
     const map = {

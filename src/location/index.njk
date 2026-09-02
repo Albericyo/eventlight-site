@@ -10,7 +10,7 @@ breadcrumbs:
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">MÉDIATHÈQUE</p>
+    <p class="page-kicker mono">CATALOGUE · AMIENS</p>
     <h1>Location de matériel</h1>
     <p class="lede">Catalogue son, lumière, effets et structures. En cas de besoin particulier, <a href="/devis/">ouvrez une session devis</a>. {{ site.livraison }}. Tous les câbles nécessaires peuvent être fournis. TVA non applicable (art. 293 B du CGI).</p>
   </header>
@@ -28,10 +28,18 @@ breadcrumbs:
     <ul class="catalogue-liste">
     {% for p in produits %}
       {% if p.categorie == cat.nom %}
+      {% set thumb = p.slug | cover("location") %}
       <li>
-        <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
+        {% if thumb %}
+        <img class="thumb" src="{{ thumb }}" alt="{{ p.nom }}" width="176" height="132" loading="lazy">
+        {% else %}
+        <span class="thumb" aria-hidden="true"></span>
+        {% endif %}
+        <div>
+          <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
+          <p>{{ p.description }}</p>
+        </div>
         <span class="prix-tag">{{ p.prix }}</span>
-        <p>{{ p.description }}</p>
       </li>
       {% endif %}
     {% endfor %}

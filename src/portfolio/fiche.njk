@@ -7,6 +7,7 @@ pagination:
   addAllPagesToCollections: true
 permalink: "/portfolio/{{ projet.slug }}/"
 ---
+{% set shots = projet.slug | gallery("portfolio") %}
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
@@ -14,6 +15,17 @@ permalink: "/portfolio/{{ projet.slug }}/"
     <h1>{{ projet.titre }}</h1>
     <p class="lede">{{ projet.sousTitre }}</p>
   </header>
+
+  {% if shots.length %}
+  <div class="gallery">
+    {% for src in shots %}
+    <figure>
+      <img src="{{ src }}" alt="{{ projet.titre }} — vue {{ loop.index }}, Event'Light {{ projet.annee }}" width="1200" height="750" {% if loop.index > 1 %}loading="lazy"{% endif %}>
+      <figcaption>{{ projet.titre }} · {{ loop.index }}/{{ shots.length }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+  {% endif %}
 
   <div class="legal-content">
     {% if projet.production %}<p><strong>Production :</strong> {{ projet.production }}</p>{% endif %}
