@@ -1,107 +1,83 @@
 {
   "portfolio": {
-    "pignan": [
-      "/images/portfolio/pignan/01.png"
-    ],
-    "pba-2024": [
-      "/images/portfolio/pba-2024/01.png"
-    ],
-    "saint-jean": [
-      "/images/portfolio/saint-jean/01.png"
-    ],
-    "arbre-de-noel-pompier-2023": [
-      "/images/portfolio/arbre-de-noel-pompier-2023/01.png"
-    ],
-    "gare-saint-paul": [
-      "/images/portfolio/gare-saint-paul/01.png"
-    ],
-    "anniversaire-guinguette": [
-      "/images/portfolio/anniversaire-guinguette/01.png"
+    "adj-2020": [
+      "/images/portfolio/adj-2020/yt.jpg"
     ],
     "adj-2021": [
-      "/images/portfolio/adj-2021/01.png"
+      "/images/portfolio/adj-2021/yt.jpg"
     ],
+    "anniversaire-guinguette": [],
+    "arbre-de-noel-pompier-2023": [],
     "gala-ffeo": [
-      "/images/portfolio/gala-ffeo/01.png"
+      "/images/portfolio/gala-ffeo/yt.jpg"
     ],
+    "gare-saint-paul": [
+      "/images/portfolio/gare-saint-paul/yt.jpg"
+    ],
+    "la-maison-de-la-motte": [],
     "le-pavillon-bleu": [
-      "/images/portfolio/le-pavillon-bleu/01.png"
-    ],
-    "adj-2020": [
-      "/images/portfolio/adj-2020/01.png"
-    ],
-    "la-maison-de-la-motte": [
-      "/images/portfolio/la-maison-de-la-motte/01.png"
+      "/images/portfolio/le-pavillon-bleu/yt.jpg"
     ],
     "mapping-halloween-2018": [
-      "/images/portfolio/mapping-halloween-2018/01.png"
+      "/images/portfolio/mapping-halloween-2018/yt.jpg"
     ],
-    "soiree-halloween-2025": [
-      "/images/portfolio/soiree-halloween-2025/01.png"
+    "pba-2024": [
+      "/images/portfolio/pba-2024/yt.jpg"
     ],
-    "mariage-2025-09-20": [
-      "/images/portfolio/mariage-2025-09-20/01.jpg"
+    "pignan": [
+      "/images/portfolio/pignan/yt.jpg"
+    ],
+    "saint-jean": [
+      "/images/portfolio/saint-jean/yt.jpg"
     ]
   },
   "location": {
-    "jb-challenger-bsw": [
-      "/images/location/jb-challenger-bsw/01.png"
-    ],
-    "evolite-moving-beam1r": [
-      "/images/location/evolite-moving-beam1r/01.png"
-    ],
-    "mac-mah-lyre-wash-740z": [
-      "/images/location/mac-mah-lyre-wash-740z/01.png",
-      "/images/location/mac-mah-lyre-wash-740z/02.jpg"
+    "boomtone-ez-box-4x15w": [],
+    "elokance-800c": [],
+    "eurolite-led-pix-144-rgb-bar": [
+      "/images/location/eurolite-led-pix-144-rgb-bar/yt.jpg"
     ],
     "eurolite-parled-sls-7-hcl-floor": [
-      "/images/location/eurolite-parled-sls-7-hcl-floor/01.png"
-    ],
-    "boomtone-ez-box-4x15w": [
-      "/images/location/boomtone-ez-box-4x15w/01.png"
-    ],
-    "eurolite-led-pix-144-rgb-bar": [
-      "/images/location/eurolite-led-pix-144-rgb-bar/01.png"
-    ],
-    "elokance-800c": [
-      "/images/location/elokance-800c/01.png"
-    ],
-    "fbt-x-lite-110a": [
-      "/images/location/fbt-x-lite-110a/01.png"
-    ],
-    "fbt-x-sub-115sa": [
-      "/images/location/fbt-x-sub-115sa/01.png"
-    ],
-    "mac-mah-micro-sans-fil": [
-      "/images/location/mac-mah-micro-sans-fil/01.png"
-    ],
-    "evolite-hazebox": [
-      "/images/location/evolite-hazebox/01.png"
-    ],
-    "fogspray-3000-rgb": [
-      "/images/location/fogspray-3000-rgb/01.png"
+      "/images/location/eurolite-parled-sls-7-hcl-floor/yt.jpg"
     ],
     "evo-spark-600": [
-      "/images/location/evo-spark-600/01.png"
-    ]
+      "/images/location/evo-spark-600/yt.jpg"
+    ],
+    "evolite-hazebox": [],
+    "evolite-moving-beam1r": [
+      "/images/location/evolite-moving-beam1r/yt.jpg"
+    ],
+    "fbt-x-lite-110a": [],
+    "fbt-x-sub-115sa": [],
+    "fogspray-3000-rgb": [
+      "/images/location/fogspray-3000-rgb/yt.jpg"
+    ],
+    "jb-challenger-bsw": [
+      "/images/location/jb-challenger-bsw/yt.jpg"
+    ],
+    "louer": [],
+    "mac-mah-lyre-wash-740z": [
+      "/images/location/mac-mah-lyre-wash-740z/yt.jpg"
+    ],
+    "mac-mah-micro-sans-fil": []
   },
   "youtube": {
-    "pignan": "rQ2P5zFz1Do",
-    "pba-2024": "qa9DIcC56KU",
-    "saint-jean": "fPIcQxnWaJE",
-    "adj-2021": "q7wRCDqIqtg",
-    "gala-ffeo": "U9n7ctUEh30",
-    "gare-saint-paul": "6vckeSXc_8Y",
-    "le-pavillon-bleu": "KdpNwDgyiNs",
-    "adj-2020": "q0p5miY9ufM",
-    "la-maison-de-la-motte": "VYDlCmQyEbc",
-    "mapping-halloween-2018": "HagrZQk-Jbc",
     "eurolite-led-pix-144-rgb-bar": "4qs5noXoh4Y",
     "eurolite-parled-sls-7-hcl-floor": "rtu1T7JhGF0",
     "evo-spark-600": "VedgKHWGKBs",
     "evolite-moving-beam1r": "URbd9yZEM6U",
     "fogspray-3000-rgb": "FHYWTfmiKF4",
     "jb-challenger-bsw": "-O-XPsAcURg",
-    "mac-mah-lyre-wash-740z": "1RzpEb85y5M"
+    "mac-mah-lyre-wash-740z": "1RzpEb85y5M",
+    "adj-2020": "q0p5miY9ufM",
+    "adj-2021": "q7wRCDqIqtg",
+    "gala-ffeo": "U9n7ctUEh30",
+    "gare-saint-paul": "6vckeSXc_8Y",
+    "la-maison-de-la-motte": "VYDlCmQyEbc",
+    "le-pavillon-bleu": "KdpNwDgyiNs",
+    "mapping-halloween-2018": "HagrZQk-Jbc",
+    "pba-2024": "qa9DIcC56KU",
+    "pignan": "rQ2P5zFz1Do",
+    "saint-jean": "fPIcQxnWaJE"
   }
 }

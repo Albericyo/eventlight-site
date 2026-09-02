@@ -1,15 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#07070c"/>
-  <circle cx="980" cy="-40" r="280" fill="#3B6BFF" fill-opacity="0.18"/>
-  <circle cx="80" cy="680" r="220" fill="#FF3B3B" fill-opacity="0.16"/>
-  <g transform="translate(80,195)">
-    <rect width="120" height="120" rx="28" fill="#0F0A1C"/>
-    <polygon points="21,21 108,60 21,51" fill="#FF3B3B"/>
-    <polygon points="21,51 108,60 21,69" fill="#1FB86B"/>
-    <polygon points="21,69 108,60 21,99" fill="#3B6BFF"/>
-    <rect x="21" y="21" width="60" height="12" rx="3" fill="#fff"/>
-    <rect x="21" y="87" width="60" height="12" rx="3" fill="#fff"/>
+  <rect width="1200" height="630" fill="#050506"/>
+  <g opacity="0.55">
+    <rect width="80" height="80" fill="#fff"/>
+    <rect x="160" width="80" height="80" fill="#fff"/>
+    <rect x="80" y="80" width="80" height="80" fill="#fff"/>
+    <rect x="240" y="80" width="80" height="80" fill="#fff"/>
+    <rect y="160" width="80" height="80" fill="#fff"/>
+    <rect x="160" y="160" width="80" height="80" fill="#fff"/>
   </g>
-  <text x="220" y="250" fill="#f4efe6" font-family="Georgia, serif" font-size="64">Event'Light</text>
-  <text x="220" y="310" fill="#d4d0dc" font-family="Arial, sans-serif" font-size="28">Location sono, lumière et vidéo mapping à Amiens</text>
+  <rect x="78" width="4" height="80" fill="#00E5FF"/>
+  <rect x="82" width="4" height="80" fill="#FF2A2A"/>
+  <rect y="78" width="80" height="4" fill="#FFE14A"/>
+  <g transform="translate(88,230)">
+    <rect width="120" height="120" fill="#050506" stroke="#fff" stroke-width="3"/>
+    <polygon points="21,21 108,60 21,51" fill="#FF2A2A"/>
+    <polygon points="21,51 108,60 21,69" fill="#00E5FF"/>
+    <polygon points="21,69 108,60 21,99" fill="#2B4CFF"/>
+    <rect x="21" y="21" width="60" height="12" fill="#fff"/>
+    <rect x="21" y="87" width="60" height="12" fill="#fff"/>
+  </g>
+  <text x="236" y="292" fill="#f3f0e8" font-family="Arial Black, Arial, sans-serif" font-size="64" font-weight="800">Event'Light</text>
+  <text x="236" y="340" fill="#9a9588" font-family="Arial, sans-serif" font-size="26">Sono, lumière et vidéo mapping à Amiens</text>
+  <rect x="236" y="360" width="72" height="8" fill="#FF2A2A"/>
+  <rect x="308" y="360" width="72" height="8" fill="#FFE14A"/>
+  <rect x="380" y="360" width="72" height="8" fill="#00E5FF"/>
 </svg>

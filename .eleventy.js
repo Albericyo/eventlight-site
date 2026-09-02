@@ -19,6 +19,14 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
   eleventyConfig.addPassthroughCopy("src/images");
 
+  eleventyConfig.addFilter("youtubeId", (slug) => {
+    try {
+      const man = JSON.parse(fs.readFileSync(path.join("src/images/manifest.json"), "utf8"));
+      return (man.youtube && man.youtube[slug]) || "";
+    } catch (e) {
+      return "";
+    }
+  });
   eleventyConfig.addFilter("cover", (slug, kind) => mediaFiles(kind, slug)[0] || "");
   eleventyConfig.addFilter("gallery", (slug, kind) => mediaFiles(kind, slug));
   eleventyConfig.addFilter("firstOfCat", (produits, catName) =>

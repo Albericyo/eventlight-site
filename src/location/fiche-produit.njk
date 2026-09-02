@@ -7,11 +7,12 @@ pagination:
   addAllPagesToCollections: true
 permalink: "/location/{{ produit.slug }}/"
 ---
+{% set shots = produit.slug | gallery("location") %}
+{% set yt = produit.slug | youtubeId %}
 <div class="wrap">
   {% include "breadcrumbs.njk" %}
 
   <div class="product-sheet">
-    {% set shots = produit.slug | gallery("location") %}
     <div class="preview product-monitor">
       {% if shots.length %}
       <img class="product-photo" src="{{ shots[0] }}" alt="{{ produit.nom }} en location à Amiens — Event'Light" width="900" height="675">
@@ -50,6 +51,17 @@ permalink: "/location/{{ produit.slug }}/"
       <p style="margin-top:18px"><a href="/location/">← Retour au catalogue</a></p>
     </div>
   </div>
+
+  {% if yt %}
+  <div class="map-embed" style="margin-top:32px">
+    <iframe
+      title="Démonstration — {{ produit.nom }}"
+      src="https://www.youtube-nocookie.com/embed/{{ yt }}"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"></iframe>
+  </div>
+  {% endif %}
 
   {% set autres = produits | relatedProduits(produit) %}
   {% if autres.length %}

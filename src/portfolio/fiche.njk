@@ -8,6 +8,7 @@ pagination:
 permalink: "/portfolio/{{ projet.slug }}/"
 ---
 {% set shots = projet.slug | gallery("portfolio") %}
+{% set yt = projet.slug | youtubeId %}
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
@@ -15,6 +16,17 @@ permalink: "/portfolio/{{ projet.slug }}/"
     <h1>{{ projet.titre }}</h1>
     <p class="lede">{{ projet.sousTitre }}</p>
   </header>
+
+  {% if yt %}
+  <div class="map-embed" style="margin:0 0 28px">
+    <iframe
+      title="Vidéo — {{ projet.titre }}"
+      src="https://www.youtube-nocookie.com/embed/{{ yt }}"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"></iframe>
+  </div>
+  {% endif %}
 
   {% if shots.length %}
   <div class="gallery">
