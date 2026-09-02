@@ -5,15 +5,30 @@ description: "Matériel de sonorisation, éclairage et structures pour vos manif
 usage_filtre: "manifestation-sportive"
 permalink: "/nos-formules/manifestation-sportive/"
 ---
-<h1>Manifestation sportive</h1>
-<p>Event'Light équipe vos événements sportifs en sonorisation, éclairage et structures, quel que soit le gabarit de la manifestation.</p>
+<div class="wrap">
+  <header class="page-head">
+    <p class="page-kicker mono">CH. 04 — FORMULE</p>
+    <h1>Manifestation sportive</h1>
+    <p class="lede">Event'Light équipe vos événements sportifs en sonorisation, éclairage et structures, quel que soit le gabarit de la manifestation.</p>
+  </header>
 
-<h2>Matériel recommandé pour une manifestation sportive</h2>
-<ul class="catalogue-liste">
-{% for p in produits %}
-  {% if usage_filtre in p.usages %}
-  <li><a href="/location/{{ p.slug }}/">{{ p.nom }}</a> — {{ p.prix }}</li>
-  {% endif %}
-{% endfor %}
-</ul>
-<a class="cta" href="/devis/">Demander un devis manifestation sportive</a>
+  <section class="section">
+    <h2 class="section-title">Matériel recommandé</h2>
+    <ul class="catalogue-liste">
+    {% for p in produits %}
+      {% if usage_filtre in p.usages %}
+      <li>
+        <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
+        <span class="prix-tag">{{ p.prix }}</span>
+      </li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+    <p style="margin-top:28px">
+      <a class="btn solid" href="/devis/">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+        Demander un devis manifestation sportive
+      </a>
+    </p>
+  </section>
+</div>

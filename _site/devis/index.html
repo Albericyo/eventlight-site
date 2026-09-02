@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ description }}">
-  <link rel="canonical" href="https://www.eventlight.net{{ page.url }}">
+  <title>Demander un devis | Event&#39;Light Amiens</title>
+  <meta name="description" content="Demandez votre devis gratuit pour la location de matériel son, lumière et effets à Amiens.">
+  <link rel="canonical" href="https://www.eventlight.net/devis/">
 
-  <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ description }}">
+  <meta property="og:title" content="Demander un devis | Event&#39;Light Amiens">
+  <meta property="og:description" content="Demandez votre devis gratuit pour la location de matériel son, lumière et effets à Amiens.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.eventlight.net{{ page.url }}">
+  <meta property="og:url" content="https://www.eventlight.net/devis/">
   <meta property="og:locale" content="fr_FR">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,26 +35,9 @@
   }
   </script>
 
-  {% if produit %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "{{ produit.nom }}",
-    "description": "{{ produit.description }}",
-    "category": "{{ produit.categorie }}",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "price": "{{ produit.prix }}",
-      "availability": "https://schema.org/InStock",
-      "areaServed": "Amiens"
-    }
-  }
-  </script>
-  {% endif %}
+  
 </head>
-<body{% if page.url == "/" %} class="is-home"{% endif %} data-page="{{ page.url }}">
+<body data-page="/devis/">
   <div class="spotlight" id="spotlight" aria-hidden="true"></div>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
 
@@ -79,7 +62,7 @@
     </div>
   </header>
 
-  {% set u = page.url %}
+  
   <nav class="timeline" aria-label="Chapitres">
     <div class="wave-wrap">
       <svg class="wave" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
@@ -94,19 +77,19 @@
               fill="none" stroke="url(#waveGrad)" stroke-width="2.5" opacity="0.9"/>
       </svg>
       <div class="chapters">
-        <a class="chapter{% if u == '/' %} active{% endif %}" href="/">
+        <a class="chapter" href="/">
           <span class="stem"><span class="dot"></span><span class="label">Accueil</span></span>
         </a>
-        <a class="chapter{% if u | startsWith('/nos-formules/') %} active{% endif %}" href="/nos-formules/">
+        <a class="chapter" href="/nos-formules/">
           <span class="stem"><span class="dot"></span><span class="label">Formules</span></span>
         </a>
-        <a class="chapter{% if u | startsWith('/portfolio/') %} active{% endif %}" href="/portfolio/">
+        <a class="chapter" href="/portfolio/">
           <span class="stem"><span class="dot"></span><span class="label">Portfolio</span></span>
         </a>
-        <a class="chapter{% if u | startsWith('/location/') %} active{% endif %}" href="/location/">
+        <a class="chapter" href="/location/">
           <span class="stem"><span class="dot"></span><span class="label">Location</span></span>
         </a>
-        <a class="chapter{% if u | startsWith('/contact/') or u | startsWith('/devis/') %} active{% endif %}" href="/contact/">
+        <a class="chapter active" href="/contact/">
           <span class="stem"><span class="dot"></span><span class="label">Contact</span></span>
         </a>
       </div>
@@ -114,12 +97,53 @@
   </nav>
 
   <main id="contenu">
-    {{ content | safe }}
+    <div class="wrap">
+  <header class="page-head">
+    <p class="page-kicker mono">NOUVELLE SESSION</p>
+    <h1>Demander un devis</h1>
+    <p class="lede">Décrivez votre événement. On revient vers vous avec un calage technique et un tarif.</p>
+  </header>
+
+  <form class="form-panel" name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="devis">
+    <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
+
+    <label>Nom / Prénom
+      <input type="text" name="nom" required autocomplete="name">
+    </label>
+    <label>Email
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>Téléphone
+      <input type="tel" name="telephone" autocomplete="tel">
+    </label>
+    <label>Type d'événement
+      <select name="type_evenement">
+        <option>Mariage</option>
+        <option>Anniversaire</option>
+        <option>Comité d'entreprise</option>
+        <option>Manifestation sportive</option>
+        <option>Autre</option>
+      </select>
+    </label>
+    <label>Date de l'événement
+      <input type="date" name="date_evenement">
+    </label>
+    <label>Votre demande
+      <textarea name="message" rows="5" placeholder="Lieu, jauge, pistes souhaitées (son, lumière, mapping, effets)…"></textarea>
+    </label>
+    <button type="submit" class="btn solid">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+      Envoyer ma demande
+    </button>
+  </form>
+</div>
+
   </main>
 
   <footer class="legal-bar">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16" aria-hidden="true"><path d="M5 3L19 12L5 21Z"/></svg>
-    <p>Copyright 2026 Event'Light. Siret {{ site.siret }}. <a href="/mentions-legales/">Mentions légales / CGV</a></p>
+    <p>Copyright 2026 Event'Light. Siret 89937393000028. <a href="/mentions-legales/">Mentions légales / CGV</a></p>
   </footer>
 
   <div class="transport" role="region" aria-label="Contrôles de lecture">

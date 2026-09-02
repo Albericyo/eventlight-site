@@ -10,18 +10,33 @@ eleventyComputed:
   description: "{{ produit.description }}"
 ---
 
-<nav class="breadcrumb"><a href="/location/">Location</a> / {{ produit.categorie }} / {{ produit.nom }}</nav>
+<div class="wrap">
+  <nav class="breadcrumb"><a href="/location/">Location</a> / {{ produit.categorie }} / {{ produit.nom }}</nav>
 
-<h1>{{ produit.nom }}</h1>
-<p class="prix">{{ produit.prix }}</p>
-<p class="categorie">Catégorie : {{ produit.categorie }}</p>
-
-<p>{{ produit.description }}</p>
-
-{% if produit.usages.length %}
-<p class="usages">Idéal pour : {{ produit.usages | join(", ") }}</p>
-{% endif %}
-
-<a class="cta" href="/devis/">Demander un devis pour ce matériel</a>
-
-<p><a href="/location/">&larr; Retour au catalogue</a></p>
+  <div class="product-sheet">
+    <div class="preview product-monitor" aria-hidden="true">
+      <div class="layer2 on" data-layer="lumiere"></div>
+      <div class="layer2 on" data-layer="mapping"></div>
+      <span class="monitor-badge mono">CLIP</span>
+      <span class="readout mono">{{ produit.categorie | upper }}</span>
+    </div>
+    <div>
+      <p class="page-kicker mono">FICHE MATÉRIEL</p>
+      <h1>{{ produit.nom }}</h1>
+      <p class="prix">{{ produit.prix }}</p>
+      <p>{{ produit.description }}</p>
+      {% if produit.usages.length %}
+      <div class="chip-row">
+        {% for u in produit.usages %}
+        <a class="chip" href="/nos-formules/{{ u }}/">{{ u | usageLabel }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <a class="btn solid" href="/devis/">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+        Demander un devis pour ce matériel
+      </a>
+      <p style="margin-top:18px"><a href="/location/">← Retour au catalogue</a></p>
+    </div>
+  </div>
+</div>

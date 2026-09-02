@@ -4,6 +4,40 @@ title: "Portfolio — Nos réalisations | Event'Light Amiens"
 description: "Découvrez nos réalisations : mariages, anniversaires, événements d'entreprise et vidéo mapping à Amiens."
 permalink: "/portfolio/"
 ---
-<h1>Portfolio</h1>
-<p>Nos dernières réalisations à Amiens et dans la Somme.</p>
-<!-- TODO : ajouter les photos/vidéos de réalisations, idéalement en WebP compressé -->
+<div class="wrap">
+  <header class="page-head">
+    <p class="page-kicker mono">RUSHES</p>
+    <h1>Portfolio</h1>
+    <p class="lede">Nos dernières réalisations à Amiens et dans la Somme. Survolez une miniature pour scrubber la bande.</p>
+  </header>
+
+  <div class="polaroids">
+    <div class="clip">
+      <div class="frame g-blue" data-duration="134" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
+        <span class="badge mono">MP4</span>
+        <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
+      </div>
+      <div class="cap">Mapping, Pignan Millénaire<span class="date">2025</span></div>
+    </div>
+    <div class="clip">
+      <div class="frame g-red" data-duration="108" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
+        <span class="badge mono">MP4</span>
+        <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
+      </div>
+      <div class="cap">Soirée à thème, Halloween<span class="date">2025</span></div>
+    </div>
+    <div class="clip">
+      <div class="frame g-green" data-duration="182" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
+        <span class="badge mono">MP4</span>
+        <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
+      </div>
+      <div class="cap">Mapping en 48h, Cathédrale Saint-Jean<span class="date">2024</span></div>
+    </div>
+  </div>
+
+  <p class="section-note" style="margin-top:36px">Les rushes photo et vidéo seront ajoutés ici au fur et à mesure des événements.</p>
+  <a class="btn solid" href="/devis/">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+    Composer un projet
+  </a>
+</div>

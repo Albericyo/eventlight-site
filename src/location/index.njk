@@ -4,20 +4,28 @@ title: "Location matériel son, lumière, effets & structures à Amiens | Event'
 description: "Catalogue complet de location : projecteurs robotisés, sonorisation, machines à effets, structures. Livraison possible dès 25€ dans le secteur d'Amiens."
 ---
 
-<h1>Location de matériel événementiel à Amiens</h1>
-<p>En cas de besoin particulier, <a href="/devis/">contactez-nous via l'onglet devis</a>.</p>
+<div class="wrap">
+  <header class="page-head">
+    <p class="page-kicker mono">MÉDIATHÈQUE</p>
+    <h1>Location de matériel</h1>
+    <p class="lede">Catalogue son, lumière, effets et structures. En cas de besoin particulier, <a href="/devis/">ouvrez une session devis</a>. Livraison possible dès 25€ dans le secteur d'Amiens.</p>
+  </header>
 
-{% set categories = produits | groupby("categorie") %}
-{% for cat, items in categories %}
-  <h2>{{ cat }}</h2>
-  <ul class="catalogue-liste">
-  {% for p in items %}
-    <li>
-      <a href="/location/{{ p.slug }}/"><strong>{{ p.nom }}</strong></a> — {{ p.prix }}
-      <p>{{ p.description }}</p>
-    </li>
+  {% set categories = produits | groupby("categorie") %}
+  {% for cat, items in categories %}
+  <section class="cat-block">
+    <h2>{{ cat }}</h2>
+    <ul class="catalogue-liste">
+    {% for p in items %}
+      <li>
+        <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
+        <span class="prix-tag">{{ p.prix }}</span>
+        <p>{{ p.description }}</p>
+      </li>
+    {% endfor %}
+    </ul>
+  </section>
   {% endfor %}
-  </ul>
-{% endfor %}
 
-<p><em>Tous nos prix sont TTC. Tous nos prix de location journalier sont aussi les prix pour le week-end.</em></p>
+  <p class="section-note"><em>Tous nos prix sont TTC. Tous nos prix de location journalier sont aussi les prix pour le week-end.</em></p>
+</div>

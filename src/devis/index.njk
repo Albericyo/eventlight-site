@@ -4,26 +4,44 @@ title: "Demander un devis | Event'Light Amiens"
 description: "Demandez votre devis gratuit pour la location de matériel son, lumière et effets à Amiens."
 permalink: "/devis/"
 ---
-<h1>Demander un devis</h1>
-<p>Décrivez votre événement, nous revenons vers vous rapidement.</p>
+<div class="wrap">
+  <header class="page-head">
+    <p class="page-kicker mono">NOUVELLE SESSION</p>
+    <h1>Demander un devis</h1>
+    <p class="lede">Décrivez votre événement. On revient vers vous avec un calage technique et un tarif.</p>
+  </header>
 
-<form name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="devis">
-  <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
+  <form class="form-panel" name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="devis">
+    <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
 
-  <label>Nom / Prénom<br><input type="text" name="nom" required></label><br>
-  <label>Email<br><input type="email" name="email" required></label><br>
-  <label>Téléphone<br><input type="tel" name="telephone"></label><br>
-  <label>Type d'événement<br>
-    <select name="type_evenement">
-      <option>Mariage</option>
-      <option>Anniversaire</option>
-      <option>Comité d'entreprise</option>
-      <option>Manifestation sportive</option>
-      <option>Autre</option>
-    </select>
-  </label><br>
-  <label>Date de l'événement<br><input type="date" name="date_evenement"></label><br>
-  <label>Votre demande<br><textarea name="message" rows="5"></textarea></label><br>
-  <button type="submit">Envoyer ma demande</button>
-</form>
+    <label>Nom / Prénom
+      <input type="text" name="nom" required autocomplete="name">
+    </label>
+    <label>Email
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>Téléphone
+      <input type="tel" name="telephone" autocomplete="tel">
+    </label>
+    <label>Type d'événement
+      <select name="type_evenement">
+        <option>Mariage</option>
+        <option>Anniversaire</option>
+        <option>Comité d'entreprise</option>
+        <option>Manifestation sportive</option>
+        <option>Autre</option>
+      </select>
+    </label>
+    <label>Date de l'événement
+      <input type="date" name="date_evenement">
+    </label>
+    <label>Votre demande
+      <textarea name="message" rows="5" placeholder="Lieu, jauge, pistes souhaitées (son, lumière, mapping, effets)…"></textarea>
+    </label>
+    <button type="submit" class="btn solid">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+      Envoyer ma demande
+    </button>
+  </form>
+</div>

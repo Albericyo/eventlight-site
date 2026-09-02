@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ description }}">
-  <link rel="canonical" href="https://www.eventlight.net{{ page.url }}">
+  <title>Location sono &amp; lumière pour événement sportif à Amiens | Event&#39;Light</title>
+  <meta name="description" content="Matériel de sonorisation, éclairage et structures pour vos manifestations sportives à Amiens et dans la Somme.">
+  <link rel="canonical" href="https://www.eventlight.net/nos-formules/manifestation-sportive/">
 
-  <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ description }}">
+  <meta property="og:title" content="Location sono &amp; lumière pour événement sportif à Amiens | Event&#39;Light">
+  <meta property="og:description" content="Matériel de sonorisation, éclairage et structures pour vos manifestations sportives à Amiens et dans la Somme.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.eventlight.net{{ page.url }}">
+  <meta property="og:url" content="https://www.eventlight.net/nos-formules/manifestation-sportive/">
   <meta property="og:locale" content="fr_FR">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,26 +35,9 @@
   }
   </script>
 
-  {% if produit %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "{{ produit.nom }}",
-    "description": "{{ produit.description }}",
-    "category": "{{ produit.categorie }}",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "price": "{{ produit.prix }}",
-      "availability": "https://schema.org/InStock",
-      "areaServed": "Amiens"
-    }
-  }
-  </script>
-  {% endif %}
+  
 </head>
-<body{% if page.url == "/" %} class="is-home"{% endif %} data-page="{{ page.url }}">
+<body data-page="/nos-formules/manifestation-sportive/">
   <div class="spotlight" id="spotlight" aria-hidden="true"></div>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
 
@@ -79,7 +62,7 @@
     </div>
   </header>
 
-  {% set u = page.url %}
+  
   <nav class="timeline" aria-label="Chapitres">
     <div class="wave-wrap">
       <svg class="wave" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
@@ -94,19 +77,19 @@
               fill="none" stroke="url(#waveGrad)" stroke-width="2.5" opacity="0.9"/>
       </svg>
       <div class="chapters">
-        <a class="chapter{% if u == '/' %} active{% endif %}" href="/">
+        <a class="chapter" href="/">
           <span class="stem"><span class="dot"></span><span class="label">Accueil</span></span>
         </a>
-        <a class="chapter{% if u | startsWith('/nos-formules/') %} active{% endif %}" href="/nos-formules/">
+        <a class="chapter active" href="/nos-formules/">
           <span class="stem"><span class="dot"></span><span class="label">Formules</span></span>
         </a>
-        <a class="chapter{% if u | startsWith('/portfolio/') %} active{% endif %}" href="/portfolio/">
+        <a class="chapter" href="/portfolio/">
           <span class="stem"><span class="dot"></span><span class="label">Portfolio</span></span>
         </a>
-        <a class="chapter{% if u | startsWith('/location/') %} active{% endif %}" href="/location/">
+        <a class="chapter" href="/location/">
           <span class="stem"><span class="dot"></span><span class="label">Location</span></span>
         </a>
-        <a class="chapter{% if u | startsWith('/contact/') or u | startsWith('/devis/') %} active{% endif %}" href="/contact/">
+        <a class="chapter" href="/contact/">
           <span class="stem"><span class="dot"></span><span class="label">Contact</span></span>
         </a>
       </div>
@@ -114,12 +97,106 @@
   </nav>
 
   <main id="contenu">
-    {{ content | safe }}
+    <div class="wrap">
+  <header class="page-head">
+    <p class="page-kicker mono">CH. 04 — FORMULE</p>
+    <h1>Manifestation sportive</h1>
+    <p class="lede">Event'Light équipe vos événements sportifs en sonorisation, éclairage et structures, quel que soit le gabarit de la manifestation.</p>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Matériel recommandé</h2>
+    <ul class="catalogue-liste">
+    
+      
+      <li>
+        <a href="/location/jb-challenger-bsw/">JB Challenger BSW</a>
+        <span class="prix-tag">40,00€/j</span>
+      </li>
+      
+    
+      
+      <li>
+        <a href="/location/evolite-moving-beam1r/">EVOLITE - Moving Beam1R</a>
+        <span class="prix-tag">35,00€/j</span>
+      </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+      <li>
+        <a href="/location/elokance-800c/">ELOKANCE - 800C</a>
+        <span class="prix-tag">50,00€/j</span>
+      </li>
+      
+    
+      
+    
+      
+      <li>
+        <a href="/location/fbt-x-sub-115sa/">FBT X-Sub 115 SA</a>
+        <span class="prix-tag">55,00€/j</span>
+      </li>
+      
+    
+      
+      <li>
+        <a href="/location/mac-mah-micro-sans-fil/">MAC MAH - Micro Sans Fil</a>
+        <span class="prix-tag">20,00€/j</span>
+      </li>
+      
+    
+      
+    
+      
+      <li>
+        <a href="/location/fogspray-3000-rgb/">MAC MAH - Fog Spray RGB 3000</a>
+        <span class="prix-tag">30,00€/j</span>
+      </li>
+      
+    
+      
+    
+      
+      <li>
+        <a href="/location/pack-structure-f24200/">Pack structure F24200 (3m ou 4m)</a>
+        <span class="prix-tag">40,00€/j</span>
+      </li>
+      
+    
+      
+      <li>
+        <a href="/location/global-truss-4-points/">Global Truss - 4 points (1m50 ou 2m)</a>
+        <span class="prix-tag">11,00€/j</span>
+      </li>
+      
+    
+      
+    
+      
+    
+    </ul>
+    <p style="margin-top:28px">
+      <a class="btn solid" href="/devis/">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+        Demander un devis manifestation sportive
+      </a>
+    </p>
+  </section>
+</div>
+
   </main>
 
   <footer class="legal-bar">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16" aria-hidden="true"><path d="M5 3L19 12L5 21Z"/></svg>
-    <p>Copyright 2026 Event'Light. Siret {{ site.siret }}. <a href="/mentions-legales/">Mentions légales / CGV</a></p>
+    <p>Copyright 2026 Event'Light. Siret 89937393000028. <a href="/mentions-legales/">Mentions légales / CGV</a></p>
   </footer>
 
   <div class="transport" role="region" aria-label="Contrôles de lecture">
