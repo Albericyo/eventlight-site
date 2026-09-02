@@ -17,7 +17,7 @@
   <meta name="geo.placename" content="Amiens">
   <meta name="geo.position" content="49.887753;2.283393">
   <meta name="ICBM" content="49.887753, 2.283393">
-  <meta name="theme-color" content="#07070c">
+  <meta name="theme-color" content="#050506">
   <link rel="canonical" href="https://www.eventlight.net/">
   <link rel="alternate" hreflang="fr" href="https://www.eventlight.net/">
   <link rel="alternate" hreflang="x-default" href="https://www.eventlight.net/">
@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="/styles.css" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500;1,9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 
   
@@ -146,9 +146,9 @@
         <g clip-path="url(#logoMarkClip)">
           <g class="logo-tri">
             <g class="logo-tri-rgb">
-              <polygon class="logo-tri-r" fill="#FF3B3B" points="7,7 36,20 7,17"/>
-              <polygon class="logo-tri-g" fill="#1FB86B" points="7,17 36,20 7,23"/>
-              <polygon class="logo-tri-b" fill="#3B6BFF" points="7,23 36,20 7,33"/>
+              <polygon class="logo-tri-r" fill="#FF2A2A" points="7,7 36,20 7,17"/>
+              <polygon class="logo-tri-g" fill="#00E5FF" points="7,17 36,20 7,23"/>
+              <polygon class="logo-tri-b" fill="#2B4CFF" points="7,23 36,20 7,33"/>
             </g>
           </g>
           <rect class="logo-e" x="7" y="7" width="20" height="4" rx="1"/>
@@ -169,9 +169,10 @@
       <svg class="wave" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#FF3B3B"/>
-            <stop offset="50%" stop-color="#1FB86B"/>
-            <stop offset="100%" stop-color="#3B6BFF"/>
+            <stop offset="0%" stop-color="#FF2A2A"/>
+            <stop offset="35%" stop-color="#FFE14A"/>
+            <stop offset="70%" stop-color="#00E5FF"/>
+            <stop offset="100%" stop-color="#2B4CFF"/>
           </linearGradient>
         </defs>
         <path d="M0,30 C100,30 150,16 250,16 C350,16 400,40 500,40 C600,40 650,18 750,18 C850,18 900,30 1000,30"
@@ -200,6 +201,7 @@
   <main id="contenu">
     
 <section class="hero">
+  <div class="hero-field" aria-hidden="true"></div>
   <div class="play-wrap">
     <div class="ring"></div>
     <div class="ring r2"></div>
@@ -213,12 +215,12 @@
     <span class="layer g" aria-hidden="true">Composez la lumière</span>
     <span class="layer b" aria-hidden="true">Composez la lumière</span>
   </h1>
-  <p class="lead">Mariage, anniversaire, comité d'entreprise, manifestation sportive : Event'Light crée votre événement à Amiens comme un montage — son, lumière, effets et <strong>vidéo mapping</strong>.</p>
+  <p class="lead">Mariage, anniversaire, comité d'entreprise, manifestation sportive : Event'Light crée votre événement à Amiens comme un signal — son, lumière, effets et <strong>vidéo mapping</strong>.</p>
   <div class="hero-tracks">
-    <span><i style="background:var(--blue)"></i>Lumière</span>
+    <span><i style="background:var(--cyan)"></i>Lumière</span>
     <span><i style="background:var(--red)"></i>Mapping</span>
-    <span><i style="background:#39FF8A"></i>Effets</span>
-    <span><i style="background:var(--amber)"></i>Son</span>
+    <span><i style="background:var(--yellow)"></i>Effets</span>
+    <span><i style="background:var(--blue)"></i>Son</span>
   </div>
   <div class="hero-actions">
     <a class="btn solid" href="/devis/">
@@ -227,12 +229,15 @@
     </a>
     <a class="btn ghost-dark" href="/portfolio/">Voir le portfolio</a>
   </div>
+  <div class="hero-damier" aria-hidden="true"></div>
 </section>
+
+<div class="op-band" aria-hidden="true"></div>
 
 <div class="wrap">
   <section class="section" id="composer">
     <h2 class="section-title">Composez votre projet</h2>
-    <p class="section-note">L'aperçu reste un écran noir, comme un vrai moniteur de retour. Activez les pistes : le rendu se construit sous vos yeux.</p>
+    <p class="section-note">L'écran reste noir, comme un moniteur de régie. Activez les pistes : le rendu se construit sous vos yeux — damier, faisceaux, mapping.</p>
     <div class="builder">
       <div class="preview" aria-hidden="true">
         <div class="layer2 on" data-layer="lumiere"></div>
@@ -243,15 +248,15 @@
         <span class="readout mono">RENDU EN DIRECT</span>
       </div>
       <div class="tracks">
-        <div class="track-row on" style="--tint:rgba(59,107,255,.08)">
+        <div class="track-row on">
           <label>
             <input type="checkbox" checked onchange="toggleTrack('lumiere', this.checked, this)">
             <span class="switch"></span>
           </label>
           <span class="track-name">Lumière</span>
-          <span class="track-swatch" style="background:var(--blue)"></span>
+          <span class="track-swatch" style="background:var(--cyan)"></span>
         </div>
-        <div class="track-row on" style="--tint:rgba(255,59,59,.08)">
+        <div class="track-row on">
           <label>
             <input type="checkbox" checked onchange="toggleTrack('mapping', this.checked, this)">
             <span class="switch"></span>
@@ -259,21 +264,21 @@
           <span class="track-name">Mapping vidéo</span>
           <span class="track-swatch" style="background:var(--red)"></span>
         </div>
-        <div class="track-row" style="--tint:rgba(255,178,56,.08)">
+        <div class="track-row">
           <label>
             <input type="checkbox" onchange="toggleTrack('son', this.checked, this)">
             <span class="switch"></span>
           </label>
           <span class="track-name">Son</span>
-          <span class="track-swatch" style="background:var(--amber)"></span>
+          <span class="track-swatch" style="background:var(--yellow)"></span>
         </div>
-        <div class="track-row" style="--tint:rgba(31,184,107,.08)">
+        <div class="track-row">
           <label>
             <input type="checkbox" onchange="toggleTrack('effets', this.checked, this)">
             <span class="switch"></span>
           </label>
           <span class="track-name">Effets spéciaux</span>
-          <span class="track-swatch" style="background:var(--green)"></span>
+          <span class="track-swatch" style="background:var(--magenta)"></span>
         </div>
       </div>
     </div>
@@ -281,7 +286,7 @@
 
   <section class="section">
     <h2 class="section-title">Nos formules</h2>
-    <p class="section-note">Quatre chapitres, un même plateau. Choisissez le type d'événement, on dimensionne le matériel.</p>
+    <p class="section-note">Quatre lectures d'un même plateau. Choisissez le type d'événement, on dimensionne le matériel à Amiens.</p>
     <ul class="cards">
       
       <li>
@@ -332,9 +337,12 @@
     <p class="section-note">Projecteurs robotisés, sonorisation, machines à effets, structures. Livraison possible à partir de 25 € (secteur Amiens).</p>
     <ul class="cards">
       
+      
+      
       <li>
         <a class="card-link" href="/location/projecteurs-robotises/">
-          <div class="frame g-blue" data-duration="90">
+          <div class="frame g-blue has-photo" data-duration="90">
+            <img src="/images/location/jb-challenger-bsw/yt.jpg" alt="Projecteurs robotisés — location Event'Light Amiens" width="640" height="400" loading="lazy">
             <span class="badge mono">CAT</span>
             <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
           </div>
@@ -342,9 +350,12 @@
         </a>
       </li>
       
+      
+      
       <li>
         <a class="card-link" href="/location/projecteurs-statiques/">
-          <div class="frame g-red" data-duration="105">
+          <div class="frame g-red has-photo" data-duration="105">
+            <img src="/images/location/eurolite-parled-sls-7-hcl-floor/yt.jpg" alt="Projecteurs statiques — location Event'Light Amiens" width="640" height="400" loading="lazy">
             <span class="badge mono">CAT</span>
             <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
           </div>
@@ -352,9 +363,12 @@
         </a>
       </li>
       
+      
+      
       <li>
         <a class="card-link" href="/location/son/">
           <div class="frame g-green" data-duration="120">
+            
             <span class="badge mono">CAT</span>
             <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
           </div>
@@ -362,9 +376,12 @@
         </a>
       </li>
       
+      
+      
       <li>
         <a class="card-link" href="/location/effets/">
           <div class="frame g-violet" data-duration="135">
+            
             <span class="badge mono">CAT</span>
             <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
           </div>
@@ -372,9 +389,12 @@
         </a>
       </li>
       
+      
+      
       <li>
         <a class="card-link" href="/location/structures/">
           <div class="frame g-amber" data-duration="150">
+            
             <span class="badge mono">CAT</span>
             <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
           </div>
@@ -387,14 +407,16 @@
   </section>
 
   <section class="section">
-    <h2 class="section-title">Rush — portfolio</h2>
-    <p class="section-note">Miniatures comme des extraits. Survolez pour scrubber l'instant.</p>
+    <h2 class="section-title">Portfolio</h2>
+    <p class="section-note">Mappings, mariages, galas — extraits de régie. Survolez pour parcourir l'image.</p>
     <div class="polaroids">
       
       
+      
       <a class="clip" href="/portfolio/soiree-halloween-2025/">
-        <div class="frame g-blue" data-duration="100" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">MP4</span>
+        <div class="frame g-blue" data-duration="100">
+          
+          <span class="badge mono">Soirée</span>
           <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
         </div>
         <div class="cap">Soirée à thème — Halloween<span class="date">2025</span></div>
@@ -402,9 +424,13 @@
       
       
       
+      
       <a class="clip" href="/portfolio/mariage-2025-09-20/">
-        <div class="frame g-red" data-duration="130" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">MP4</span>
+        <div class="frame g-red has-photo" data-duration="130">
+          
+          <img src="/images/portfolio/mariage-2025-09-20/01.jpg" alt="Mariage — 2025, Event'Light" width="800" height="500" loading="lazy">
+          
+          <span class="badge mono">Mariage</span>
           <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
         </div>
         <div class="cap">Mariage<span class="date">2025</span></div>
@@ -412,9 +438,13 @@
       
       
       
+      
       <a class="clip" href="/portfolio/pignan/">
-        <div class="frame g-green" data-duration="160" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">MP4</span>
+        <div class="frame g-green has-photo" data-duration="160">
+          
+          <img src="/images/portfolio/pignan/yt.jpg" alt="Mapping — Pignan Millénaire — 2025, Event'Light" width="800" height="500" loading="lazy">
+          
+          <span class="badge mono">Mapping</span>
           <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
         </div>
         <div class="cap">Mapping — Pignan Millénaire<span class="date">2025</span></div>
@@ -423,8 +453,42 @@
       
       
       
+      <a class="clip" href="/portfolio/saint-jean/">
+        <div class="frame g-violet has-photo" data-duration="190">
+          
+          <img src="/images/portfolio/saint-jean/yt.jpg" alt="Mapping en 48h — Cathédrale Saint-Jean — 2024, Event'Light" width="800" height="500" loading="lazy">
+          
+          <span class="badge mono">Mapping</span>
+          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
+        </div>
+        <div class="cap">Mapping en 48h — Cathédrale Saint-Jean<span class="date">2024</span></div>
+      </a>
       
       
+      
+      
+      <a class="clip" href="/portfolio/pba-2024/">
+        <div class="frame g-amber has-photo" data-duration="220">
+          
+          <img src="/images/portfolio/pba-2024/yt.jpg" alt="Mapping — Palais des Beaux-Arts — 2024, Event'Light" width="800" height="500" loading="lazy">
+          
+          <span class="badge mono">Mapping</span>
+          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
+        </div>
+        <div class="cap">Mapping — Palais des Beaux-Arts<span class="date">2024</span></div>
+      </a>
+      
+      
+      
+      
+      <a class="clip" href="/portfolio/arbre-de-noel-pompier-2023/">
+        <div class="frame g-blue" data-duration="250">
+          
+          <span class="badge mono">Événement</span>
+          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
+        </div>
+        <div class="cap">Arbre de Noël des pompiers<span class="date">2023</span></div>
+      </a>
       
       
       
@@ -486,7 +550,7 @@
     <div class="wrap footer-grid">
       <div>
         <p class="footer-brand">Event'Light</p>
-        <p class="muted">Location et prestation sono, lumière, effets, structures et <a href="/portfolio/">vidéo mapping</a> à Amiens (Somme).</p>
+        <p class="muted">Créateurs de rêves. Location et prestation sono, lumière, effets, structures et <a href="/portfolio/">vidéo mapping</a> à Amiens (Somme).</p>
         <p class="muted">53 Rue du Général Friant, 80000 Amiens</p>
       </div>
       <div>
