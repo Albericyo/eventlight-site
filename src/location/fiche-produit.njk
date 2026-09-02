@@ -11,9 +11,14 @@ permalink: "/location/{{ produit.slug }}/"
   {% include "breadcrumbs.njk" %}
 
   <div class="product-sheet">
-    <div class="preview product-monitor" aria-hidden="true">
+    {% set shots = produit.slug | gallery("location") %}
+    <div class="preview product-monitor">
+      {% if shots.length %}
+      <img class="product-photo" src="{{ shots[0] }}" alt="{{ produit.nom }} en location à Amiens — Event'Light" width="900" height="675">
+      {% else %}
       <div class="layer2 on" data-layer="lumiere"></div>
       <div class="layer2 on" data-layer="mapping"></div>
+      {% endif %}
       <span class="monitor-badge mono">CLIP</span>
       <span class="readout mono">{{ produit.categorie | upper }}</span>
     </div>
