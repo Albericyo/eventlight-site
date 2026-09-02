@@ -23,6 +23,7 @@
       root.style.setProperty("--mx", e.clientX + "px");
       root.style.setProperty("--my", e.clientY + "px");
       root.style.setProperty("--hue", (e.clientX / window.innerWidth) * 260 - 30 + "deg");
+      root.style.setProperty("--shift", ((e.clientX / window.innerWidth) - 0.5) * 8 + "px");
     });
   }
 

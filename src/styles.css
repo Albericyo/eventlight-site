@@ -478,6 +478,7 @@ button.btn { appearance: none; -webkit-appearance: none; }
   font-size: 11px;
   color: rgba(255, 255, 255, .55);
   letter-spacing: .08em;
+  z-index: 2;
 }
 .preview .monitor-badge {
   position: absolute;
@@ -486,6 +487,7 @@ button.btn { appearance: none; -webkit-appearance: none; }
   font-size: 10px;
   color: rgba(255, 255, 255, .5);
   letter-spacing: .12em;
+  z-index: 2;
 }
 
 .tracks { display: flex; flex-direction: column; gap: 0; }
