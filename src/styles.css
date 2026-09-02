@@ -103,7 +103,7 @@ a { color: var(--blue); }
   text-decoration: none;
   color: var(--text);
 }
-.logo svg { width: 32px; height: 32px; overflow: hidden; border-radius: 8px; }
+.logo svg { width: 40px; height: 40px; overflow: hidden; border-radius: 10px; }
 .logo span { font-family: "Fraunces", serif; font-weight: 700; font-size: 19px; }
 .logo-e { fill: #fff; }
 .logo-tri-r { fill: var(--red); }

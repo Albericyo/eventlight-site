@@ -4,11 +4,11 @@
   <circle cx="80" cy="680" r="220" fill="#FF3B3B" fill-opacity="0.16"/>
   <g transform="translate(80,195)">
     <rect width="120" height="120" rx="28" fill="#0F0A1C"/>
-    <polygon points="24,24 102,60 24,54" fill="#FF3B3B"/>
-    <polygon points="24,54 102,60 24,66" fill="#1FB86B"/>
-    <polygon points="24,66 102,60 24,96" fill="#3B6BFF"/>
-    <rect x="24" y="24" width="72" height="18" rx="3" fill="#fff"/>
-    <rect x="24" y="78" width="72" height="18" rx="3" fill="#fff"/>
+    <polygon points="21,21 108,60 21,51" fill="#FF3B3B"/>
+    <polygon points="21,51 108,60 21,69" fill="#1FB86B"/>
+    <polygon points="21,69 108,60 21,99" fill="#3B6BFF"/>
+    <rect x="21" y="21" width="60" height="12" rx="3" fill="#fff"/>
+    <rect x="21" y="87" width="60" height="12" rx="3" fill="#fff"/>
   </g>
   <text x="220" y="250" fill="#f4efe6" font-family="Georgia, serif" font-size="64">Event'Light</text>
   <text x="220" y="310" fill="#d4d0dc" font-family="Arial, sans-serif" font-size="28">Location sono, lumière et vidéo mapping à Amiens</text>
