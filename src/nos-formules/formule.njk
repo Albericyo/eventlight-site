@@ -1,0 +1,52 @@
+---
+layout: layout.njk
+pagination:
+  data: formules.pages
+  size: 1
+  alias: formule
+  addAllPagesToCollections: true
+permalink: "/nos-formules/{{ formule.slug }}/"
+---
+<section class="page-hero">
+  <div class="wrap">
+    {% include "breadcrumbs.njk" %}
+    <p class="kicker">Formule · Amiens</p>
+    <h1>{{ formule.h1 }}</h1>
+    <p class="lede">{{ formule.description }}</p>
+  </div>
+</section>
+
+<section class="page-body">
+  <div class="wrap">
+    <div class="pack-grid">
+      {% for pack in formule.packs %}
+      <article class="pack{% if pack.featured %} featured{% endif %}">
+        <h2>{{ pack.nom }}</h2>
+        <p class="prix">À partir de {{ pack.prix }}</p>
+        <ul>
+          {% for item in pack.items %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="lede" style="margin-top:2rem">{{ formules.personnalisation }}</p>
+    <p><a class="cta" href="/devis/">Demander un devis {{ formule.titre | lower }}</a></p>
+
+    <h2 style="margin-top:3rem">Matériel de location souvent associé</h2>
+    <ul class="product-grid">
+      {% for p in produits %}
+        {% if formule.usage in p.usages %}
+        <li>
+          <a class="product" href="/location/{{ p.slug }}/">
+            <span class="cat">{{ p.categorie }}</span>
+            <h3>{{ p.nom }}</h3>
+            <p class="prix">{{ p.prix }}</p>
+          </a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>

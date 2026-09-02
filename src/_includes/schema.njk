@@ -1,0 +1,132 @@
+{% set lb = {
+  "@type": ["LocalBusiness", "EntertainmentBusiness"],
+  "@id": site.url + "/#business",
+  "name": site.name,
+  "legalName": site.legalName,
+  "alternateName": site.alternateName,
+  "url": site.url,
+  "email": site.email,
+  "telephone": site.contacts[0].iso,
+  "image": site.url + site.ogImage,
+  "logo": site.url + "/images/favicon.svg",
+  "priceRange": site.priceRange,
+  "vatID": site.siretRaw,
+  "description": "Location et prestation son, lumière, effets, structures et vidéo mapping pour mariages, anniversaires, comités d'entreprise et manifestations sportives à Amiens et dans la Somme.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": site.street,
+    "addressLocality": site.city,
+    "postalCode": site.postalCode,
+    "addressRegion": site.department,
+    "addressCountry": "FR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": site.latitude,
+    "longitude": site.longitude
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Amiens" },
+    { "@type": "AdministrativeArea", "name": "Somme" }
+  ],
+  "sameAs": [site.facebook, site.instagram, site.youtube],
+  "knowsAbout": ["sonorisation événementielle", "éclairage événementiel", "vidéo mapping", "location matériel DJ", "étincelles froides"]
+} %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {{ lb | jsonLd | safe }},
+    {
+      "@type": "WebSite",
+      "@id": {{ (site.url + "/#website") | jsonLd | safe }},
+      "url": {{ site.url | jsonLd | safe }},
+      "name": {{ site.name | jsonLd | safe }},
+      "inLanguage": "fr-FR",
+      "publisher": { "@id": {{ (site.url + "/#business") | jsonLd | safe }} }
+    },
+    {
+      "@type": "WebPage",
+      "@id": {{ (pageCanonical + "#webpage") | jsonLd | safe }},
+      "url": {{ pageCanonical | jsonLd | safe }},
+      "name": {{ pageTitle | jsonLd | safe }},
+      "description": {{ pageDescription | jsonLd | safe }},
+      "isPartOf": { "@id": {{ (site.url + "/#website") | jsonLd | safe }} },
+      "about": { "@id": {{ (site.url + "/#business") | jsonLd | safe }} },
+      "inLanguage": "fr-FR"
+    }
+    {% if breadcrumbs %}
+    ,{
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": {{ (site.url + "/") | jsonLd | safe }} }
+        {% for b in breadcrumbs %}
+        ,{
+          "@type": "ListItem",
+          "position": {{ loop.index + 1 }},
+          "name": {{ b.name | jsonLd | safe }}
+          {% if b.url %}, "item": {{ (site.url + b.url) | jsonLd | safe }}{% endif %}
+        }
+        {% endfor %}
+      ]
+    }
+    {% endif %}
+    {% if produit %}
+    ,{
+      "@type": "Product",
+      "name": {{ produit.nom | jsonLd | safe }},
+      "description": {{ produit.description | jsonLd | safe }},
+      "category": {{ produit.categorie | jsonLd | safe }},
+      "sku": {{ produit.slug | jsonLd | safe }},
+      "brand": { "@type": "Brand", "name": "Event'Light" },
+      "url": {{ pageCanonical | jsonLd | safe }},
+      "offers": {
+        "@type": "Offer",
+        "url": {{ pageCanonical | jsonLd | safe }},
+        "priceCurrency": "EUR",
+        "price": {{ (produit.prix | prixSchema) | jsonLd | safe }},
+        "availability": "https://schema.org/InStock",
+        "businessFunction": "http://purl.org/goodrelations/v1#LeaseOut",
+        "seller": { "@id": {{ (site.url + "/#business") | jsonLd | safe }} },
+        "areaServed": { "@type": "City", "name": "Amiens" }
+      }
+    }
+    {% endif %}
+    {% if formule %}
+    ,{
+      "@type": "Service",
+      "name": {{ (("Prestation " + formule.titre + " à Amiens") ) | jsonLd | safe }},
+      "serviceType": {{ formule.titre | jsonLd | safe }},
+      "provider": { "@id": {{ (site.url + "/#business") | jsonLd | safe }} },
+      "areaServed": { "@type": "City", "name": "Amiens" },
+      "description": {{ formule.seoDescription | jsonLd | safe }},
+      "url": {{ pageCanonical | jsonLd | safe }},
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "EUR",
+        "lowPrice": {{ (formule.packs[0].prix | prixSchema) | jsonLd | safe }},
+        "highPrice": {{ (formule.packs[formule.packs.length - 1].prix | prixSchema) | jsonLd | safe }},
+        "offerCount": {{ formule.packs.length }}
+      }
+    }
+    {% endif %}
+    {% if page.url == "/" %}
+    ,{
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in faq %}
+        {
+          "@type": "Question",
+          "name": {{ item.q | jsonLd | safe }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ item.a | jsonLd | safe }}
+          }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+    {% endif %}
+  ]
+}
+</script>

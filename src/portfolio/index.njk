@@ -1,9 +1,31 @@
 ---
 layout: layout.njk
-title: "Portfolio — Nos réalisations | Event'Light Amiens"
-description: "Découvrez nos réalisations : mariages, anniversaires, événements d'entreprise et vidéo mapping à Amiens."
+title: "Portfolio vidéo mapping et événements | Event'Light Amiens"
+description: "Réalisations Event'Light : mappings (Pignan, cathédrale Saint-Jean, Palais des Beaux-Arts), mariages, galas et soirées à Amiens, Lyon et Lille."
 permalink: "/portfolio/"
+breadcrumbs:
+  - name: Portfolio
 ---
-<h1>Portfolio</h1>
-<p>Nos dernières réalisations à Amiens et dans la Somme.</p>
-<!-- TODO : ajouter les photos/vidéos de réalisations, idéalement en WebP compressé -->
+<section class="page-hero">
+  <div class="wrap">
+    {% include "breadcrumbs.njk" %}
+    <p class="kicker">Réalisations</p>
+    <h1>Portfolio vidéo mapping et événements</h1>
+    <p class="lede">Mappings monumentaux, mariages, galas et soirées — conçus et réalisés par Event'Light, basée à Amiens.</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap">
+    <ul class="folio-grid">
+      {% for projet in portfolio %}
+      <li>
+        <a class="folio-card" href="/portfolio/{{ projet.slug }}/">
+          <span class="cat">{{ projet.type }} · {{ projet.annee }}</span>
+          <h2>{{ projet.titre }}</h2>
+          <p class="muted">{{ projet.sousTitre }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

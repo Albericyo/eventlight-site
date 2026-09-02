@@ -5,8 +5,13 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for page in collections.all -%}
+  {%- if page.url and page.url != false -%}
   <url>
-    <loc>https://www.eventlight.net{{ page.url }}</loc>
+    <loc>{{ site.url }}{{ page.url }}</loc>
+    <lastmod>{{ build.date }}</lastmod>
+    <changefreq>{% if page.url == "/" %}weekly{% elif page.url.startsWith("/location/") or page.url.startsWith("/nos-formules/") %}weekly{% else %}monthly{% endif %}</changefreq>
+    <priority>{{ page.url | sitemapPriority }}</priority>
   </url>
+  {%- endif -%}
 {%- endfor -%}
 </urlset>

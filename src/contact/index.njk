@@ -1,10 +1,42 @@
 ---
 layout: layout.njk
-title: "Contact | Event'Light Amiens"
-description: "Contactez Event'Light pour toute question sur nos formules et notre matériel de location à Amiens."
+title: "Contact Event'Light Amiens — sono, lumière, mapping"
+description: "Event'Light, 53 rue du Général Friant, 80000 Amiens. Albéric Delabie 07 81 53 36 00, Antoine Capel 06 46 82 08 31, eventlight80@gmail.com."
 permalink: "/contact/"
+breadcrumbs:
+  - name: Contact
 ---
-<h1>Contact</h1>
-<p>Email : <a href="mailto:eventlight80@gmail.com">eventlight80@gmail.com</a></p>
-<p>Secteur d'intervention : Amiens et sa région (livraison possible dès 25€).</p>
-<p><a href="https://www.facebook.com/EventLight80/">Retrouvez-nous sur Facebook</a></p>
+<section class="page-hero">
+  <div class="wrap">
+    {% include "breadcrumbs.njk" %}
+    <p class="kicker">Amiens · Somme</p>
+    <h1>Contacter Event'Light à Amiens</h1>
+    <p class="lede">{{ site.address }}. Location et prestations son, lumière et vidéo mapping dans le secteur d'Amiens.</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap">
+    <div class="people">
+      {% for c in site.contacts %}
+      <article class="person">
+        <h2>{{ c.nom }}</h2>
+        <p><a href="{{ c.telHref }}">{{ c.tel }}</a></p>
+      </article>
+      {% endfor %}
+    </div>
+    <p style="margin-top:1.5rem"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    <p>
+      <a href="{{ site.facebook }}">Facebook</a> ·
+      <a href="{{ site.instagram }}">Instagram</a> ·
+      <a href="{{ site.youtube }}">YouTube</a>
+    </p>
+    <div class="map-embed">
+      <iframe
+        title="Carte — Event'Light, 53 rue du Général Friant, Amiens"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=53%20Rue%20du%20G%C3%A9n%C3%A9ral%20Friant%2080000%20Amiens&z=16&output=embed"></iframe>
+    </div>
+    <p><a class="cta" href="/devis/">Obtenir un devis</a></p>
+  </div>
+</section>

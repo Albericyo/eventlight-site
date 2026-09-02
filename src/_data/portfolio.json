@@ -1,0 +1,206 @@
+[
+  {
+    "slug": "soiree-halloween-2025",
+    "titre": "Soirée à thème — Halloween",
+    "sousTitre": "Soirée Halloween",
+    "annee": "2025",
+    "type": "Soirée",
+    "resume": "Mise en scène d'une soirée à thème Halloween."
+  },
+  {
+    "slug": "mariage-2025-09-20",
+    "titre": "Mariage",
+    "sousTitre": "20 septembre 2025",
+    "annee": "2025",
+    "type": "Mariage",
+    "resume": "Prestation son, lumière et effets pour un mariage."
+  },
+  {
+    "slug": "pignan",
+    "titre": "Mapping — Pignan Millénaire",
+    "sousTitre": "Mairie de Pignan — Château de Turenne",
+    "annee": "2025",
+    "type": "Mapping",
+    "production": "Super U Pignan",
+    "credits": [
+      "Prestataire techniques : ID Scenes",
+      "Gabarits : Event'Light",
+      "Scénariste & voix off : Hervé Lancel",
+      "Graphismes 3D & montage : Albéric Delabie"
+    ],
+    "logiciel": "Blender, Premiere Pro, Meshroom, Photoshop, After Effects",
+    "technologie": "Ferme de rendu Sheepit pour les exports Blender",
+    "projet": "Projection à l'occasion des 1000 ans de la ville de Pignan, sur la mairie (ancien château de Turenne). Le spectacle puise dans le passé avec des images d'archives et les études chronophotographiques d'Eadweard Muybridge, tout en se tournant vers l'avenir grâce à la 3D et à l'intelligence artificielle."
+  },
+  {
+    "slug": "saint-jean",
+    "titre": "Mapping en 48h — Cathédrale Saint-Jean",
+    "sousTitre": "Lyon",
+    "annee": "2024",
+    "type": "Mapping",
+    "production": "Event'Light",
+    "credits": [
+      "Gabarits : Les Rencontres audiovisuelles",
+      "Graphiste : Albéric Delabie"
+    ],
+    "logiciel": "Blender",
+    "technologie": "Ferme de rendu Sheepit pour les exports Blender",
+    "projet": "Challenge proposé par l'équipe technique des Rencontres audiovisuelles : réaliser un mapping pour la cathédrale Saint-Jean de Lyon en 48 heures."
+  },
+  {
+    "slug": "pba-2024",
+    "titre": "Mapping — Palais des Beaux-Arts",
+    "sousTitre": "Lille",
+    "annee": "2024",
+    "type": "Mapping",
+    "production": "Event'Light",
+    "credits": [
+      "Graphiste : Albéric Delabie"
+    ],
+    "logiciel": "Blender, Meshroom, Adobe Premiere Pro et After Effects",
+    "technologie": "Ferme de rendu Sheepit pour les exports Blender",
+    "projet": "Participation au Video Mapping Contest de Lille, sur la façade du Palais des Beaux-Arts."
+  },
+  {
+    "slug": "arbre-de-noel-pompier-2023",
+    "titre": "Arbre de Noël des pompiers",
+    "sousTitre": "Moreuil — décembre 2023",
+    "annee": "2023",
+    "type": "Événement",
+    "production": "Event'Light",
+    "credits": [
+      "Conception et réalisation : Albéric Delabie",
+      "Son, éclairage et vidéo : Albéric Delabie"
+    ],
+    "logiciel": "Sunlite Suite 3 et Serato DJ Lite",
+    "technologie": "Interface Sunlite FC, et l'ensemble du matériel disponible à la location",
+    "projet": "Mise en scène d'une soirée pour l'arbre de Noël des pompiers de Moreuil : ambiance lumineuse et sonore, dispositif d'affichage et logiciel créé pour le tirage de la tombola."
+  },
+  {
+    "slug": "gare-saint-paul",
+    "titre": "Mapping — Gare Saint-Paul",
+    "sousTitre": "Lyon",
+    "annee": "2023",
+    "type": "Mapping",
+    "production": "Event'Light",
+    "credits": [
+      "Conception, réalisation, photogrammétrie, visuels et bande son : Albéric Delabie"
+    ],
+    "logiciel": "Blender, Meshroom, Adobe Premiere Pro et After Effects",
+    "technologie": "Ferme de rendu Sheepit pour les exports Blender",
+    "projet": "Entraînement personnel en vidéo mapping : un parallèle entre les rêves ambitieux de l'enfant et les rêves rationnels de l'adulte. Scan de la façade pour photogrammétrie, matrices 3D et 2D, visuels, comme si le projet devait réellement être projeté."
+  },
+  {
+    "slug": "anniversaire-guinguette",
+    "titre": "Anniversaire — Guinguette",
+    "sousTitre": "Normandie — février 2023",
+    "annee": "2023",
+    "type": "Anniversaire",
+    "production": "Event'Light",
+    "credits": [
+      "Conception et réalisation : Albéric Delabie",
+      "Son, éclairage et vidéo : Albéric Delabie"
+    ],
+    "logiciel": "Sunlite Suite 3, Resolume Arena et Serato DJ Lite",
+    "technologie": "Acer BS312 et interface Sunlite FC",
+    "projet": "Ambiance guinguette pour un anniversaire en Normandie, avec un éclairage polyvalent : ambiance en début de soirée, puis style club en seconde partie."
+  },
+  {
+    "slug": "adj-2021",
+    "titre": "Mapping — Atelier des Jumeaux",
+    "sousTitre": "Noël 2021",
+    "annee": "2021",
+    "type": "Mapping",
+    "production": "Event'Light",
+    "credits": [
+      "Conception et réalisation : Albéric Delabie",
+      "Bande son : Albéric Delabie",
+      "Éclairage : Antoine Capel"
+    ],
+    "logiciel": "Resolume Arena, Adobe Premiere Pro et After Effects",
+    "technologie": "Acer BS312 et Acer WH312",
+    "projet": "Mapping de Noël diffusé en multi-projection sur l'Atelier des Jumeaux."
+  },
+  {
+    "slug": "gala-ffeo",
+    "titre": "Gala FFEO",
+    "sousTitre": "Terrasses du Parc, Lyon — 2021",
+    "annee": "2021",
+    "type": "Gala",
+    "production": "Event'Light",
+    "credits": [
+      "Organisation : Albéric Delabie",
+      "Mixage / DJ : Arthur Petit (@Vildo_Music)",
+      "Lieu : Terrasses du Parc, Lyon"
+    ],
+    "technologie": "DMX et kit son Elokance 800C",
+    "projet": "Gala de la Fédération française des étudiants en orthoptie : animation, sonorisation et installation lumière entièrement contrôlable par le DJ. Matériel : kit son Elokance 800C, 2 lyres wash, 2 projecteurs effets + laser, 2 PAR LED, machine à fumée."
+  },
+  {
+    "slug": "le-pavillon-bleu",
+    "titre": "Mapping — Le Pavillon Bleu",
+    "sousTitre": "Amiens — projet",
+    "annee": "Projet",
+    "type": "Mapping",
+    "production": "Event'Light",
+    "credits": [
+      "Conception et réalisation : Albéric Delabie",
+      "Bande son : Albéric Delabie",
+      "Éclairage : Antoine Capel",
+      "Type : multi-projection",
+      "Durée : en cours de production"
+    ],
+    "logiciel": "Adobe Premiere Pro, After Effects et Resolume Arena",
+    "technologie": "Acer BS312 et Acer XWH132",
+    "projet": "Mapping sur Le Pavillon Bleu à Amiens, sur le thème du zoo et de son histoire d'ancienne discothèque."
+  },
+  {
+    "slug": "adj-2020",
+    "titre": "Mapping — Atelier des Jumeaux",
+    "sousTitre": "Noël 2020",
+    "annee": "2020",
+    "type": "Mapping",
+    "production": "Event'Light",
+    "credits": [
+      "Conception et réalisation : Albéric Delabie",
+      "Bande son : Albéric Delabie",
+      "Éclairage : Antoine Capel",
+      "Durée : 5 min 31"
+    ],
+    "logiciel": "Adobe Premiere Pro et After Effects",
+    "technologie": "Acer BS312",
+    "projet": "Mapping de Noël avec l'Atelier des Jumeaux : une première partie dans la magie de Noël, une seconde dans l'ambiance du Nouvel An. Format court, en boucle chaque soir pendant une semaine, pour éviter les arrêts sur la route et les rassemblements en période COVID."
+  },
+  {
+    "slug": "la-maison-de-la-motte",
+    "titre": "Mapping — Gîte La Maison de La Motte",
+    "sousTitre": "Anniversaire surprise — 2020",
+    "annee": "2020",
+    "type": "Mapping",
+    "production": "Event'Light",
+    "credits": [
+      "Conception et réalisation : Albéric Delabie",
+      "Bande son : Albéric Delabie",
+      "Éclairage : Antoine Capel",
+      "Durée : 11 min 17"
+    ],
+    "logiciel": "Adobe Premiere Pro et After Effects",
+    "technologie": "Acer BS312",
+    "projet": "Anniversaire surprise au gîte La Maison de La Motte : un mapping suivi d'un concert, sans répétition la veille."
+  },
+  {
+    "slug": "mapping-halloween-2018",
+    "titre": "Mapping Halloween",
+    "sousTitre": "Amiens — 2019",
+    "annee": "2019",
+    "type": "Mapping",
+    "production": "Event'Light",
+    "credits": [
+      "Conception : Albéric Delabie",
+      "Durée : environ 3 minutes"
+    ],
+    "logiciel": "Adobe Premiere Pro et After Effects",
+    "technologie": "VP Acer BS312",
+    "projet": "Projection Halloween sur une façade, avec jeu de lumière DMX et affiche de communication."
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "projecteurs-robotises",
+    "nom": "Projecteurs robotisés",
+    "h1": "Location de projecteurs robotisés à Amiens",
+    "seoTitle": "Location lyre et projecteur robotisé Amiens | Event'Light",
+    "seoDescription": "Louez une lyre Beam, Spot ou Wash à Amiens : JB Challenger BSW, Evolite Beam1R, Mac Mah Wash 740Z. Livraison dès 25 €, tarifs week-end identiques.",
+    "intro": "Lyres Beam, Spot et Wash pour pistes de danse, scènes et mises en lumière architecturales. Idéales en mariage, soirée d'entreprise ou manifestation, seules ou sur totems."
+  },
+  {
+    "slug": "projecteurs-statiques",
+    "nom": "Projecteurs statiques",
+    "h1": "Location de projecteurs LED à Amiens",
+    "seoTitle": "Location PAR LED et barre pixel Amiens | Event'Light",
+    "seoDescription": "PAR LED, projecteurs sur batterie et barres pixel à la location à Amiens. Ambiance, stand, soirée. Livraison secteur Amiens dès 25 €.",
+    "intro": "PAR LED au sol, projecteurs sur batterie Wi-Fi et barres pixel RGB pour créer une ambiance colorée, un éclairage de stand ou un fond de scène, sans forcément de lyres."
+  },
+  {
+    "slug": "son",
+    "nom": "Son",
+    "h1": "Location sono et enceintes à Amiens",
+    "seoTitle": "Location sono, enceintes et micro Amiens | Event'Light",
+    "seoDescription": "Location sonorisation à Amiens : Elokance 800C, FBT X-Lite, sub 15\", micro sans fil. Livraison dès 25 € dans le secteur d'Amiens.",
+    "intro": "Systèmes amplifiés, enceintes actives, caissons de basse et micros sans fil pour mariages, conférences et animations. Câbles fournis sur demande."
+  },
+  {
+    "slug": "effets",
+    "nom": "Effets",
+    "h1": "Location machines à fumée, haze et étincelles à Amiens",
+    "seoTitle": "Location étincelles froides, haze et CO2 Amiens | Event'Light",
+    "seoDescription": "Machines à brouillard, fumée lourde, Fog Spray RGB et étincelles froides Evo Spark à Amiens. Entrée des mariés, podium, soirée.",
+    "intro": "Haze pour sublimer les faisceaux, fumée verticale RGB, étincelles froides jusqu'à 6 m : les effets qui marquent une entrée des mariés, un podium ou un drop."
+  },
+  {
+    "slug": "structures",
+    "nom": "Structures",
+    "h1": "Location structures, totems et pieds à Amiens",
+    "seoTitle": "Location structure alu, totem et pied Amiens | Event'Light",
+    "seoDescription": "Truss F24200, totems 4 points habillés lycra et pieds Plugger à la location à Amiens. Packs 3 m ou 4 m pour suspendre lumière et sono.",
+    "intro": "Ponts, totems 4 points et monotubes pour installer lyres, enceintes et décors en sécurité, en intérieur comme en extérieur (sous réserve des conditions du site)."
+  }
+]

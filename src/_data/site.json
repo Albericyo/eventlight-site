@@ -1,0 +1,29 @@
+{
+  "name": "Event'Light",
+  "legalName": "Event'Light",
+  "alternateName": ["Eventlight", "Event Light", "Event'light"],
+  "tagline": "Créateurs de rêves.",
+  "url": "https://www.eventlight.net",
+  "email": "eventlight80@gmail.com",
+  "siret": "899 373 930 00028",
+  "siretRaw": "89937393000028",
+  "street": "53 Rue du Général Friant",
+  "city": "Amiens",
+  "postalCode": "80000",
+  "region": "Hauts-de-France",
+  "department": "Somme",
+  "address": "53 Rue du Général Friant, 80000 Amiens",
+  "latitude": 49.887753,
+  "longitude": 2.283393,
+  "tva": "TVA non applicable, art. 293 B du CGI",
+  "livraison": "Livraison possible à partir de 25 € (secteur Amiens)",
+  "priceRange": "€€",
+  "facebook": "https://www.facebook.com/EventLight80",
+  "instagram": "https://www.instagram.com/eventlight80/",
+  "youtube": "https://www.youtube.com/c/EventLight",
+  "ogImage": "/images/og-default.svg",
+  "contacts": [
+    { "nom": "Albéric DELABIE", "tel": "07 81 53 36 00", "telHref": "tel:+33781533600", "iso": "+33781533600" },
+    { "nom": "Antoine CAPEL", "tel": "06 46 82 08 31", "telHref": "tel:+33646820831", "iso": "+33646820831" }
+  ]
+}

@@ -1,76 +1,121 @@
+{% set pageTitle = title %}
+{% set pageDescription = description %}
+{% set pageCanonical = canonical or (site.url + page.url) %}
+{% set pageType = ogType or "website" %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title }}</title>
-  <meta name="description" content="{{ description }}">
-  <link rel="canonical" href="https://www.eventlight.net{{ page.url }}">
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}">
+  {% if robots %}
+  <meta name="robots" content="{{ robots }}">
+  {% else %}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  {% endif %}
+  <meta name="author" content="Event'Light">
+  <meta name="geo.region" content="FR-80">
+  <meta name="geo.placename" content="Amiens">
+  <meta name="geo.position" content="{{ site.latitude }};{{ site.longitude }}">
+  <meta name="ICBM" content="{{ site.latitude }}, {{ site.longitude }}">
+  <meta name="theme-color" content="#07070c">
+  <link rel="canonical" href="{{ pageCanonical }}">
+  <link rel="alternate" hreflang="fr" href="{{ pageCanonical }}">
+  <link rel="alternate" hreflang="x-default" href="{{ pageCanonical }}">
+  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/images/favicon.svg">
 
-  <meta property="og:title" content="{{ title }}">
-  <meta property="og:description" content="{{ description }}">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.eventlight.net{{ page.url }}">
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ pageDescription }}">
+  <meta property="og:type" content="{{ pageType }}">
+  <meta property="og:url" content="{{ pageCanonical }}">
   <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:image" content="{{ site.url }}{{ site.ogImage }}">
+  <meta property="og:image:alt" content="Event'Light — location sono, lumière et vidéo mapping à Amiens">
 
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ pageTitle }}">
+  <meta name="twitter:description" content="{{ pageDescription }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.ogImage }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="/styles.css" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Event'Light",
-    "image": "https://www.eventlight.net/images/logo.jpg",
-    "description": "Location de matériel son, lumière, effets, structures et vidéo mapping pour événements à Amiens et sa région.",
-    "areaServed": {
-      "@type": "City",
-      "name": "Amiens"
-    },
-    "url": "https://www.eventlight.net",
-    "priceRange": "€€",
-    "email": "eventlight80@gmail.com"
-  }
-  </script>
-
-  {% if produit %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "{{ produit.nom }}",
-    "description": "{{ produit.description }}",
-    "category": "{{ produit.categorie }}",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "price": "{{ produit.prix }}",
-      "availability": "https://schema.org/InStock",
-      "areaServed": "Amiens"
-    }
-  }
-  </script>
-  {% endif %}
+  {% include "schema.njk" %}
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
   <header class="site-header">
-    <a href="/" class="logo">Event'Light</a>
-    <nav>
-      <a href="/">Accueil</a>
-      <a href="/nos-formules/">Nos formules</a>
-      <a href="/location/">Location matériel</a>
-      <a href="/portfolio/">Portfolio</a>
-      <a href="/devis/">Devis</a>
-      <a href="/contact/">Contact</a>
-    </nav>
+    <div class="wrap header-inner">
+      <a href="/" class="logo" aria-label="Event'Light, accueil — location sono et lumière à Amiens">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">Event'<strong>Light</strong></span>
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+      <label for="nav-toggle" class="nav-burger" aria-label="Ouvrir le menu"><span></span></label>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Accueil</a>
+        <div class="nav-item has-sub">
+          <a href="/nos-formules/" {% if page.url.startsWith("/nos-formules/") %}aria-current="page"{% endif %}>Nos formules</a>
+          <div class="submenu">
+            {% for f in formules.pages %}
+            <a href="/nos-formules/{{ f.slug }}/">{{ f.titre }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        <a href="/devis/" {% if page.url == "/devis/" %}aria-current="page"{% endif %}>Devis</a>
+        <a href="/portfolio/" {% if page.url.startsWith("/portfolio/") %}aria-current="page"{% endif %}>Portfolio</a>
+        <a href="/location/" {% if page.url.startsWith("/location/") %}aria-current="page"{% endif %}>Location</a>
+        <a href="/contact/" {% if page.url == "/contact/" %}aria-current="page"{% endif %}>Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main id="contenu">
     {{ content | safe }}
   </main>
 
   <footer class="site-footer">
-    <p>Event'Light — Location son, lumière, effets & vidéo mapping — Secteur Amiens (80)</p>
-    <p><a href="/mentions-legales/">Mentions légales / CGV</a></p>
+    <div class="wrap footer-grid">
+      <div>
+        <p class="logo-text">Event'<strong>Light</strong></p>
+        <p class="muted">Location et prestation sono, lumière, effets, structures et <a href="/portfolio/">vidéo mapping</a> à Amiens (Somme).</p>
+        <p class="muted">{{ site.address }}</p>
+      </div>
+      <div>
+        <h2>Prestations</h2>
+        <ul class="footer-links">
+          {% for f in formules.pages %}
+          <li><a href="/nos-formules/{{ f.slug }}/">{{ f.titre }}</a></li>
+          {% endfor %}
+          <li><a href="/devis/">Demander un devis</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Location Amiens</h2>
+        <ul class="footer-links">
+          <li><a href="/location/">Catalogue complet</a></li>
+          {% for c in categories %}
+          <li><a href="/location/{{ c.slug }}/">{{ c.nom }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+        {% for c in site.contacts %}
+        <p>{{ c.nom }} — <a href="{{ c.telHref }}">{{ c.tel }}</a></p>
+        {% endfor %}
+        <p><a href="{{ site.facebook }}">Facebook</a> · <a href="{{ site.instagram }}">Instagram</a> · <a href="{{ site.youtube }}">YouTube</a></p>
+        <p><a href="/mentions-legales/">Mentions légales / CGV</a></p>
+      </div>
+    </div>
+    <p class="legal-line wrap">© 2026 Event'Light — {{ site.address }} — SIRET {{ site.siretRaw }} — Tous nos prix sont TTC — {{ site.tva }} — Les prix de location journaliers s'appliquent aussi au week-end.</p>
   </footer>
 </body>
 </html>

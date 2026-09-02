@@ -4,6 +4,43 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
   eleventyConfig.addPassthroughCopy("src/images");
 
+  eleventyConfig.addFilter("prixSchema", (value) => {
+    if (!value) return "";
+    const match = String(value).replace(",", ".").match(/[\d.]+/);
+    return match ? match[0] : "";
+  });
+
+  eleventyConfig.addFilter("jsonLd", (value) => JSON.stringify(value));
+
+  eleventyConfig.addFilter("xmlEsc", (value) =>
+    String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+  );
+
+  eleventyConfig.addFilter("categorieSlug", (nom, categories) => {
+    const found = (categories || []).find((c) => c.nom === nom);
+    return found ? found.slug : "";
+  });
+
+  eleventyConfig.addFilter("relatedProduits", (produits, current) => {
+    if (!current || !produits) return [];
+    return produits
+      .filter((p) => p.slug !== current.slug && p.categorie === current.categorie)
+      .slice(0, 3);
+  });
+
+  eleventyConfig.addFilter("sitemapPriority", (url) => {
+    if (url === "/") return "1.0";
+    if (url === "/location/" || url === "/nos-formules/" || url === "/devis/") return "0.9";
+    if (url.startsWith("/nos-formules/") || url.startsWith("/location/")) return "0.8";
+    if (url.startsWith("/portfolio/")) return "0.6";
+    if (url === "/contact/") return "0.7";
+    return "0.4";
+  });
+
   return {
     dir: {
       input: "src",

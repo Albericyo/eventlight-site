@@ -1,29 +1,55 @@
 ---
 layout: layout.njk
-title: "Demander un devis | Event'Light Amiens"
-description: "Demandez votre devis gratuit pour la location de matériel son, lumière et effets à Amiens."
+title: "Devis location sono et lumière Amiens | Event'Light"
+description: "Demandez un devis gratuit pour une location ou une prestation sono, lumière, effets ou vidéo mapping à Amiens. Réponse rapide par e-mail ou téléphone."
 permalink: "/devis/"
+breadcrumbs:
+  - name: Devis
 ---
-<h1>Demander un devis</h1>
-<p>Décrivez votre événement, nous revenons vers vous rapidement.</p>
+<section class="page-hero">
+  <div class="wrap">
+    {% include "breadcrumbs.njk" %}
+    <p class="kicker">Devis gratuit · Amiens</p>
+    <h1>Devis location et prestation sono / lumière à Amiens</h1>
+    <p class="lede">Détaillez votre événement (date, lieu, type, matériel souhaité). Nous revenons vers vous rapidement — aussi joignables au 07 81 53 36 00.</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap">
+    <form name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="devis">
+      <p class="hidden"><label>Ne pas remplir <input name="bot-field"></label></p>
 
-<form name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-  <input type="hidden" name="form-name" value="devis">
-  <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
-
-  <label>Nom / Prénom<br><input type="text" name="nom" required></label><br>
-  <label>Email<br><input type="email" name="email" required></label><br>
-  <label>Téléphone<br><input type="tel" name="telephone"></label><br>
-  <label>Type d'événement<br>
-    <select name="type_evenement">
-      <option>Mariage</option>
-      <option>Anniversaire</option>
-      <option>Comité d'entreprise</option>
-      <option>Manifestation sportive</option>
-      <option>Autre</option>
-    </select>
-  </label><br>
-  <label>Date de l'événement<br><input type="date" name="date_evenement"></label><br>
-  <label>Votre demande<br><textarea name="message" rows="5"></textarea></label><br>
-  <button type="submit">Envoyer ma demande</button>
-</form>
+      <label>Nom / Prénom
+        <input type="text" name="nom" required autocomplete="name">
+      </label>
+      <label>E-mail
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+      <label>Téléphone
+        <input type="tel" name="telephone" autocomplete="tel">
+      </label>
+      <label>Type d'événement
+        <select name="type_evenement">
+          <option>Mariage</option>
+          <option>Anniversaire</option>
+          <option>Comité d'entreprise</option>
+          <option>Manifestation sportive</option>
+          <option>Location de matériel</option>
+          <option>Vidéo mapping</option>
+          <option>Autre</option>
+        </select>
+      </label>
+      <label>Lieu (ville)
+        <input type="text" name="lieu" placeholder="Amiens, …" autocomplete="address-level2">
+      </label>
+      <label>Date de l'événement
+        <input type="date" name="date_evenement">
+      </label>
+      <label>Détaillez votre demande
+        <textarea name="message" rows="6" required></textarea>
+      </label>
+      <button type="submit">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>

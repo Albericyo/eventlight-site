@@ -4,24 +4,45 @@ pagination:
   data: produits
   size: 1
   alias: produit
+  addAllPagesToCollections: true
 permalink: "/location/{{ produit.slug }}/"
-eleventyComputed:
-  title: "{{ produit.nom }} — Location {{ produit.prix }} | Event'Light Amiens"
-  description: "{{ produit.description }}"
 ---
+<section class="page-hero">
+  <div class="wrap">
+    {% include "breadcrumbs.njk" %}
+    <p class="kicker">{{ produit.categorie }} · location Amiens</p>
+    <h1>Location {{ produit.nom }} à Amiens</h1>
+    <p class="prix">{{ produit.prix }}</p>
+    <p class="lede">{{ produit.description }}</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap">
+    {% if produit.details %}
+    <h2>Caractéristiques</h2>
+    <ul class="specs">
+      {% for d in produit.details %}
+      <li>{{ d }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <p class="lede">Location à Amiens et dans le secteur. {{ site.livraison }}. Tarif journalier identique le week-end. Pour une question de stock ou un pack, utilisez le <a href="/devis/">formulaire de devis</a>.</p>
+    <p><a class="cta" href="/devis/">Louer {{ produit.nom }}</a></p>
 
-<nav class="breadcrumb"><a href="/location/">Location</a> / {{ produit.categorie }} / {{ produit.nom }}</nav>
-
-<h1>{{ produit.nom }}</h1>
-<p class="prix">{{ produit.prix }}</p>
-<p class="categorie">Catégorie : {{ produit.categorie }}</p>
-
-<p>{{ produit.description }}</p>
-
-{% if produit.usages.length %}
-<p class="usages">Idéal pour : {{ produit.usages | join(", ") }}</p>
-{% endif %}
-
-<a class="cta" href="/devis/">Demander un devis pour ce matériel</a>
-
-<p><a href="/location/">&larr; Retour au catalogue</a></p>
+    {% set autres = produits | relatedProduits(produit) %}
+    {% if autres.length %}
+    <h2>Dans la même catégorie</h2>
+    <ul class="product-grid">
+      {% for p in autres %}
+      <li>
+        <a class="product" href="/location/{{ p.slug }}/">
+          <h3>{{ p.nom }}</h3>
+          <p class="prix">{{ p.prix }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <p><a href="/location/">← Retour au catalogue de location Amiens</a></p>
+  </div>
+</section>

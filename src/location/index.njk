@@ -1,23 +1,44 @@
 ---
 layout: layout.njk
-title: "Location matériel son, lumière, effets & structures à Amiens | Event'Light"
-description: "Catalogue complet de location : projecteurs robotisés, sonorisation, machines à effets, structures. Livraison possible dès 25€ dans le secteur d'Amiens."
+title: "Location matériel son, lumière et structures à Amiens | Event'Light"
+description: "Catalogue de location à Amiens : lyres, PAR LED, sono FBT, étincelles froides, structures. Livraison dès 25 €. Tarifs journaliers valables aussi le week-end."
+permalink: "/location/"
+breadcrumbs:
+  - name: Location
 ---
-
-<h1>Location de matériel événementiel à Amiens</h1>
-<p>En cas de besoin particulier, <a href="/devis/">contactez-nous via l'onglet devis</a>.</p>
-
-{% set categories = produits | groupby("categorie") %}
-{% for cat, items in categories %}
-  <h2>{{ cat }}</h2>
-  <ul class="catalogue-liste">
-  {% for p in items %}
-    <li>
-      <a href="/location/{{ p.slug }}/"><strong>{{ p.nom }}</strong></a> — {{ p.prix }}
-      <p>{{ p.description }}</p>
-    </li>
-  {% endfor %}
-  </ul>
-{% endfor %}
-
-<p><em>Tous nos prix sont TTC. Tous nos prix de location journalier sont aussi les prix pour le week-end.</em></p>
+<section class="page-hero">
+  <div class="wrap">
+    {% include "breadcrumbs.njk" %}
+    <p class="kicker">Catalogue · Amiens</p>
+    <h1>Location de matériel son, lumière et structures à Amiens</h1>
+    <p class="lede">En cas de demande particulière, passez par l'<a href="/devis/">onglet devis</a>. {{ site.livraison }}. Tous les câbles nécessaires peuvent être fournis. Tous nos prix de location journaliers sont aussi les prix pour le week-end. TVA non applicable (art. 293 B du CGI).</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap">
+    <nav class="cat-nav" aria-label="Catégories de location">
+      {% for c in categories %}
+      <a href="/location/{{ c.slug }}/">{{ c.nom }}</a>
+      {% endfor %}
+    </nav>
+    {% for cat in categories %}
+      <h2 id="{{ cat.slug }}"><a href="/location/{{ cat.slug }}/">{{ cat.nom }}</a></h2>
+      <p class="muted">{{ cat.intro }}</p>
+      <ul class="product-grid">
+      {% for p in produits %}
+        {% if p.categorie == cat.nom %}
+        <li>
+          <a class="product" href="/location/{{ p.slug }}/">
+            <span class="cat">{{ p.categorie }}</span>
+            <h3>{{ p.nom }}</h3>
+            <p class="prix">{{ p.prix }}</p>
+            <p class="muted">{{ p.description }}</p>
+          </a>
+        </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    {% endfor %}
+    <p style="margin-top:2rem"><a class="cta" href="/devis/">Réserver / demander un devis</a></p>
+  </div>
+</section>

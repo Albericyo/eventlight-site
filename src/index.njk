@@ -1,26 +1,71 @@
 ---
 layout: layout.njk
-title: "Location sono, lumière & vidéo mapping à Amiens | Event'Light"
-description: "Event'Light loue et installe du matériel son, lumière, effets et structures pour vos mariages, anniversaires, événements d'entreprise et sportifs à Amiens. Spécialiste du vidéo mapping dans la Somme."
+title: "Location sono, lumière et vidéo mapping à Amiens | Event'Light"
+description: "Event'Light : location et installation sono, lumière, effets et structures à Amiens. Mariages, anniversaires, CE, sport. Spécialiste du vidéo mapping dans la Somme."
 ---
 
 <section class="hero">
-  <h1>Créateurs de rêves — location & mise en scène événementielle à Amiens</h1>
-  <p>Mariage, anniversaire, comité d'entreprise, manifestation sportive : Event'Light crée et dimensionne votre événement sur-mesure, avec du matériel son, lumière, effets et structures, et une expertise unique en <strong>vidéo mapping</strong> dans la région d'Amiens.</p>
-  <a class="cta" href="/devis/">Demander un devis</a>
+  <div class="wrap">
+    <p class="kicker">Event'Light · Amiens · Somme</p>
+    <h1>Location sono, lumière et vidéo mapping à Amiens</h1>
+    <p class="hero-tag">{{ site.tagline }}</p>
+    <p>À votre écoute, nous vous proposons un événement à votre effigie, entièrement personnalisable. Mariage, gender reveal, fête d'entreprise ou manifestation sportive : Event'Light crée et dimensionne votre prestation son, lumière et effets — avec une expertise unique en <a href="/portfolio/">vidéo mapping</a>.</p>
+    <div class="hero-actions">
+      <a class="cta" href="/devis/">Obtenir un devis</a>
+      <a class="cta cta-ghost" href="/location/">Catalogue de location</a>
+    </div>
+    <aside class="news">
+      <p class="kicker">Nouveautés</p>
+      <p>Les <a href="/location/evo-spark-600/">machines à étincelles</a> et les geysers à effets CO<sub>2</sub> sont disponibles dès maintenant à la location à Amiens.</p>
+    </aside>
+  </div>
 </section>
 
-<section class="formules">
-  <h2>Nos formules par type d'événement</h2>
-  <ul class="cards">
-    <li><a href="/nos-formules/anniversaire/">Anniversaire</a></li>
-    <li><a href="/nos-formules/mariage/">Mariage</a></li>
-    <li><a href="/nos-formules/comite-entreprise/">Comité d'entreprise</a></li>
-    <li><a href="/nos-formules/manifestation-sportive/">Manifestation sportive</a></li>
-  </ul>
+<section class="section">
+  <div class="wrap">
+    <h2>Formules son et lumière par type d'événement</h2>
+    <p class="lede">Packs clés en main (montage, prestation, démontage) à Amiens, personnalisables sur <a href="/devis/">devis</a>.</p>
+    <ul class="cards">
+      {% for f in formules.pages %}
+      <li>
+        <a class="card" href="/nos-formules/{{ f.slug }}/">
+          <h3>{{ f.titre }} à Amiens</h3>
+          <p class="muted">À partir de {{ f.packs[0].prix }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 </section>
 
-<section class="catalogue-preview">
-  <h2>Location de matériel</h2>
-  <p>Projecteurs robotisés, sonorisation, machines à effets, structures : découvrez tout notre <a href="/location/">catalogue de location</a>. Livraison possible à partir de 25€ (secteur Amiens).</p>
+<section class="section">
+  <div class="wrap">
+    <h2>Location de matériel événementiel à Amiens</h2>
+    <p class="lede">Projecteurs robotisés, sono, machines à effets, structures. {{ site.livraison }}. Tous les câbles nécessaires peuvent être fournis. Les tarifs journaliers s'appliquent aussi au week-end.</p>
+    <ul class="cards">
+      {% for c in categories %}
+      <li>
+        <a class="card" href="/location/{{ c.slug }}/">
+          <h3>{{ c.nom }}</h3>
+          <p class="muted">{{ c.h1 }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <p><a class="cta" href="/location/">Voir tout le catalogue</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>Questions fréquentes</h2>
+    <dl class="faq">
+      {% for item in faq %}
+      <div>
+        <dt>{{ item.q }}</dt>
+        <dd>{{ item.a }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+  </div>
 </section>

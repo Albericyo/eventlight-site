@@ -1,0 +1,39 @@
+---
+layout: layout.njk
+pagination:
+  data: portfolio
+  size: 1
+  alias: projet
+  addAllPagesToCollections: true
+permalink: "/portfolio/{{ projet.slug }}/"
+---
+<section class="page-hero">
+  <div class="wrap">
+    {% include "breadcrumbs.njk" %}
+    <p class="kicker">{{ projet.type }} · {{ projet.annee }}</p>
+    <h1>{{ projet.titre }}</h1>
+    <p class="lede">{{ projet.sousTitre }}</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap legal">
+    {% if projet.production %}<p><strong>Production :</strong> {{ projet.production }}</p>{% endif %}
+    {% if projet.credits %}
+    <ul class="specs">
+      {% for c in projet.credits %}
+      <li>{{ c }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if projet.logiciel %}<p><strong>Logiciel :</strong> {{ projet.logiciel }}</p>{% endif %}
+    {% if projet.technologie %}<p><strong>Technologie :</strong> {{ projet.technologie }}</p>{% endif %}
+    {% if projet.projet %}
+    <h2>Projet</h2>
+    <p>{{ projet.projet }}</p>
+    {% elif projet.resume %}
+    <p>{{ projet.resume }}</p>
+    {% endif %}
+    <p><a class="cta" href="/devis/">Parler d'un projet similaire à Amiens</a></p>
+    <p><a href="/portfolio/">← Retour au portfolio</a></p>
+  </div>
+</section>
