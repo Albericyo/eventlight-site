@@ -130,7 +130,6 @@
 
 </head>
 <body class="is-home" data-page="/">
-  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
 
   <header class="chrome">
@@ -157,58 +156,36 @@
   </header>
 
   
-  <nav class="timeline" aria-label="Chapitres">
-    <div class="wave-wrap">
-      <svg class="wave" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#FF2A2A"/>
-            <stop offset="35%" stop-color="#FFE14A"/>
-            <stop offset="70%" stop-color="#00E5FF"/>
-            <stop offset="100%" stop-color="#2B4CFF"/>
-          </linearGradient>
-        </defs>
-        <path d="M0,30 C100,30 150,16 250,16 C350,16 400,40 500,40 C600,40 650,18 750,18 C850,18 900,30 1000,30"
-              fill="none" stroke="url(#waveGrad)" stroke-width="2.5" opacity="0.9"/>
-      </svg>
-      <div class="chapters">
-        <a class="chapter active" href="/">
-          <span class="stem"><span class="dot"></span><span class="label">Accueil</span></span>
-        </a>
-        <a class="chapter" href="/nos-formules/">
-          <span class="stem"><span class="dot"></span><span class="label">Formules</span></span>
-        </a>
-        <a class="chapter" href="/portfolio/">
-          <span class="stem"><span class="dot"></span><span class="label">Portfolio</span></span>
-        </a>
-        <a class="chapter" href="/location/">
-          <span class="stem"><span class="dot"></span><span class="label">Location</span></span>
-        </a>
-        <a class="chapter" href="/contact/">
-          <span class="stem"><span class="dot"></span><span class="label">Contact</span></span>
-        </a>
-      </div>
+  <nav class="timeline" aria-label="Navigation principale">
+    <div class="chapters">
+      <a class="chapter active" href="/">
+        <span class="stem"><span class="dot"></span><span class="label">Accueil</span></span>
+      </a>
+      <a class="chapter" href="/nos-formules/">
+        <span class="stem"><span class="dot"></span><span class="label">Formules</span></span>
+      </a>
+      <a class="chapter" href="/portfolio/">
+        <span class="stem"><span class="dot"></span><span class="label">Portfolio</span></span>
+      </a>
+      <a class="chapter" href="/location/">
+        <span class="stem"><span class="dot"></span><span class="label">Location</span></span>
+      </a>
+      <a class="chapter" href="/contact/">
+        <span class="stem"><span class="dot"></span><span class="label">Contact</span></span>
+      </a>
     </div>
   </nav>
 
   <main id="contenu">
     
 <section class="hero">
-  <div class="hero-field" aria-hidden="true"></div>
   <div class="play-wrap">
-    <div class="ring"></div>
-    <div class="ring r2"></div>
     <button type="button" class="play-btn" id="hero-play" aria-label="Composer la lumière">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
     </button>
   </div>
-  <h1 class="rgb-heading">
-    <span class="layer base">Composez la lumière</span>
-    <span class="layer r" aria-hidden="true">Composez la lumière</span>
-    <span class="layer g" aria-hidden="true">Composez la lumière</span>
-    <span class="layer b" aria-hidden="true">Composez la lumière</span>
-  </h1>
-  <p class="lead">Mariage, anniversaire, comité d'entreprise, manifestation sportive : Event'Light crée votre événement à Amiens comme un signal — son, lumière, effets et <strong>vidéo mapping</strong>.</p>
+  <h1>Composez la lumière</h1>
+  <p class="lead">Particuliers et professionnels : mariage, anniversaire, comité d'entreprise, manifestation sportive. Sono, lumière, effets et <strong>vidéo mapping</strong> à Amiens — sur devis, clé en main ou en location.</p>
   <div class="hero-tracks">
     <span><i style="background:var(--cyan)"></i>Lumière</span>
     <span><i style="background:var(--red)"></i>Mapping</span>
@@ -218,19 +195,16 @@
   <div class="hero-actions">
     <a class="btn solid" href="/devis/">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
-      Composer mon devis
+      Demander un devis
     </a>
-    <a class="btn ghost-dark" href="/portfolio/">Voir le portfolio</a>
+    <a class="btn ghost-dark" href="/location/">Catalogue location</a>
   </div>
-  <div class="hero-damier" aria-hidden="true"></div>
 </section>
-
-<div class="op-band" aria-hidden="true"></div>
 
 <div class="wrap">
   <section class="section" id="composer">
     <h2 class="section-title">Composez votre projet</h2>
-    <p class="section-note">L'écran reste noir, comme un moniteur de régie. Activez les pistes : le rendu se construit sous vos yeux — damier, faisceaux, mapping.</p>
+    <p class="section-note">Activez les pistes : le rendu se construit sous vos yeux. Ensuite, on calibre le matériel et le devis.</p>
     <div class="builder">
       <div class="preview" aria-hidden="true">
         <div class="layer2 on" data-layer="lumiere"></div>
@@ -279,7 +253,7 @@
 
   <section class="section">
     <h2 class="section-title">Nos formules</h2>
-    <p class="section-note">Quatre lectures d'un même plateau. Choisissez le type d'événement, on dimensionne le matériel à Amiens.</p>
+    <p class="section-note">Quatre formules pour particuliers et structures pro. Choisissez le type d'événement, on dimensionne le matériel à Amiens.</p>
     <ul class="cards">
       
       <li>
@@ -401,7 +375,7 @@
 
   <section class="section">
     <h2 class="section-title">Portfolio</h2>
-    <p class="section-note">Mappings, mariages, galas — extraits de régie. Survolez pour parcourir l'image.</p>
+    <p class="section-note">Mappings, mariages, galas — réalisations Event'Light.</p>
     <div class="polaroids">
       
       
@@ -501,7 +475,7 @@
       
       
     </div>
-    <p style="margin-top:24px"><a class="btn" href="/portfolio/">Toute la bande</a></p>
+    <p style="margin-top:24px"><a class="btn" href="/portfolio/">Voir le portfolio</a></p>
   </section>
 
   <section class="section">
@@ -611,9 +585,6 @@
         <span class="t-head" id="t-head"></span>
       </div>
       <span class="t-time mono" id="t-total">01:00</span>
-    </div>
-    <div class="vu" id="vu" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i>
     </div>
     <a class="btn solid t-cta" href="/devis/">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3L20 12L4 21Z"/></svg>

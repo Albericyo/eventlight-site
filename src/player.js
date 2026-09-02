@@ -1,6 +1,5 @@
 (function () {
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var root = document.documentElement;
   var body = document.body;
 
   var clock = document.getElementById("clock");
@@ -17,15 +16,6 @@
   }
   tick();
   setInterval(tick, 1000);
-
-  if (!reduce) {
-    window.addEventListener("mousemove", function (e) {
-      root.style.setProperty("--mx", e.clientX + "px");
-      root.style.setProperty("--my", e.clientY + "px");
-      root.style.setProperty("--hue", (e.clientX / window.innerWidth) * 260 - 30 + "deg");
-      root.style.setProperty("--shift", ((e.clientX / window.innerWidth) - 0.5) * 8 + "px");
-    });
-  }
 
   var fill = document.getElementById("t-fill");
   var head = document.getElementById("t-head");

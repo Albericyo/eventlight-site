@@ -5,21 +5,13 @@ description: "Event'Light : location et installation sono, lumière, effets et s
 ---
 
 <section class="hero">
-  <div class="hero-field" aria-hidden="true"></div>
   <div class="play-wrap">
-    <div class="ring"></div>
-    <div class="ring r2"></div>
     <button type="button" class="play-btn" id="hero-play" aria-label="Composer la lumière">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
     </button>
   </div>
-  <h1 class="rgb-heading">
-    <span class="layer base">Composez la lumière</span>
-    <span class="layer r" aria-hidden="true">Composez la lumière</span>
-    <span class="layer g" aria-hidden="true">Composez la lumière</span>
-    <span class="layer b" aria-hidden="true">Composez la lumière</span>
-  </h1>
-  <p class="lead">Mariage, anniversaire, comité d'entreprise, manifestation sportive : Event'Light crée votre événement à Amiens comme un signal — son, lumière, effets et <strong>vidéo mapping</strong>.</p>
+  <h1>Composez la lumière</h1>
+  <p class="lead">Particuliers et professionnels : mariage, anniversaire, comité d'entreprise, manifestation sportive. Sono, lumière, effets et <strong>vidéo mapping</strong> à Amiens — sur devis, clé en main ou en location.</p>
   <div class="hero-tracks">
     <span><i style="background:var(--cyan)"></i>Lumière</span>
     <span><i style="background:var(--red)"></i>Mapping</span>
@@ -29,19 +21,16 @@ description: "Event'Light : location et installation sono, lumière, effets et s
   <div class="hero-actions">
     <a class="btn solid" href="/devis/">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
-      Composer mon devis
+      Demander un devis
     </a>
-    <a class="btn ghost-dark" href="/portfolio/">Voir le portfolio</a>
+    <a class="btn ghost-dark" href="/location/">Catalogue location</a>
   </div>
-  <div class="hero-damier" aria-hidden="true"></div>
 </section>
-
-<div class="op-band" aria-hidden="true"></div>
 
 <div class="wrap">
   <section class="section" id="composer">
     <h2 class="section-title">Composez votre projet</h2>
-    <p class="section-note">L'écran reste noir, comme un moniteur de régie. Activez les pistes : le rendu se construit sous vos yeux — damier, faisceaux, mapping.</p>
+    <p class="section-note">Activez les pistes : le rendu se construit sous vos yeux. Ensuite, on calibre le matériel et le devis.</p>
     <div class="builder">
       <div class="preview" aria-hidden="true">
         <div class="layer2 on" data-layer="lumiere"></div>
@@ -90,7 +79,7 @@ description: "Event'Light : location et installation sono, lumière, effets et s
 
   <section class="section">
     <h2 class="section-title">Nos formules</h2>
-    <p class="section-note">Quatre lectures d'un même plateau. Choisissez le type d'événement, on dimensionne le matériel à Amiens.</p>
+    <p class="section-note">Quatre formules pour particuliers et structures pro. Choisissez le type d'événement, on dimensionne le matériel à Amiens.</p>
     <ul class="cards">
       {% for f in formules.pages %}
       <li>
@@ -130,7 +119,7 @@ description: "Event'Light : location et installation sono, lumière, effets et s
 
   <section class="section">
     <h2 class="section-title">Portfolio</h2>
-    <p class="section-note">Mappings, mariages, galas — extraits de régie. Survolez pour parcourir l'image.</p>
+    <p class="section-note">Mappings, mariages, galas — réalisations Event'Light.</p>
     <div class="polaroids">
       {% for projet in portfolio %}
       {% if loop.index <= 6 %}
@@ -148,7 +137,7 @@ description: "Event'Light : location et installation sono, lumière, effets et s
       {% endif %}
       {% endfor %}
     </div>
-    <p style="margin-top:24px"><a class="btn" href="/portfolio/">Toute la bande</a></p>
+    <p style="margin-top:24px"><a class="btn" href="/portfolio/">Voir le portfolio</a></p>
   </section>
 
   <section class="section">
