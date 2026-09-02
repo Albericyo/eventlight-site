@@ -1,8 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#07070c"/>
-  <circle cx="980" cy="-40" r="280" fill="#d4b36a" fill-opacity="0.16"/>
-  <circle cx="80" cy="680" r="220" fill="#5040a0" fill-opacity="0.18"/>
-  <polygon points="80,210 108,330 52,330" fill="#d4b36a"/>
-  <text x="130" y="300" fill="#f4efe6" font-family="Georgia, serif" font-size="64">Event'Light</text>
-  <text x="130" y="360" fill="#d4b36a" font-family="Arial, sans-serif" font-size="28">Location sono, lumière et vidéo mapping à Amiens</text>
+  <circle cx="980" cy="-40" r="280" fill="#3B6BFF" fill-opacity="0.18"/>
+  <circle cx="80" cy="680" r="220" fill="#FF3B3B" fill-opacity="0.16"/>
+  <g transform="translate(80,195)">
+    <rect width="120" height="120" rx="28" fill="#0F0A1C"/>
+    <polygon points="24,24 89,54 24,54" fill="#FF3B3B"/>
+    <polygon points="24,54 89,54 102,60 89,66 24,66" fill="#1FB86B"/>
+    <polygon points="24,66 89,66 24,96" fill="#3B6BFF"/>
+    <path d="M24 24 H96 V42 H42 V78 H96 V96 H24 Z" fill="#fff"/>
+  </g>
+  <text x="220" y="250" fill="#f4efe6" font-family="Georgia, serif" font-size="64">Event'Light</text>
+  <text x="220" y="310" fill="#d4d0dc" font-family="Arial, sans-serif" font-size="28">Location sono, lumière et vidéo mapping à Amiens</text>
 </svg>

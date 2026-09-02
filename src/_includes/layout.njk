@@ -55,15 +55,23 @@
   <header class="chrome">
     <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
     <a href="/" class="logo" aria-label="Event'Light, accueil — location sono et lumière à Amiens">
-      <svg viewBox="0 0 46 40" aria-hidden="true">
+      <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
         <defs>
-          <linearGradient id="eGradNav" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#FF3B3B"/>
-            <stop offset="50%" stop-color="#1FB86B"/>
-            <stop offset="100%" stop-color="#3B6BFF"/>
-          </linearGradient>
+          <clipPath id="logoMarkClip">
+            <rect width="40" height="40" rx="10"/>
+          </clipPath>
         </defs>
-        <path d="M4 8 L26 8 L26 14 L10 14 L10 17 L24 20 L10 23 L10 26 L26 26 L26 32 L4 32 Z" fill="url(#eGradNav)" stroke="url(#eGradNav)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+        <rect width="40" height="40" rx="10" fill="#0F0A1C"/>
+        <g clip-path="url(#logoMarkClip)">
+          <g class="logo-tri">
+            <g class="logo-tri-rgb">
+              <polygon class="logo-tri-r" points="8,8 29.7,18 8,18"/>
+              <polygon class="logo-tri-g" points="8,18 29.7,18 34,20 29.7,22 8,22"/>
+              <polygon class="logo-tri-b" points="8,22 29.7,22 8,32"/>
+            </g>
+          </g>
+          <path class="logo-e" d="M8 8 H32 V14 H14 V26 H32 V32 H8 Z"/>
+        </g>
       </svg>
       <span>Event'Light</span>
     </a>
