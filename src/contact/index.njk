@@ -1,20 +1,34 @@
 ---
 layout: layout.njk
-title: "Contact | Event'Light Amiens"
-description: "Contactez Event'Light pour toute question sur nos formules et notre matériel de location à Amiens."
+title: "Contact Event'Light Amiens — sono, lumière, mapping"
+description: "Event'Light, 53 rue du Général Friant, 80000 Amiens. Albéric Delabie 07 81 53 36 00, Antoine Capel 06 46 82 08 31, eventlight80@gmail.com."
 permalink: "/contact/"
+breadcrumbs:
+  - name: Contact
 ---
 <div class="wrap">
   <header class="page-head">
+    {% include "breadcrumbs.njk" %}
     <p class="page-kicker mono">RÉGIE</p>
     <h1>Contact</h1>
     <p class="lede">Une question, un calage, un devis : on est à Amiens et dans la Somme.</p>
   </header>
 
   <div class="contact-grid">
+    {% for c in site.contacts %}
+    <div class="contact-card">
+      <h2>{{ c.nom }}</h2>
+      <p><a href="{{ c.telHref }}">{{ c.tel }}</a></p>
+    </div>
+    {% endfor %}
     <div class="contact-card">
       <h2>Écrire</h2>
-      <p><a href="mailto:eventlight80@gmail.com">eventlight80@gmail.com</a></p>
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <p style="margin-top:12px">
+        <a href="{{ site.facebook }}">Facebook</a> ·
+        <a href="{{ site.instagram }}">Instagram</a> ·
+        <a href="{{ site.youtube }}">YouTube</a>
+      </p>
       <p style="margin-top:16px"><a class="btn solid" href="/devis/">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
         Composer un devis
@@ -22,8 +36,16 @@ permalink: "/contact/"
     </div>
     <div class="contact-card">
       <h2>Zone</h2>
-      <p>Amiens et sa région. Livraison possible dès 25€.</p>
-      <p style="margin-top:12px"><a href="https://www.facebook.com/EventLight80/">Facebook Event'Light</a></p>
+      <p>{{ site.address }}</p>
+      <p>{{ site.livraison }}</p>
     </div>
+  </div>
+
+  <div class="map-embed">
+    <iframe
+      title="Carte — Event'Light, 53 rue du Général Friant, Amiens"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://maps.google.com/maps?q=53%20Rue%20du%20G%C3%A9n%C3%A9ral%20Friant%2080000%20Amiens&z=16&output=embed"></iframe>
   </div>
 </div>

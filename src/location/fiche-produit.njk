@@ -4,14 +4,11 @@ pagination:
   data: produits
   size: 1
   alias: produit
+  addAllPagesToCollections: true
 permalink: "/location/{{ produit.slug }}/"
-eleventyComputed:
-  title: "{{ produit.nom }} — Location {{ produit.prix }} | Event'Light Amiens"
-  description: "{{ produit.description }}"
 ---
-
 <div class="wrap">
-  <nav class="breadcrumb"><a href="/location/">Location</a> / {{ produit.categorie }} / {{ produit.nom }}</nav>
+  {% include "breadcrumbs.njk" %}
 
   <div class="product-sheet">
     <div class="preview product-monitor" aria-hidden="true">
@@ -22,9 +19,17 @@ eleventyComputed:
     </div>
     <div>
       <p class="page-kicker mono">FICHE MATÉRIEL</p>
-      <h1>{{ produit.nom }}</h1>
+      <h1>Location {{ produit.nom }} à Amiens</h1>
       <p class="prix">{{ produit.prix }}</p>
       <p>{{ produit.description }}</p>
+      {% if produit.details %}
+      <h2 class="section-title" style="margin-top:24px">Caractéristiques</h2>
+      <ul class="specs">
+        {% for d in produit.details %}
+        <li>{{ d }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
       {% if produit.usages.length %}
       <div class="chip-row">
         {% for u in produit.usages %}
@@ -32,11 +37,27 @@ eleventyComputed:
         {% endfor %}
       </div>
       {% endif %}
+      <p class="section-note">{{ site.livraison }}. Tarif journalier identique le week-end.</p>
       <a class="btn solid" href="/devis/">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
-        Demander un devis pour ce matériel
+        Louer {{ produit.nom }}
       </a>
       <p style="margin-top:18px"><a href="/location/">← Retour au catalogue</a></p>
     </div>
   </div>
+
+  {% set autres = produits | relatedProduits(produit) %}
+  {% if autres.length %}
+  <section class="section">
+    <h2 class="section-title">Dans la même catégorie</h2>
+    <ul class="catalogue-liste">
+      {% for p in autres %}
+      <li>
+        <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
+        <span class="prix-tag">{{ p.prix }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
 </div>

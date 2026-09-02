@@ -1,52 +1,32 @@
 ---
 layout: layout.njk
-title: "Nos formules événementielles à Amiens | Event'Light"
-description: "Découvrez nos formules par type d'événement : mariage, anniversaire, comité d'entreprise, manifestation sportive."
+title: "Formules sono et lumière à Amiens | Event'Light"
+description: "Packs mariage, anniversaire, CE et sport à Amiens : sono, lumière, étincelles froides, animateur. Montage et démontage inclus, devis personnalisé."
 permalink: "/nos-formules/"
+breadcrumbs:
+  - name: Nos formules
 ---
 <div class="wrap">
   <header class="page-head">
+    {% include "breadcrumbs.njk" %}
     <p class="page-kicker mono">CHAPITRES</p>
     <h1>Nos formules</h1>
-    <p class="lede">Quatre types d'événements, un même plateau technique. Chaque formule ouvre une sélection de matériel adaptée.</p>
+    {% for p in formules.intro %}
+    <p class="lede">{{ p }}</p>
+    {% endfor %}
   </header>
 
   <ul class="cards">
+    {% for f in formules.pages %}
     <li>
-      <a class="card-link" href="/nos-formules/mariage/">
-        <div class="frame g-red" data-duration="180" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">CH. 01</span>
+      <a class="card-link" href="/nos-formules/{{ f.slug }}/">
+        <div class="frame {{ f.slug | frameClass }}" data-duration="{{ 120 + loop.index0 * 20 }}" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
+          <span class="badge mono">CH. {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
           <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
         </div>
-        <div class="cap">Mariage<span class="date">Sono, lumière, structures et mapping</span></div>
+        <div class="cap">{{ f.titre }}<span class="date">{{ f.seoDescription }}</span></div>
       </a>
     </li>
-    <li>
-      <a class="card-link" href="/nos-formules/anniversaire/">
-        <div class="frame g-violet" data-duration="120" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">CH. 02</span>
-          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-        </div>
-        <div class="cap">Anniversaire<span class="date">Ambiance personnalisée, effets et son</span></div>
-      </a>
-    </li>
-    <li>
-      <a class="card-link" href="/nos-formules/comite-entreprise/">
-        <div class="frame g-blue" data-duration="150" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">CH. 03</span>
-          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-        </div>
-        <div class="cap">Comité d'entreprise<span class="date">Séminaires, soirées, conférences</span></div>
-      </a>
-    </li>
-    <li>
-      <a class="card-link" href="/nos-formules/manifestation-sportive/">
-        <div class="frame g-green" data-duration="200" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">CH. 04</span>
-          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-        </div>
-        <div class="cap">Manifestation sportive<span class="date">Sono, éclairage et structures</span></div>
-      </a>
-    </li>
+    {% endfor %}
   </ul>
 </div>

@@ -1,14 +1,17 @@
 ---
 layout: layout.njk
-title: "Demander un devis | Event'Light Amiens"
-description: "Demandez votre devis gratuit pour la location de matériel son, lumière et effets à Amiens."
+title: "Devis location sono et lumière Amiens | Event'Light"
+description: "Demandez un devis gratuit pour une location ou une prestation sono, lumière, effets ou vidéo mapping à Amiens. Réponse rapide par e-mail ou téléphone."
 permalink: "/devis/"
+breadcrumbs:
+  - name: Devis
 ---
 <div class="wrap">
   <header class="page-head">
+    {% include "breadcrumbs.njk" %}
     <p class="page-kicker mono">NOUVELLE SESSION</p>
     <h1>Demander un devis</h1>
-    <p class="lede">Décrivez votre événement. On revient vers vous avec un calage technique et un tarif.</p>
+    <p class="lede">Décrivez votre événement. On revient vers vous avec un calage technique et un tarif — aussi joignables au {{ site.contacts[0].tel }}.</p>
   </header>
 
   <form class="form-panel" name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
@@ -30,14 +33,19 @@ permalink: "/devis/"
         <option>Anniversaire</option>
         <option>Comité d'entreprise</option>
         <option>Manifestation sportive</option>
+        <option>Location de matériel</option>
+        <option>Vidéo mapping</option>
         <option>Autre</option>
       </select>
+    </label>
+    <label>Lieu (ville)
+      <input type="text" name="lieu" placeholder="Amiens, …" autocomplete="address-level2">
     </label>
     <label>Date de l'événement
       <input type="date" name="date_evenement">
     </label>
     <label>Votre demande
-      <textarea name="message" rows="5" placeholder="Lieu, jauge, pistes souhaitées (son, lumière, mapping, effets)…"></textarea>
+      <textarea name="message" rows="5" required placeholder="Lieu, jauge, pistes souhaitées (son, lumière, mapping, effets)…"></textarea>
     </label>
     <button type="submit" class="btn solid">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>

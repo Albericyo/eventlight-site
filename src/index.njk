@@ -1,7 +1,7 @@
 ---
 layout: layout.njk
-title: "Location sono, lumière & vidéo mapping à Amiens | Event'Light"
-description: "Event'Light loue et installe du matériel son, lumière, effets et structures pour vos mariages, anniversaires, événements d'entreprise et sportifs à Amiens. Spécialiste du vidéo mapping dans la Somme."
+title: "Location sono, lumière et vidéo mapping à Amiens | Event'Light"
+description: "Event'Light : location et installation sono, lumière, effets et structures à Amiens. Mariages, anniversaires, CE, sport. Spécialiste du vidéo mapping dans la Somme."
 ---
 
 <section class="hero">
@@ -88,77 +88,67 @@ description: "Event'Light loue et installe du matériel son, lumière, effets et
     <h2 class="section-title">Nos formules</h2>
     <p class="section-note">Quatre chapitres, un même plateau. Choisissez le type d'événement, on dimensionne le matériel.</p>
     <ul class="cards">
+      {% for f in formules.pages %}
       <li>
-        <a class="card-link" href="/nos-formules/mariage/">
-          <div class="frame g-red" data-duration="180">
-            <span class="badge mono">CH. 01</span>
+        <a class="card-link" href="/nos-formules/{{ f.slug }}/">
+          <div class="frame {{ f.slug | frameClass }}" data-duration="{{ 120 + loop.index0 * 20 }}">
+            <span class="badge mono">CH. {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
             <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
           </div>
-          <div class="cap">Mariage<span class="date">Sono, lumière & mapping sur le lieu de réception</span></div>
+          <div class="cap">{{ f.titre }}<span class="date">À partir de {{ f.packs[0].prix }}</span></div>
         </a>
       </li>
-      <li>
-        <a class="card-link" href="/nos-formules/anniversaire/">
-          <div class="frame g-violet" data-duration="120">
-            <span class="badge mono">CH. 02</span>
-            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-          </div>
-          <div class="cap">Anniversaire<span class="date">Ambiance à votre effigie, entièrement personnalisable</span></div>
-        </a>
-      </li>
-      <li>
-        <a class="card-link" href="/nos-formules/comite-entreprise/">
-          <div class="frame g-blue" data-duration="150">
-            <span class="badge mono">CH. 03</span>
-            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-          </div>
-          <div class="cap">Comité d'entreprise<span class="date">Séminaires, soirées, conférences</span></div>
-        </a>
-      </li>
-      <li>
-        <a class="card-link" href="/nos-formules/manifestation-sportive/">
-          <div class="frame g-green" data-duration="200">
-            <span class="badge mono">CH. 04</span>
-            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-          </div>
-          <div class="cap">Manifestation sportive<span class="date">Sono, éclairage et structures, tout gabarit</span></div>
-        </a>
-      </li>
+      {% endfor %}
     </ul>
   </section>
 
   <section class="section">
     <h2 class="section-title">Location de matériel</h2>
-    <p class="section-note">Projecteurs robotisés, sonorisation, machines à effets, structures. Livraison possible à partir de 25€ (secteur Amiens).</p>
-    <a class="btn" href="/location/">Ouvrir le catalogue</a>
+    <p class="section-note">Projecteurs robotisés, sonorisation, machines à effets, structures. {{ site.livraison }}.</p>
+    <ul class="cards">
+      {% for c in categories %}
+      <li>
+        <a class="card-link" href="/location/{{ c.slug }}/">
+          <div class="frame {{ loop.index0 | folioFrame }}" data-duration="{{ 90 + loop.index0 * 15 }}">
+            <span class="badge mono">CAT</span>
+            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
+          </div>
+          <div class="cap">{{ c.nom }}<span class="date">{{ c.h1 }}</span></div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    <p style="margin-top:24px"><a class="btn" href="/location/">Ouvrir le catalogue</a></p>
   </section>
 
   <section class="section">
     <h2 class="section-title">Rush — portfolio</h2>
     <p class="section-note">Miniatures comme des extraits. Survolez pour scrubber l'instant.</p>
     <div class="polaroids">
-      <div class="clip">
-        <div class="frame g-blue" data-duration="134" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
+      {% for projet in portfolio %}
+      {% if loop.index <= 3 %}
+      <a class="clip" href="/portfolio/{{ projet.slug }}/">
+        <div class="frame {{ loop.index0 | folioFrame }}" data-duration="{{ 100 + loop.index0 * 30 }}" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
           <span class="badge mono">MP4</span>
           <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
         </div>
-        <div class="cap">Mapping, Pignan Millénaire<span class="date">2025</span></div>
-      </div>
-      <div class="clip">
-        <div class="frame g-red" data-duration="108" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">MP4</span>
-          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-        </div>
-        <div class="cap">Soirée à thème, Halloween<span class="date">2025</span></div>
-      </div>
-      <div class="clip">
-        <div class="frame g-green" data-duration="182" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">MP4</span>
-          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-        </div>
-        <div class="cap">Mapping en 48h, Cathédrale Saint-Jean<span class="date">2024</span></div>
-      </div>
+        <div class="cap">{{ projet.titre }}<span class="date">{{ projet.annee }}</span></div>
+      </a>
+      {% endif %}
+      {% endfor %}
     </div>
     <p style="margin-top:24px"><a class="btn" href="/portfolio/">Toute la bande</a></p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Questions fréquentes</h2>
+    <dl class="faq">
+      {% for item in faq %}
+      <div>
+        <dt>{{ item.q }}</dt>
+        <dd>{{ item.a }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
   </section>
 </div>

@@ -1,0 +1,35 @@
+---
+layout: layout.njk
+pagination:
+  data: categories
+  size: 1
+  alias: categorie
+  addAllPagesToCollections: true
+permalink: "/location/{{ categorie.slug }}/"
+---
+<div class="wrap">
+  <header class="page-head">
+    {% include "breadcrumbs.njk" %}
+    <p class="page-kicker mono">LOCATION · AMIENS</p>
+    <h1>{{ categorie.h1 }}</h1>
+    <p class="lede">{{ categorie.intro }} {{ site.livraison }}.</p>
+  </header>
+
+  <ul class="catalogue-liste">
+    {% for p in produits %}
+      {% if p.categorie == categorie.nom %}
+      <li>
+        <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
+        <span class="prix-tag">{{ p.prix }}</span>
+        <p>{{ p.description }}</p>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <p style="margin-top:28px">
+    <a href="/location/">← Catalogue complet</a>
+    ·
+    <a class="btn solid" href="/devis/">Devis location</a>
+  </p>
+</div>

@@ -1,0 +1,148 @@
+{
+  "intro": [
+    "Que vous organisiez le plus beau jour de votre vie, sublimer votre entrée des mariés avec nos étincelles froides et nos machines à fumées lourdes.",
+    "Que vous soyez un comité d'entreprise qui fête un arbre de Noël, nos éclairages architecturaux seront là pour donner vie à votre lieu de réception.",
+    "Ou que vous soyez organisateur d'un évènement sportif, donnez aux vainqueurs un souvenir mémorable de leur victoire en donnant vie à votre podium avec nos étincelles, serpentins et confettis."
+  ],
+  "personnalisation": "Possibilité de personnaliser votre événement, pour cela contactez-nous via l'onglet devis.",
+  "pages": [
+    {
+      "slug": "anniversaire",
+      "titre": "Anniversaire",
+      "usage": "anniversaire",
+      "h1": "Sono et lumière pour anniversaire à Amiens",
+      "seoTitle": "Sono et lumière anniversaire Amiens dès 499 € | Event'Light",
+      "seoDescription": "Packs anniversaire à Amiens dès 499 € : sono FBT, totems, lyres, brouillard, étincelles froides et animateur. Montage et démontage inclus.",
+      "description": "Une fête d'anniversaire à votre effigie : sono, lumière, effets et animation, dimensionnés sur-mesure à Amiens et dans la Somme.",
+      "packs": [
+        {
+          "nom": "Pack Essentiel",
+          "prix": "499 €",
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "2 totems avec projecteur robotisé",
+            "Brouillard d'ambiance"
+          ]
+        },
+        {
+          "nom": "Pack Premium",
+          "prix": "699 €",
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "4 totems avec projecteur robotisé",
+            "Brouillard d'ambiance",
+            "Machines à étincelles froides",
+            "Animateur"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mariage",
+      "titre": "Mariage",
+      "usage": "mariage",
+      "h1": "Sono, lumière et effets pour mariage à Amiens",
+      "seoTitle": "Sono et lumière mariage Amiens dès 550 € | Event'Light",
+      "seoDescription": "Packs mariage à Amiens dès 550 € : sono FBT, 4 totems, lyres, brouillard, étincelles froides, fumée lourde, animateur et kit cérémonie laïque.",
+      "description": "Sonorisation, éclairage, effets et option cérémonie laïque pour sublimer votre mariage à Amiens et dans la Somme.",
+      "packs": [
+        {
+          "nom": "Pack Essentiel",
+          "prix": "550 €",
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "4 totems avec projecteur robotisé",
+            "Brouillard d'ambiance"
+          ]
+        },
+        {
+          "nom": "Pack Standard",
+          "prix": "799 €",
+          "featured": true,
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "4 totems avec projecteur robotisé",
+            "Brouillard d'ambiance",
+            "Machines à étincelles froides",
+            "Fumée lourde",
+            "Animateur"
+          ]
+        },
+        {
+          "nom": "Pack Premium",
+          "prix": "999 €",
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "4 totems avec projecteur robotisé",
+            "Brouillard d'ambiance",
+            "Machines à étincelles froides",
+            "Fumée lourde",
+            "Animateur",
+            "Kit cérémonie laïque (enceintes et micro sans fil)"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "comite-entreprise",
+      "titre": "Comité d'entreprise",
+      "usage": "comite-entreprise",
+      "pathGoogle": "comité-dentreprise",
+      "h1": "Sono et éclairage pour comité d'entreprise à Amiens",
+      "seoTitle": "Éclairage et sono comité d'entreprise Amiens | Event'Light",
+      "seoDescription": "Arbre de Noël, soirée CE ou conférence à Amiens : éclairage architectural, sono FBT, micro sans fil et pupitre. Pack conférence dès 250 €.",
+      "description": "Éclairage architectural, sonorisation et régie pour vos arbres de Noël, soirées et conférences d'entreprise à Amiens.",
+      "packs": [
+        {
+          "nom": "Pack Conférence",
+          "prix": "250 €",
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "Micro sans fil",
+            "Pupitre"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "manifestation-sportive",
+      "titre": "Manifestation sportive",
+      "usage": "manifestation-sportive",
+      "h1": "Sono, micro et effets pour manifestation sportive à Amiens",
+      "seoTitle": "Sono et effets manifestation sportive Amiens | Event'Light",
+      "seoDescription": "Podium, remise des prix, course à Amiens : sono FBT, micro, musiques d'ambiance, étincelles froides et geysers. Packs dès 199 €.",
+      "description": "Sono, micro, musiques d'ambiance et effets pour donner vie à votre podium et à vos vainqueurs, à Amiens et dans la Somme.",
+      "packs": [
+        {
+          "nom": "Pack Starter",
+          "prix": "199 €",
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "Micro sans fil",
+            "Musiques d'ambiance"
+          ]
+        },
+        {
+          "nom": "Pack Starter +",
+          "prix": "399 €",
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "Micro sans fil",
+            "Musiques d'ambiance",
+            "Étincelles froides",
+            "Geysers",
+            "Animateur"
+          ]
+        }
+      ]
+    }
+  ]
+}

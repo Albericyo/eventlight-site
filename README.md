@@ -1,59 +1,31 @@
-# Event'Light — nouveau site (sans Google Sites)
+# Event'Light — site
 
-Site statique généré avec **Eleventy (11ty)**. Gratuit à 100% : hébergement, HTTPS, formulaire.
+Site statique généré avec **Eleventy (11ty)**, à partir du contenu du site Google Sites [eventlight.net](https://www.eventlight.net/).
 
-## Ce qui a déjà été fait pour toi
+## Contenu repris du site actuel
 
-- 29 pages générées automatiquement (accueil, 4 formules, catalogue, 17 fiches produits, devis, contact, portfolio, mentions légales)
-- Chaque page a un `<title>`, une meta description et un schema.org (`LocalBusiness` + `Product` sur les fiches produits)
-- Un `robots.txt` et un `sitemap.xml` propres et sous ton contrôle
-- Les 4 pages "formules" pointent automatiquement vers le matériel adapté (mariage → produits taggés `mariage`, etc.) — c'est piloté par `src/_data/produits.json`, tu n'as qu'à éditer ce fichier pour ajouter/modifier du matériel, pas besoin de toucher au HTML
-- Un formulaire de devis prêt pour Netlify Forms (gratuit)
-- Un fichier `_redirects` avec les redirections 301 des anciennes URLs Google Sites vers les nouvelles (à compléter si tu identifies d'autres URLs indexées)
+- Accueil (« Créateurs de rêves »), nouveautés étincelles / geysers CO2
+- Formules : mariage (550 / 799 / 999 €), anniversaire (499 / 699 €), CE (250 €), sport (199 / 399 €)
+- Catalogue location (17 références) et fiches produits
+- Portfolio (14 réalisations, y compris mappings Pignan, Saint-Jean, Palais des Beaux-Arts)
+- Contact Albéric Delabie et Antoine Capel
+- CGV intégrales, SIRET, siège 53 rue du Général Friant
+- Redirections 301 depuis les URLs Google Sites
 
-## Étape par étape pour mettre en ligne (gratuit)
+Les photos hébergées par Google Sites n'ont pas pu être téléchargées (blocage 403). Dépose tes visuels dans `src/images/` pour les intégrer.
 
-### 1. Créer un compte GitHub (si tu n'en as pas) et pousser le projet
-```bash
-cd eventlight-site
-git init
-git add .
-git commit -m "Nouveau site Event'Light"
-git branch -M main
-git remote add origin https://github.com/TON_USER/eventlight-site.git
-git push -u origin main
-```
-(Crée d'abord le repo vide sur github.com, sans README ni .gitignore)
+## Développer en local
 
-### 2. Déployer sur Netlify (gratuit, formulaire inclus)
-1. Va sur https://app.netlify.com → "Add new site" → "Import an existing project"
-2. Connecte ton compte GitHub, choisis le repo `eventlight-site`
-3. Build command : `npm run build` — Publish directory : `_site`
-4. Clique "Deploy" — ton site est en ligne en ~1 minute sur une URL du type `xxx.netlify.app`
-
-### 3. Brancher ton domaine eventlight.net
-1. Dans Netlify : Site settings → Domain management → Add custom domain → `eventlight.net`
-2. Netlify te donne des enregistrements DNS (A record + CNAME) à ajouter chez ton registrar actuel (là où tu as acheté eventlight.net)
-3. Le HTTPS se configure automatiquement une fois le DNS propagé (quelques heures max)
-
-### 4. Vérifier le formulaire de devis
-Une fois déployé, va dans Netlify → Forms : le formulaire "devis" doit apparaître automatiquement (grâce à `data-netlify="true"` dans `src/devis/index.njk`). Tu peux configurer une notification email dans les settings du formulaire.
-
-### 5. Search Console (gratuit, à faire dès la mise en ligne)
-1. https://search.google.com/search-console → ajouter `eventlight.net`
-2. Soumettre `https://www.eventlight.net/sitemap.xml`
-3. Demander l'indexation manuelle des pages clés (accueil, /location/, les 4 formules)
-
-## Pour continuer à développer en local
 ```bash
 npm install
-npm run serve   # prévisualisation sur http://localhost:8080
-npm run build   # génère le site dans _site/
+npm run serve
+npm run build
 ```
 
-## À compléter toi-même
-- `src/images/` : ajouter ton logo et tes photos (compressées en WebP idéalement)
-- `src/portfolio/index.njk` : intégrer tes réalisations
-- `src/mentions-legales/index.njk` : recopier l'intégralité de tes CGV actuelles
-- `src/_data/produits.json` : compléter avec les articles manquants de ton catalogue actuel
-- Numéro de téléphone dans le schema.org (`src/_includes/layout.njk`) si tu veux l'afficher
+Prévisualisation : http://localhost:8080
+
+## Mise en ligne (Netlify)
+
+1. Importer le repo GitHub `eventlight-site`
+2. Build : `npm run build` — Publish : `_site`
+3. Brancher `eventlight.net` dans Domain management

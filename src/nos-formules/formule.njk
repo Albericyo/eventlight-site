@@ -1,0 +1,54 @@
+---
+layout: layout.njk
+pagination:
+  data: formules.pages
+  size: 1
+  alias: formule
+  addAllPagesToCollections: true
+permalink: "/nos-formules/{{ formule.slug }}/"
+---
+<div class="wrap">
+  <header class="page-head">
+    {% include "breadcrumbs.njk" %}
+    <p class="page-kicker mono">FORMULE</p>
+    <h1>{{ formule.h1 }}</h1>
+    <p class="lede">{{ formule.description }}</p>
+  </header>
+
+  <div class="pack-grid">
+    {% for pack in formule.packs %}
+    <article class="pack{% if pack.featured %} featured{% endif %}">
+      <h2>{{ pack.nom }}</h2>
+      <p class="prix">À partir de {{ pack.prix }}</p>
+      <ul>
+        {% for item in pack.items %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </article>
+    {% endfor %}
+  </div>
+
+  <p class="section-note" style="margin-top:28px">{{ formules.personnalisation }}</p>
+  <p>
+    <a class="btn solid" href="/devis/">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+      Demander un devis {{ formule.titre | lower }}
+    </a>
+  </p>
+
+  <section class="section">
+    <h2 class="section-title">Matériel de location souvent associé</h2>
+    <ul class="catalogue-liste">
+      {% for p in produits %}
+        {% if formule.usage in p.usages %}
+        <li>
+          <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
+          <span class="prix-tag">{{ p.prix }}</span>
+          <p>{{ p.categorie }}</p>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+</div>
