@@ -4,7 +4,17 @@
     "Que vous soyez un comité d'entreprise qui fête un arbre de Noël, nos éclairages architecturaux seront là pour donner vie à votre lieu de réception.",
     "Ou que vous soyez organisateur d'un évènement sportif, donnez aux vainqueurs un souvenir mémorable de leur victoire en donnant vie à votre podium avec nos étincelles, serpentins et confettis."
   ],
-  "personnalisation": "Possibilité de personnaliser votre événement, pour cela contactez-nous via l'onglet devis.",
+  "personnalisation": "Possibilité de personnaliser votre événement — mapping, effets supplémentaires, animateur, cérémonie — contactez-nous via l'onglet devis.",
+  "inclusBase": [
+    "Montage / prestation / démontage",
+    "Calage technique sur place"
+  ],
+  "horsPackCommun": [
+    "Vidéo mapping (sur devis)",
+    "Livraison hors secteur Amiens",
+    "Matériel de location à la carte",
+    "Extensions de durée ou multi-sites"
+  ],
   "pages": [
     {
       "slug": "anniversaire",
@@ -14,10 +24,17 @@
       "seoTitle": "Sono et lumière anniversaire Amiens dès 499 € | Event'Light",
       "seoDescription": "Packs anniversaire à Amiens dès 499 € : sono FBT, totems, lyres, brouillard, étincelles froides et animateur. Montage et démontage inclus.",
       "description": "Une fête d'anniversaire à votre effigie : sono, lumière, effets et animation, dimensionnés sur-mesure à Amiens et dans la Somme.",
+      "devisType": "Anniversaire",
+      "optionsHorsPack": [
+        "Vidéo mapping",
+        "Machines à effets supplémentaires",
+        "Livraison (à partir de 25 € secteur Amiens)"
+      ],
       "packs": [
         {
           "nom": "Pack Essentiel",
           "prix": "499 €",
+          "tier": "essentiel",
           "items": [
             "Montage / prestation / démontage",
             "Système son FBT",
@@ -28,6 +45,8 @@
         {
           "nom": "Pack Premium",
           "prix": "699 €",
+          "tier": "premium",
+          "featured": true,
           "items": [
             "Montage / prestation / démontage",
             "Système son FBT",
@@ -47,10 +66,17 @@
       "seoTitle": "Sono et lumière mariage Amiens dès 550 € | Event'Light",
       "seoDescription": "Packs mariage à Amiens dès 550 € : sono FBT, 4 totems, lyres, brouillard, étincelles froides, fumée lourde, animateur et kit cérémonie laïque.",
       "description": "Sonorisation, éclairage, effets et option cérémonie laïque pour sublimer votre mariage à Amiens et dans la Somme.",
+      "devisType": "Mariage",
+      "optionsHorsPack": [
+        "Vidéo mapping façade ou salle",
+        "Effets supplémentaires (confettis, geysers)",
+        "Livraison (à partir de 25 € secteur Amiens)"
+      ],
       "packs": [
         {
           "nom": "Pack Essentiel",
           "prix": "550 €",
+          "tier": "essentiel",
           "items": [
             "Montage / prestation / démontage",
             "Système son FBT",
@@ -61,6 +87,7 @@
         {
           "nom": "Pack Standard",
           "prix": "799 €",
+          "tier": "standard",
           "featured": true,
           "items": [
             "Montage / prestation / démontage",
@@ -75,6 +102,7 @@
         {
           "nom": "Pack Premium",
           "prix": "999 €",
+          "tier": "premium",
           "items": [
             "Montage / prestation / démontage",
             "Système son FBT",
@@ -94,18 +122,39 @@
       "usage": "comite-entreprise",
       "pathGoogle": "comité-dentreprise",
       "h1": "Sono et éclairage pour comité d'entreprise à Amiens",
-      "seoTitle": "Éclairage et sono comité d'entreprise Amiens | Event'Light",
-      "seoDescription": "Arbre de Noël, soirée CE ou conférence à Amiens : éclairage architectural, sono FBT, micro sans fil et pupitre. Pack conférence dès 250 €.",
+      "seoTitle": "Éclairage et sono comité d'entreprise Amiens dès 250 € | Event'Light",
+      "seoDescription": "Arbre de Noël, soirée CE ou conférence à Amiens : éclairage architectural, sono FBT, micro sans fil et pupitre. Packs dès 250 €.",
       "description": "Éclairage architectural, sonorisation et régie pour vos arbres de Noël, soirées et conférences d'entreprise à Amiens.",
+      "devisType": "Comité d'entreprise",
+      "optionsHorsPack": [
+        "Vidéo mapping",
+        "Étincelles froides / effets scéniques",
+        "Livraison (à partir de 25 € secteur Amiens)"
+      ],
       "packs": [
         {
           "nom": "Pack Conférence",
           "prix": "250 €",
+          "tier": "essentiel",
           "items": [
             "Montage / prestation / démontage",
             "Système son FBT",
             "Micro sans fil",
             "Pupitre"
+          ]
+        },
+        {
+          "nom": "Pack Soirée",
+          "prix": "599 €",
+          "tier": "standard",
+          "featured": true,
+          "items": [
+            "Montage / prestation / démontage",
+            "Système son FBT",
+            "4 totems avec projecteur robotisé",
+            "Brouillard d'ambiance",
+            "Éclairage architectural",
+            "Animateur"
           ]
         }
       ]
@@ -118,10 +167,17 @@
       "seoTitle": "Sono et effets manifestation sportive Amiens | Event'Light",
       "seoDescription": "Podium, remise des prix, course à Amiens : sono FBT, micro, musiques d'ambiance, étincelles froides et geysers. Packs dès 199 €.",
       "description": "Sono, micro, musiques d'ambiance et effets pour donner vie à votre podium et à vos vainqueurs, à Amiens et dans la Somme.",
+      "devisType": "Manifestation sportive",
+      "optionsHorsPack": [
+        "Vidéo mapping podium / façade",
+        "Éclairage architectural étendu",
+        "Livraison (à partir de 25 € secteur Amiens)"
+      ],
       "packs": [
         {
-          "nom": "Pack Starter",
+          "nom": "Pack Essentiel",
           "prix": "199 €",
+          "tier": "essentiel",
           "items": [
             "Montage / prestation / démontage",
             "Système son FBT",
@@ -130,8 +186,10 @@
           ]
         },
         {
-          "nom": "Pack Starter +",
+          "nom": "Pack Premium",
           "prix": "399 €",
+          "tier": "premium",
+          "featured": true,
           "items": [
             "Montage / prestation / démontage",
             "Système son FBT",

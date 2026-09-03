@@ -353,12 +353,137 @@ button.btn { appearance: none; -webkit-appearance: none; }
   color: #fff;
 }
 
-/* —— Mixer —— */
+/* —— Mixer / composer —— */
 .builder {
   display: grid;
-  grid-template-columns: 1.1fr .9fr;
+  grid-template-columns: 1.05fr .95fr;
   gap: 40px;
+  align-items: start;
+}
+.composer-types {
+  border: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+.composer-step {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 0 0 12px;
+}
+.composer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.composer-chip {
+  display: inline-flex;
   align-items: center;
+  cursor: pointer;
+  margin: 0;
+}
+.composer-chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.composer-chip span {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  color: var(--dim);
+  font-size: 14px;
+  background: transparent;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.composer-chip:hover span {
+  border-color: var(--white);
+  color: var(--white);
+}
+.composer-chip input:checked + span {
+  border-color: var(--cyan);
+  color: var(--white);
+  background: rgba(0, 229, 255, .08);
+}
+.composer-chip input:focus-visible + span {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+.composer-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 28px;
+  align-items: start;
+}
+.composer-side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.composer-summary {
+  margin-top: 0;
+  padding: 18px 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .02);
+}
+.composer-summary-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin: 0 0 8px;
+  color: var(--white);
+}
+.composer-summary-pack {
+  margin: 0 0 6px;
+  color: var(--cyan);
+  font-size: 15px;
+}
+.composer-summary-tracks {
+  margin: 0 0 8px;
+  color: var(--dim);
+  font-size: 14px;
+}
+.composer-addons {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+  font-size: 13px;
+  color: var(--dim);
+}
+.composer-addons li {
+  padding: 4px 0;
+  border-top: 1px solid var(--line);
+}
+.composer-addons li:first-child { border-top: none; }
+.composer-addons-label {
+  color: var(--white);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 2px !important;
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+.composer-summary-hint {
+  margin: 0 0 10px;
+  color: var(--dim);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.composer-summary-note,
+.composer-summary-tva {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--dim);
+}
+.composer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
 }
 .preview {
   aspect-ratio: 16 / 10;
@@ -389,6 +514,7 @@ button.btn { appearance: none; -webkit-appearance: none; }
   position: absolute;
   bottom: 10px;
   left: 14px;
+  right: 14px;
   font-size: 11px;
   color: rgba(255, 255, 255, .55);
   letter-spacing: .08em;
@@ -710,6 +836,38 @@ button.btn { appearance: none; -webkit-appearance: none; }
 .pack h2 { font-size: 22px; }
 .pack ul { margin: 12px 0 0 18px; color: var(--dim); font-size: 14px; }
 .pack li { margin-bottom: 6px; }
+.pack-badge {
+  display: inline-block;
+  margin: 0 0 10px;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+  padding: 3px 8px;
+}
+.options-block { margin-top: 36px; }
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.options-card {
+  border: 1px solid var(--line);
+  padding: 18px 16px;
+  background: rgba(255, 255, 255, .02);
+}
+.options-card h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+  color: var(--white);
+}
+.options-card ul {
+  margin: 0 0 0 18px;
+  color: var(--dim);
+  font-size: 14px;
+}
+.options-card li { margin-bottom: 6px; }
 
 .specs { list-style: none; margin: 12px 0 20px; }
 .specs li {
@@ -853,12 +1011,14 @@ body.is-playing .t-play .icon-pause { display: block; fill: currentColor; }
 
 @media (max-width: 860px) {
   .builder,
+  .composer-layout,
   .product-sheet,
   .contact-grid,
   .cards,
   .polaroids,
   .footer-grid,
   .pack-grid,
+  .options-grid,
   .gallery { grid-template-columns: 1fr; }
   .catalogue-liste li { flex-wrap: wrap; }
 }

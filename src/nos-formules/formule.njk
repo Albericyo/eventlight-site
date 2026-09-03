@@ -15,9 +15,12 @@ permalink: "/nos-formules/{{ formule.slug }}/"
     <p class="lede">{{ formule.description }}</p>
   </header>
 
+  <p class="section-note">Packs progressifs : socle Essentiel / Conférence, niveau recommandé (Standard, Soirée ou Premium), puis options. Montage, prestation et démontage inclus. {{ site.tva }}.</p>
+
   <div class="pack-grid">
     {% for pack in formule.packs %}
     <article class="pack{% if pack.featured %} featured{% endif %}">
+      {% if pack.featured %}<p class="pack-badge mono">Recommandé</p>{% endif %}
       <h2>{{ pack.nom }}</h2>
       <p class="prix">À partir de {{ pack.prix }}</p>
       <ul>
@@ -29,9 +32,32 @@ permalink: "/nos-formules/{{ formule.slug }}/"
     {% endfor %}
   </div>
 
+  <section class="section options-block">
+    <h2 class="section-title">Inclus / options</h2>
+    <div class="options-grid">
+      <div class="options-card">
+        <h3>Inclus dans chaque pack</h3>
+        <ul>
+          {% for item in formules.inclusBase %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="options-card">
+        <h3>Options & hors pack</h3>
+        <ul>
+          {% for item in formule.optionsHorsPack %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        <p class="section-note" style="margin-top:12px">Le vidéo mapping et le matériel à la carte restent hors packs formules — on les calibre au devis.</p>
+      </div>
+    </div>
+  </section>
+
   <p class="section-note" style="margin-top:28px">{{ formules.personnalisation }}</p>
   <p>
-    <a class="btn solid" href="/devis/">
+    <a class="btn solid" href="/devis/?type={{ formule.devisType | urlencode }}">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
       Demander un devis {{ formule.titre | lower }}
     </a>

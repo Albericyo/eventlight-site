@@ -28,14 +28,14 @@ breadcrumbs:
       <input type="tel" name="telephone" autocomplete="tel">
     </label>
     <label>Type d'événement
-      <select name="type_evenement">
-        <option>Mariage</option>
-        <option>Anniversaire</option>
-        <option>Comité d'entreprise</option>
-        <option>Manifestation sportive</option>
-        <option>Location de matériel</option>
-        <option>Vidéo mapping</option>
-        <option>Autre</option>
+      <select name="type_evenement" id="devis-type">
+        <option value="Mariage">Mariage</option>
+        <option value="Anniversaire">Anniversaire</option>
+        <option value="Comité d'entreprise">Comité d'entreprise</option>
+        <option value="Manifestation sportive">Manifestation sportive</option>
+        <option value="Location de matériel">Location de matériel</option>
+        <option value="Vidéo mapping">Vidéo mapping</option>
+        <option value="Autre">Autre</option>
       </select>
     </label>
     <label>Lieu (ville)
@@ -45,7 +45,7 @@ breadcrumbs:
       <input type="date" name="date_evenement">
     </label>
     <label>Votre demande
-      <textarea name="message" rows="5" required placeholder="Lieu, jauge, pistes souhaitées (son, lumière, mapping, effets)…"></textarea>
+      <textarea name="message" id="devis-message" rows="5" required placeholder="Lieu, jauge, pistes souhaitées (son, lumière, mapping, effets)…"></textarea>
     </label>
     <button type="submit" class="btn solid">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>

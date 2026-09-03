@@ -202,58 +202,116 @@
 </section>
 
 <div class="wrap">
-  <section class="section" id="composer">
+  <section class="section" id="composer" data-composer>
     <h2 class="section-title">Composez votre projet</h2>
-    <p class="section-note">Activez les pistes : le rendu se construit sous vos yeux. Ensuite, on calibre le matériel et le devis.</p>
-    <div class="builder">
-      <div class="preview" aria-hidden="true">
-        <div class="layer2 on" data-layer="lumiere"></div>
-        <div class="layer2 on" data-layer="mapping"></div>
-        <div class="layer2" data-layer="son"></div>
-        <div class="layer2" data-layer="effets"></div>
-        <span class="monitor-badge mono">PGM</span>
-        <span class="readout mono">RENDU EN DIRECT</span>
+    <p class="section-note">Choisissez le type d'événement et les pistes. On vous propose une formule de départ et des options — le devis reste personnalisé.</p>
+
+    <fieldset class="composer-types">
+      <legend class="mono composer-step">1 · Type d'événement</legend>
+      <div class="composer-chips" role="radiogroup" aria-label="Type d'événement">
+        
+        <label class="composer-chip">
+          <input type="radio" name="composer-type" value="mariage" checked>
+          <span>Mariage</span>
+        </label>
+        
+        <label class="composer-chip">
+          <input type="radio" name="composer-type" value="anniversaire">
+          <span>Anniversaire</span>
+        </label>
+        
+        <label class="composer-chip">
+          <input type="radio" name="composer-type" value="comite-entreprise">
+          <span>CE</span>
+        </label>
+        
+        <label class="composer-chip">
+          <input type="radio" name="composer-type" value="manifestation-sportive">
+          <span>Sport</span>
+        </label>
+        
+        <label class="composer-chip">
+          <input type="radio" name="composer-type" value="location">
+          <span>Location seule</span>
+        </label>
+        
+        <label class="composer-chip">
+          <input type="radio" name="composer-type" value="mapping">
+          <span>Mapping</span>
+        </label>
+        
       </div>
-      <div class="tracks">
-        <div class="track-row on">
-          <label>
-            <input type="checkbox" checked onchange="toggleTrack('lumiere', this.checked, this)">
-            <span class="switch"></span>
-          </label>
-          <span class="track-name">Lumière</span>
-          <span class="track-swatch" style="background:var(--cyan)"></span>
-        </div>
-        <div class="track-row on">
-          <label>
-            <input type="checkbox" checked onchange="toggleTrack('mapping', this.checked, this)">
-            <span class="switch"></span>
-          </label>
-          <span class="track-name">Mapping vidéo</span>
-          <span class="track-swatch" style="background:var(--red)"></span>
-        </div>
-        <div class="track-row">
-          <label>
-            <input type="checkbox" onchange="toggleTrack('son', this.checked, this)">
-            <span class="switch"></span>
-          </label>
-          <span class="track-name">Son</span>
-          <span class="track-swatch" style="background:var(--yellow)"></span>
-        </div>
-        <div class="track-row">
-          <label>
-            <input type="checkbox" onchange="toggleTrack('effets', this.checked, this)">
-            <span class="switch"></span>
-          </label>
-          <span class="track-name">Effets spéciaux</span>
-          <span class="track-swatch" style="background:var(--magenta)"></span>
+    </fieldset>
+
+    <div class="composer-layout">
+      <div class="composer-side">
+        <p class="mono composer-step">2 · Pistes à activer</p>
+        <div class="tracks" data-composer-tracks>
+          
+          <div class="track-row on">
+            <label>
+              <input type="checkbox" name="composer-track" value="lumiere" checked>
+              <span class="switch"></span>
+            </label>
+            <span class="track-name">Lumière</span>
+            <span class="track-swatch" style="background:var(--cyan)"></span>
+          </div>
+          
+          <div class="track-row">
+            <label>
+              <input type="checkbox" name="composer-track" value="mapping">
+              <span class="switch"></span>
+            </label>
+            <span class="track-name">Mapping</span>
+            <span class="track-swatch" style="background:var(--red)"></span>
+          </div>
+          
+          <div class="track-row on">
+            <label>
+              <input type="checkbox" name="composer-track" value="son" checked>
+              <span class="switch"></span>
+            </label>
+            <span class="track-name">Son</span>
+            <span class="track-swatch" style="background:var(--yellow)"></span>
+          </div>
+          
+          <div class="track-row on">
+            <label>
+              <input type="checkbox" name="composer-track" value="effets" checked>
+              <span class="switch"></span>
+            </label>
+            <span class="track-name">Effets</span>
+            <span class="track-swatch" style="background:var(--magenta)"></span>
+          </div>
+          
         </div>
       </div>
+
+      <aside class="composer-summary" aria-live="polite">
+        <p class="mono composer-step">Orientation</p>
+        <h3 class="composer-summary-title" data-composer-title>Formule Mariage</h3>
+        <p class="composer-summary-pack" data-composer-pack>Pack Standard — à partir de 799 €</p>
+        <p class="composer-summary-tracks" data-composer-pistes>Pistes : lumière, son, effets</p>
+        <ul class="composer-addons" data-composer-addons></ul>
+        <p class="composer-summary-hint" data-composer-hint></p>
+        <p class="composer-summary-note mono">Tarifs « à partir de » pour une prestation type. Le devis final dépend du lieu, de la jauge et de la durée.</p>
+        <p class="composer-summary-tva mono">TVA non applicable, art. 293 B du CGI</p>
+        <div class="composer-actions">
+          <a class="btn solid" data-composer-devis href="/devis/?type=Mariage&amp;pistes=lumiere,son,effets">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+            Continuer vers le devis
+          </a>
+          <a class="btn" data-composer-secondary href="/nos-formules/mariage/">Voir la formule</a>
+        </div>
+      </aside>
     </div>
+
+    <script type="application/json" id="composer-data">{"eventTypes":[{"id":"mariage","label":"Mariage","devisType":"Mariage","formuleSlug":"mariage","recommendedPack":"Pack Standard","defaultTracks":["lumiere","son","effets"],"blurb":"Sono, lumière et effets pour la soirée — cérémonie en option Premium."},{"id":"anniversaire","label":"Anniversaire","devisType":"Anniversaire","formuleSlug":"anniversaire","recommendedPack":"Pack Essentiel","defaultTracks":["lumiere","son"],"blurb":"Packs dimensionnés pour une fête à Amiens, avec ou sans animateur."},{"id":"comite-entreprise","label":"CE","devisType":"Comité d'entreprise","formuleSlug":"comite-entreprise","recommendedPack":"Pack Soirée","defaultTracks":["lumiere","son"],"blurb":"Conférence ou soirée d'entreprise : on calibre sono et éclairage."},{"id":"manifestation-sportive","label":"Sport","devisType":"Manifestation sportive","formuleSlug":"manifestation-sportive","recommendedPack":"Pack Essentiel","defaultTracks":["son","effets"],"blurb":"Podium, remise des prix, ambiance sonore et effets."},{"id":"location","label":"Location seule","devisType":"Location de matériel","formuleSlug":null,"locationUrl":"/location/","recommendedPack":null,"defaultTracks":["lumiere","son"],"blurb":"Catalogue à la journée, avec ou sans technicien. Pas de pack clé en main."},{"id":"mapping","label":"Mapping","devisType":"Vidéo mapping","formuleSlug":null,"recommendedPack":null,"defaultTracks":["mapping","lumiere"],"blurb":"Spécialité Event'Light : projection sur-mesure, hors packs formules."}],"tracks":[{"id":"lumiere","label":"Lumière","swatch":"var(--cyan)"},{"id":"mapping","label":"Mapping","swatch":"var(--red)"},{"id":"son","label":"Son","swatch":"var(--yellow)"},{"id":"effets","label":"Effets","swatch":"var(--magenta)"}],"addons":[{"id":"mapping","label":"Vidéo mapping","description":"Projection architecturale ou scénique sur-mesure","tracks":["mapping"],"pricing":"Sur devis","horsPack":true},{"id":"animateur","label":"Animateur","description":"Animation musicale et conduite de soirée","tracks":["son"],"pricing":"Inclus dès Standard / Premium selon formule","horsPack":false},{"id":"effets","label":"Effets spéciaux","description":"Étincelles froides, fumée lourde, geysers, confettis","tracks":["effets"],"pricing":"Inclus ou en option selon le pack","horsPack":false},{"id":"ceremonie","label":"Kit cérémonie laïque","description":"Enceintes et micro sans fil pour la cérémonie","tracks":["son"],"eventTypes":["mariage"],"pricing":"Inclus Pack Premium mariage","horsPack":false},{"id":"technicien","label":"Technicien sur site","description":"Régie pendant l'événement","tracks":["lumiere","son","mapping","effets"],"pricing":"Inclus en formule ; option en location","horsPack":false},{"id":"livraison","label":"Livraison","description":"Livraison du matériel dans le secteur d'Amiens","tracks":[],"pricing":"À partir de 25 €","horsPack":true,"alwaysSuggest":true}],"formules":[{"slug":"anniversaire","titre":"Anniversaire","usage":"anniversaire","h1":"Sono et lumière pour anniversaire à Amiens","seoTitle":"Sono et lumière anniversaire Amiens dès 499 € | Event'Light","seoDescription":"Packs anniversaire à Amiens dès 499 € : sono FBT, totems, lyres, brouillard, étincelles froides et animateur. Montage et démontage inclus.","description":"Une fête d'anniversaire à votre effigie : sono, lumière, effets et animation, dimensionnés sur-mesure à Amiens et dans la Somme.","devisType":"Anniversaire","optionsHorsPack":["Vidéo mapping","Machines à effets supplémentaires","Livraison (à partir de 25 € secteur Amiens)"],"packs":[{"nom":"Pack Essentiel","prix":"499 €","tier":"essentiel","items":["Montage / prestation / démontage","Système son FBT","2 totems avec projecteur robotisé","Brouillard d'ambiance"]},{"nom":"Pack Premium","prix":"699 €","tier":"premium","featured":true,"items":["Montage / prestation / démontage","Système son FBT","4 totems avec projecteur robotisé","Brouillard d'ambiance","Machines à étincelles froides","Animateur"]}]},{"slug":"mariage","titre":"Mariage","usage":"mariage","h1":"Sono, lumière et effets pour mariage à Amiens","seoTitle":"Sono et lumière mariage Amiens dès 550 € | Event'Light","seoDescription":"Packs mariage à Amiens dès 550 € : sono FBT, 4 totems, lyres, brouillard, étincelles froides, fumée lourde, animateur et kit cérémonie laïque.","description":"Sonorisation, éclairage, effets et option cérémonie laïque pour sublimer votre mariage à Amiens et dans la Somme.","devisType":"Mariage","optionsHorsPack":["Vidéo mapping façade ou salle","Effets supplémentaires (confettis, geysers)","Livraison (à partir de 25 € secteur Amiens)"],"packs":[{"nom":"Pack Essentiel","prix":"550 €","tier":"essentiel","items":["Montage / prestation / démontage","Système son FBT","4 totems avec projecteur robotisé","Brouillard d'ambiance"]},{"nom":"Pack Standard","prix":"799 €","tier":"standard","featured":true,"items":["Montage / prestation / démontage","Système son FBT","4 totems avec projecteur robotisé","Brouillard d'ambiance","Machines à étincelles froides","Fumée lourde","Animateur"]},{"nom":"Pack Premium","prix":"999 €","tier":"premium","items":["Montage / prestation / démontage","Système son FBT","4 totems avec projecteur robotisé","Brouillard d'ambiance","Machines à étincelles froides","Fumée lourde","Animateur","Kit cérémonie laïque (enceintes et micro sans fil)"]}]},{"slug":"comite-entreprise","titre":"Comité d'entreprise","usage":"comite-entreprise","pathGoogle":"comité-dentreprise","h1":"Sono et éclairage pour comité d'entreprise à Amiens","seoTitle":"Éclairage et sono comité d'entreprise Amiens dès 250 € | Event'Light","seoDescription":"Arbre de Noël, soirée CE ou conférence à Amiens : éclairage architectural, sono FBT, micro sans fil et pupitre. Packs dès 250 €.","description":"Éclairage architectural, sonorisation et régie pour vos arbres de Noël, soirées et conférences d'entreprise à Amiens.","devisType":"Comité d'entreprise","optionsHorsPack":["Vidéo mapping","Étincelles froides / effets scéniques","Livraison (à partir de 25 € secteur Amiens)"],"packs":[{"nom":"Pack Conférence","prix":"250 €","tier":"essentiel","items":["Montage / prestation / démontage","Système son FBT","Micro sans fil","Pupitre"]},{"nom":"Pack Soirée","prix":"599 €","tier":"standard","featured":true,"items":["Montage / prestation / démontage","Système son FBT","4 totems avec projecteur robotisé","Brouillard d'ambiance","Éclairage architectural","Animateur"]}]},{"slug":"manifestation-sportive","titre":"Manifestation sportive","usage":"manifestation-sportive","h1":"Sono, micro et effets pour manifestation sportive à Amiens","seoTitle":"Sono et effets manifestation sportive Amiens | Event'Light","seoDescription":"Podium, remise des prix, course à Amiens : sono FBT, micro, musiques d'ambiance, étincelles froides et geysers. Packs dès 199 €.","description":"Sono, micro, musiques d'ambiance et effets pour donner vie à votre podium et à vos vainqueurs, à Amiens et dans la Somme.","devisType":"Manifestation sportive","optionsHorsPack":["Vidéo mapping podium / façade","Éclairage architectural étendu","Livraison (à partir de 25 € secteur Amiens)"],"packs":[{"nom":"Pack Essentiel","prix":"199 €","tier":"essentiel","items":["Montage / prestation / démontage","Système son FBT","Micro sans fil","Musiques d'ambiance"]},{"nom":"Pack Premium","prix":"399 €","tier":"premium","featured":true,"items":["Montage / prestation / démontage","Système son FBT","Micro sans fil","Musiques d'ambiance","Étincelles froides","Geysers","Animateur"]}]}],"pricingNote":"Tarifs « à partir de » pour une prestation type. Le devis final dépend du lieu, de la jauge et de la durée.","tvaNote":"TVA non applicable, art. 293 B du CGI"}</script>
   </section>
 
   <section class="section">
     <h2 class="section-title">Nos formules</h2>
-    <p class="section-note">Quatre formules pour particuliers et structures pro. Choisissez le type d'événement, on dimensionne le matériel à Amiens.</p>
+    <p class="section-note">Quatre formules pour particuliers et structures pro. Packs Essentiel → Standard / Soirée → Premium, options hors pack au devis.</p>
     <ul class="cards">
       
       <li>

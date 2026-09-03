@@ -70,6 +70,10 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("jsonLd", (value) => JSON.stringify(value));
 
+  eleventyConfig.addFilter("encodeURIComponent", (value) =>
+    encodeURIComponent(String(value ?? ""))
+  );
+
   eleventyConfig.addFilter("xmlEsc", (value) =>
     String(value ?? "")
       .replace(/&/g, "&amp;")

@@ -1,0 +1,119 @@
+{
+  "pricingNote": "Tarifs « à partir de » pour une prestation type. Le devis final dépend du lieu, de la jauge et de la durée.",
+  "tvaNote": "TVA non applicable, art. 293 B du CGI",
+  "tracks": [
+    { "id": "lumiere", "label": "Lumière", "swatch": "var(--cyan)" },
+    { "id": "mapping", "label": "Mapping", "swatch": "var(--red)" },
+    { "id": "son", "label": "Son", "swatch": "var(--yellow)" },
+    { "id": "effets", "label": "Effets", "swatch": "var(--magenta)" }
+  ],
+  "addons": [
+    {
+      "id": "mapping",
+      "label": "Vidéo mapping",
+      "description": "Projection architecturale ou scénique sur-mesure",
+      "tracks": ["mapping"],
+      "pricing": "Sur devis",
+      "horsPack": true
+    },
+    {
+      "id": "animateur",
+      "label": "Animateur",
+      "description": "Animation musicale et conduite de soirée",
+      "tracks": ["son"],
+      "pricing": "Inclus dès Standard / Premium selon formule",
+      "horsPack": false
+    },
+    {
+      "id": "effets",
+      "label": "Effets spéciaux",
+      "description": "Étincelles froides, fumée lourde, geysers, confettis",
+      "tracks": ["effets"],
+      "pricing": "Inclus ou en option selon le pack",
+      "horsPack": false
+    },
+    {
+      "id": "ceremonie",
+      "label": "Kit cérémonie laïque",
+      "description": "Enceintes et micro sans fil pour la cérémonie",
+      "tracks": ["son"],
+      "eventTypes": ["mariage"],
+      "pricing": "Inclus Pack Premium mariage",
+      "horsPack": false
+    },
+    {
+      "id": "technicien",
+      "label": "Technicien sur site",
+      "description": "Régie pendant l'événement",
+      "tracks": ["lumiere", "son", "mapping", "effets"],
+      "pricing": "Inclus en formule ; option en location",
+      "horsPack": false
+    },
+    {
+      "id": "livraison",
+      "label": "Livraison",
+      "description": "Livraison du matériel dans le secteur d'Amiens",
+      "tracks": [],
+      "pricing": "À partir de 25 €",
+      "horsPack": true,
+      "alwaysSuggest": true
+    }
+  ],
+  "eventTypes": [
+    {
+      "id": "mariage",
+      "label": "Mariage",
+      "devisType": "Mariage",
+      "formuleSlug": "mariage",
+      "recommendedPack": "Pack Standard",
+      "defaultTracks": ["lumiere", "son", "effets"],
+      "blurb": "Sono, lumière et effets pour la soirée — cérémonie en option Premium."
+    },
+    {
+      "id": "anniversaire",
+      "label": "Anniversaire",
+      "devisType": "Anniversaire",
+      "formuleSlug": "anniversaire",
+      "recommendedPack": "Pack Essentiel",
+      "defaultTracks": ["lumiere", "son"],
+      "blurb": "Packs dimensionnés pour une fête à Amiens, avec ou sans animateur."
+    },
+    {
+      "id": "comite-entreprise",
+      "label": "CE",
+      "devisType": "Comité d'entreprise",
+      "formuleSlug": "comite-entreprise",
+      "recommendedPack": "Pack Soirée",
+      "defaultTracks": ["lumiere", "son"],
+      "blurb": "Conférence ou soirée d'entreprise : on calibre sono et éclairage."
+    },
+    {
+      "id": "manifestation-sportive",
+      "label": "Sport",
+      "devisType": "Manifestation sportive",
+      "formuleSlug": "manifestation-sportive",
+      "recommendedPack": "Pack Essentiel",
+      "defaultTracks": ["son", "effets"],
+      "blurb": "Podium, remise des prix, ambiance sonore et effets."
+    },
+    {
+      "id": "location",
+      "label": "Location seule",
+      "devisType": "Location de matériel",
+      "formuleSlug": null,
+      "locationUrl": "/location/",
+      "recommendedPack": null,
+      "defaultTracks": ["lumiere", "son"],
+      "blurb": "Catalogue à la journée, avec ou sans technicien. Pas de pack clé en main."
+    },
+    {
+      "id": "mapping",
+      "label": "Mapping",
+      "devisType": "Vidéo mapping",
+      "formuleSlug": null,
+      "recommendedPack": null,
+      "defaultTracks": ["mapping", "lumiere"],
+      "blurb": "Spécialité Event'Light : projection sur-mesure, hors packs formules."
+    }
+  ]
+}

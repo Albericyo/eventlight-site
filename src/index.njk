@@ -28,58 +28,64 @@ description: "Event'Light : location et installation sono, lumière, effets et s
 </section>
 
 <div class="wrap">
-  <section class="section" id="composer">
+  <section class="section" id="composer" data-composer>
     <h2 class="section-title">Composez votre projet</h2>
-    <p class="section-note">Activez les pistes : le rendu se construit sous vos yeux. Ensuite, on calibre le matériel et le devis.</p>
-    <div class="builder">
-      <div class="preview" aria-hidden="true">
-        <div class="layer2 on" data-layer="lumiere"></div>
-        <div class="layer2 on" data-layer="mapping"></div>
-        <div class="layer2" data-layer="son"></div>
-        <div class="layer2" data-layer="effets"></div>
-        <span class="monitor-badge mono">PGM</span>
-        <span class="readout mono">RENDU EN DIRECT</span>
+    <p class="section-note">Choisissez le type d'événement et les pistes. On vous propose une formule de départ et des options — le devis reste personnalisé.</p>
+
+    <fieldset class="composer-types">
+      <legend class="mono composer-step">1 · Type d'événement</legend>
+      <div class="composer-chips" role="radiogroup" aria-label="Type d'événement">
+        {% for t in business.eventTypes %}
+        <label class="composer-chip">
+          <input type="radio" name="composer-type" value="{{ t.id }}"{% if loop.first %} checked{% endif %}>
+          <span>{{ t.label }}</span>
+        </label>
+        {% endfor %}
       </div>
-      <div class="tracks">
-        <div class="track-row on">
-          <label>
-            <input type="checkbox" checked onchange="toggleTrack('lumiere', this.checked, this)">
-            <span class="switch"></span>
-          </label>
-          <span class="track-name">Lumière</span>
-          <span class="track-swatch" style="background:var(--cyan)"></span>
-        </div>
-        <div class="track-row on">
-          <label>
-            <input type="checkbox" checked onchange="toggleTrack('mapping', this.checked, this)">
-            <span class="switch"></span>
-          </label>
-          <span class="track-name">Mapping vidéo</span>
-          <span class="track-swatch" style="background:var(--red)"></span>
-        </div>
-        <div class="track-row">
-          <label>
-            <input type="checkbox" onchange="toggleTrack('son', this.checked, this)">
-            <span class="switch"></span>
-          </label>
-          <span class="track-name">Son</span>
-          <span class="track-swatch" style="background:var(--yellow)"></span>
-        </div>
-        <div class="track-row">
-          <label>
-            <input type="checkbox" onchange="toggleTrack('effets', this.checked, this)">
-            <span class="switch"></span>
-          </label>
-          <span class="track-name">Effets spéciaux</span>
-          <span class="track-swatch" style="background:var(--magenta)"></span>
+    </fieldset>
+
+    <div class="composer-layout">
+      <div class="composer-side">
+        <p class="mono composer-step">2 · Pistes à activer</p>
+        <div class="tracks" data-composer-tracks>
+          {% for track in business.tracks %}
+          <div class="track-row{% if track.id == 'lumiere' or track.id == 'son' or track.id == 'effets' %} on{% endif %}">
+            <label>
+              <input type="checkbox" name="composer-track" value="{{ track.id }}"{% if track.id == 'lumiere' or track.id == 'son' or track.id == 'effets' %} checked{% endif %}>
+              <span class="switch"></span>
+            </label>
+            <span class="track-name">{{ track.label }}</span>
+            <span class="track-swatch" style="background:{{ track.swatch }}"></span>
+          </div>
+          {% endfor %}
         </div>
       </div>
+
+      <aside class="composer-summary" aria-live="polite">
+        <p class="mono composer-step">Orientation</p>
+        <h3 class="composer-summary-title" data-composer-title>Formule Mariage</h3>
+        <p class="composer-summary-pack" data-composer-pack>Pack Standard — à partir de 799 €</p>
+        <p class="composer-summary-tracks" data-composer-pistes>Pistes : lumière, son, effets</p>
+        <ul class="composer-addons" data-composer-addons></ul>
+        <p class="composer-summary-hint" data-composer-hint></p>
+        <p class="composer-summary-note mono">{{ business.pricingNote }}</p>
+        <p class="composer-summary-tva mono">{{ site.tva }}</p>
+        <div class="composer-actions">
+          <a class="btn solid" data-composer-devis href="/devis/?type=Mariage&amp;pistes=lumiere,son,effets">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+            Continuer vers le devis
+          </a>
+          <a class="btn" data-composer-secondary href="/nos-formules/mariage/">Voir la formule</a>
+        </div>
+      </aside>
     </div>
+
+    <script type="application/json" id="composer-data">{{ { eventTypes: business.eventTypes, tracks: business.tracks, addons: business.addons, formules: formules.pages, pricingNote: business.pricingNote, tvaNote: site.tva } | jsonLd | safe }}</script>
   </section>
 
   <section class="section">
     <h2 class="section-title">Nos formules</h2>
-    <p class="section-note">Quatre formules pour particuliers et structures pro. Choisissez le type d'événement, on dimensionne le matériel à Amiens.</p>
+    <p class="section-note">Quatre formules pour particuliers et structures pro. Packs Essentiel → Standard / Soirée → Premium, options hors pack au devis.</p>
     <ul class="cards">
       {% for f in formules.pages %}
       <li>
