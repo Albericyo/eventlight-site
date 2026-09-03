@@ -1,20 +1,218 @@
 {
   "youtube": {
     "pignan": "rQ2P5zFz1Do",
-    "pba-2024": "qa9DIcC56KU",
     "saint-jean": "fPIcQxnWaJE",
+    "pba-2024": "qa9DIcC56KU",
+    "gare-saint-paul": "6vckeSXc_8Y",
     "adj-2021": "q7wRCDqIqtg",
     "gala-ffeo": "U9n7ctUEh30",
-    "gare-saint-paul": "6vckeSXc_8Y",
     "le-pavillon-bleu": "KdpNwDgyiNs",
     "adj-2020": "q0p5miY9ufM",
+    "la-maison-de-la-motte": "VYDlCmQyEbc",
     "mapping-halloween-2018": "HagrZQk-Jbc",
-    "eurolite-led-pix-144-rgb-bar": "4qs5noXoh4Y",
-    "eurolite-parled-sls-7-hcl-floor": "rtu1T7JhGF0",
-    "evo-spark-600": "VedgKHWGKBs",
-    "evolite-moving-beam1r": "URbd9yZEM6U",
-    "fogspray-3000-rgb": "FHYWTfmiKF4",
     "jb-challenger-bsw": "-O-XPsAcURg",
-    "mac-mah-lyre-wash-740z": "1RzpEb85y5M"
+    "evolite-moving-beam1r": "URbd9yZEM6U",
+    "mac-mah-lyre-wash-740z": "1RzpEb85y5M",
+    "eurolite-parled-sls-7-hcl-floor": "rtu1T7JhGF0",
+    "eurolite-led-pix-144-rgb-bar": "4qs5noXoh4Y",
+    "fogspray-3000-rgb": "FHYWTfmiKF4",
+    "evo-spark-600": "VedgKHWGKBs"
+  },
+  "portfolio": {
+    "adj-2020": [
+      "01.jpg",
+      "02.png",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg",
+      "07.png",
+      "08.png"
+    ],
+    "adj-2021": [
+      "01.png",
+      "02.png",
+      "03.png",
+      "04.png",
+      "05.png",
+      "06.png",
+      "07.png",
+      "08.png",
+      "09.png"
+    ],
+    "anniversaire-guinguette": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg"
+    ],
+    "arbre-de-noel-pompier-2023": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg"
+    ],
+    "gala-ffeo": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg"
+    ],
+    "gare-saint-paul": [
+      "01.png",
+      "02.png",
+      "03.png",
+      "04.png",
+      "05.png",
+      "06.png"
+    ],
+    "la-maison-de-la-motte": [
+      "01.png",
+      "02.png",
+      "03.png",
+      "04.png",
+      "05.png",
+      "06.png",
+      "07.png"
+    ],
+    "le-pavillon-bleu": [
+      "01.png",
+      "02.png",
+      "03.png",
+      "04.png",
+      "05.png",
+      "06.png",
+      "07.png"
+    ],
+    "mapping-halloween-2018": [
+      "01.png",
+      "02.png",
+      "03.png",
+      "04.png",
+      "05.jpg"
+    ],
+    "mariage-2025-09-20": [
+      "01.jpg"
+    ],
+    "pba-2024": [
+      "01.png",
+      "02.png",
+      "03.png",
+      "04.png",
+      "05.png",
+      "06.png",
+      "07.png",
+      "08.png"
+    ],
+    "pignan": [
+      "01.png",
+      "02.png",
+      "03.jpg"
+    ],
+    "saint-jean": [
+      "01.png",
+      "02.png",
+      "03.png",
+      "04.png",
+      "05.png",
+      "06.png",
+      "07.png",
+      "08.png"
+    ],
+    "soiree-halloween-2025": []
+  },
+  "location": {
+    "boomtone-ez-box-4x15w": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg",
+      "07.jpg",
+      "08.jpg"
+    ],
+    "elokance-800c": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg"
+    ],
+    "eurolite-led-pix-144-rgb-bar": [
+      "01.png",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg"
+    ],
+    "eurolite-parled-sls-7-hcl-floor": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg",
+      "07.jpg"
+    ],
+    "evo-spark-600": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg"
+    ],
+    "evolite-hazebox": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg"
+    ],
+    "evolite-moving-beam1r": [
+      "01.png",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg"
+    ],
+    "fbt-x-lite-110a": [
+      "01.jpg",
+      "02.jpg"
+    ],
+    "fbt-x-sub-115sa": [
+      "01.jpg",
+      "02.jpg"
+    ],
+    "fogspray-3000-rgb": [
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg"
+    ],
+    "global-truss-4-points": [],
+    "jb-challenger-bsw": [
+      "01.png",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg"
+    ],
+    "louer": [],
+    "mac-mah-lyre-wash-740z": [
+      "01.jpg"
+    ],
+    "mac-mah-micro-sans-fil": [
+      "01.jpg",
+      "02.jpg"
+    ],
+    "pack-structure-f24200": [],
+    "plugger-monotube": [],
+    "totem-4-points": []
   }
 }
