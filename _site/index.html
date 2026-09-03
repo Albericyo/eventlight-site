@@ -105,10 +105,19 @@
         
         {
           "@type": "Question",
+          "name": "Comment sont structurés vos packs ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Chaque formule propose des packs progressifs (Essentiel / Conférence, Standard ou Soirée, Premium). Le prix affiché est un « à partir de ». Montage et démontage sont inclus. Le vidéo mapping, certains effets et la livraison hors secteur restent en options hors pack, calés au devis. TVA non applicable (art. 293 B du CGI)."
+          }
+        },
+        
+        {
+          "@type": "Question",
           "name": "Faites-vous du vidéo mapping à Amiens ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. Le vidéo mapping est une spécialité Event'Light : projections architecturales, événements municipaux, mariages et mises en scène sur-mesure, à Amiens et au-delà (Lyon, Lille, Pignan…)."
+            "text": "Oui. Le vidéo mapping est une spécialité Event'Light : projections architecturales, événements municipaux, mariages et mises en scène sur-mesure, à Amiens et au-delà (Lyon, Lille, Pignan…). Il n'est pas inclus dans les packs formules : prestation sur devis."
           }
         },
         
@@ -117,7 +126,7 @@
           "name": "Comment obtenir un devis ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Via le formulaire de devis en ligne, par e-mail (eventlight80@gmail.com) ou par téléphone auprès d'Albéric Delabie (07 81 53 36 00) ou d'Antoine Capel (06 46 82 08 31). Toute prestation fait l'objet d'un devis personnalisé, valable 30 jours."
+            "text": "Via le configurateur sur la page d'accueil, le formulaire de devis en ligne, par e-mail (eventlight80@gmail.com) ou par téléphone auprès d'Albéric Delabie (07 81 53 36 00) ou d'Antoine Capel (06 46 82 08 31). Toute prestation fait l'objet d'un devis personnalisé, valable 30 jours."
           }
         }
         
@@ -312,45 +321,41 @@
   <section class="section">
     <h2 class="section-title">Nos formules</h2>
     <p class="section-note">Quatre formules pour particuliers et structures pro. Packs Essentiel → Standard / Soirée → Premium, options hors pack au devis.</p>
-    <ul class="cards">
+    <ul class="formule-grid">
       
       <li>
-        <a class="card-link" href="/nos-formules/anniversaire/">
-          <div class="frame g-violet" data-duration="120">
-            <span class="badge mono">CH. 01</span>
-            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-          </div>
-          <div class="cap">Anniversaire<span class="date">À partir de 499 €</span></div>
+        <a class="formule-card" href="/nos-formules/anniversaire/">
+          <span class="formule-card-index mono">CH. 01</span>
+          <h3 class="formule-card-title">Anniversaire</h3>
+          <p class="formule-card-price">À partir de 499 €</p>
+          <span class="formule-card-cta">Voir la formule</span>
         </a>
       </li>
       
       <li>
-        <a class="card-link" href="/nos-formules/mariage/">
-          <div class="frame g-red" data-duration="140">
-            <span class="badge mono">CH. 02</span>
-            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-          </div>
-          <div class="cap">Mariage<span class="date">À partir de 550 €</span></div>
+        <a class="formule-card" href="/nos-formules/mariage/">
+          <span class="formule-card-index mono">CH. 02</span>
+          <h3 class="formule-card-title">Mariage</h3>
+          <p class="formule-card-price">À partir de 550 €</p>
+          <span class="formule-card-cta">Voir la formule</span>
         </a>
       </li>
       
       <li>
-        <a class="card-link" href="/nos-formules/comite-entreprise/">
-          <div class="frame g-blue" data-duration="160">
-            <span class="badge mono">CH. 03</span>
-            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-          </div>
-          <div class="cap">Comité d&#39;entreprise<span class="date">À partir de 250 €</span></div>
+        <a class="formule-card" href="/nos-formules/comite-entreprise/">
+          <span class="formule-card-index mono">CH. 03</span>
+          <h3 class="formule-card-title">Comité d&#39;entreprise</h3>
+          <p class="formule-card-price">À partir de 250 €</p>
+          <span class="formule-card-cta">Voir la formule</span>
         </a>
       </li>
       
       <li>
-        <a class="card-link" href="/nos-formules/manifestation-sportive/">
-          <div class="frame g-green" data-duration="180">
-            <span class="badge mono">CH. 04</span>
-            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-          </div>
-          <div class="cap">Manifestation sportive<span class="date">À partir de 199 €</span></div>
+        <a class="formule-card" href="/nos-formules/manifestation-sportive/">
+          <span class="formule-card-index mono">CH. 04</span>
+          <h3 class="formule-card-title">Manifestation sportive</h3>
+          <p class="formule-card-price">À partir de 199 €</p>
+          <span class="formule-card-cta">Voir la formule</span>
         </a>
       </li>
       
@@ -558,13 +563,18 @@
       </div>
       
       <div>
+        <dt>Comment sont structurés vos packs ?</dt>
+        <dd>Chaque formule propose des packs progressifs (Essentiel / Conférence, Standard ou Soirée, Premium). Le prix affiché est un « à partir de ». Montage et démontage sont inclus. Le vidéo mapping, certains effets et la livraison hors secteur restent en options hors pack, calés au devis. TVA non applicable (art. 293 B du CGI).</dd>
+      </div>
+      
+      <div>
         <dt>Faites-vous du vidéo mapping à Amiens ?</dt>
-        <dd>Oui. Le vidéo mapping est une spécialité Event&#39;Light : projections architecturales, événements municipaux, mariages et mises en scène sur-mesure, à Amiens et au-delà (Lyon, Lille, Pignan…).</dd>
+        <dd>Oui. Le vidéo mapping est une spécialité Event&#39;Light : projections architecturales, événements municipaux, mariages et mises en scène sur-mesure, à Amiens et au-delà (Lyon, Lille, Pignan…). Il n&#39;est pas inclus dans les packs formules : prestation sur devis.</dd>
       </div>
       
       <div>
         <dt>Comment obtenir un devis ?</dt>
-        <dd>Via le formulaire de devis en ligne, par e-mail (eventlight80@gmail.com) ou par téléphone auprès d&#39;Albéric Delabie (07 81 53 36 00) ou d&#39;Antoine Capel (06 46 82 08 31). Toute prestation fait l&#39;objet d&#39;un devis personnalisé, valable 30 jours.</dd>
+        <dd>Via le configurateur sur la page d&#39;accueil, le formulaire de devis en ligne, par e-mail (eventlight80@gmail.com) ou par téléphone auprès d&#39;Albéric Delabie (07 81 53 36 00) ou d&#39;Antoine Capel (06 46 82 08 31). Toute prestation fait l&#39;objet d&#39;un devis personnalisé, valable 30 jours.</dd>
       </div>
       
     </dl>

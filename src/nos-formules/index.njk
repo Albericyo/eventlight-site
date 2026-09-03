@@ -16,15 +16,14 @@ breadcrumbs:
     {% endfor %}
   </header>
 
-  <ul class="cards">
+  <ul class="formule-grid">
     {% for f in formules.pages %}
     <li>
-      <a class="card-link" href="/nos-formules/{{ f.slug }}/">
-        <div class="frame {{ f.slug | frameClass }}" data-duration="{{ 120 + loop.index0 * 20 }}" onmousemove="scrub(event,this)" onmouseleave="resetScrub(this)">
-          <span class="badge mono">CH. {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
-          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-        </div>
-        <div class="cap">{{ f.titre }}<span class="date">{{ f.seoDescription }}</span></div>
+      <a class="formule-card" href="/nos-formules/{{ f.slug }}/">
+        <span class="formule-card-index mono">CH. {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+        <h3 class="formule-card-title">{{ f.titre }}</h3>
+        <p class="formule-card-price">À partir de {{ f.packs[0].prix }} · {{ f.packs | length }} pack{% if f.packs | length > 1 %}s{% endif %}</p>
+        <span class="formule-card-cta">Voir la formule</span>
       </a>
     </li>
     {% endfor %}

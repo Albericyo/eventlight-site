@@ -192,7 +192,7 @@
       return pack.items.some(function (item) {
         var t = String(item).toLowerCase();
         if (id === "animateur" && t.indexOf("animateur") !== -1) return true;
-        if (id === "effets" && (t.indexOf("étincelle") !== -1 || t.indexOf("fumée") !== -1 || t.indexOf("geyser") !== -1 || t.indexOf("brouillard") !== -1)) return true;
+        if (id === "effets" && (t.indexOf("étincelle") !== -1 || t.indexOf("fumée") !== -1 || t.indexOf("geyser") !== -1 || t.indexOf("confetti") !== -1)) return true;
         if (id === "ceremonie" && t.indexOf("cérémonie") !== -1) return true;
         if (id === "technicien" && t.indexOf("montage") !== -1) return true;
         return needle && t.indexOf(needle) !== -1;
