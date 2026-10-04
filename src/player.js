@@ -227,7 +227,7 @@
       addonsEl.appendChild(intro);
       list.slice(0, 4).forEach(function (addon) {
         var li = document.createElement("li");
-        li.textContent = addon.label + " — " + addon.pricing;
+        li.textContent = addon.label + " - " + addon.pricing;
         addonsEl.appendChild(li);
       });
     }
@@ -252,9 +252,9 @@
       }
       if (packEl) {
         if (pack) {
-          packEl.textContent = pack.nom + " — à partir de " + pack.prix;
+          packEl.textContent = pack.nom + " - à partir de " + pack.prix;
         } else if (type.id === "location") {
-          packEl.textContent = "Location à la journée — tarifs catalogue";
+          packEl.textContent = "Location à la journée - tarifs catalogue";
         } else {
           packEl.textContent = "Prestation sur devis personnalisé";
         }

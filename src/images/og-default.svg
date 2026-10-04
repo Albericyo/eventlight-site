@@ -1,22 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
   <rect width="1200" height="630" fill="#050506"/>
-  <g opacity="0.45">
-    <rect width="70" height="70" fill="#fff"/>
-    <rect x="140" width="70" height="70" fill="#fff"/>
-    <rect x="70" y="70" width="70" height="70" fill="#fff"/>
-    <rect x="210" y="70" width="70" height="70" fill="#fff"/>
+  <g transform="translate(72,165)">
+    <g opacity=".4" stroke-width="3.2" stroke-linejoin="miter" stroke-linecap="square">
+      <rect x="-2" y="70" width="100" height="100" stroke="#00E5FF"/>
+      <polygon points="48,120 360,8 360,232" stroke="#00E5FF"/>
+      <rect x="2" y="70" width="100" height="100" stroke="#FF2A2A"/>
+      <polygon points="52,120 364,8 364,232" stroke="#FF2A2A"/>
+    </g>
+    <g stroke="#FFFFFF" stroke-width="3.6" stroke-linejoin="miter" stroke-linecap="square">
+      <rect x="0" y="70" width="100" height="100"/>
+      <polygon points="50,120 362,8 362,232"/>
+    </g>
   </g>
-  <g transform="translate(90,225)">
-    <polygon points="70,90 310,8 310,68" fill="#FF2A2A"/>
-    <polygon points="70,90 310,68 310,112" fill="#00E5FF"/>
-    <polygon points="70,90 310,112 310,172" fill="#2B4CFF"/>
-    <rect x="4" y="40" width="90" height="90" fill="none" stroke="#00E5FF" stroke-width="3"/>
-    <rect x="10" y="40" width="90" height="90" fill="none" stroke="#FF2A2A" stroke-width="3"/>
-    <rect x="7" y="40" width="90" height="90" fill="none" stroke="#fff" stroke-width="4"/>
-  </g>
-  <text x="430" y="300" fill="#f3f0e8" font-family="Arial Black, Arial, sans-serif" font-size="64" font-weight="800">Event'Light</text>
-  <text x="430" y="348" fill="#9a9588" font-family="Arial, sans-serif" font-size="26">Sono, lumière et vidéo mapping à Amiens</text>
-  <rect x="430" y="368" width="72" height="8" fill="#FF2A2A"/>
-  <rect x="502" y="368" width="72" height="8" fill="#FFE14A"/>
-  <rect x="574" y="368" width="72" height="8" fill="#00E5FF"/>
+  <text x="500" y="300" fill="#F3F0E8" font-family="Arial Black, Arial, sans-serif" font-size="64" font-weight="800">Event'Light</text>
+  <text x="500" y="348" fill="#9A9588" font-family="Arial, sans-serif" font-size="26">Sono, lumiï¿½re et vidï¿½o mapping ï¿½ Amiens</text>
+  <rect x="500" y="372" width="56" height="6" fill="#FF2A2A"/>
+  <rect x="564" y="372" width="56" height="6" fill="#FFE14A"/>
+  <rect x="628" y="372" width="56" height="6" fill="#00E5FF"/>
 </svg>

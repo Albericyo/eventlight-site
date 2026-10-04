@@ -20,7 +20,7 @@ permalink: "/portfolio/{{ projet.slug }}/"
   {% if yt %}
   <div class="map-embed" style="margin:0 0 28px">
     <iframe
-      title="Vidéo — {{ projet.titre }}"
+      title="Vidéo - {{ projet.titre }}"
       src="https://www.youtube-nocookie.com/embed/{{ yt }}"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
@@ -32,7 +32,7 @@ permalink: "/portfolio/{{ projet.slug }}/"
   <div class="gallery">
     {% for src in shots %}
     <figure>
-      <img src="{{ src }}" alt="{{ projet.titre }} — vue {{ loop.index }}, Event'Light {{ projet.annee }}" width="1200" height="750" {% if loop.index > 1 %}loading="lazy"{% endif %}>
+      <img src="{{ src }}" alt="{{ projet.titre }} - vue {{ loop.index }}, Event'Light {{ projet.annee }}" width="1200" height="750" {% if loop.index > 1 %}loading="lazy"{% endif %}>
       <figcaption>{{ projet.titre }} · {{ loop.index }}/{{ shots.length }}</figcaption>
     </figure>
     {% endfor %}

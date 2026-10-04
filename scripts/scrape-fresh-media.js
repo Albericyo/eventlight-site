@@ -229,7 +229,7 @@ function saveGallery(kind, slug, images) {
     i++;
   }
   if (saved.length === 0 && prev.length && (slug === "mariage-2025-09-20" || slug === "soiree-halloween-2025")) {
-    // shouldn't happen — mariage restored separately
+    // shouldn't happen - mariage restored separately
   }
   return saved;
 }
@@ -277,7 +277,7 @@ async function main() {
     const [kind, slug] = result.page.split("/");
     if (!kind || !slug) continue;
     let imgs = result.images.filter((im) => !chromeHashes.has(im.hash));
-    // Prefer larger content first for cover quality among DOM order already set —
+    // Prefer larger content first for cover quality among DOM order already set -
     // but promote best product shot: first image with min side >= 400 if current first is awkward
     if (imgs.length > 1) {
       const firstOk = imgs[0].w >= 400 || imgs[0].h >= 400 || (!imgs[0].w && imgs[0].buf.length > 40000);

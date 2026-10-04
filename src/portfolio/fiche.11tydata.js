@@ -3,12 +3,12 @@ module.exports = {
     title: (data) => {
       const p = data.projet;
       if (!p) return data.title;
-      return `${p.titre} — ${p.annee} | Portfolio Event'Light`;
+      return `${p.titre} - ${p.annee} | Portfolio Event'Light`;
     },
     description: (data) => {
       const p = data.projet;
       if (!p) return data.description;
-      return p.projet || p.resume || `${p.titre} — réalisation Event'Light.`;
+      return p.projet || p.resume || `${p.titre} - réalisation Event'Light.`;
     },
     breadcrumbs: (data) => {
       if (!data.projet) return [];

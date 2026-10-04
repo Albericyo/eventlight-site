@@ -50,15 +50,15 @@ permalink: "/nos-formules/{{ formule.slug }}/"
           <li>{{ item }}</li>
           {% endfor %}
         </ul>
-        <p class="section-note" style="margin-top:12px">Le vidéo mapping et le matériel à la carte restent hors packs formules — on les calibre au devis.</p>
+        <p class="section-note" style="margin-top:12px">Le vidéo mapping et le matériel à la carte restent hors packs formules - on les calibre au devis.</p>
       </div>
     </div>
   </section>
 
   <p class="section-note" style="margin-top:28px">{{ formules.personnalisation }}</p>
-  <p>
+  <p class="section-cta">
     <a class="btn solid" href="/devis/?type={{ formule.devisType | urlencode }}">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3L20 12L4 21Z"/></svg>
       Demander un devis {{ formule.titre | lower }}
     </a>
   </p>

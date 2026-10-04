@@ -1,4 +1,4 @@
-# Event'Light — site
+# Event'Light - site
 
 Site statique généré avec **Eleventy (11ty)**, à partir du contenu du site Google Sites [eventlight.net](https://www.eventlight.net/).
 
@@ -27,5 +27,5 @@ Prévisualisation : http://localhost:8080
 ## Mise en ligne (Netlify)
 
 1. Importer le repo GitHub `eventlight-site`
-2. Build : `npm run build` — Publish : `_site`
+2. Build : `npm run build` - Publish : `_site`
 3. Brancher `eventlight.net` dans Domain management

@@ -15,7 +15,7 @@ permalink: "/location/{{ produit.slug }}/"
   <div class="product-sheet">
     <div class="preview product-monitor">
       {% if shots.length %}
-      <img class="product-photo" src="{{ shots[0] }}" alt="{{ produit.nom }} en location à Amiens — Event'Light" width="900" height="675">
+      <img class="product-photo" src="{{ shots[0] }}" alt="{{ produit.nom }} en location à Amiens - Event'Light" width="900" height="675">
       {% else %}
       <div class="layer2 on" data-layer="lumiere"></div>
       <div class="layer2 on" data-layer="mapping"></div>
@@ -55,7 +55,7 @@ permalink: "/location/{{ produit.slug }}/"
   {% if yt %}
   <div class="map-embed" style="margin-top:32px">
     <iframe
-      title="Démonstration — {{ produit.nom }}"
+      title="Démonstration - {{ produit.nom }}"
       src="https://www.youtube-nocookie.com/embed/{{ yt }}"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen

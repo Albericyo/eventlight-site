@@ -1,7 +1,7 @@
 [
   {
     "slug": "soiree-halloween-2025",
-    "titre": "Soirée à thème — Halloween",
+    "titre": "Soirée à thème - Halloween",
     "sousTitre": "Soirée Halloween",
     "annee": "2025",
     "type": "Soirée",
@@ -17,8 +17,8 @@
   },
   {
     "slug": "pignan",
-    "titre": "Mapping — Pignan Millénaire",
-    "sousTitre": "Mairie de Pignan — Château de Turenne",
+    "titre": "Mapping - Pignan Millénaire",
+    "sousTitre": "Mairie de Pignan - Château de Turenne",
     "annee": "2025",
     "type": "Mapping",
     "production": "Super U Pignan",
@@ -34,7 +34,7 @@
   },
   {
     "slug": "saint-jean",
-    "titre": "Mapping en 48h — Cathédrale Saint-Jean",
+    "titre": "Mapping en 48h - Cathédrale Saint-Jean",
     "sousTitre": "Lyon",
     "annee": "2024",
     "type": "Mapping",
@@ -49,7 +49,7 @@
   },
   {
     "slug": "pba-2024",
-    "titre": "Mapping — Palais des Beaux-Arts",
+    "titre": "Mapping - Palais des Beaux-Arts",
     "sousTitre": "Lille",
     "annee": "2024",
     "type": "Mapping",
@@ -64,7 +64,7 @@
   {
     "slug": "arbre-de-noel-pompier-2023",
     "titre": "Arbre de Noël des pompiers",
-    "sousTitre": "Moreuil — décembre 2023",
+    "sousTitre": "Moreuil - décembre 2023",
     "annee": "2023",
     "type": "Événement",
     "production": "Event'Light",
@@ -78,7 +78,7 @@
   },
   {
     "slug": "gare-saint-paul",
-    "titre": "Mapping — Gare Saint-Paul",
+    "titre": "Mapping - Gare Saint-Paul",
     "sousTitre": "Lyon",
     "annee": "2023",
     "type": "Mapping",
@@ -92,8 +92,8 @@
   },
   {
     "slug": "anniversaire-guinguette",
-    "titre": "Anniversaire — Guinguette",
-    "sousTitre": "Normandie — février 2023",
+    "titre": "Anniversaire - Guinguette",
+    "sousTitre": "Normandie - février 2023",
     "annee": "2023",
     "type": "Anniversaire",
     "production": "Event'Light",
@@ -107,7 +107,7 @@
   },
   {
     "slug": "adj-2021",
-    "titre": "Mapping — Atelier des Jumeaux",
+    "titre": "Mapping - Atelier des Jumeaux",
     "sousTitre": "Noël 2021",
     "annee": "2021",
     "type": "Mapping",
@@ -124,7 +124,7 @@
   {
     "slug": "gala-ffeo",
     "titre": "Gala FFEO",
-    "sousTitre": "Terrasses du Parc, Lyon — 2021",
+    "sousTitre": "Terrasses du Parc, Lyon - 2021",
     "annee": "2021",
     "type": "Gala",
     "production": "Event'Light",
@@ -138,8 +138,8 @@
   },
   {
     "slug": "le-pavillon-bleu",
-    "titre": "Mapping — Le Pavillon Bleu",
-    "sousTitre": "Amiens — projet",
+    "titre": "Mapping - Le Pavillon Bleu",
+    "sousTitre": "Amiens - projet",
     "annee": "Projet",
     "type": "Mapping",
     "production": "Event'Light",
@@ -156,7 +156,7 @@
   },
   {
     "slug": "adj-2020",
-    "titre": "Mapping — Atelier des Jumeaux",
+    "titre": "Mapping - Atelier des Jumeaux",
     "sousTitre": "Noël 2020",
     "annee": "2020",
     "type": "Mapping",
@@ -173,8 +173,8 @@
   },
   {
     "slug": "la-maison-de-la-motte",
-    "titre": "Mapping — Gîte La Maison de La Motte",
-    "sousTitre": "Anniversaire surprise — 2020",
+    "titre": "Mapping - Gîte La Maison de La Motte",
+    "sousTitre": "Anniversaire surprise - 2020",
     "annee": "2020",
     "type": "Mapping",
     "production": "Event'Light",
@@ -191,7 +191,7 @@
   {
     "slug": "mapping-halloween-2018",
     "titre": "Mapping Halloween",
-    "sousTitre": "Amiens — 2019",
+    "sousTitre": "Amiens - 2019",
     "annee": "2019",
     "type": "Mapping",
     "production": "Event'Light",

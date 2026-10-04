@@ -5,32 +5,28 @@ description: "Event'Light : location et installation sono, lumière, effets et s
 ---
 
 <section class="hero">
-  <div class="play-wrap">
-    <button type="button" class="play-btn" id="hero-play" aria-label="Composer la lumière">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
-    </button>
-  </div>
+  <p class="hero-kicker mono">Event'Light · Amiens</p>
   <h1>Composez la lumière</h1>
-  <p class="lead">Particuliers et professionnels : mariage, anniversaire, comité d'entreprise, manifestation sportive. Sono, lumière, effets et <strong>vidéo mapping</strong> à Amiens — sur devis, clé en main ou en location.</p>
-  <div class="hero-tracks">
-    <span><i style="background:var(--cyan)"></i>Lumière</span>
-    <span><i style="background:var(--red)"></i>Mapping</span>
-    <span><i style="background:var(--yellow)"></i>Effets</span>
-    <span><i style="background:var(--blue)"></i>Son</span>
+  <p class="lead">Particuliers et professionnels : mariage, anniversaire, comité d'entreprise, manifestation sportive. Sono, lumière, effets et <strong>vidéo mapping</strong> à Amiens - sur devis, clé en main ou en location.</p>
+  <div class="hero-tracks" aria-hidden="true">
+    <span><i class="swatch-cyan"></i>Lumière</span>
+    <span><i class="swatch-red"></i>Mapping</span>
+    <span><i class="swatch-yellow"></i>Effets</span>
+    <span><i class="swatch-blue"></i>Son</span>
   </div>
   <div class="hero-actions">
     <a class="btn solid" href="/devis/">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3L20 12L4 21Z"/></svg>
       Demander un devis
     </a>
-    <a class="btn ghost-dark" href="/location/">Catalogue location</a>
+    <a class="btn" href="/location/">Catalogue location</a>
   </div>
 </section>
 
 <div class="wrap">
   <section class="section" id="composer" data-composer>
     <h2 class="section-title">Composez votre projet</h2>
-    <p class="section-note">Choisissez le type d'événement et les pistes. On vous propose une formule de départ et des options — le devis reste personnalisé.</p>
+    <p class="section-note">Choisissez le type d'événement et les pistes. On vous propose une formule de départ et des options - le devis reste personnalisé.</p>
 
     <fieldset class="composer-types">
       <legend class="mono composer-step">1 · Type d'événement</legend>
@@ -64,7 +60,7 @@ description: "Event'Light : location et installation sono, lumière, effets et s
       <aside class="composer-summary" aria-live="polite">
         <p class="mono composer-step">Orientation</p>
         <h3 class="composer-summary-title" data-composer-title>Formule Mariage</h3>
-        <p class="composer-summary-pack" data-composer-pack>Pack Standard — à partir de 799 €</p>
+        <p class="composer-summary-pack" data-composer-pack>Pack Standard - à partir de 799 €</p>
         <p class="composer-summary-tracks" data-composer-pistes>Pistes : lumière, son, effets</p>
         <ul class="composer-addons" data-composer-addons></ul>
         <p class="composer-summary-hint" data-composer-hint></p>
@@ -110,7 +106,7 @@ description: "Event'Light : location et installation sono, lumière, effets et s
       <li>
         <a class="card-link" href="/location/{{ c.slug }}/">
           <div class="frame {{ loop.index0 | folioFrame }}{% if thumb %} has-photo{% endif %}" data-duration="{{ 90 + loop.index0 * 15 }}">
-            {% if thumb %}<img src="{{ thumb }}" alt="{{ c.nom }} — location Event'Light Amiens" width="640" height="400" loading="lazy">{% endif %}
+            {% if thumb %}<img src="{{ thumb }}" alt="{{ c.nom }} - location Event'Light Amiens" width="640" height="400" loading="lazy">{% endif %}
             <span class="badge mono">CAT</span>
             <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
           </div>
@@ -119,12 +115,12 @@ description: "Event'Light : location et installation sono, lumière, effets et s
       </li>
       {% endfor %}
     </ul>
-    <p style="margin-top:24px"><a class="btn" href="/location/">Ouvrir le catalogue</a></p>
+    <p class="section-cta"><a class="btn" href="/location/">Ouvrir le catalogue</a></p>
   </section>
 
   <section class="section">
     <h2 class="section-title">Portfolio</h2>
-    <p class="section-note">Mappings, mariages, galas — réalisations Event'Light.</p>
+    <p class="section-note">Mappings, mariages, galas - réalisations Event'Light.</p>
     <div class="polaroids">
       {% for projet in portfolio %}
       {% if loop.index <= 6 %}
@@ -132,7 +128,7 @@ description: "Event'Light : location et installation sono, lumière, effets et s
       <a class="clip" href="/portfolio/{{ projet.slug }}/">
         <div class="frame {{ loop.index0 | folioFrame }}{% if cover %} has-photo{% endif %}" data-duration="{{ 100 + loop.index0 * 30 }}">
           {% if cover %}
-          <img src="{{ cover }}" alt="{{ projet.titre }} — {{ projet.annee }}, Event'Light" width="800" height="500" loading="lazy">
+          <img src="{{ cover }}" alt="{{ projet.titre }} - {{ projet.annee }}, Event'Light" width="800" height="500" loading="lazy">
           {% endif %}
           <span class="badge mono">{{ projet.type }}</span>
           <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
@@ -142,7 +138,7 @@ description: "Event'Light : location et installation sono, lumière, effets et s
       {% endif %}
       {% endfor %}
     </div>
-    <p style="margin-top:24px"><a class="btn" href="/portfolio/">Voir le portfolio</a></p>
+    <p class="section-cta"><a class="btn" href="/portfolio/">Voir le portfolio</a></p>
   </section>
 
   <section class="section">

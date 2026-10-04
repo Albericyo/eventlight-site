@@ -3,7 +3,7 @@ module.exports = {
     title: (data) => {
       const p = data.produit;
       if (!p) return data.title;
-      return `Location ${p.nom} Amiens — ${p.prix} | Event'Light`;
+      return `Location ${p.nom} Amiens - ${p.prix} | Event'Light`;
     },
     description: (data) => {
       const p = data.produit;

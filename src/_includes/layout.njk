@@ -33,7 +33,7 @@
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:image" content="{{ site.url }}{{ site.ogImage }}">
-  <meta property="og:image:alt" content="Event'Light — location sono, lumière et vidéo mapping à Amiens">
+  <meta property="og:image:alt" content="Event'Light - location sono, lumière et vidéo mapping à Amiens">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ pageTitle }}">
@@ -53,20 +53,20 @@
 
   <header class="chrome">
     <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
-    <a href="/" class="logo" aria-label="Event'Light, accueil — location sono et lumière à Amiens">
-      <svg class="logo-mark" viewBox="0 0 78 40" aria-hidden="true">
-        <g class="logo-tri">
-          <g class="logo-tri-rgb">
-            <polygon class="logo-tri-r" fill="#FF2A2A" points="18,20 72,4 72,14.7"/>
-            <polygon class="logo-tri-g" fill="#00E5FF" points="18,20 72,14.7 72,25.3"/>
-            <polygon class="logo-tri-b" fill="#2B4CFF" points="18,20 72,25.3 72,36"/>
-          </g>
+    <a href="/" class="logo" aria-label="Event'Light, accueil - location sono et lumière à Amiens">
+      <svg class="logo-mark" viewBox="0 0 88 56" aria-hidden="true">
+        <g class="logo-fringe" opacity=".45" fill="none" stroke-width="1.75" stroke-linejoin="miter" stroke-linecap="square">
+          <rect class="logo-fringe-c" x="7.35" y="18" width="20" height="20" stroke="#00E5FF"/>
+          <polygon class="logo-fringe-c" points="17.35,28 79.35,4 79.35,52" stroke="#00E5FF"/>
+          <rect class="logo-fringe-r" x="8.65" y="18" width="20" height="20" stroke="#FF2A2A"/>
+          <polygon class="logo-fringe-r" points="18.65,28 80.65,4 80.65,52" stroke="#FF2A2A"/>
         </g>
-        <rect class="logo-sq-c" x="7.4" y="10" width="20" height="20" fill="none" stroke="#00E5FF" stroke-width="1.2"/>
-        <rect class="logo-sq-r" x="8.6" y="10" width="20" height="20" fill="none" stroke="#FF2A2A" stroke-width="1.2"/>
-        <rect class="logo-sq" x="8" y="10" width="20" height="20" fill="none" stroke="#fff" stroke-width="1.7"/>
+        <g class="logo-core" fill="none" stroke="#fff" stroke-width="1.85" stroke-linejoin="miter" stroke-linecap="square">
+          <rect x="8" y="18" width="20" height="20"/>
+          <polygon class="logo-beam" points="18,28 80,4 80,52"/>
+        </g>
       </svg>
-      <span>Event'Light</span>
+      <span class="logo-wordmark">Event'Light</span>
     </a>
     <div class="chrome-meta">
       <span class="live-badge mono"><i></i>LIVE</span>
@@ -102,7 +102,15 @@
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
-        <p class="footer-brand">Event'Light</p>
+        <p class="footer-brand">
+          <svg class="footer-mark" viewBox="0 0 88 56" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="1.85" stroke-linejoin="miter" stroke-linecap="square">
+              <rect x="8" y="18" width="20" height="20"/>
+              <polygon points="18,28 80,4 80,52"/>
+            </g>
+          </svg>
+          Event'Light
+        </p>
         <p class="muted">{{ site.tagline }} Location et prestation sono, lumière, effets, structures et <a href="/portfolio/">vidéo mapping</a> à Amiens (Somme).</p>
         <p class="muted">{{ site.address }}</p>
       </div>
@@ -128,13 +136,13 @@
         <h2>Contact</h2>
         <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
         {% for c in site.contacts %}
-        <p>{{ c.nom }} — <a href="{{ c.telHref }}">{{ c.tel }}</a></p>
+        <p>{{ c.nom }} - <a href="{{ c.telHref }}">{{ c.tel }}</a></p>
         {% endfor %}
         <p><a href="{{ site.facebook }}">Facebook</a> · <a href="{{ site.instagram }}">Instagram</a> · <a href="{{ site.youtube }}">YouTube</a></p>
         <p><a href="/mentions-legales/">Mentions légales / CGV</a></p>
       </div>
     </div>
-    <p class="legal-line wrap">© 2026 Event'Light — {{ site.address }} — SIRET {{ site.siretRaw }} — Tous nos prix sont TTC — {{ site.tva }} — Les prix de location journaliers s'appliquent aussi au week-end.</p>
+    <p class="legal-line wrap">© 2026 Event'Light - {{ site.address }} - SIRET {{ site.siretRaw }} - Tous nos prix sont TTC - {{ site.tva }} - Les prix de location journaliers s'appliquent aussi au week-end.</p>
   </footer>
 
   <div class="transport" role="region" aria-label="Contrôles de lecture">
