@@ -9,47 +9,79 @@ breadcrumbs:
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">DEVIS</p>
     <h1>Demander un devis</h1>
-    <p class="lede">Décrivez votre événement. On revient vers vous avec un calage technique et un tarif - aussi joignables au {{ site.contacts[0].tel }}.</p>
+    <p class="lede">Décrivez votre événement. On revient vers vous avec ce qu'il faut prévoir et un tarif. Le devis est gratuit, valable 30 jours.</p>
   </header>
 
-  <form class="form-panel" name="devis" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="devis">
-    <p class="hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
+  <div class="split">
+    <div class="split-head">
+      <h2 class="sr">Nous joindre directement</h2>
+      <dl class="sheet">
+        {% for c in site.contacts %}
+        <div><dt>{{ c.nom | title }}</dt><dd><a href="{{ c.telHref }}">{{ c.tel }}</a></dd></div>
+        {% endfor %}
+        <div><dt>E-mail</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+      </dl>
+      <p>Un acompte de 30 à 50 % confirme la réservation. Le solde se règle le jour de la prestation.</p>
+    </div>
 
-    <label>Nom / Prénom
-      <input type="text" name="nom" required autocomplete="name">
-    </label>
-    <label>Email
-      <input type="email" name="email" required autocomplete="email">
-    </label>
-    <label>Téléphone
-      <input type="tel" name="telephone" autocomplete="tel">
-    </label>
-    <label>Type d'événement
-      <select name="type_evenement" id="devis-type">
-        <option value="Mariage">Mariage</option>
-        <option value="Anniversaire">Anniversaire</option>
-        <option value="Comité d'entreprise">Comité d'entreprise</option>
-        <option value="Manifestation sportive">Manifestation sportive</option>
-        <option value="Location de matériel">Location de matériel</option>
-        <option value="Vidéo mapping">Vidéo mapping</option>
-        <option value="Autre">Autre</option>
-      </select>
-    </label>
-    <label>Lieu (ville)
-      <input type="text" name="lieu" placeholder="Amiens, …" autocomplete="address-level2">
-    </label>
-    <label>Date de l'événement
-      <input type="date" name="date_evenement">
-    </label>
-    <label>Votre demande
-      <textarea name="message" id="devis-message" rows="5" required placeholder="Lieu, jauge, pistes souhaitées (son, lumière, mapping, effets)…"></textarea>
-    </label>
-    <button type="submit" class="btn solid">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
-      Envoyer ma demande
-    </button>
-  </form>
+    <form class="split-body form" name="devis" method="POST" action="/devis/merci/" data-netlify="true" netlify-honeypot="bot-field" data-devis>
+      <input type="hidden" name="form-name" value="devis">
+      <p class="hp"><label>Ne pas remplir : <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+      <div class="field-full selection" id="selection" data-selection hidden>
+        <h2 style="font: 600 1.125rem/1.3 var(--texte)">Votre sélection de matériel</h2>
+        <ul></ul>
+        <p class="selection-total"><span>Estimation, hors livraison</span><span data-selection-total></span></p>
+        <p class="note">Le tarif journalier vaut aussi pour le week-end. <button class="link-btn" type="button" data-selection-vider>Vider la sélection</button></p>
+        <textarea name="materiel" id="devis-materiel" hidden></textarea>
+      </div>
+
+      <div class="field">
+        <label for="devis-nom">Nom et prénom</label>
+        <input type="text" id="devis-nom" name="nom" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="devis-email">E-mail</label>
+        <input type="email" id="devis-email" name="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="devis-tel">Téléphone</label>
+        <input type="tel" id="devis-tel" name="telephone" autocomplete="tel">
+        <small>Facultatif, mais c'est souvent plus rapide.</small>
+      </div>
+      <div class="field">
+        <label for="devis-type">Type d'événement</label>
+        <select id="devis-type" name="type_evenement">
+          <option value="Mariage">Mariage</option>
+          <option value="Anniversaire">Anniversaire</option>
+          <option value="Comité d'entreprise">Comité d'entreprise</option>
+          <option value="Manifestation sportive">Manifestation sportive</option>
+          <option value="Location de matériel">Location de matériel</option>
+          <option value="Vidéo mapping">Vidéo mapping</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="devis-lieu">Lieu</label>
+        <input type="text" id="devis-lieu" name="lieu" placeholder="Ville ou salle" autocomplete="address-level2">
+      </div>
+      <div class="field">
+        <label for="devis-date">Date de l'événement</label>
+        <input type="date" id="devis-date" name="date_evenement">
+      </div>
+      <div class="field">
+        <label for="devis-invites">Nombre d'invités</label>
+        <input type="number" id="devis-invites" name="invites" min="1" inputmode="numeric" placeholder="Environ">
+      </div>
+      <div class="field field-full">
+        <label for="devis-message">Votre demande</label>
+        <textarea id="devis-message" name="message" rows="6" required placeholder="La salle, les horaires, ce que vous avez en tête : son, lumière, effets, mapping…"></textarea>
+      </div>
+      <div class="field-full actions">
+        <button type="submit" class="btn btn-plein">Envoyer ma demande {% include "logo/signe-trait.svg" %}</button>
+      </div>
+      <p class="field-full note">Vos coordonnées servent uniquement à vous répondre. Elles ne sont ni vendues ni cédées. <a href="/mentions-legales/#donnees">En savoir plus</a></p>
+    </form>
+  </div>
 </div>

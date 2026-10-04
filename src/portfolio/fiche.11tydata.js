@@ -13,8 +13,8 @@ module.exports = {
     breadcrumbs: (data) => {
       if (!data.projet) return [];
       return [
-        { name: "Portfolio", url: "/portfolio/" },
-        { name: data.projet.titre }
+        { name: "Réalisations", url: "/portfolio/" },
+        { name: String(data.projet.titre).replace(/^Mapping(?: en 48h)? - /, "").replace(/ - /g, ", ") }
       ];
     }
   }

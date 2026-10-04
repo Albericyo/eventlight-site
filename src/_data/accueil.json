@@ -1,0 +1,56 @@
+{
+  "scenes": [
+    {
+      "id": "scene",
+      "label": "Une scène",
+      "projet": "arbre-de-noel-pompier-2023",
+      "image": 2,
+      "position": "60% 35%",
+      "legende": "Arbre de Noël des pompiers, Moreuil, 2023"
+    },
+    {
+      "id": "soiree",
+      "label": "Une soirée",
+      "projet": "gala-ffeo",
+      "image": 4,
+      "position": "55% 30%",
+      "legende": "Gala FFEO, Terrasses du Parc, Lyon, 2021"
+    },
+    {
+      "id": "mariage",
+      "label": "Un mariage",
+      "projet": "mariage-2025-09-20",
+      "image": 0,
+      "position": "30% 60%",
+      "legende": "Mariage, 20 septembre 2025"
+    },
+    {
+      "id": "facade",
+      "label": "Une façade",
+      "projet": "pignan",
+      "image": 0,
+      "position": "50% 50%",
+      "legende": "Pignan, 1000 ans. Rendu du mapping sur la mairie, 2025"
+    }
+  ],
+  "realisations": ["pignan", "saint-jean", "arbre-de-noel-pompier-2023", "pba-2024", "gala-ffeo"],
+  "mapping": { "projet": "saint-jean", "image": 2 },
+  "etapes": [
+    {
+      "titre": "Vous décrivez l'événement",
+      "texte": "Par le formulaire, par téléphone ou par e-mail : la date, le lieu, le nombre d'invités."
+    },
+    {
+      "titre": "On vous envoie un devis",
+      "texte": "Chiffré pour votre lieu et votre soirée, valable 30 jours."
+    },
+    {
+      "titre": "Vous réservez la date",
+      "texte": "Le devis signé et un acompte de 30 à 50 % bloquent la date."
+    },
+    {
+      "titre": "On s'occupe du reste",
+      "texte": "Montage, prestation, démontage. Le solde se règle le jour même."
+    }
+  ]
+}

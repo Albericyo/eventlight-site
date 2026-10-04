@@ -1,0 +1,63 @@
+{# Composants réutilisés d'une page à l'autre. À importer avec « with context ». #}
+
+{# Une référence du catalogue, en vitrine. « niveau » : rang du titre (3 par défaut, 2 quand la liste suit directement le h1). #}
+{% macro item(p, niveau = 3) %}
+{% set cover = p.slug | coverProduit %}
+{% set prix = p.prix | prixDetail %}
+{% set catSlug = p.categorie | categorieSlug(categories) %}
+<li class="item">
+  <a class="vitrine" href="/location/{{ p.slug }}/" tabindex="-1" aria-hidden="true">
+    {% if cover %}{% img cover, "", "(min-width: 60em) 18rem, (min-width: 34em) 45vw, 100vw" %}{% elif p.slug | aPicto %}{% picto p.slug %}{% else %}{% picto catSlug %}{% endif %}
+    <span class="tag">{{ prix.montant }}&nbsp;{{ prix.unite }}{% if prix.note %}, {{ prix.note }}{% endif %}</span>
+  </a>
+  <div>
+    <h{{ niveau }} class="item-nom"><a href="/location/{{ p.slug }}/">{{ p.nom }}</a></h{{ niveau }}>
+    <p class="clamp-3">{{ p.description | typo }}</p>
+  </div>
+  <div class="item-foot">
+    <button class="btn btn-s add" type="button" data-add="{{ p.slug }}" data-nom="{{ p.nom }}" data-prix="{{ p.prix }}" aria-label="Ajouter {{ p.nom }} à ma sélection">Ajouter</button>
+  </div>
+</li>
+{% endmacro %}
+
+{# Une réalisation, sur son écran. #}
+{% macro work(projet, large) %}
+{% set cover = projet.slug | cover("portfolio") %}
+{% set tailles = "(min-width: 62em) " + ("56vw" if large else "28vw") + ", (min-width: 36em) 50vw, 100vw" %}
+<a class="work{% if large %} work-wide{% endif %}" href="/portfolio/{{ projet.slug }}/" data-type="{{ projet.type }}">
+  <span class="screen{% if not cover %} screen-empty{% endif %}">
+    {% if cover %}{% img cover, "", tailles %}{% else %}{% include "logo/signe-trait.svg" %}{% endif %}
+    <span class="tag">{{ projet.type }}</span>
+  </span>
+  <span class="work-cap"><b>{{ projet.titre | titreCourt }}</b><span>{{ projet.annee }}</span></span>
+</a>
+{% endmacro %}
+
+{# Bandeau d'appel en bas de page. #}
+{% macro band(titre, texte, lien, libelle) %}
+<section class="section">
+  <div class="wrap">
+    <div class="band">
+      <div>
+        <h2>{{ titre | typo }}</h2>
+        <p>{{ texte | safe }}</p>
+      </div>
+      <a class="btn btn-plein" href="{{ lien }}">{{ libelle }} {% include "logo/signe-trait.svg" %}</a>
+    </div>
+  </div>
+</section>
+{% endmacro %}
+
+{# Une rangée de formule. #}
+{% macro row(f) %}
+{% set recommande = f.packs[0] %}
+{% for p in f.packs %}{% if p.featured %}{% set recommande = p %}{% endif %}{% endfor %}
+<li>
+  <a class="row" href="/nos-formules/{{ f.slug }}/">
+    <span class="row-name">{{ f.titre }}</span>
+    <span class="row-text">{{ f.accroche | typo }}</span>
+    {% set couchesRang = recommande.items | couches %}<span class="row-plan">{% plan couchesRang %}</span>
+    <span class="price"><small>à partir de</small><b>{{ f.packs[0].prix | typo }}</b></span>
+  </a>
+</li>
+{% endmacro %}

@@ -1,0 +1,42 @@
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a href="/" aria-label="Event'Light, accueil">{% include "logo/logo-courant.svg" %}</a>
+      <p class="foot-tagline">{{ site.tagline }}</p>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <h2>Formules</h2>
+        <ul>
+          {% for f in formules.pages %}
+          <li><a href="/nos-formules/{{ f.slug }}/">{{ f.titre }}</a></li>
+          {% endfor %}
+          <li><a href="/video-mapping/">Vidéo mapping</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Location à Amiens</h2>
+        <ul>
+          {% for c in categories %}
+          <li><a href="/location/{{ c.slug }}/">{{ c.nom }}</a></li>
+          {% endfor %}
+          <li><a href="/location/">Tout le catalogue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul>
+          {% for c in site.contacts %}
+          <li>{{ c.nom | title }}<br><a href="{{ c.telHref }}">{{ c.tel }}</a></li>
+          {% endfor %}
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li><a href="{{ site.facebook }}" rel="noopener">Facebook</a>, <a href="{{ site.instagram }}" rel="noopener">Instagram</a>, <a href="{{ site.youtube }}" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot-legal">
+    <p>© {{ build.annee }} Event'Light, {{ site.address }}. SIRET {{ site.siret }}. Prix TTC, {{ site.tva }}. Les tarifs de location à la journée valent aussi pour le week-end. <a href="/mentions-legales/">Mentions légales et CGV</a>, <a href="/charte/">logo et charte graphique</a></p>
+    <button class="switch" type="button" data-salle aria-pressed="false">Éteindre la salle</button>
+  </div>
+</footer>

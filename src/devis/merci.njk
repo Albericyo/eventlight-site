@@ -1,0 +1,18 @@
+---
+layout: layout.njk
+title: "Demande envoyée | Event'Light"
+description: "Votre demande de devis est bien partie. Event'Light vous répond par e-mail ou par téléphone."
+permalink: "/devis/merci/"
+robots: noindex
+eleventyExcludeFromCollections: true
+---
+<div class="wrap" data-demande-envoyee>
+  <header class="page-head">
+    <h1>Demande envoyée</h1>
+    <p class="lede">Merci. On vous répond rapidement, par e-mail ou par téléphone. Pour une date proche, appelez directement {{ site.contacts[0].nom | title }} au <a href="{{ site.contacts[0].telHref }}">{{ site.contacts[0].tel }}</a>.</p>
+    <div class="actions">
+      <a class="btn" href="/portfolio/">Voir les réalisations</a>
+      <a class="btn" href="/">Retour à l'accueil</a>
+    </div>
+  </header>
+</div>

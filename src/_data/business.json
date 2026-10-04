@@ -2,16 +2,16 @@
   "pricingNote": "Tarifs « à partir de » pour une prestation type. Le devis final dépend du lieu, de la jauge et de la durée.",
   "tvaNote": "TVA non applicable, art. 293 B du CGI",
   "tracks": [
-    { "id": "lumiere", "label": "Lumière", "swatch": "var(--cyan)" },
-    { "id": "mapping", "label": "Mapping", "swatch": "var(--red)" },
-    { "id": "son", "label": "Son", "swatch": "var(--yellow)" },
-    { "id": "effets", "label": "Effets", "swatch": "var(--magenta)" }
+    { "id": "lumiere", "label": "Lumière" },
+    { "id": "mapping", "label": "Mapping" },
+    { "id": "son", "label": "Son" },
+    { "id": "effets", "label": "Effets" }
   ],
   "addons": [
     {
       "id": "mapping",
       "label": "Vidéo mapping",
-      "description": "Projection architecturale ou scénique sur-mesure",
+      "description": "Projection architecturale ou scénique, créée pour le lieu",
       "tracks": ["mapping"],
       "pricing": "Sur devis",
       "horsPack": true
@@ -67,7 +67,7 @@
       "formuleSlug": "mariage",
       "recommendedPack": "Pack Standard",
       "defaultTracks": ["lumiere", "son", "effets"],
-      "blurb": "Sono, lumière et effets pour la soirée - cérémonie en option Premium."
+      "blurb": "Sono, lumière et effets pour la soirée. Le kit cérémonie laïque est compris dans le pack Premium."
     },
     {
       "id": "anniversaire",
@@ -76,25 +76,25 @@
       "formuleSlug": "anniversaire",
       "recommendedPack": "Pack Essentiel",
       "defaultTracks": ["lumiere", "son"],
-      "blurb": "Packs dimensionnés pour une fête à Amiens, avec ou sans animateur."
+      "blurb": "Sono, lumière et effets dimensionnés pour votre fête, avec ou sans animateur."
     },
     {
       "id": "comite-entreprise",
-      "label": "CE",
+      "label": "Comité d'entreprise",
       "devisType": "Comité d'entreprise",
       "formuleSlug": "comite-entreprise",
       "recommendedPack": "Pack Soirée",
       "defaultTracks": ["lumiere", "son"],
-      "blurb": "Conférence ou soirée d'entreprise : on calibre sono et éclairage."
+      "blurb": "Arbre de Noël, soirée ou conférence : on règle la sono et l'éclairage sur votre salle."
     },
     {
       "id": "manifestation-sportive",
-      "label": "Sport",
+      "label": "Événement sportif",
       "devisType": "Manifestation sportive",
       "formuleSlug": "manifestation-sportive",
       "recommendedPack": "Pack Essentiel",
       "defaultTracks": ["son", "effets"],
-      "blurb": "Podium, remise des prix, ambiance sonore et effets."
+      "blurb": "Sono, micro et musique d'ambiance, puis étincelles et geysers au moment du podium."
     },
     {
       "id": "location",
@@ -104,7 +104,7 @@
       "locationUrl": "/location/",
       "recommendedPack": null,
       "defaultTracks": ["lumiere", "son"],
-      "blurb": "Catalogue à la journée, avec ou sans technicien. Pas de pack clé en main."
+      "blurb": "Tout le catalogue se loue à la journée, avec ou sans technicien."
     },
     {
       "id": "mapping",
@@ -113,7 +113,7 @@
       "formuleSlug": null,
       "recommendedPack": null,
       "defaultTracks": ["mapping", "lumiere"],
-      "blurb": "Spécialité Event'Light : projection sur-mesure, hors packs formules."
+      "blurb": "Une projection dessinée pour votre façade. Hors packs, toujours sur devis."
     }
   ]
 }

@@ -6,26 +6,41 @@ permalink: "/nos-formules/"
 breadcrumbs:
   - name: Nos formules
 ---
+{% from "macros.njk" import row, band with context %}
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">FORMULES</p>
-    <h1>Nos formules</h1>
-    {% for p in formules.intro %}
-    <p class="lede">{{ p }}</p>
-    {% endfor %}
+    <h1>Formules sono et lumière</h1>
+    <p class="lede">Quatre formules, chacune déclinée en packs. On monte, on assure la prestation, on démonte : c'est compris dans tous les prix.</p>
   </header>
 
-  <ul class="formule-grid">
-    {% for f in formules.pages %}
-    <li>
-      <a class="formule-card" href="/nos-formules/{{ f.slug }}/">
-        <span class="formule-card-index mono">CH. {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
-        <h3 class="formule-card-title">{{ f.titre }}</h3>
-        <p class="formule-card-price">À partir de {{ f.packs[0].prix }} · {{ f.packs | length }} pack{% if f.packs | length > 1 %}s{% endif %}</p>
-        <span class="formule-card-cta">Voir la formule</span>
-      </a>
-    </li>
-    {% endfor %}
+  <ul class="rows">
+    {% for f in formules.pages %}{{ row(f) }}{% endfor %}
   </ul>
 </div>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Ce que couvre un pack</h2>
+      <p>{{ business.pricingNote | typo }}</p>
+      <p class="note">{{ site.tva }}.</p>
+    </div>
+    <div class="split-body cols-2">
+      <div class="stack">
+        <h3>Dans tous les packs</h3>
+        <ul class="checks">
+          {% for item in formules.inclusBase %}<li class="plus">{{ item }}</li>{% endfor %}
+        </ul>
+      </div>
+      <div class="stack">
+        <h3>En option, au devis</h3>
+        <ul class="checks">
+          {% for item in formules.horsPackCommun %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ band("Votre événement ne rentre dans aucune case", formules.personnalisation | typo, "/devis/", "Demander un devis") }}

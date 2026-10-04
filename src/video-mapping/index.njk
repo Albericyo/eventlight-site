@@ -1,0 +1,82 @@
+---
+layout: layout.njk
+title: "Vidéo mapping à Amiens : projection sur façade | Event'Light"
+description: "Event'Light conçoit et réalise des vidéo mappings sur façade : mairie de Pignan, cathédrale Saint-Jean à Lyon, Palais des Beaux-Arts de Lille. Prestation sur devis, à Amiens et au-delà."
+permalink: "/video-mapping/"
+breadcrumbs:
+  - name: Vidéo mapping
+---
+{% from "macros.njk" import work, band with context %}
+{% set vedette = portfolio | parSlug("pignan") %}
+{% set shots = "pignan" | media("portfolio") %}
+{% set yt = "pignan" | youtubeId %}
+<div class="wrap">
+  <header class="page-head">
+    {% include "breadcrumbs.njk" %}
+    <h1>Vidéo mapping à Amiens et au-delà</h1>
+    <p class="lede">Une projection dessinée pour un bâtiment précis : chaque fenêtre, chaque corniche devient un élément de l'image. Event'Light conçoit et réalise ces projections pour une commune, une entreprise ou une fête de famille.</p>
+  </header>
+
+  {% if yt %}
+  <figure class="stack" style="gap: var(--e-3)">
+    <div class="video" data-video="{{ yt }}" data-titre="Vidéo : {{ vedette.titre }}">
+      {% if shots.length %}<img src="{{ shots[0].base }}-{{ shots[0].largeurs | last }}.webp" width="{{ shots[0].w }}" height="{{ shots[0].h }}" alt="" decoding="async" fetchpriority="high" data-fond="{{ shots[0].fond }}">{% endif %}
+      <a class="video-play" href="https://www.youtube.com/watch?v={{ yt }}" rel="noopener">Lire la vidéo</a>
+    </div>
+    <figcaption class="note">Pignan, 1000 ans : projection sur la mairie, ancien château de Turenne, 2025. <a href="/portfolio/pignan/">Voir le projet</a></figcaption>
+  </figure>
+  {% endif %}
+</div>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Comment on s'y prend</h2>
+      <p>Le mapping ne fait partie d'aucun pack : chaque façade demande son propre travail, chiffré au devis.</p>
+    </div>
+    <div class="split-body stack-l">
+      <ol class="steps">
+        <li>
+          <h3>Relever la façade</h3>
+          <p>Des photos sur place, puis la photogrammétrie : le bâtiment devient un modèle 3D fidèle.</p>
+        </li>
+        <li>
+          <h3>Tracer le gabarit</h3>
+          <p>Du modèle, on tire les matrices 2D et 3D. C'est le calque sur lequel toutes les images sont dessinées.</p>
+        </li>
+        <li>
+          <h3>Créer les images</h3>
+          <p>Modélisation et animation, montage, effets, bande son. Le scénario s'écrit avec vous.</p>
+        </li>
+        <li>
+          <h3>Projeter</h3>
+          <p>Calage des vidéoprojecteurs sur place, à plusieurs si la façade le demande.</p>
+        </li>
+      </ol>
+      <dl class="sheet">
+        <div><dt>Relevé</dt><dd>Meshroom (photogrammétrie)</dd></div>
+        <div><dt>Création</dt><dd>Blender, After Effects, Premiere Pro, Photoshop</dd></div>
+        <div><dt>Rendu</dt><dd>Ferme de rendu Sheepit pour les exports Blender</dd></div>
+        <div><dt>Diffusion</dt><dd>Resolume Arena, mono ou multi-projection</dd></div>
+        <div><dt>Tarif</dt><dd>Sur devis, selon la façade et la durée</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Déjà projeté</h2>
+      <p>Des commandes, un concours à Lille, un défi en 48 heures à Lyon, et des projets menés pour le plaisir de s'exercer.</p>
+    </div>
+    <div class="split-body">
+      <div class="works">
+        {% for projet in portfolio | deType("Mapping") %}{{ work(projet, false) }}{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set lienDevis = "/devis/?type=" + ("Vidéo mapping" | urlencode) %}
+{{ band("Une façade à habiller", "Envoyez-nous une photo du bâtiment et l'occasion. On vous dit ce qui est faisable et à quel prix.", lienDevis, "Demander un devis mapping") }}

@@ -4,7 +4,7 @@
     "Que vous soyez un comité d'entreprise qui fête un arbre de Noël, nos éclairages architecturaux seront là pour donner vie à votre lieu de réception.",
     "Ou que vous soyez organisateur d'un évènement sportif, donnez aux vainqueurs un souvenir mémorable de leur victoire en donnant vie à votre podium avec nos étincelles, serpentins et confettis."
   ],
-  "personnalisation": "Possibilité de personnaliser votre événement - mapping, effets supplémentaires, animateur, cérémonie - contactez-nous via l'onglet devis.",
+  "personnalisation": "Chaque événement se personnalise : mapping, effets supplémentaires, animateur, cérémonie. Dites-nous ce qu'il vous faut dans la demande de devis.",
   "inclusBase": [
     "Montage / prestation / démontage",
     "Calage technique sur place"
@@ -18,12 +18,14 @@
   "pages": [
     {
       "slug": "anniversaire",
+      "typesPortfolio": ["Anniversaire", "Soirée"],
+      "accroche": "Une fête à votre image : sono, lumière, effets et animation, dimensionnés pour votre salle.",
       "titre": "Anniversaire",
       "usage": "anniversaire",
       "h1": "Sono et lumière pour anniversaire à Amiens",
       "seoTitle": "Sono et lumière anniversaire Amiens dès 499 € | Event'Light",
       "seoDescription": "Packs anniversaire à Amiens dès 499 € : sono FBT, totems, lyres, brouillard, étincelles froides et animateur. Montage et démontage inclus.",
-      "description": "Une fête d'anniversaire à votre effigie : sono, lumière, effets et animation, dimensionnés sur-mesure à Amiens et dans la Somme.",
+      "description": "Sono, lumière, effets et animation pour votre anniversaire à Amiens et dans la Somme, dimensionnés selon la salle et le nombre d'invités.",
       "devisType": "Anniversaire",
       "optionsHorsPack": [
         "Vidéo mapping",
@@ -60,12 +62,14 @@
     },
     {
       "slug": "mariage",
+      "typesPortfolio": ["Mariage"],
+      "accroche": "Pour l'entrée des mariés et l'ouverture de bal : étincelles froides et fumée lourde.",
       "titre": "Mariage",
       "usage": "mariage",
       "h1": "Sono, lumière et effets pour mariage à Amiens",
       "seoTitle": "Sono et lumière mariage Amiens dès 550 € | Event'Light",
       "seoDescription": "Packs mariage à Amiens dès 550 € : sono FBT, 4 totems, lyres, brouillard, étincelles froides, fumée lourde, animateur et kit cérémonie laïque.",
-      "description": "Sonorisation, éclairage, effets et option cérémonie laïque pour sublimer votre mariage à Amiens et dans la Somme.",
+      "description": "Sonorisation, éclairage et effets pour votre mariage à Amiens et dans la Somme. Le kit pour la cérémonie laïque est compris dans le pack Premium.",
       "devisType": "Mariage",
       "optionsHorsPack": [
         "Vidéo mapping façade ou salle",
@@ -118,6 +122,8 @@
     },
     {
       "slug": "comite-entreprise",
+      "typesPortfolio": ["Événement", "Gala"],
+      "accroche": "Arbre de Noël, soirée ou conférence : l'éclairage architectural habille votre lieu de réception.",
       "titre": "Comité d'entreprise",
       "usage": "comite-entreprise",
       "pathGoogle": "comité-dentreprise",
@@ -161,6 +167,8 @@
     },
     {
       "slug": "manifestation-sportive",
+      "typesPortfolio": [],
+      "accroche": "Un podium dont les vainqueurs se souviennent : étincelles, serpentins et confettis.",
       "titre": "Manifestation sportive",
       "usage": "manifestation-sportive",
       "h1": "Sono, micro et effets pour manifestation sportive à Amiens",

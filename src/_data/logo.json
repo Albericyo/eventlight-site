@@ -1,0 +1,32 @@
+{
+  "graisses": {
+    "fin": 8.0,
+    "courant": 16.0,
+    "fort": 30.0
+  },
+  "signe": {
+    "largeur": 343,
+    "hauteur": 216,
+    "boite": [
+      0,
+      58,
+      110,
+      100
+    ],
+    "pointe": [
+      55,
+      108
+    ],
+    "pente": "3:8",
+    "ouverture": 41.1
+  },
+  "empile": {
+    "largeur": 1520.46,
+    "hauteur": 1552.0
+  },
+  "ligne": {
+    "largeur": 3796.77,
+    "hauteur": 441.0
+  },
+  "unite": 8.819
+}

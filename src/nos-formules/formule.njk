@@ -7,74 +7,91 @@ pagination:
   addAllPagesToCollections: true
 permalink: "/nos-formules/{{ formule.slug }}/"
 ---
+{% from "macros.njk" import item, work, band with context %}
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">FORMULE</p>
     <h1>{{ formule.h1 }}</h1>
-    <p class="lede">{{ formule.description }}</p>
+    <p class="lede">{{ formule.description | typo }}</p>
   </header>
 
-  <p class="section-note">Packs progressifs : socle Essentiel / Conférence, niveau recommandé (Standard, Soirée ou Premium), puis options. Montage, prestation et démontage inclus. {{ site.tva }}.</p>
-
-  <div class="pack-grid">
+  <div class="packs">
     {% for pack in formule.packs %}
-    <article class="pack{% if pack.featured %} featured{% endif %}">
-      {% if pack.featured %}<p class="pack-badge mono">Recommandé</p>{% endif %}
-      <h2>{{ pack.nom }}</h2>
-      <p class="prix">À partir de {{ pack.prix }}</p>
-      <ul>
-        {% for item in pack.items %}
-        <li>{{ item }}</li>
+    {% set precedent = (formule.packs[loop.index0 - 1].items if not loop.first else []) %}
+    <article class="pack{% if pack.featured %} lit{% endif %}">
+      <div class="pack-head">
+        <h2>{{ pack.nom }}</h2>
+        {% if pack.featured %}<span class="tag tag-trait">Recommandé</span>{% endif %}
+      </div>
+      <p class="price"><small>à partir de</small><b>{{ pack.prix | typo }}</b></p>
+      {% set couchesPack = pack.items | couches %}{% set titrePlan = pack.nom + " : schéma de l'installation" %}
+      {% plan couchesPack, titrePlan %}
+      <ul class="checks">
+        {% for it in pack.items %}
+        <li{% if (precedent | length) and not (it in precedent) %} class="plus"{% endif %}>{{ it }}</li>
         {% endfor %}
       </ul>
+      <a class="btn{% if pack.featured %} btn-plein{% endif %}" href="/devis/?type={{ formule.devisType | urlencode }}&amp;pack={{ pack.nom | urlencode }}">Demander ce pack</a>
     </article>
     {% endfor %}
   </div>
+  {% if formule.packs | length > 1 %}<p class="note" style="margin-top: var(--e-4)">Les lignes en gras sont celles qui s'ajoutent au pack précédent. {{ site.tva }}.</p>{% endif %}
+</div>
 
-  <section class="section options-block">
-    <h2 class="section-title">Inclus / options</h2>
-    <div class="options-grid">
-      <div class="options-card">
-        <h3>Inclus dans chaque pack</h3>
-        <ul>
-          {% for item in formules.inclusBase %}
-          <li>{{ item }}</li>
-          {% endfor %}
+<section class="section">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Compris, en option</h2>
+      <p>{{ formules.personnalisation | typo }}</p>
+    </div>
+    <div class="split-body cols-2">
+      <div class="stack">
+        <h3>Dans chaque pack</h3>
+        <ul class="checks">
+          {% for it in formules.inclusBase %}<li class="plus">{{ it }}</li>{% endfor %}
         </ul>
       </div>
-      <div class="options-card">
-        <h3>Options & hors pack</h3>
-        <ul>
-          {% for item in formule.optionsHorsPack %}
-          <li>{{ item }}</li>
-          {% endfor %}
+      <div class="stack">
+        <h3>En option, au devis</h3>
+        <ul class="checks">
+          {% for it in formule.optionsHorsPack %}<li>{{ it | typo }}</li>{% endfor %}
         </ul>
-        <p class="section-note" style="margin-top:12px">Le vidéo mapping et le matériel à la carte restent hors packs formules - on les calibre au devis.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <p class="section-note" style="margin-top:28px">{{ formules.personnalisation }}</p>
-  <p class="section-cta">
-    <a class="btn solid" href="/devis/?type={{ formule.devisType | urlencode }}">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3L20 12L4 21Z"/></svg>
-      Demander un devis {{ formule.titre | lower }}
-    </a>
-  </p>
+{% set vus = [] %}
+{% for projet in portfolio %}{% if projet.type in (formule.typesPortfolio or []) %}{% set _ = vus.push(projet) %}{% endif %}{% endfor %}
+{% if vus | length %}
+<section class="section">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Déjà fait</h2>
+    </div>
+    <div class="split-body">
+      <div class="works">
+        {% for projet in vus %}{{ work(projet, false) }}{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
 
-  <section class="section">
-    <h2 class="section-title">Matériel de location souvent associé</h2>
-    <ul class="catalogue-liste">
-      {% for p in produits %}
-        {% if formule.usage in p.usages %}
-        <li>
-          <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
-          <span class="prix-tag">{{ p.prix }}</span>
-          <p>{{ p.categorie }}</p>
-        </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </section>
-</div>
+<section class="section">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Le matériel associé</h2>
+      <p>Ces références se louent aussi seules, à la journée.</p>
+      <p><a class="btn" href="/location/">Tout le catalogue</a></p>
+    </div>
+    <div class="split-body">
+      <ul class="shelf">
+        {% for p in (produits | avecUsage(formule.usage)).slice(0, 6) %}{{ item(p) }}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% set lienDevis = "/devis/?type=" + (formule.devisType | urlencode) %}
+{{ band("Vérifier une date", "Dites-nous la date, le lieu et le nombre d'invités. Le devis est gratuit et valable 30 jours.", lienDevis, "Demander un devis") }}

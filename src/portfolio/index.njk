@@ -4,36 +4,26 @@ title: "Portfolio vidéo mapping et événements | Event'Light Amiens"
 description: "Réalisations Event'Light : mappings (Pignan, cathédrale Saint-Jean, Palais des Beaux-Arts), mariages, galas et soirées à Amiens, Lyon et Lille."
 permalink: "/portfolio/"
 breadcrumbs:
-  - name: Portfolio
+  - name: Réalisations
 ---
+{% from "macros.njk" import work, band with context %}
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">PORTFOLIO</p>
-    <h1>Portfolio</h1>
-    <p class="lede">Mappings monumentaux, mariages, galas et soirées - conçus et réalisés par Event'Light, basée à Amiens. Chaque cadre est un extrait : survolez pour parcourir l'image.</p>
+    <h1>Réalisations</h1>
+    <p class="lede">Des mappings sur façade, des mariages, des galas et des soirées, conçus et réalisés par Event'Light.</p>
   </header>
 
-  <div class="polaroids">
-    {% for projet in portfolio %}
-    {% set cover = projet.slug | cover("portfolio") %}
-    <a class="clip" href="/portfolio/{{ projet.slug }}/">
-      <div class="frame {{ loop.index0 | folioFrame }}{% if cover %} has-photo{% endif %}" data-duration="{{ 100 + loop.index0 * 18 }}">
-        {% if cover %}
-        <img src="{{ cover }}" alt="{{ projet.titre }} - {{ projet.sousTitre or projet.annee }}, réalisation Event'Light" width="800" height="500" loading="lazy">
-        {% endif %}
-        <span class="badge mono">{{ projet.type }}</span>
-        <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-      </div>
-      <div class="cap">{{ projet.titre }}<span class="date">{{ projet.sousTitre }} · {{ projet.annee }}</span></div>
-    </a>
+  <div class="filters" role="group" aria-label="Filtrer les réalisations">
+    <button class="filter" type="button" data-filtre="tout" aria-pressed="true">Tout ({{ portfolio | length }})</button>
+    {% for t in portfolio | types %}
+    <button class="filter" type="button" data-filtre="{{ t }}" aria-pressed="false">{{ t }} ({{ portfolio | deType(t) | length }})</button>
     {% endfor %}
   </div>
 
-  <p class="section-cta">
-    <a class="btn solid" href="/devis/">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3L20 12L4 21Z"/></svg>
-      Composer un projet
-    </a>
-  </p>
+  <div class="works">
+    {% for projet in portfolio %}{{ work(projet, false) }}{% endfor %}
+  </div>
 </div>
+
+{{ band("Un projet du même genre", "Une façade à habiller, une soirée à sonoriser : décrivez-nous l'idée, on vous dit ce qu'il faut et combien ça coûte.", "/devis/", "Demander un devis") }}

@@ -7,37 +7,43 @@ pagination:
   addAllPagesToCollections: true
 permalink: "/location/{{ categorie.slug }}/"
 ---
+{% from "macros.njk" import item, band with context %}
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">LOCATION · AMIENS</p>
     <h1>{{ categorie.h1 }}</h1>
-    <p class="lede">{{ categorie.intro }} {{ site.livraison }}.</p>
+    <p class="lede">{{ categorie.intro | typo }}</p>
+    <p class="note">{{ site.livraison | typo }}. Tarif journalier identique le week-end.</p>
   </header>
 
-  <ul class="catalogue-liste">
-    {% for p in produits %}
-      {% if p.categorie == categorie.nom %}
-      {% set thumb = p.slug | cover("location") %}
-      <li>
-        {% if thumb %}
-        <img class="thumb" src="{{ thumb }}" alt="{{ p.nom }}" width="176" height="132" loading="lazy">
-        {% else %}
-        <span class="thumb" aria-hidden="true"></span>
-        {% endif %}
-        <div>
-          <a href="/location/{{ p.slug }}/">{{ p.nom }}</a>
-          <p>{{ p.description }}</p>
-        </div>
-        <span class="prix-tag">{{ p.prix }}</span>
-      </li>
-      {% endif %}
-    {% endfor %}
+  <ul class="shelf">
+    {% for p in produits | deCategorie(categorie.nom) %}{{ item(p, 2) }}{% endfor %}
   </ul>
-
-  <p style="margin-top:28px">
-    <a href="/location/">← Catalogue complet</a>
-    ·
-    <a class="btn solid" href="/devis/">Devis location</a>
-  </p>
 </div>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Le reste du catalogue</h2>
+    </div>
+    <div class="split-body">
+      <ul class="cats">
+        {% for c in categories %}
+        {% if c.slug != categorie.slug %}
+        {% set liste = produits | deCategorie(c.nom) %}
+        <li>
+          <a class="cat" href="/location/{{ c.slug }}/">
+            <span class="vitrine">{% picto c.slug %}</span>
+            <b>{{ c.nom }}</b>
+            <span>{{ liste | length }} références, dès {{ liste | prixMin }}&nbsp;€ par jour</span>
+          </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% set lienDevis = "/devis/?type=" + ("Location de matériel" | urlencode) %}
+{{ band("Réserver ce matériel", "Ajoutez ce qu'il vous faut à votre sélection, puis envoyez la demande avec vos dates.", lienDevis, "Demander un devis de location") }}

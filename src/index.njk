@@ -3,153 +3,205 @@ layout: layout.njk
 title: "Location sono, lumière et vidéo mapping à Amiens | Event'Light"
 description: "Event'Light : location et installation sono, lumière, effets et structures à Amiens. Mariages, anniversaires, CE, sport. Spécialiste du vidéo mapping dans la Somme."
 ---
+{% from "macros.njk" import row, work, band with context %}
 
 <section class="hero">
-  <p class="hero-kicker mono">Event'Light · Amiens</p>
-  <h1>Composez la lumière</h1>
-  <p class="lead">Particuliers et professionnels : mariage, anniversaire, comité d'entreprise, manifestation sportive. Sono, lumière, effets et <strong>vidéo mapping</strong> à Amiens - sur devis, clé en main ou en location.</p>
-  <div class="hero-tracks" aria-hidden="true">
-    <span><i class="swatch-cyan"></i>Lumière</span>
-    <span><i class="swatch-red"></i>Mapping</span>
-    <span><i class="swatch-yellow"></i>Effets</span>
-    <span><i class="swatch-blue"></i>Son</span>
-  </div>
-  <div class="hero-actions">
-    <a class="btn solid" href="/devis/">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3L20 12L4 21Z"/></svg>
-      Demander un devis
-    </a>
-    <a class="btn" href="/location/">Catalogue location</a>
+  <div class="wrap">
+    <div class="hero-stage" data-hero>
+      <h1 class="hero-title">Son, lumière et vidéo mapping à Amiens</h1>
+
+      <div class="hero-mark">
+        <div class="hero-beam">
+          {% for s in accueil.scenes %}
+          {% set m = (s.projet | media("portfolio"))[s.image] %}
+          {% if m %}
+          <img class="hero-shot{% if loop.first %} is-on{% endif %}" data-scene="{{ s.id }}"
+               src="{{ m.base }}-{{ m.largeurs | last }}.webp"
+               srcset="{% for l in m.largeurs %}{{ m.base }}-{{ l }}.webp {{ l }}w{% if not loop.last %}, {% endif %}{% endfor %}"
+               sizes="(min-width: 86rem) 68rem, 84vw"
+               width="{{ m.w }}" height="{{ m.h }}" alt="{{ s.legende }}"
+               style="object-position: {{ s.position }}"
+               {% if loop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% include "logo/signe-trait.svg" %}
+        <div class="hero-box">
+          <ul aria-label="Changer l'image projetée">
+            {% for s in accueil.scenes %}
+            <li><button class="scene-btn" type="button" data-scene-btn="{{ s.id }}" data-legende="{{ s.legende }}" data-url="/portfolio/{{ s.projet }}/" aria-pressed="{% if loop.first %}true{% else %}false{% endif %}">{{ s.label }}</button></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <p class="hero-cap">Dans le faisceau : <a href="/portfolio/{{ accueil.scenes[0].projet }}/" data-hero-cap>{{ accueil.scenes[0].legende }}</a></p>
+
+      <ul class="hero-scenes-m" aria-label="Changer l'image projetée">
+        {% for s in accueil.scenes %}
+        <li><button class="scene-btn" type="button" data-scene-btn="{{ s.id }}" data-legende="{{ s.legende }}" data-url="/portfolio/{{ s.projet }}/" aria-pressed="{% if loop.first %}true{% else %}false{% endif %}">{{ s.label }}</button></li>
+        {% endfor %}
+      </ul>
+
+      <div class="hero-lead">
+        <p>Mariage, anniversaire, soirée d'entreprise, remise de prix : on monte le son, la lumière et les effets, on reste pendant la soirée, puis on démonte. Le matériel se loue aussi à la journée.</p>
+        <div class="actions">
+          <a class="btn btn-plein" href="/devis/">Demander un devis {% include "logo/signe-trait.svg" %}</a>
+          <a class="btn" href="/location/">Voir le catalogue de location</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="wrap">
-  <section class="section" id="composer" data-composer>
-    <h2 class="section-title">Composez votre projet</h2>
-    <p class="section-note">Choisissez le type d'événement et les pistes. On vous propose une formule de départ et des options - le devis reste personnalisé.</p>
+<section class="section" id="formules">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Les formules</h2>
+      <p>Montage, prestation et démontage compris. {{ business.pricingNote | typo }}</p>
+      <p class="note">{{ site.tva }}.</p>
+    </div>
+    <div class="split-body">
+      <ul class="rows">
+        {% for f in formules.pages %}{{ row(f) }}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <fieldset class="composer-types">
-      <legend class="mono composer-step">1 · Type d'événement</legend>
-      <div class="composer-chips" role="radiogroup" aria-label="Type d'événement">
-        {% for t in business.eventTypes %}
-        <label class="composer-chip">
-          <input type="radio" name="composer-type" value="{{ t.id }}"{% if loop.first %} checked{% endif %}>
-          <span>{{ t.label }}</span>
-        </label>
+<section class="section" id="composer">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Composez votre soirée</h2>
+      <p>Choisissez le type d'événement, allumez ce qu'il vous faut. Le dessin se met à jour et on vous indique le pack de départ.</p>
+    </div>
+    <div class="split-body">
+      <div class="composer" data-composer>
+        <div class="composer-controls">
+          <fieldset>
+            <legend>Type d'événement</legend>
+            <div class="chips">
+              {% for t in business.eventTypes %}
+              <label class="chip">
+                <input type="radio" name="composer-type" id="composer-type-{{ t.id }}" value="{{ t.id }}"{% if loop.first %} checked{% endif %}>
+                <span>{{ t.label }}</span>
+              </label>
+              {% endfor %}
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>À allumer</legend>
+            <div class="toggles">
+              {% for track in business.tracks %}
+              <label class="toggle">
+                <input type="checkbox" data-piste id="composer-track-{{ track.id }}" value="{{ track.id }}"{% if track.id != "mapping" %} checked{% endif %}>
+                {% include "logo/signe-trait.svg" %}
+                <span class="toggle-label">{{ track.label }}</span>
+              </label>
+              {% endfor %}
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="composer-out lit">
+          <div data-composer-plan>{% plan ["son", "totems-4", "brouillard", "etincelles", "fumee", "animateur"], "", true %}</div>
+          <div class="stack" aria-live="polite">
+            <h3 data-composer-title>Formule Mariage</h3>
+            <p class="composer-pack" data-composer-pack>Pack Standard, à partir de 799 €</p>
+            <p data-composer-hint>{{ business.eventTypes[0].blurb }}</p>
+            <ul class="checks" data-composer-addons></ul>
+          </div>
+          <div class="actions">
+            <a class="btn btn-plein" data-composer-devis href="/devis/?type=Mariage&amp;pistes=lumiere,son,effets">Continuer vers le devis {% include "logo/signe-trait.svg" %}</a>
+            <a class="btn" data-composer-secondary href="/nos-formules/mariage/">Voir la formule</a>
+          </div>
+        </div>
+      </div>
+      <script type="application/json" id="composer-data">{{ composer | jsonLd | safe }}</script>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="location">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Le matériel se loue aussi</h2>
+      <p>Tarif à la journée, identique pour le week-end. {{ site.livraison | typo }}. Les câbles sont fournis sur demande.</p>
+      <p><a class="btn" href="/location/">Ouvrir le catalogue</a></p>
+    </div>
+    <div class="split-body">
+      <ul class="cats">
+        {% for c in categories %}
+        {% set liste = produits | deCategorie(c.nom) %}
+        <li>
+          <a class="cat" href="/location/{{ c.slug }}/">
+            <span class="vitrine">{% picto c.slug %}</span>
+            <b>{{ c.nom }}</b>
+            <span>{{ liste | length }} références, dès {{ liste | prixMin }}&nbsp;€ par jour</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="realisations">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Réalisations</h2>
+      <p>Le vidéo mapping est notre spécialité : la mairie de Pignan pour ses 1000 ans, la cathédrale Saint-Jean à Lyon, le Palais des Beaux-Arts de Lille. Et tout au long de l'année, des mariages, des galas, des soirées.</p>
+      <div class="actions">
+        <a class="btn" href="/portfolio/">Toutes les réalisations</a>
+        <a class="btn" href="/video-mapping/">Le vidéo mapping</a>
+      </div>
+    </div>
+    <div class="split-body">
+      <div class="works">
+        {% for slug in accueil.realisations %}
+        {% set projet = portfolio | parSlug(slug) %}
+        {% if projet %}{{ work(projet, loop.first) }}{% endif %}
         {% endfor %}
       </div>
-    </fieldset>
-
-    <div class="composer-layout">
-      <div class="composer-side">
-        <p class="mono composer-step">2 · Pistes à activer</p>
-        <div class="tracks" data-composer-tracks>
-          {% for track in business.tracks %}
-          <div class="track-row{% if track.id == 'lumiere' or track.id == 'son' or track.id == 'effets' %} on{% endif %}">
-            <label>
-              <input type="checkbox" name="composer-track" value="{{ track.id }}"{% if track.id == 'lumiere' or track.id == 'son' or track.id == 'effets' %} checked{% endif %}>
-              <span class="switch"></span>
-            </label>
-            <span class="track-name">{{ track.label }}</span>
-            <span class="track-swatch" style="background:{{ track.swatch }}"></span>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-
-      <aside class="composer-summary" aria-live="polite">
-        <p class="mono composer-step">Orientation</p>
-        <h3 class="composer-summary-title" data-composer-title>Formule Mariage</h3>
-        <p class="composer-summary-pack" data-composer-pack>Pack Standard - à partir de 799 €</p>
-        <p class="composer-summary-tracks" data-composer-pistes>Pistes : lumière, son, effets</p>
-        <ul class="composer-addons" data-composer-addons></ul>
-        <p class="composer-summary-hint" data-composer-hint></p>
-        <p class="composer-summary-note mono">{{ business.pricingNote }}</p>
-        <p class="composer-summary-tva mono">{{ site.tva }}</p>
-        <div class="composer-actions">
-          <a class="btn solid" data-composer-devis href="/devis/?type=Mariage&amp;pistes=lumiere,son,effets">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 3L20 12L4 21Z"/></svg>
-            Continuer vers le devis
-          </a>
-          <a class="btn" data-composer-secondary href="/nos-formules/mariage/">Voir la formule</a>
-        </div>
-      </aside>
     </div>
+  </div>
+</section>
 
-    <script type="application/json" id="composer-data">{{ { eventTypes: business.eventTypes, tracks: business.tracks, addons: business.addons, formules: formules.pages, pricingNote: business.pricingNote, tvaNote: site.tva } | jsonLd | safe }}</script>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Nos formules</h2>
-    <p class="section-note">Quatre formules pour particuliers et structures pro. Packs Essentiel → Standard / Soirée → Premium, options hors pack au devis.</p>
-    <ul class="formule-grid">
-      {% for f in formules.pages %}
-      <li>
-        <a class="formule-card" href="/nos-formules/{{ f.slug }}/">
-          <span class="formule-card-index mono">CH. {% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
-          <h3 class="formule-card-title">{{ f.titre }}</h3>
-          <p class="formule-card-price">À partir de {{ f.packs[0].prix }}</p>
-          <span class="formule-card-cta">Voir la formule</span>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Location de matériel</h2>
-    <p class="section-note">Projecteurs robotisés, sonorisation, machines à effets, structures. {{ site.livraison }}.</p>
-    <ul class="cards">
-      {% for c in categories %}
-      {% set first = produits | firstOfCat(c.nom) %}
-      {% set thumb = first.slug | cover("location") if first else "" %}
-      <li>
-        <a class="card-link" href="/location/{{ c.slug }}/">
-          <div class="frame {{ loop.index0 | folioFrame }}{% if thumb %} has-photo{% endif %}" data-duration="{{ 90 + loop.index0 * 15 }}">
-            {% if thumb %}<img src="{{ thumb }}" alt="{{ c.nom }} - location Event'Light Amiens" width="640" height="400" loading="lazy">{% endif %}
-            <span class="badge mono">CAT</span>
-            <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-          </div>
-          <div class="cap">{{ c.nom }}<span class="date">{{ c.h1 }}</span></div>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-    <p class="section-cta"><a class="btn" href="/location/">Ouvrir le catalogue</a></p>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Portfolio</h2>
-    <p class="section-note">Mappings, mariages, galas - réalisations Event'Light.</p>
-    <div class="polaroids">
-      {% for projet in portfolio %}
-      {% if loop.index <= 6 %}
-      {% set cover = projet.slug | cover("portfolio") %}
-      <a class="clip" href="/portfolio/{{ projet.slug }}/">
-        <div class="frame {{ loop.index0 | folioFrame }}{% if cover %} has-photo{% endif %}" data-duration="{{ 100 + loop.index0 * 30 }}">
-          {% if cover %}
-          <img src="{{ cover }}" alt="{{ projet.titre }} - {{ projet.annee }}, Event'Light" width="800" height="500" loading="lazy">
-          {% endif %}
-          <span class="badge mono">{{ projet.type }}</span>
-          <div class="controls"><span class="time mono">0:00</span><div class="bar"><div class="playhead"></div></div></div>
-        </div>
-        <div class="cap">{{ projet.titre }}<span class="date">{{ projet.annee }}</span></div>
-      </a>
-      {% endif %}
-      {% endfor %}
+<section class="section" id="deroule">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Comment ça se passe</h2>
     </div>
-    <p class="section-cta"><a class="btn" href="/portfolio/">Voir le portfolio</a></p>
-  </section>
+    <div class="split-body">
+      <ol class="steps">
+        {% for e in accueil.etapes %}
+        <li>
+          <h3>{{ e.titre }}</h3>
+          <p>{{ e.texte | typo }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
 
-  <section class="section">
-    <h2 class="section-title">Questions fréquentes</h2>
-    <dl class="faq">
-      {% for item in faq %}
-      <div>
-        <dt>{{ item.q }}</dt>
-        <dd>{{ item.a }}</dd>
+<section class="section" id="questions">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Questions fréquentes</h2>
+    </div>
+    <div class="split-body">
+      <div class="faq">
+        {% for item in faq %}
+        <details>
+          <summary>{{ item.q | typo }}</summary>
+          <p>{{ item.a | typo }}</p>
+        </details>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </dl>
-  </section>
-</div>
+    </div>
+  </div>
+</section>
+
+{% set appel = 'Dites-nous où, quand et pour combien de personnes. On revient vers vous avec un devis. Vous pouvez aussi appeler ' + (site.contacts[0].nom | title) + ' au <a href="' + site.contacts[0].telHref + '">' + site.contacts[0].tel + '</a>.' %}
+{{ band("Une date en tête ?", appel, "/devis/", "Demander un devis") }}

@@ -1,0 +1,21 @@
+{% set u = page.url %}
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="/" aria-label="Event'Light, retour à l'accueil">{% include "logo/ligne-fort.svg" %}</a>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <ul>
+        {% for item in nav %}
+        <li><a href="{{ item.url }}"{% if u | startsWith(item.url) or (item.url == "/contact/" and u | startsWith("/devis/")) %} aria-current="{% if u == item.url %}page{% else %}true{% endif %}"{% endif %}>{{ item.titre }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="top-actions">
+      <button class="switch" type="button" data-salle aria-pressed="false">Éteindre la salle</button>
+      <a class="btn btn-s sel-link" href="/devis/#selection" data-selection-link hidden><span class="long">Ma sélection</span><span class="short" aria-hidden="true">Sél.</span> (<span data-selection-count>0</span>)</a>
+      <a class="btn btn-plein btn-s btn-devis" href="/devis/"><span class="long">Demander un devis</span><span class="short" aria-hidden="true">Devis</span></a>
+      <button class="btn btn-s burger" type="button" aria-expanded="false" aria-controls="nav" data-burger>Menu</button>
+    </div>
+  </div>
+</header>

@@ -6,46 +6,46 @@ permalink: "/contact/"
 breadcrumbs:
   - name: Contact
 ---
+{% from "macros.njk" import band with context %}
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">CONTACT</p>
     <h1>Contact</h1>
-    <p class="lede">Une question, un calage, un devis : on est à Amiens et dans la Somme.</p>
+    <p class="lede">Une question, une date à vérifier, un devis : appelez ou écrivez, on est à Amiens.</p>
   </header>
 
-  <div class="contact-grid">
+  <div class="people">
     {% for c in site.contacts %}
-    <div class="contact-card">
-      <h2>{{ c.nom }}</h2>
-      <p><a href="{{ c.telHref }}">{{ c.tel }}</a></p>
+    <div class="person">
+      <h2>{{ c.nom | title }}</h2>
+      <a class="big" href="{{ c.telHref }}">{{ c.tel }}</a>
     </div>
     {% endfor %}
-    <div class="contact-card">
-      <h2>Écrire</h2>
-      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-      <p style="margin-top:12px">
-        <a href="{{ site.facebook }}">Facebook</a> ·
-        <a href="{{ site.instagram }}">Instagram</a> ·
-        <a href="{{ site.youtube }}">YouTube</a>
-      </p>
-      <p style="margin-top:16px"><a class="btn solid" href="/devis/">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3L20 12L4 21Z"/></svg>
-        Composer un devis
-      </a></p>
+    <div class="person">
+      <h2>E-mail</h2>
+      <a href="mailto:{{ site.email }}" style="font-size: 1.25rem; font-weight: 500">{{ site.email }}</a>
+      <p class="note">Facebook, Instagram, YouTube : <a href="{{ site.facebook }}" rel="noopener">EventLight80</a>, <a href="{{ site.instagram }}" rel="noopener">@eventlight80</a>, <a href="{{ site.youtube }}" rel="noopener">la chaîne</a>.</p>
     </div>
-    <div class="contact-card">
-      <h2>Zone</h2>
-      <p>{{ site.address }}</p>
-      <p>{{ site.livraison }}</p>
-    </div>
-  </div>
-
-  <div class="map-embed">
-    <iframe
-      title="Carte - Event'Light, 53 rue du Général Friant, Amiens"
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      src="https://maps.google.com/maps?q=53%20Rue%20du%20G%C3%A9n%C3%A9ral%20Friant%2080000%20Amiens&z=16&output=embed"></iframe>
   </div>
 </div>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2>Où nous trouver</h2>
+    </div>
+    <div class="split-body stack">
+      <dl class="sheet">
+        <div><dt>Adresse</dt><dd>{{ site.street }}<br>{{ site.postalCode }} {{ site.city }}</dd></div>
+        <div><dt>Secteur</dt><dd>Amiens et la Somme pour les prestations et la location. Le vidéo mapping nous a déjà menés à Lyon, Lille et Pignan.</dd></div>
+        <div><dt>Livraison</dt><dd>{{ site.livraison | typo }}</dd></div>
+      </dl>
+      <div class="actions">
+        <a class="btn" href="https://www.openstreetmap.org/?mlat={{ site.latitude }}&amp;mlon={{ site.longitude }}#map=17/{{ site.latitude }}/{{ site.longitude }}" rel="noopener">Voir sur la carte</a>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query={{ (site.address) | urlencode }}" rel="noopener">Itinéraire Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ band("Le plus simple, c'est un devis", "Décrivez l'événement une fois, on vous répond avec ce qu'il faut prévoir et le tarif.", "/devis/", "Demander un devis") }}

@@ -2,11 +2,12 @@
 {% set pageDescription = description %}
 {% set pageCanonical = canonical or (site.url + page.url) %}
 {% set pageType = ogType or "website" %}
+{% set pageImage = site.url + (ogImage or site.ogImage) %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ pageDescription }}">
   {% if robots %}
@@ -19,12 +20,15 @@
   <meta name="geo.placename" content="Amiens">
   <meta name="geo.position" content="{{ site.latitude }};{{ site.longitude }}">
   <meta name="ICBM" content="{{ site.latitude }}, {{ site.longitude }}">
-  <meta name="theme-color" content="#050506">
+  <meta name="theme-color" content="#d4d7d9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17191b" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="{{ pageCanonical }}">
   <link rel="alternate" hreflang="fr" href="{{ pageCanonical }}">
   <link rel="alternate" hreflang="x-default" href="{{ pageCanonical }}">
-  <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/images/favicon.svg">
+  <link rel="icon" href="/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/logo/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/logo/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <meta property="og:title" content="{{ pageTitle }}">
   <meta property="og:description" content="{{ pageDescription }}">
@@ -32,144 +36,42 @@
   <meta property="og:url" content="{{ pageCanonical }}">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="{{ site.name }}">
-  <meta property="og:image" content="{{ site.url }}{{ site.ogImage }}">
-  <meta property="og:image:alt" content="Event'Light - location sono, lumière et vidéo mapping à Amiens">
+  <meta property="og:image" content="{{ pageImage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Event'Light, son, lumière et vidéo mapping à Amiens">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ pageTitle }}">
   <meta name="twitter:description" content="{{ pageDescription }}">
-  <meta name="twitter:image" content="{{ site.url }}{{ site.ogImage }}">
+  <meta name="twitter:image" content="{{ pageImage }}">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="/styles.css" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="preload" href="/assets/fonts/sofia-sans-extra-condensed-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/sofia-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css?v={{ build.version }}">
+  <script>
+    /* Thème choisi par le visiteur, appliqué avant le premier affichage. */
+    document.documentElement.classList.add("js");
+    try {
+      var t = localStorage.getItem("el-salle");
+      if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  </script>
 
   {% include "schema.njk" %}
 </head>
-<body{% if page.url == "/" %} class="is-home"{% endif %} data-page="{{ page.url }}">
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
+<body data-page="{{ page.url }}">
+  <a class="skip" href="#contenu">Aller au contenu</a>
 
-  <header class="chrome">
-    <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
-    <a href="/" class="logo" aria-label="Event'Light, accueil - location sono et lumière à Amiens">
-      <svg class="logo-mark" viewBox="0 0 88 56" aria-hidden="true">
-        <g class="logo-fringe" opacity=".45" fill="none" stroke-width="1.75" stroke-linejoin="miter" stroke-linecap="square">
-          <rect class="logo-fringe-c" x="7.35" y="18" width="20" height="20" stroke="#00E5FF"/>
-          <polygon class="logo-fringe-c" points="17.35,28 79.35,4 79.35,52" stroke="#00E5FF"/>
-          <rect class="logo-fringe-r" x="8.65" y="18" width="20" height="20" stroke="#FF2A2A"/>
-          <polygon class="logo-fringe-r" points="18.65,28 80.65,4 80.65,52" stroke="#FF2A2A"/>
-        </g>
-        <g class="logo-core" fill="none" stroke="#fff" stroke-width="1.85" stroke-linejoin="miter" stroke-linecap="square">
-          <rect x="8" y="18" width="20" height="20"/>
-          <polygon class="logo-beam" points="18,28 80,4 80,52"/>
-        </g>
-      </svg>
-      <span class="logo-wordmark">Event'Light</span>
-    </a>
-    <div class="chrome-meta">
-      <span class="live-badge mono"><i></i>LIVE</span>
-      <time class="clock mono" id="clock" datetime="">00:00:00</time>
-    </div>
-  </header>
-
-  {% set u = page.url %}
-  <nav class="timeline" aria-label="Navigation principale">
-    <div class="chapters">
-      <a class="chapter{% if u == '/' %} active{% endif %}" href="/">
-        <span class="stem"><span class="dot"></span><span class="label">Accueil</span></span>
-      </a>
-      <a class="chapter{% if u | startsWith('/nos-formules/') %} active{% endif %}" href="/nos-formules/">
-        <span class="stem"><span class="dot"></span><span class="label">Formules</span></span>
-      </a>
-      <a class="chapter{% if u | startsWith('/portfolio/') %} active{% endif %}" href="/portfolio/">
-        <span class="stem"><span class="dot"></span><span class="label">Portfolio</span></span>
-      </a>
-      <a class="chapter{% if u | startsWith('/location/') %} active{% endif %}" href="/location/">
-        <span class="stem"><span class="dot"></span><span class="label">Location</span></span>
-      </a>
-      <a class="chapter{% if u | startsWith('/contact/') or u | startsWith('/devis/') %} active{% endif %}" href="/contact/">
-        <span class="stem"><span class="dot"></span><span class="label">Contact</span></span>
-      </a>
-    </div>
-  </nav>
+  {% include "partials/header.njk" %}
 
   <main id="contenu">
     {{ content | safe }}
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap footer-grid">
-      <div>
-        <p class="footer-brand">
-          <svg class="footer-mark" viewBox="0 0 88 56" aria-hidden="true">
-            <g fill="none" stroke="currentColor" stroke-width="1.85" stroke-linejoin="miter" stroke-linecap="square">
-              <rect x="8" y="18" width="20" height="20"/>
-              <polygon points="18,28 80,4 80,52"/>
-            </g>
-          </svg>
-          Event'Light
-        </p>
-        <p class="muted">{{ site.tagline }} Location et prestation sono, lumière, effets, structures et <a href="/portfolio/">vidéo mapping</a> à Amiens (Somme).</p>
-        <p class="muted">{{ site.address }}</p>
-      </div>
-      <div>
-        <h2>Prestations</h2>
-        <ul class="footer-links">
-          {% for f in formules.pages %}
-          <li><a href="/nos-formules/{{ f.slug }}/">{{ f.titre }}</a></li>
-          {% endfor %}
-          <li><a href="/devis/">Demander un devis</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Location Amiens</h2>
-        <ul class="footer-links">
-          <li><a href="/location/">Catalogue complet</a></li>
-          {% for c in categories %}
-          <li><a href="/location/{{ c.slug }}/">{{ c.nom }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div>
-        <h2>Contact</h2>
-        <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-        {% for c in site.contacts %}
-        <p>{{ c.nom }} - <a href="{{ c.telHref }}">{{ c.tel }}</a></p>
-        {% endfor %}
-        <p><a href="{{ site.facebook }}">Facebook</a> · <a href="{{ site.instagram }}">Instagram</a> · <a href="{{ site.youtube }}">YouTube</a></p>
-        <p><a href="/mentions-legales/">Mentions légales / CGV</a></p>
-      </div>
-    </div>
-    <p class="legal-line wrap">© 2026 Event'Light - {{ site.address }} - SIRET {{ site.siretRaw }} - Tous nos prix sont TTC - {{ site.tva }} - Les prix de location journaliers s'appliquent aussi au week-end.</p>
-  </footer>
+  {% include "partials/footer.njk" %}
 
-  <div class="transport" role="region" aria-label="Contrôles de lecture">
-    <button type="button" class="t-btn" id="btn-prev" aria-label="Chapitre précédent">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5L4 12L11 19" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 5L13 12L20 19" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-    </button>
-    <button type="button" class="t-btn t-play" id="btn-play" aria-label="Lancer la session">
-      <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4L20 12L6 20Z" fill="currentColor"/></svg>
-      <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg>
-    </button>
-    <button type="button" class="t-btn" id="btn-next" aria-label="Chapitre suivant">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5L20 12L13 19" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 5L11 12L4 19" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-    </button>
-    <div class="t-progress">
-      <span class="t-time mono" id="t-elapsed">00:00</span>
-      <div class="t-bar" id="t-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progression de la page">
-        <span class="t-fill" id="t-fill"></span>
-        <span class="t-head" id="t-head"></span>
-      </div>
-      <span class="t-time mono" id="t-total">01:00</span>
-    </div>
-    <a class="btn solid t-cta" href="/devis/">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3L20 12L4 21Z"/></svg>
-      Devis
-    </a>
-  </div>
-
-  <script src="/player.js" defer></script>
+  <p class="toast" id="toast" role="status" hidden></p>
+  <script src="/assets/js/site.js?v={{ build.version }}" defer></script>
 </body>
 </html>

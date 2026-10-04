@@ -21,7 +21,7 @@
   "facebook": "https://www.facebook.com/EventLight80/",
   "instagram": "https://www.instagram.com/eventlight80/",
   "youtube": "https://www.youtube.com/c/EventLight",
-  "ogImage": "/images/og-default.svg",
+  "ogImage": "/assets/logo/og-default.jpg",
   "usages": {
     "mariage": "Mariage",
     "anniversaire": "Anniversaire",

@@ -6,20 +6,27 @@ permalink: "/mentions-legales/"
 breadcrumbs:
   - name: Mentions légales / CGV
 ---
-<div class="wrap legal-content">
+<div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">GÉNÉRIQUE</p>
     <h1>Mentions légales et conditions générales de vente</h1>
   </header>
 
-  <p><strong>Event'Light</strong><br>
-  Siège social : {{ site.address }}<br>
-  SIRET : {{ site.siret }}<br>
-  E-mail : <a href="mailto:{{ site.email }}">{{ site.email }}</a><br>
-  TVA non applicable – article 293 B du Code général des impôts</p>
+  <div class="split">
+    <div class="split-head">
+      <h2 class="sr">Éditeur du site</h2>
+      <dl class="sheet">
+        <div><dt>Éditeur</dt><dd>Event'Light</dd></div>
+        <div><dt>Siège social</dt><dd>{{ site.street }}<br>{{ site.postalCode }} {{ site.city }}</dd></div>
+        <div><dt>SIRET</dt><dd>{{ site.siret }}</dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+        <div><dt>TVA</dt><dd>Non applicable, article 293 B du Code général des impôts</dd></div>
+        <div><dt>Hébergement</dt><dd>Netlify, Inc.<br>101 2nd Street, San Francisco, CA 94105, États-Unis<br><a href="https://www.netlify.com" rel="noopener">www.netlify.com</a></dd></div>
+      </dl>
+    </div>
 
-  <h2>Article 1 – Objet</h2>
+    <div class="split-body prose">
+  <h2 style="margin-top: 0; border-top: 0; padding-top: 0">Article 1 – Objet</h2>
   <p>Les présentes Conditions Générales de Vente (CGV) ont pour objet de définir les modalités et conditions dans lesquelles Event'Light fournit ses prestations techniques dans le domaine de l'événementiel. Toute commande implique l'adhésion pleine et entière du client aux présentes CGV.</p>
 
   <h2>Article 2 – Prestations</h2>
@@ -87,9 +94,11 @@ breadcrumbs:
   <h2>Article 10 – Force majeure</h2>
   <p>La responsabilité d'Event'Light ne pourra être engagée en cas de force majeure empêchant l'exécution normale de la prestation.</p>
 
-  <h2>Article 11 – Données personnelles</h2>
+  <h2 id="donnees">Article 11 – Données personnelles</h2>
   <p>Les informations recueillies sont nécessaires au traitement des commandes. Elles ne sont ni vendues ni cédées à des tiers. Conformément à la réglementation en vigueur, le client dispose d'un droit d'accès, de rectification et de suppression de ses données.</p>
 
   <h2>Article 12 – Litiges</h2>
   <p>Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité. À défaut, les tribunaux compétents seront ceux du ressort du siège social de l'entreprise.</p>
+    </div>
+  </div>
 </div>

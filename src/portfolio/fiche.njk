@@ -7,59 +7,89 @@ pagination:
   addAllPagesToCollections: true
 permalink: "/portfolio/{{ projet.slug }}/"
 ---
-{% set shots = projet.slug | gallery("portfolio") %}
+{% from "macros.njk" import work, band with context %}
+{% set shots = projet.slug | media("portfolio") %}
 {% set yt = projet.slug | youtubeId %}
+{% set avant = portfolio | voisin(projet.slug, -1) %}
+{% set apres = portfolio | voisin(projet.slug, 1) %}
+{% set altVedette = projet.titre + ", " + projet.annee %}
 <div class="wrap">
   <header class="page-head">
     {% include "breadcrumbs.njk" %}
-    <p class="page-kicker mono">{{ projet.type }} · {{ projet.annee }}</p>
-    <h1>{{ projet.titre }}</h1>
-    <p class="lede">{{ projet.sousTitre }}</p>
+    <h1>{{ projet.titre | titreCourt }}</h1>
+    <p class="lede">{{ projet.sousTitre | virgules }}</p>
+    <div class="tags"><span class="tag">{{ projet.type }}</span>{% if projet.annee != projet.sousTitre %}<span class="tag tag-trait">{{ projet.annee }}</span>{% endif %}</div>
   </header>
 
   {% if yt %}
-  <div class="map-embed" style="margin:0 0 28px">
-    <iframe
-      title="Vidéo - {{ projet.titre }}"
-      src="https://www.youtube-nocookie.com/embed/{{ yt }}"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      loading="lazy"></iframe>
+  <div class="video" data-video="{{ yt }}" data-titre="Vidéo : {{ projet.titre }}">
+    {% set affiche = projet.slug | cover("portfolio") %}
+    {% if affiche %}<img src="{{ affiche.base }}-{{ affiche.largeurs | last }}.webp" width="{{ affiche.w }}" height="{{ affiche.h }}" alt="" decoding="async" fetchpriority="high" data-fond="{{ affiche.fond }}">{% else %}{% include "logo/signe-trait.svg" %}{% endif %}
+    <a class="video-play" href="https://www.youtube.com/watch?v={{ yt }}" rel="noopener">Lire la vidéo</a>
+  </div>
+  {% elif shots.length %}
+  <div class="screen" style="aspect-ratio: 16 / 9">
+    {% img shots[0], altVedette, "(min-width: 86rem) 80rem, 100vw", "eager" %}
   </div>
   {% endif %}
-
-  {% if shots.length %}
-  <div class="gallery">
-    {% for src in shots %}
-    <figure>
-      <img src="{{ src }}" alt="{{ projet.titre }} - vue {{ loop.index }}, Event'Light {{ projet.annee }}" width="1200" height="750" {% if loop.index > 1 %}loading="lazy"{% endif %}>
-      <figcaption>{{ projet.titre }} · {{ loop.index }}/{{ shots.length }}</figcaption>
-    </figure>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  <div class="legal-content">
-    {% if projet.production %}<p><strong>Production :</strong> {{ projet.production }}</p>{% endif %}
-    {% if projet.credits %}
-    <ul class="specs">
-      {% for c in projet.credits %}
-      <li>{{ c }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-    {% if projet.logiciel %}<p><strong>Logiciel :</strong> {{ projet.logiciel }}</p>{% endif %}
-    {% if projet.technologie %}<p><strong>Technologie :</strong> {{ projet.technologie }}</p>{% endif %}
-    {% if projet.projet %}
-    <h2>Projet</h2>
-    <p>{{ projet.projet }}</p>
-    {% elif projet.resume %}
-    <p>{{ projet.resume }}</p>
-    {% endif %}
-  </div>
-
-  <p style="margin-top:28px">
-    <a class="btn solid" href="/devis/">Parler d'un projet similaire à Amiens</a>
-  </p>
-  <p style="margin-top:16px"><a href="/portfolio/">← Retour au portfolio</a></p>
 </div>
+
+<section class="section-tight">
+  <div class="wrap split">
+    <div class="split-head">
+      <h2 class="sr">Fiche technique</h2>
+      <dl class="sheet">
+        {% if projet.production %}<div><dt>Production</dt><dd>{{ projet.production }}</dd></div>{% endif %}
+        {% for c in projet.credits %}
+        {% set cr = c | credit %}
+        <div><dt>{{ cr.role or "Crédit" }}</dt><dd>{{ cr.nom }}</dd></div>
+        {% endfor %}
+        {% if projet.logiciel %}<div><dt>Logiciels</dt><dd>{{ projet.logiciel }}</dd></div>{% endif %}
+        {% if projet.technologie %}<div><dt>Matériel</dt><dd>{{ projet.technologie }}</dd></div>{% endif %}
+      </dl>
+      {% if yt %}<p class="note">La vidéo est hébergée par YouTube : elle ne se charge qu'au clic.</p>{% endif %}
+    </div>
+    <div class="split-body stack-l">
+      <p class="lede" style="max-width: 60ch">{{ (projet.projet or projet.resume) | typo }}</p>
+
+      {% if shots.length > 1 %}
+      <div class="gallery">
+        {% for m in shots %}
+        <a href="{{ m.base }}-{{ m.largeurs | last }}.webp" data-zoom data-alt="{{ projet.titre }}, image {{ loop.index }} sur {{ shots | length }}">
+          {% set altVue = projet.titre + ", image " + loop.index + " sur " + (shots | length) %}<span class="screen">{% img m, altVue, "(min-width: 62em) 20rem, 50vw" %}</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+    <div class="works">
+      {% if avant %}{{ work(avant, false) }}{% endif %}
+      {% if apres and apres.slug != avant.slug %}{{ work(apres, false) }}{% endif %}
+      <div class="work" style="align-content: end">
+        <a class="btn" href="/portfolio/">Toutes les réalisations</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% set lienDevis = "/devis/?type=" + ("Vidéo mapping" | urlencode) if projet.type == "Mapping" else "/devis/" %}
+{{ band("Un projet du même genre", "Décrivez-nous le lieu et l'occasion. On vous dit ce qu'il faut prévoir et on chiffre.", lienDevis, "Demander un devis") }}
+
+<dialog class="lightbox" id="lightbox" aria-label="Image en plein écran">
+  <figure>
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+    <figcaption class="lightbox-bar">
+      <span data-zoom-compte></span>
+      <span class="actions">
+        <button class="btn btn-s" type="button" data-zoom-pas="-1">Précédente</button>
+        <button class="btn btn-s" type="button" data-zoom-pas="1">Suivante</button>
+        <button class="btn btn-s" type="button" data-zoom-fermer>Fermer</button>
+      </span>
+    </figcaption>
+  </figure>
+</dialog>
