@@ -2028,6 +2028,8 @@ a.vitrine:hover {
   display: flex;
   align-items: center;
   gap: var(--e-4);
+  /* largeur du texte, et non la moitié de l'écran que laisserait left: 50% */
+  width: max-content;
   max-width: calc(100vw - 2rem);
   padding: 0.7rem 1rem;
   background: var(--plein);
