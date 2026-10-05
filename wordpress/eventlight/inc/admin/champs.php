@@ -24,9 +24,10 @@ function el_champ_options_produits( $valeur = 0 ) {
 	if ( null === $groupes ) {
 		$groupes = array();
 		$stocks  = el_stocks();
-		foreach ( el_produits() as $p ) {
-			$groupe                           = '' !== $p['categorie'] ? $p['categorie'] : 'Autres';
-			$groupes[ $groupe ][ $p['id'] ] = $p['nom'] . ( isset( $stocks[ $p['id'] ] ) ? ' (stock ' . $stocks[ $p['id'] ] . ')' : '' );
+		foreach ( el_produits_par_categorie() as $groupe => $produits ) {
+			foreach ( $produits as $p ) {
+				$groupes[ $groupe ][ $p['id'] ] = $p['nom'] . ( isset( $stocks[ $p['id'] ] ) ? ' (stock ' . $stocks[ $p['id'] ] . ')' : '' );
+			}
 		}
 	}
 	$html = '<option value="0">Choisir un produit</option>';

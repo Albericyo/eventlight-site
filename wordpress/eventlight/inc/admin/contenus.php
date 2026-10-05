@@ -97,7 +97,7 @@ function el_fiches() {
 				'youtube'     => array(
 					'type'  => 'texte',
 					'label' => 'Vidéo de démonstration',
-					'aide'  => 'L\'adresse de la vidéo sur YouTube. Elle ne se charge qu\'au clic du visiteur.',
+					'aide'  => 'L\'adresse de la vidéo sur YouTube, ou son identifiant. Elle ne se charge qu\'au clic du visiteur.',
 				),
 				'galerie'     => array(
 					'type'  => 'photos',
@@ -144,7 +144,7 @@ function el_fiches() {
 				'youtube'     => array(
 					'type'  => 'texte',
 					'label' => 'Vidéo',
-					'aide'  => 'L\'adresse de la vidéo sur YouTube. Elle remplace la photo en tête de page.',
+					'aide'  => 'L\'adresse de la vidéo sur YouTube, ou son identifiant. Elle remplace la photo en tête de page.',
 				),
 				'galerie'     => array(
 					'type'  => 'photos',

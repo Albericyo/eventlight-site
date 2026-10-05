@@ -183,6 +183,7 @@
     var $barre = $("#el-import-barre");
     var $etat = $("#el-import-etat");
     var $erreurs = $("#el-import-erreurs");
+    var $notes = $("#el-import-notes");
     var essais = 0;
 
     var avancer = function (rang) {
@@ -203,9 +204,12 @@
           (d.erreurs || []).forEach(function (e) {
             $("<li>").text(e).appendTo($erreurs);
           });
+          (d.notes || []).forEach(function (n) {
+            $("<li>").text(n).appendTo($notes);
+          });
           $barre.val(Math.round((d.rang / d.total) * 100));
           if (d.fini) {
-            $etat.text($erreurs.children().length ? "Import terminé, avec les remarques ci-dessous." : "Import terminé.");
+            $etat.text($erreurs.children().length ? "Import terminé, sauf pour les éléments ci-dessous." : "Import terminé.");
             $(".el-import-fin").prop("hidden", false);
             return;
           }
@@ -231,6 +235,7 @@
       $lancer.prop("disabled", true);
       $suivi.prop("hidden", false);
       $erreurs.empty();
+      $notes.empty();
       $etat.text("Import en cours…");
       avancer(0);
     });

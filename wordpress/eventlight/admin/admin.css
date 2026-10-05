@@ -434,12 +434,34 @@ a.el-chip-terminee:focus {
 	max-width: 40em;
 	height: 14px;
 }
-.el-import-suivi ul {
+#el-import-erreurs {
 	color: #b32d2e;
+}
+#el-import-notes {
+	max-width: 60em;
+	list-style: disc;
+	padding-left: 1.4em;
+}
+#el-import-notes:empty,
+#el-import-erreurs:empty {
+	display: none;
 }
 .el-import-fin {
 	margin-top: 20px;
 	padding: 4px 20px 12px;
 	border-left: 4px solid #00a32a;
 	background: #fff;
+}
+
+/* ------------------------------------------------------------ stock */
+
+.el-stock-table {
+	max-width: 52em;
+}
+.el-stock-table .el-stock-groupe th {
+	background: #f0f0f1;
+	font-weight: 600;
+}
+.el-stock-table td {
+	vertical-align: middle;
 }

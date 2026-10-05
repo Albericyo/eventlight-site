@@ -217,6 +217,22 @@ function el_produits_de_categorie( $categorie_id ) {
 	return $sortie;
 }
 
+/** Tout le catalogue rangé par catégorie, dans l'ordre des catégories : nom de la catégorie => produits. */
+function el_produits_par_categorie() {
+	$groupes = array();
+	foreach ( el_categories() as $c ) {
+		$liste = el_produits_de_categorie( $c['id'] );
+		if ( $liste ) {
+			$groupes[ $c['nom'] ] = $liste;
+		}
+	}
+	$sans = el_produits_de_categorie( 0 );
+	if ( $sans ) {
+		$groupes['Autres'] = $sans;
+	}
+	return $groupes;
+}
+
 /** Les produits qu'on sort pour une formule donnée. */
 function el_produits_pour_formule( $formule_id ) {
 	$sortie = array();

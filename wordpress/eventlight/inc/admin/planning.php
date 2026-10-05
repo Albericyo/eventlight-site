@@ -198,21 +198,23 @@ function el_planning_jour( $jour, $dossiers ) {
 
 	$dispos = el_disponibilites( $jour, $jour );
 	if ( ! $dispos ) {
-		echo '<p class="description">Aucun produit n\'a encore de quantité en stock. Renseignez-la sur la fiche de chaque produit, dans <a href="' . esc_url( admin_url( 'edit.php?post_type=el_produit' ) ) . '">Location</a>, pour voir ici ce qui reste disponible.</p>';
+		echo '<p class="description">Aucun produit n\'a encore de quantité en stock. Renseignez-la dans <a href="' . esc_url( admin_url( 'edit.php?post_type=el_produit&page=el-stock' ) ) . '">Location, Stock</a> pour voir ici ce qui reste disponible.</p>';
 		return;
 	}
 	echo '<h3>Matériel disponible ce jour-là</h3>';
 	echo '<table class="widefat striped el-dispos"><thead><tr><th>Produit</th><th class="num">Stock</th><th class="num">Sortis</th><th class="num">Disponibles</th><th class="num">Demandés, en attente</th></tr></thead><tbody>';
-	foreach ( el_produits() as $p ) {
-		if ( ! isset( $dispos[ $p['id'] ] ) ) {
-			continue;
+	foreach ( el_produits_par_categorie() as $produits ) {
+		foreach ( $produits as $p ) {
+			if ( ! isset( $dispos[ $p['id'] ] ) ) {
+				continue;
+			}
+			$x      = $dispos[ $p['id'] ];
+			$classe = $x['dispo'] < 0 ? 'el-manque' : ( $x['attente'] > $x['dispo'] ? 'el-tendu' : '' );
+			echo '<tr class="' . esc_attr( $classe ) . '"><td><a href="' . esc_url( get_edit_post_link( $p['id'] ) ) . '">' . esc_html( $p['nom'] ) . '</a> <span class="el-discret">' . esc_html( $p['categorie'] ) . '</span></td>';
+			echo '<td class="num">' . (int) $x['stock'] . '</td><td class="num">' . (int) $x['ferme'] . '</td>';
+			echo '<td class="num"><strong>' . (int) $x['dispo'] . '</strong>' . ( $x['dispo'] < 0 ? ' <span class="el-alerte">il en manque ' . (int) abs( $x['dispo'] ) . '</span>' : '' ) . '</td>';
+			echo '<td class="num">' . ( $x['attente'] ? (int) $x['attente'] : '' ) . '</td></tr>';
 		}
-		$x      = $dispos[ $p['id'] ];
-		$classe = $x['dispo'] < 0 ? 'el-manque' : ( $x['attente'] > $x['dispo'] ? 'el-tendu' : '' );
-		echo '<tr class="' . esc_attr( $classe ) . '"><td><a href="' . esc_url( get_edit_post_link( $p['id'] ) ) . '">' . esc_html( $p['nom'] ) . '</a> <span class="el-discret">' . esc_html( $p['categorie'] ) . '</span></td>';
-		echo '<td class="num">' . (int) $x['stock'] . '</td><td class="num">' . (int) $x['ferme'] . '</td>';
-		echo '<td class="num"><strong>' . (int) $x['dispo'] . '</strong>' . ( $x['dispo'] < 0 ? ' <span class="el-alerte">il en manque ' . (int) abs( $x['dispo'] ) . '</span>' : '' ) . '</td>';
-		echo '<td class="num">' . ( $x['attente'] ? (int) $x['attente'] : '' ) . '</td></tr>';
 	}
 	echo '</tbody></table>';
 }
@@ -227,6 +229,74 @@ function el_agenda_renouveler() {
 	exit;
 }
 add_action( 'admin_post_el_agenda_renouveler', 'el_agenda_renouveler' );
+
+/* ---------------------------------------------------------------------- stock de tout le catalogue */
+
+function el_stock_menu() {
+	add_submenu_page( 'edit.php?post_type=el_produit', 'Stock', 'Stock', 'edit_posts', 'el-stock', 'el_page_stock' );
+}
+add_action( 'admin_menu', 'el_stock_menu' );
+
+/** Toutes les quantités en stock sur un seul écran, pour les saisir d'un coup. */
+function el_page_stock() {
+	if ( ! current_user_can( 'edit_posts' ) ) {
+		return;
+	}
+	$groupes = el_produits_par_categorie();
+	?>
+<div class="wrap el-stock">
+	<h1>Stock</h1>
+	<?php // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
+	<?php if ( isset( $_GET['maj'] ) ) : ?>
+	<div class="notice notice-success is-dismissible"><p>Stock enregistré.</p></div>
+	<?php endif; ?>
+	<p class="el-import-intro">La quantité de chaque produit que vous pouvez sortir le même jour. Comptez dans l'unité du tarif : pour un produit loué à la paire, le nombre de paires. Un produit laissé vide n'est pas suivi dans le planning.</p>
+	<?php if ( ! $groupes ) : ?>
+	<p>Aucun produit pour le moment.</p>
+	<?php else : ?>
+	<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+		<input type="hidden" name="action" value="el_stock">
+		<?php wp_nonce_field( 'el_stock' ); ?>
+		<table class="widefat striped el-stock-table">
+			<thead><tr><th>Produit</th><th>Tarif</th><th>En stock</th></tr></thead>
+			<tbody>
+				<?php foreach ( $groupes as $nom => $produits ) : ?>
+				<tr class="el-stock-groupe"><th colspan="3" scope="colgroup"><?php echo esc_html( $nom ); ?></th></tr>
+					<?php foreach ( $produits as $p ) : ?>
+				<tr>
+					<td><label for="el-stock-<?php echo (int) $p['id']; ?>"><?php echo esc_html( $p['nom'] ); ?></label></td>
+					<td><?php echo esc_html( $p['prix'] ); ?></td>
+					<td><input type="number" class="small-text" min="0" id="el-stock-<?php echo (int) $p['id']; ?>" name="el_stock[<?php echo (int) $p['id']; ?>]" value="<?php echo esc_attr( (string) get_post_meta( $p['id'], '_el_stock', true ) ); ?>"></td>
+				</tr>
+					<?php endforeach; ?>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<?php submit_button( 'Enregistrer le stock' ); ?>
+	</form>
+	<?php endif; ?>
+</div>
+	<?php
+}
+
+function el_stock_enregistrer() {
+	if ( ! current_user_can( 'edit_posts' ) ) {
+		wp_die( 'Action non autorisée.' );
+	}
+	check_admin_referer( 'el_stock' );
+	$recu = isset( $_POST['el_stock'] ) && is_array( $_POST['el_stock'] ) ? wp_unslash( $_POST['el_stock'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nettoyé ci-dessous.
+	foreach ( $recu as $id => $valeur ) {
+		$id = absint( $id );
+		if ( ! $id || 'el_produit' !== get_post_type( $id ) || ! current_user_can( 'edit_post', $id ) ) {
+			continue;
+		}
+		$valeur = is_scalar( $valeur ) ? trim( (string) $valeur ) : '';
+		update_post_meta( $id, '_el_stock', ( '' !== $valeur && is_numeric( $valeur ) ) ? (string) max( 0, (int) $valeur ) : '' );
+	}
+	wp_safe_redirect( admin_url( 'edit.php?post_type=el_produit&page=el-stock&maj=1' ) );
+	exit;
+}
+add_action( 'admin_post_el_stock', 'el_stock_enregistrer' );
 
 /* ---------------------------------------------------------------------- fiche d'un dossier */
 
@@ -289,6 +359,12 @@ function el_dossier_boite( $post ) {
 			'label' => 'Nature',
 			'choix' => el_genres(),
 		),
+		'type_evenement' => array(
+			'type'    => 'texte',
+			'label'   => 'Type d\'événement',
+			'court'   => true,
+			'exemple' => 'Mariage',
+		),
 		'debut'          => array(
 			'type'  => 'date',
 			'label' => 'Du',
@@ -298,12 +374,6 @@ function el_dossier_boite( $post ) {
 			'type'  => 'date',
 			'label' => 'Au',
 			'aide'  => 'Dernier jour, retour compris. Vide : une seule journée.',
-		),
-		'type_evenement' => array(
-			'type'    => 'texte',
-			'label'   => 'Type d\'événement',
-			'court'   => true,
-			'exemple' => 'Mariage',
 		),
 		'lieu'           => array(
 			'type'  => 'texte',

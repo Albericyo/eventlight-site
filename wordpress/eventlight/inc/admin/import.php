@@ -75,6 +75,15 @@ function el_import_etapes() {
 	return $etapes;
 }
 
+/** Les remarques à montrer à la fin de l'import. Avec un argument, en ajoute une. */
+function el_import_note( $texte = null ) {
+	static $notes = array();
+	if ( null !== $texte ) {
+		$notes[] = (string) $texte;
+	}
+	return $notes;
+}
+
 /** L'élément déjà importé qui porte cette clé, corbeille comprise. 0 s'il n'y en a pas. */
 function el_import_trouver( $cle, $type ) {
 	$ids = get_posts(
@@ -91,11 +100,15 @@ function el_import_trouver( $cle, $type ) {
 	return $ids ? (int) $ids[0] : 0;
 }
 
-/** Copie un fichier image depuis le thème, ou le télécharge quand le thème est livré sans les photos. */
+/**
+ * Copie un fichier image depuis le thème, ou le télécharge quand le thème est livré sans les photos.
+ * Le fichier est écrit sous un nom provisoire, puis renommé : une coupure ne laisse pas d'image tronquée.
+ */
 function el_import_fichier( $chemin, $destination ) {
-	$local = get_theme_file_path( 'import/img/' . $chemin );
+	$provisoire = $destination . '.part';
+	$local      = get_theme_file_path( 'import/img/' . $chemin );
 	if ( is_readable( $local ) ) {
-		return copy( $local, $destination );
+		return copy( $local, $provisoire ) && rename( $provisoire, $destination );
 	}
 	$donnees = el_import_donnees();
 	$source  = isset( $donnees['images'] ) ? $donnees['images'] : array();
@@ -109,14 +122,14 @@ function el_import_fichier( $chemin, $destination ) {
 			array(
 				'timeout'  => 25,
 				'stream'   => true,
-				'filename' => $destination,
+				'filename' => $provisoire,
 			)
 		);
-		if ( ! is_wp_error( $reponse ) && 200 === wp_remote_retrieve_response_code( $reponse ) && file_exists( $destination ) && filesize( $destination ) > 100 ) {
-			return true;
+		if ( ! is_wp_error( $reponse ) && 200 === wp_remote_retrieve_response_code( $reponse ) && file_exists( $provisoire ) && filesize( $provisoire ) > 100 ) {
+			return rename( $provisoire, $destination );
 		}
-		if ( file_exists( $destination ) ) {
-			wp_delete_file( $destination );
+		if ( file_exists( $provisoire ) ) {
+			wp_delete_file( $provisoire );
 		}
 	}
 	return false;
@@ -433,7 +446,15 @@ function el_import_etape( $etape ) {
 		case 'pages':
 			foreach ( $donnees['pages'] as $p ) {
 				$chemin = ( '' !== $p['parent'] ? $p['parent'] . '/' : '' ) . $p['slug'];
-				if ( get_page_by_path( $chemin ) || el_import_trouver( 'page:' . $chemin, 'page' ) ) {
+				$existante = get_page_by_path( $chemin );
+				if ( $existante ) {
+					// Une page de ce nom existait avant l'import : on n'y touche pas, mais on le dit.
+					if ( 'page:' . $chemin !== get_post_meta( $existante->ID, '_el_cle', true ) ) {
+						el_import_note( 'La page « ' . $chemin . ' » existait déjà : son contenu n\'a pas été modifié. Elle s\'affiche désormais avec la mise en page du thème.' );
+					}
+					continue;
+				}
+				if ( el_import_trouver( 'page:' . $chemin, 'page' ) ) {
 					continue;
 				}
 				$parent = '' !== $p['parent'] ? get_page_by_path( $p['parent'] ) : null;
@@ -544,6 +565,7 @@ function el_ajax_import() {
 			'total'   => $total,
 			'fini'    => $rang >= $total,
 			'erreurs' => $erreurs,
+			'notes'   => el_import_note(),
 		)
 	);
 }
@@ -582,6 +604,7 @@ function el_page_import() {
 		<progress id="el-import-barre" max="100" value="0"></progress>
 		<p id="el-import-etat" role="status"></p>
 		<ul id="el-import-erreurs"></ul>
+			<ul id="el-import-notes"></ul>
 	</div>
 	<div class="el-import-fin" hidden>
 		<h2>C'est en place</h2>
@@ -589,7 +612,7 @@ function el_page_import() {
 		<p>À faire ensuite :</p>
 		<ol>
 			<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=eventlight&onglet=devis' ) ); ?>">Réglages, onglet Devis et mentions</a> : l'adresse qui reçoit les demandes, le nom de l'hébergeur et le directeur de la publication.</li>
-			<li><a href="<?php echo esc_url( admin_url( 'edit.php?post_type=el_produit' ) ); ?>">Location</a> : la quantité en stock de chaque produit, pour que le planning calcule les disponibilités.</li>
+			<li><a href="<?php echo esc_url( admin_url( 'edit.php?post_type=el_produit&page=el-stock' ) ); ?>">Location, Stock</a> : la quantité de chaque produit, pour que le planning calcule les disponibilités.</li>
 			<li>Envoyer une demande de devis depuis le site, pour vérifier que l'e-mail arrive.</li>
 		</ol>
 	</div>

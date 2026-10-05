@@ -23,6 +23,7 @@ npm run build     # sortie dans _site/
 | `npm run images` | Optimise les photos de `src/images/` vers `src/img/` (WebP, plusieurs largeurs) et met à jour `src/_data/media.json`. À relancer après chaque ajout de photo. |
 | `npm run icons` | Refait le favicon, les icônes et l'image de partage (`src/assets/logo/`). |
 | `npm run logo` | Régénère tous les SVG du logo depuis la géométrie (`scripts/logo/`, Python 3 + `pip install shapely`), puis les icônes. |
+| `npm run wordpress` | Assemble le thème WordPress et écrit `dist/eventlight-theme.zip`. Voir « Version WordPress » plus bas. |
 
 ## Où est quoi
 
@@ -55,7 +56,8 @@ src/
 lib/
   plan-de-feu.js      dessine le schéma d'un pack à partir de ses lignes
   pictos.js           pictogrammes au trait (catégories, produits sans photo)
-scripts/              optimisation des images, icônes, géométrie du logo
+scripts/              optimisation des images, icônes, géométrie du logo, assemblage du thème WordPress
+wordpress/eventlight/ le thème WordPress (gabarits PHP, administration)
 ```
 
 ## Gestes courants
@@ -69,6 +71,31 @@ scripts/              optimisation des images, icônes, géométrie du logo
 **Changer les images du héros** : `src/_data/accueil.json` (projet, rang de l'image, cadrage, légende).
 
 **Changer une couleur ou une taille** : les jetons en tête de `src/assets/css/site.css`. Le thème sombre (« salle éteinte ») redéfinit les mêmes jetons.
+
+## Version WordPress
+
+Le même site existe en thème WordPress, dans `wordpress/eventlight/`. Les pages sont identiques à celles d'Eleventy : même feuille de style, même script, mêmes dessins. Ce qui change, c'est que le contenu se modifie dans l'administration, et que WordPress ajoute ce qu'un site statique ne sait pas faire : recevoir les demandes de devis, suivre le stock, tenir un planning.
+
+```bash
+npm run wordpress   # écrit dist/eventlight-theme.zip et dist/eventlight-theme-leger.zip
+```
+
+Le script copie dans le thème ce qu'il partage avec Eleventy (`src/assets/`, les SVG du logo), prépare le contenu à importer à partir de `src/_data/` et de `src/img/`, puis fait l'archive. Ces copies ne sont pas suivies par git : seul le code du thème l'est.
+
+- `eventlight-theme.zip` contient les photos. C'est celui à installer.
+- `eventlight-theme-leger.zip` ne les contient pas : l'import les télécharge depuis ce dépôt. À utiliser si l'hébergeur refuse les gros fichiers.
+
+L'installation et l'usage au quotidien sont décrits dans `wordpress/eventlight/LISEZ-MOI.txt`, livré avec le thème.
+
+| Dans le thème | Rôle |
+| --- | --- |
+| `*.php` à la racine | Un gabarit par type de page, portés de `src/**/*.njk`. |
+| `inc/plan-de-feu.php`, `inc/pictos.php`, `inc/textes.php` | Ports PHP de `lib/` et des filtres de `.eleventy.js`. Leur sortie est identique, au caractère près. |
+| `inc/types.php`, `inc/donnees.php` | Formules, produits, réalisations et questions : types de contenu, adresses, lecture. |
+| `inc/planning.php`, `inc/devis.php` | Demandes de devis, réservations, stock, disponibilités, agenda. |
+| `inc/admin/` | Fiches, réglages, calendrier, import du contenu. |
+
+Une fois le site passé sur WordPress, le contenu vit dans WordPress : les fichiers de `src/_data/` ne servent plus qu'au premier import.
 
 ## Mise en ligne (Netlify)
 

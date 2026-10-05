@@ -217,7 +217,7 @@ function el_fond_de( $fichier ) {
 	imagealphablending( $petit, false );
 	imagesavealpha( $petit, true );
 	imagecopyresampled( $petit, $source, 0, 0, 0, 0, $n, $n, imagesx( $source ), imagesy( $source ) );
-	imagedestroy( $source );
+	unset( $source );
 
 	$lumiere = 0.0;
 	$opacite = 0.0;
@@ -233,7 +233,7 @@ function el_fond_de( $fichier ) {
 			$nombre++;
 		}
 	}
-	imagedestroy( $petit );
+	unset( $petit );
 	$lumiere /= $nombre;
 	$opacite /= $nombre;
 	if ( $opacite < 0.5 ) {

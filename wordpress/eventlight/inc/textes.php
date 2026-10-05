@@ -98,7 +98,12 @@ function el_prix_min( $produits ) {
 			$nombres[] = $n;
 		}
 	}
-	return $nombres ? el_nombre( min( $nombres ) ) : '0';
+	if ( ! $nombres ) {
+		return '0';
+	}
+	$plus_bas = min( $nombres );
+	// Un prix rond s'écrit sans décimales, les autres à la française : « 18,50 ».
+	return floor( $plus_bas ) === (float) $plus_bas ? (string) (int) $plus_bas : number_format( $plus_bas, 2, ',', '' );
 }
 
 /** Un nombre écrit sans zéros inutiles : 9.0 donne « 9 », 12.5 donne « 12.5 ». */
