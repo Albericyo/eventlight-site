@@ -1,0 +1,445 @@
+/* Event'Light : écrans de l'administration. On reste dans les codes de WordPress, avec le strict nécessaire. */
+
+/* ------------------------------------------------------------ champs des fiches */
+
+.el-champ {
+	margin: 0 0 18px;
+}
+.el-champ:last-child {
+	margin-bottom: 4px;
+}
+.el-champ-label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+.el-champ .description {
+	margin-top: 4px;
+}
+.el-champ textarea,
+.el-champ input.large-text {
+	width: 100%;
+}
+.el-cases {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 18px;
+}
+.el-grille {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 0 20px;
+}
+.el-grille .el-champ select,
+.el-grille .el-champ input {
+	width: 100%;
+	max-width: none;
+}
+.el-suite {
+	display: grid;
+	gap: 6px;
+	max-width: 30em;
+}
+.el-discret {
+	color: #646970;
+}
+.el-alerte {
+	color: #b32d2e;
+	font-weight: 600;
+}
+
+/* ------------------------------------------------------------ photos */
+
+.el-photos-liste {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 8px;
+}
+.el-photos-liste:empty {
+	display: none;
+}
+.el-photos-liste li {
+	position: relative;
+	width: 96px;
+	height: 96px;
+	margin: 0;
+	border: 1px solid #c3c4c7;
+	background: #f0f0f1;
+	cursor: move;
+}
+.el-photos[data-multiple="0"] .el-photos-liste li {
+	cursor: default;
+}
+.el-photos-liste img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.el-photos-retirer {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: #1d2327;
+	color: #fff;
+	font-size: 16px;
+	line-height: 20px;
+	cursor: pointer;
+}
+.el-photos-retirer:hover,
+.el-photos-retirer:focus {
+	background: #b32d2e;
+}
+.el-colonne-photo {
+	display: block;
+	width: 56px;
+	height: 56px;
+	object-fit: cover;
+	background: #f0f0f1;
+}
+.column-el_photo {
+	width: 64px;
+}
+.column-el_ordre,
+.column-el_stock {
+	width: 7em;
+}
+
+/* ------------------------------------------------------------ image du héros (réglages) */
+
+.el-scenes td {
+	vertical-align: top;
+}
+.el-scenes .el-cadrage {
+	width: 7em;
+}
+.el-scenes .regular-text {
+	width: 12em;
+}
+
+/* ------------------------------------------------------------ packs d'une formule */
+
+.el-packs {
+	display: grid;
+	gap: 16px;
+	margin-top: 12px;
+}
+.el-pack {
+	margin: 0;
+	padding: 12px 16px 16px;
+	border: 1px solid #c3c4c7;
+	background: #f6f7f7;
+}
+.el-pack legend {
+	padding: 0 6px;
+	font-weight: 600;
+}
+.el-pack label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+.el-pack label input[type="text"],
+.el-pack label textarea {
+	display: block;
+	margin-top: 4px;
+	font-weight: 400;
+}
+.el-pack-tete {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	gap: 0 20px;
+}
+.el-pack .el-pack-reco {
+	font-weight: 400;
+	padding-bottom: 6px;
+}
+
+/* ------------------------------------------------------------ lignes de matériel */
+
+.el-lignes-table {
+	border-collapse: collapse;
+	margin-bottom: 8px;
+}
+.el-lignes-table td {
+	padding: 3px 12px 3px 0;
+	vertical-align: middle;
+}
+.el-lignes-table select {
+	max-width: 26em;
+}
+.el-ligne-dispo {
+	color: #646970;
+}
+.el-ligne-dispo.el-manque {
+	color: #b32d2e;
+	font-weight: 600;
+}
+.el-ligne-dispo.el-tendu {
+	color: #996800;
+}
+.el-ligne-retirer {
+	color: #b32d2e;
+}
+.el-pack-report {
+	margin-top: 14px;
+	padding-top: 12px;
+	border-top: 1px solid #dcdcde;
+}
+
+/* ------------------------------------------------------------ fiche d'un dossier */
+
+.el-recu {
+	margin-top: 8px;
+	padding: 4px 16px 8px;
+	border-left: 4px solid #72aee6;
+	background: #f6f7f7;
+}
+.el-recu h3 {
+	margin: 12px 0 4px;
+	font-size: 13px;
+}
+.el-recu p {
+	margin: 0 0 8px;
+}
+.el-enregistrer #publishing-action {
+	float: none;
+	text-align: left;
+}
+.el-enregistrer #publishing-action .spinner {
+	float: right;
+}
+.el-client-liens .button {
+	margin-right: 4px;
+}
+
+/* ------------------------------------------------------------ statuts */
+
+.el-statut {
+	display: inline-block;
+	padding: 2px 8px;
+	border: 1px solid #8c8f94;
+	border-radius: 2px;
+	background: #fff;
+	color: #1d2327;
+	font-size: 12px;
+	line-height: 1.5;
+	white-space: nowrap;
+}
+.el-statut-demande {
+	border-color: #996800;
+	background: #fcf9e8;
+}
+.el-statut-devis {
+	border-style: dashed;
+}
+.el-statut-confirmee {
+	border-color: #1d2327;
+	background: #1d2327;
+	color: #fff;
+}
+.el-statut-terminee,
+.el-statut-annulee {
+	border-color: #c3c4c7;
+	color: #646970;
+}
+.el-statut-annulee {
+	text-decoration: line-through;
+}
+
+/* ------------------------------------------------------------ calendrier */
+
+.el-cal-nav {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 12px;
+	margin: 16px 0 12px;
+}
+.el-cal-nav h2 {
+	min-width: 9em;
+	margin: 0;
+	font-size: 20px;
+	text-align: center;
+	text-transform: capitalize;
+}
+.el-cal {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+	background: #fff;
+}
+.el-cal th {
+	padding: 6px 8px;
+	border: 1px solid #c3c4c7;
+	background: #f6f7f7;
+	font-weight: 600;
+	text-align: left;
+	text-transform: capitalize;
+}
+.el-cal td {
+	height: 104px;
+	padding: 4px;
+	border: 1px solid #c3c4c7;
+	vertical-align: top;
+}
+.el-cal td.hors-mois {
+	background: #f6f7f7;
+}
+.el-cal td.hors-mois .el-cal-jour {
+	color: #8c8f94;
+}
+.el-cal td.choisi {
+	box-shadow: inset 0 0 0 2px #2271b1;
+}
+.el-cal-jour {
+	display: inline-block;
+	min-width: 1.6em;
+	padding: 1px 4px;
+	color: #1d2327;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+}
+.el-cal td.aujourdhui .el-cal-jour {
+	border-radius: 2px;
+	background: #2271b1;
+	color: #fff;
+}
+.el-cal-alerte {
+	float: right;
+	padding: 1px 5px;
+	background: #b32d2e;
+	color: #fff;
+	font-size: 11px;
+	line-height: 1.5;
+}
+.el-chip {
+	display: block;
+	margin-top: 3px;
+	padding: 2px 6px;
+	border: 1px solid #1d2327;
+	border-left-width: 4px;
+	background: #1d2327;
+	color: #fff;
+	font-size: 12px;
+	line-height: 1.4;
+	text-decoration: none;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+a.el-chip:hover,
+a.el-chip:focus {
+	color: #fff;
+	box-shadow: 0 0 0 2px #2271b1;
+}
+/* Location : même logique, sur fond clair avec un filet épais. */
+.el-chip-location {
+	background: #fff;
+	color: #1d2327;
+}
+a.el-chip-location:hover,
+a.el-chip-location:focus {
+	color: #1d2327;
+}
+/* En attente : contour en pointillés, rien n'est encore bloqué. */
+.el-chip-demande,
+.el-chip-devis {
+	border-style: dashed;
+	border-left-style: solid;
+	border-color: #996800;
+	background: #fcf9e8;
+	color: #1d2327;
+}
+a.el-chip-demande:hover,
+a.el-chip-demande:focus,
+a.el-chip-devis:hover,
+a.el-chip-devis:focus {
+	color: #1d2327;
+}
+.el-chip-terminee {
+	border-color: #c3c4c7;
+	background: #f0f0f1;
+	color: #50575e;
+}
+a.el-chip-terminee:hover,
+a.el-chip-terminee:focus {
+	color: #50575e;
+}
+.el-chip.suite {
+	border-left-width: 1px;
+}
+.el-legende {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 10px;
+	margin: 10px 0 24px;
+}
+.el-legende .el-chip {
+	margin: 0;
+	overflow: visible;
+}
+.el-jour-dossiers,
+.el-dispos {
+	max-width: 70em;
+}
+.el-planning h3 {
+	margin-top: 20px;
+}
+.el-dispos .num {
+	width: 9em;
+	text-align: right;
+}
+.el-dispos th.num {
+	text-align: right;
+}
+.el-dispos tr.el-manque td {
+	background: #fcf0f1;
+}
+.el-dispos tr.el-tendu td {
+	background: #fcf9e8;
+}
+@media (max-width: 782px) {
+	.el-cal td {
+		height: 72px;
+		padding: 2px;
+	}
+	.el-chip {
+		padding: 1px 3px;
+		font-size: 11px;
+	}
+	.el-cal th {
+		padding: 4px 2px;
+		font-size: 11px;
+		overflow: hidden;
+	}
+}
+
+/* ------------------------------------------------------------ import */
+
+.el-import-intro {
+	max-width: 60em;
+	font-size: 14px;
+}
+.el-import progress {
+	width: 100%;
+	max-width: 40em;
+	height: 14px;
+}
+.el-import-suivi ul {
+	color: #b32d2e;
+}
+.el-import-fin {
+	margin-top: 20px;
+	padding: 4px 20px 12px;
+	border-left: 4px solid #00a32a;
+	background: #fff;
+}

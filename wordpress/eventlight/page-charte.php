@@ -1,0 +1,217 @@
+<?php
+/**
+ * Template Name: Charte graphique
+ *
+ * Le signe, le logo, les couleurs, la typographie et les règles d'usage. Page non indexée.
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$el_formes = array(
+	'logo'  => array( 'Logo principal', 'La composition d\'origine : EVENT, le signe, LIGHT. Pour les grands formats, les affiches, le pied de page.' ),
+	'ligne' => array( 'Logo en ligne', 'Le signe tient la place de l\'apostrophe. Pour l\'en-tête du site, les signatures, les bandeaux.' ),
+	'signe' => array( 'Signe seul', 'Pour les icônes, les réseaux sociaux, le marquage du matériel.' ),
+);
+$el_graisses = array( 'fin', 'courant', 'fort' );
+
+get_header();
+?>
+<div class="wrap">
+	<header class="page-head">
+		<?php el_fil(); ?>
+		<h1><?php the_title(); ?></h1>
+		<p class="lede">Un mur gris aluminium, de la lumière blanche, un trait noir. Tout part du signe : un boîtier, un faisceau.</p>
+	</header>
+</div>
+
+<section class="section">
+	<div class="wrap split">
+		<div class="split-head">
+			<h2>Le signe</h2>
+			<p>Redessiné d'après le logo d'origine, sans en changer la forme. Les irrégularités du tracé à la main sont corrigées : base verticale, pointe au centre du boîtier, épaisseur unique.</p>
+		</div>
+		<div class="split-body stack-l">
+			<div class="construction lit">
+				<svg viewBox="-44 -22 448 292" role="img" aria-label="Construction du signe : boîtier de 110 par 100, faisceau long de 288 et haut de 216, ouverture de 41 degrés">
+					<g fill="none" stroke="var(--sourdine)" stroke-width="1" vector-effect="non-scaling-stroke">
+						<path d="M-12 108H356" stroke-dasharray="3 4"/>
+						<path d="M0 176H110M0 171V181M110 171V181"/>
+						<path d="M-16 58V158M-21 58H-11M-21 158H-11"/>
+						<path d="M55 238H343M55 233V243M343 233V243"/>
+						<path d="M362 0V216M357 0H367M357 216H367"/>
+						<path d="M215 48H295V18"/>
+						<path d="M123.4 82.4A73 73 0 0 1 123.4 133.6"/>
+					</g>
+					<g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter" stroke-miterlimit="4">
+						<polygon points="55,108 343,0 343,216" fill="color-mix(in srgb, var(--tungstene) 45%, transparent)" vector-effect="non-scaling-stroke"/>
+						<rect x="0" y="58" width="110" height="100" vector-effect="non-scaling-stroke"/>
+					</g>
+					<g fill="currentColor" font-family="Sofia Sans, sans-serif" font-size="11" text-anchor="middle">
+						<text x="55" y="192">110</text>
+						<text x="-26" y="112" transform="rotate(-90 -26 108)">100</text>
+						<text x="199" y="254">288</text>
+						<text x="376" y="112" transform="rotate(90 376 108)">216</text>
+						<text x="255" y="62">8</text>
+						<text x="303" y="37">3</text>
+						<text x="150" y="112">41°</text>
+					</g>
+				</svg>
+			</div>
+			<dl class="sheet">
+				<div><dt>Boîtier</dt><dd>Rectangle 11:10 (110 × 100 unités)</dd></div>
+				<div><dt>Pointe du faisceau</dt><dd>Au centre du boîtier</dd></div>
+				<div><dt>Pente du faisceau</dt><dd>3 pour 8, soit 41° d'ouverture</dd></div>
+				<div><dt>Base</dt><dd>Verticale, 216 unités, à 288 unités de la pointe</dd></div>
+				<div><dt>Superposition</dt><dd>Le faisceau passe par-dessus le boîtier, les deux tracés restent visibles</dd></div>
+			</dl>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="wrap split">
+		<div class="split-head">
+			<h2>Le logo</h2>
+			<p>Trois formes, trois graisses. Plus le logo est petit, plus le trait est fort : c'est l'épaisseur qui s'adapte, jamais la forme.</p>
+			<p class="note">Chaque version se télécharge en SVG, en noir et en blanc.</p>
+		</div>
+		<div class="split-body stack-l">
+			<?php foreach ( $el_formes as $el_id => $el_forme ) : ?>
+			<div class="stack">
+				<h3><?php echo esc_html( $el_forme[0] ); ?></h3>
+				<p class="note"><?php echo esc_html( $el_forme[1] ); ?></p>
+				<div class="logos<?php echo 'ligne' === $el_id ? ' logos-ligne' : ''; ?>">
+					<?php foreach ( $el_graisses as $el_g ) : ?>
+					<div class="logo-cell<?php echo 'fort' === $el_g ? ' noir' : ''; ?>">
+						<?php echo el_logo( $el_id . '-' . $el_g ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<footer>
+							<span><?php echo esc_html( ucfirst( $el_g ) ); ?></span>
+							<span><a href="<?php echo esc_url( get_theme_file_uri( 'assets/logo/eventlight-' . $el_id . '-' . $el_g . '-noir.svg' ) ); ?>">SVG noir</a>, <a href="<?php echo esc_url( get_theme_file_uri( 'assets/logo/eventlight-' . $el_id . '-' . $el_g . '-blanc.svg' ) ); ?>">SVG blanc</a></span>
+						</footer>
+					</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+			<?php endforeach; ?>
+
+			<dl class="sheet">
+				<div><dt>Fin</dt><dd>Le trait d'origine. À partir de 40 cm de large à l'impression, ou 600 px à l'écran.</dd></div>
+				<div><dt>Courant</dt><dd>De 8 à 40 cm, de 200 à 600 px.</dd></div>
+				<div><dt>Fort</dt><dd>En dessous de 8 cm ou de 200 px : en-tête du site, cartes de visite, étiquettes.</dd></div>
+				<div><dt>Zone de protection</dt><dd>La hauteur du boîtier, tout autour du logo.</dd></div>
+				<div><dt>Couleur</dt><dd>Noir sur fond clair, blanc sur fond sombre. Jamais de couleur, jamais de dégradé.</dd></div>
+				<div><dt>À ne pas faire</dt><dd>Étirer, incliner, arrondir les angles, remplir le boîtier, changer l'ouverture du faisceau, recomposer les lettres dans une autre police.</dd></div>
+			</dl>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="wrap split">
+		<div class="split-head">
+			<h2>Les couleurs</h2>
+			<p>Le fond est un mur. Ce qui compte est éclairé, donc blanc. La couleur vient des photos, pas de l'interface.</p>
+		</div>
+		<div class="split-body stack-l">
+			<div class="swatches">
+				<div class="swatch"><i style="background: #d4d7d9"></i><b>Aluminium</b><code>#D4D7D9</code><span class="note">Le mur : fond de page</span></div>
+				<div class="swatch"><i style="background: #ffffff"></i><b>Lumière</b><code>#FFFFFF</code><span class="note">Ce qui est éclairé : pack conseillé, survol, champs</span></div>
+				<div class="swatch"><i style="background: #000000"></i><b>Trait</b><code>#000000</code><span class="note">Texte, tracés, bouton principal</span></div>
+				<div class="swatch"><i style="background: #474c51"></i><b>Sourdine</b><code>#474C51</code><span class="note">Texte secondaire</span></div>
+				<div class="swatch"><i style="background: #ffd98a"></i><b>Tungstène</b><code>#FFD98A</code><span class="note">Faisceaux dessinés sur blanc, sélection</span></div>
+			</div>
+			<div class="swatches">
+				<div class="swatch"><i style="background: #17191b"></i><b>Salle éteinte</b><code>#17191B</code><span class="note">Le mur en thème sombre</span></div>
+				<div class="swatch"><i style="background: #303438"></i><b>Éclairé, salle éteinte</b><code>#303438</code><span class="note">Panneaux mis en avant en thème sombre</span></div>
+				<div class="swatch"><i style="background: #000000"></i><b>Écran</b><code>#000000</code><span class="note">Fond des photos et vidéos, dans les deux thèmes</span></div>
+				<div class="swatch"><i style="background: #ffffff"></i><b>Vitrine</b><code>#FFFFFF</code><span class="note">Fond des photos de matériel, dans les deux thèmes</span></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="wrap split">
+		<div class="split-head">
+			<h2>La typographie</h2>
+			<p>Une seule famille, Sofia Sans, en deux largeurs. Les titres sont étroits et légers, comme des barres de lumière. Les polices sont servies par le site lui-même.</p>
+		</div>
+		<div class="split-body specimen">
+			<div><span class="note">Titres<br>Sofia Sans Extra Condensed, 300</span><p class="display" style="font-size: var(--t-1)">Étincelles froides</p></div>
+			<div><span class="note">Sous-titres<br>Extra Condensed, 300</span><p class="display" style="font-size: var(--t-3)">Pack Standard, à partir de 799 €</p></div>
+			<div><span class="note">Prix<br>Extra Condensed, 300</span><p class="display" style="font-size: var(--t-prix)">40 €/j</p></div>
+			<div><span class="note">Intertitres<br>Sofia Sans, 600</span><h3>Vous réservez la date</h3></div>
+			<div><span class="note">Texte courant<br>Sofia Sans, 400, 17 px</span><p style="max-width: 60ch">On monte le son, la lumière et les effets, on reste pendant la soirée, puis on démonte. Le matériel se loue aussi à la journée.</p></div>
+			<div><span class="note">Étiquettes<br>Sofia Sans, 600, 13 px</span><div class="tags"><span class="tag">Mapping</span><span class="tag">40 €/j</span><span class="tag tag-trait">Recommandé</span></div></div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="wrap split">
+		<div class="split-head">
+			<h2>Le trait</h2>
+			<p>Une seule épaisseur à l'écran : 1,5 px, quelle que soit la taille du dessin. Angles vifs, aucun arrondi, aucune ombre. Les pictogrammes et les plans de feu sont dessinés avec le signe.</p>
+		</div>
+		<div class="split-body stack-l">
+			<ul class="cats">
+				<?php foreach ( el_categories() as $el_c ) : ?>
+				<li class="cat"><span class="vitrine"><?php echo el_picto( $el_c['picto'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><b><?php echo esc_html( $el_c['nom'] ); ?></b></li>
+				<?php endforeach; ?>
+			</ul>
+			<div class="cols-2">
+				<figure class="stack"><?php echo el_plan_de_feu( array( 'son', 'totems-2', 'brouillard' ), array( 'titre' => 'Plan de feu : sono, deux totems, brouillard' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><figcaption class="note">Un plan de feu se compose de couches : ici la sono, deux totems, le brouillard.</figcaption></figure>
+				<figure class="stack"><?php echo el_plan_de_feu( array( 'son', 'totems-4', 'brouillard', 'etincelles', 'fumee', 'animateur', 'ceremonie' ), array( 'titre' => 'Plan de feu complet d\'un mariage' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><figcaption class="note">Les mêmes couches, plus les étincelles, la fumée lourde, l'animateur et la cérémonie.</figcaption></figure>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="wrap split">
+		<div class="split-head">
+			<h2>La lumière</h2>
+			<p>Éclairer, c'est passer du gris au blanc. Le survol fait office de poursuite : l'élément pointé s'éclaire. Un seul mouvement programmé sur tout le site : le faisceau qui s'ouvre.</p>
+		</div>
+		<div class="split-body stack-l">
+			<div class="actions">
+				<a class="btn btn-plein" href="<?php echo esc_url( el_url( '/devis/' ) ); ?>">Bouton principal <?php echo el_signe(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+				<a class="btn" href="<?php echo esc_url( el_url( '/location/' ) ); ?>">Bouton secondaire</a>
+				<span class="tag">Étiquette</span>
+				<span class="tag tag-trait">Étiquette au trait</span>
+			</div>
+			<div class="toggles" style="max-width: 24rem">
+				<label class="toggle"><input type="checkbox" id="charte-on" checked><?php echo el_signe(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span class="toggle-label">Allumé</span></label>
+				<label class="toggle"><input type="checkbox" id="charte-off"><?php echo el_signe(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span class="toggle-label">Éteint</span></label>
+			</div>
+			<dl class="sheet">
+				<div><dt>Au repos</dt><dd>Contour au trait sur le mur</dd></div>
+				<div><dt>Éclairé</dt><dd>Fond blanc : survol, page en cours, pack conseillé, question ouverte</dd></div>
+				<div><dt>Plein</dt><dd>Fond noir, texte blanc : l'action principale de la page, une seule par écran</dd></div>
+				<div><dt>Images</dt><dd>Les réalisations sur écran noir, le matériel en vitrine blanche. Toujours des rectangles.</dd></div>
+			</dl>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="wrap split">
+		<div class="split-head">
+			<h2>Le ton</h2>
+			<p>On parle comme sur un chantier bien tenu : des faits, des prix, des phrases courtes.</p>
+		</div>
+		<div class="split-body">
+			<dl class="sheet">
+				<div><dt>On écrit</dt><dd>On monte, on assure la soirée, on démonte.</dd></div>
+				<div><dt>On évite</dt><dd>Une expérience inoubliable, clé en main, sur mesure.</dd></div>
+				<div><dt>On écrit</dt><dd>4 totems, étincelles froides, animateur : à partir de 799 €.</dd></div>
+				<div><dt>On évite</dt><dd>Des prestations haut de gamme à prix compétitifs.</dd></div>
+				<div><dt>Personnes</dt><dd>« Vous » pour le client, « on » pour l'équipe.</dd></div>
+				<div><dt>Vocabulaire</dt><dd>Les mots du métier sont les bienvenus s'ils sont montrés ou expliqués : lyre, totem, fumée lourde, gabarit.</dd></div>
+				<div><dt>Ponctuation</dt><dd>Pas de point d'exclamation, pas de tiret long, pas d'émoji.</dd></div>
+			</dl>
+		</div>
+	</div>
+</section>
+<?php
+get_footer();

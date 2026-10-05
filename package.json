@@ -7,7 +7,8 @@
     "serve": "eleventy --serve",
     "images": "node scripts/optimize-images.js",
     "icons": "node scripts/build-icons.js",
-    "logo": "python3 scripts/logo/build.py && node scripts/build-icons.js"
+    "logo": "python3 scripts/logo/build.py && node scripts/build-icons.js",
+    "wordpress": "node scripts/build-wordpress.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",

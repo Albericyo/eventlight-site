@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "Sofia Sans";
-  src: url("/assets/fonts/sofia-sans-latin.woff2") format("woff2");
+  src: url("../fonts/sofia-sans-latin.woff2") format("woff2");
   font-weight: 1 1000;
   font-style: normal;
   font-display: swap;
@@ -15,7 +15,7 @@
 }
 @font-face {
   font-family: "Sofia Sans";
-  src: url("/assets/fonts/sofia-sans-latin-ext.woff2") format("woff2");
+  src: url("../fonts/sofia-sans-latin-ext.woff2") format("woff2");
   font-weight: 1 1000;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 }
 @font-face {
   font-family: "Sofia Sans Extra Condensed";
-  src: url("/assets/fonts/sofia-sans-extra-condensed-latin.woff2") format("woff2");
+  src: url("../fonts/sofia-sans-extra-condensed-latin.woff2") format("woff2");
   font-weight: 1 1000;
   font-style: normal;
   font-display: swap;
@@ -33,7 +33,7 @@
 }
 @font-face {
   font-family: "Sofia Sans Extra Condensed";
-  src: url("/assets/fonts/sofia-sans-extra-condensed-latin-ext.woff2") format("woff2");
+  src: url("../fonts/sofia-sans-extra-condensed-latin-ext.woff2") format("woff2");
   font-weight: 1 1000;
   font-style: normal;
   font-display: swap;
@@ -1737,6 +1737,14 @@ a.vitrine:hover {
   position: absolute;
   left: -100vw;
 }
+/* Message du serveur quand la demande n'a pas pu partir. */
+.form-alerte {
+  padding: var(--e-3) var(--e-4);
+  border: var(--ep) solid var(--alerte);
+  box-shadow: inset 0 0 0 1px var(--alerte);
+  background: var(--lumiere);
+  font-weight: 600;
+}
 @media (max-width: 40em) {
   .form {
     grid-template-columns: minmax(0, 1fr);
@@ -1839,6 +1847,11 @@ a.vitrine:hover {
   margin-top: 1.6em;
   padding-top: 0.5em;
   border-top: var(--ep) solid var(--trait);
+}
+.prose > h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }
 .prose h3 {
   margin-top: 1.5em;
