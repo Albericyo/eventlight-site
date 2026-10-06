@@ -354,6 +354,9 @@ function el_dossier_boite_enregistrer( $post ) {
 	echo '<input type="hidden" name="original_publish" id="original_publish" value="Enregistrer">';
 	submit_button( 'Enregistrer', 'primary large', 'publish', false, array( 'id' => 'publish' ) );
 	echo '</div>';
+	if ( ! $nouveau ) {
+		echo '<p class="el-dupliquer"><a href="' . esc_url( el_dupliquer_lien( $post->ID ) ) . '">Dupliquer ce dossier</a></p>';
+	}
 	if ( ! $nouveau && current_user_can( 'delete_post', $post->ID ) ) {
 		echo '<p><a class="submitdelete deletion" href="' . esc_url( get_delete_post_link( $post->ID ) ) . '">Mettre à la corbeille</a></p>';
 	}

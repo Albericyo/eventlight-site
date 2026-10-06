@@ -27,7 +27,7 @@ foreach ( $el_fichiers as $el_fichier ) {
 }
 
 if ( is_admin() ) {
-	foreach ( array( 'champs', 'contenus', 'reglages', 'planning', 'pieces', 'import' ) as $el_fichier ) {
+	foreach ( array( 'champs', 'contenus', 'reglages', 'planning', 'pieces', 'dupliquer', 'import' ) as $el_fichier ) {
 		require_once get_theme_file_path( 'inc/admin/' . $el_fichier . '.php' );
 	}
 }
