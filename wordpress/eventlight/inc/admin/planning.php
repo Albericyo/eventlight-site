@@ -75,6 +75,7 @@ function el_page_calendrier() {
 	$dossiers  = el_dossiers_entre( $debut, $fin );
 	$par_jour  = array();
 	$sorties   = array();
+	$lignes_jour = array();
 	$fermes    = el_statuts_fermes();
 	foreach ( $dossiers as $d ) {
 		foreach ( el_jours( max( $d['debut'], $debut ), min( $d['fin'], $fin ) ) as $j ) {
@@ -82,6 +83,7 @@ function el_page_calendrier() {
 			if ( in_array( $d['statut'], $fermes, true ) ) {
 				foreach ( $d['lignes'] as $l ) {
 					$sorties[ $j ][ $l['produit'] ] = ( isset( $sorties[ $j ][ $l['produit'] ] ) ? $sorties[ $j ][ $l['produit'] ] : 0 ) + $l['q'];
+					$lignes_jour[ $j ][]            = $l;
 				}
 			}
 		}
@@ -91,6 +93,15 @@ function el_page_calendrier() {
 	foreach ( $sorties as $j => $produits ) {
 		foreach ( $produits as $pid => $q ) {
 			if ( isset( $stocks[ $pid ] ) && $q > $stocks[ $pid ] ) {
+				$depasses[ $j ] = true;
+			}
+		}
+	}
+	// Les pièces de structure : un jour où on en promet plus qu'on n'en a est aussi un jour de dépassement.
+	$pieces_stock = el_pieces_stocks();
+	foreach ( $lignes_jour as $j => $lignes ) {
+		foreach ( el_pieces_utilisees( $lignes ) as $piece => $q ) {
+			if ( isset( $pieces_stock[ $piece ] ) && $q > $pieces_stock[ $piece ] ) {
 				$depasses[ $j ] = true;
 			}
 		}
@@ -158,6 +169,7 @@ function el_page_calendrier() {
 	<p class="el-legende">
 		<span class="el-chip el-chip-confirmee el-chip-prestation">Événement confirmé</span>
 		<span class="el-chip el-chip-confirmee el-chip-location">Location confirmée</span>
+		<span class="el-chip el-chip-encours el-chip-prestation">En cours</span>
 		<span class="el-chip el-chip-devis el-chip-prestation">En attente : demande reçue ou devis envoyé</span>
 		<span class="el-chip el-chip-terminee el-chip-prestation">Terminé</span>
 	</p>
@@ -266,7 +278,11 @@ function el_page_stock() {
 				<tr>
 					<td><label for="el-stock-<?php echo (int) $p['id']; ?>"><?php echo esc_html( $p['nom'] ); ?></label></td>
 					<td><?php echo esc_html( $p['prix'] ); ?></td>
+					<?php if ( el_recette( $p['id'] ) ) : ?>
+					<td><?php echo (int) el_produit_stock( $p['id'] ); ?> <span class="description">calculé d'après les <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=el_produit&page=el-pieces' ) ); ?>">pièces</a></span></td>
+					<?php else : ?>
 					<td><input type="number" class="small-text" min="0" id="el-stock-<?php echo (int) $p['id']; ?>" name="el_stock[<?php echo (int) $p['id']; ?>]" value="<?php echo esc_attr( (string) get_post_meta( $p['id'], '_el_stock', true ) ); ?>"></td>
+					<?php endif; ?>
 				</tr>
 					<?php endforeach; ?>
 				<?php endforeach; ?>
@@ -465,7 +481,7 @@ function el_dossier_boite_materiel( $post ) {
 		echo '</p></div>';
 	}
 	echo '<p class="description el-dispo-periode" data-sauf="' . (int) $post->ID . '">' . ( '' !== $d['debut'] ? 'Disponibilités ' . esc_html( el_periode_fr( $d['debut'], $d['fin'] ) ) . '.' : 'Indiquez les dates du dossier pour voir ce qui est disponible.' ) . '</p>';
-	echo el_champ_materiel( 'el_dossier[lignes]', $d['lignes'], true ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo el_champ_materiel( 'el_dossier[lignes]', $d['lignes'], true, true ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	// Le matériel renseigné sur les packs des formules, à reporter d'un clic.
 	$packs = array();
@@ -724,7 +740,8 @@ function el_dossier_actions_rapides( $actions, $post ) {
 	$suivants = array(
 		'demande'   => array( 'devis' => 'Devis envoyé', 'confirmee' => 'Confirmer', 'annulee' => 'Sans suite' ),
 		'devis'     => array( 'confirmee' => 'Confirmer', 'annulee' => 'Sans suite' ),
-		'confirmee' => array( 'terminee' => 'Terminer', 'annulee' => 'Annuler' ),
+		'confirmee' => array( 'encours' => 'Démarrer', 'terminee' => 'Terminer', 'annulee' => 'Annuler' ),
+		'encours'   => array( 'terminee' => 'Terminer' ),
 	);
 	$rapides  = array();
 	foreach ( isset( $suivants[ $statut ] ) ? $suivants[ $statut ] : array() as $cible => $libelle ) {

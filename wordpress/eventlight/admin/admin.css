@@ -245,6 +245,13 @@
 	background: #1d2327;
 	color: #fff;
 }
+.el-statut-encours {
+	border-color: #1d2327;
+	background: #fff;
+	color: #1d2327;
+	font-weight: 600;
+	box-shadow: inset 3px 0 0 #1d2327;
+}
 .el-statut-terminee,
 .el-statut-annulee {
 	border-color: #c3c4c7;
@@ -464,4 +471,26 @@ a.el-chip-terminee:focus {
 }
 .el-stock-table td {
 	vertical-align: middle;
+}
+
+.el-chip-encours {
+	border-left-color: #ffd98a;
+}
+
+/* Matériel d'un dossier, rangé par catégorie de produit */
+.el-lignes-cat .el-cat {
+	margin: 0 0 14px;
+	padding-top: 8px;
+	border-top: 1px solid #dcdcde;
+}
+.el-lignes-cat .el-cat-titre {
+	margin: 0 0 6px;
+	font-size: 13px;
+	color: #50575e;
+}
+.el-lignes-cat .el-cat.a-des-lignes .el-cat-titre {
+	color: #1d2327;
+}
+.el-lignes-cat .el-cat:not(.a-des-lignes) .el-lignes-table {
+	display: none;
 }

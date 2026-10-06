@@ -45,6 +45,7 @@ function el_statuts() {
 		'demande'   => 'Demande reçue',
 		'devis'     => 'Devis envoyé',
 		'confirmee' => 'Confirmée',
+		'encours'   => 'En cours',
 		'terminee'  => 'Terminée',
 		'annulee'   => 'Sans suite',
 	);
@@ -52,7 +53,7 @@ function el_statuts() {
 
 /** Les statuts qui sortent réellement le matériel du stock. */
 function el_statuts_fermes() {
-	return array( 'confirmee', 'terminee' );
+	return array( 'confirmee', 'encours', 'terminee' );
 }
 
 /** Les statuts qui ne bloquent rien, mais qu'il faut garder à l'œil. */
@@ -231,6 +232,14 @@ function el_stocks() {
 				$stocks[ $post->ID ] = max( 0, (int) $valeur );
 			}
 		}
+		// Un produit qui a une recette n'a pas de stock à lui : c'est ce que ses pièces permettent de monter.
+		$pieces = el_pieces_stocks();
+		foreach ( el_recettes() as $id => $recette ) {
+			$capacite = el_recette_capacite( $recette, $pieces );
+			if ( null !== $capacite ) {
+				$stocks[ $id ] = $capacite;
+			}
+		}
 	}
 	return $stocks;
 }
@@ -311,16 +320,31 @@ function el_sorties( $debut, $fin, $sauf = 0 ) {
  * @return array identifiant de produit => array( 'stock', 'ferme', 'attente', 'dispo' ).
  */
 function el_disponibilites( $debut, $fin, $sauf = 0 ) {
-	$sorties = el_sorties( $debut, $fin, $sauf );
-	$dispos  = array();
+	$sorties  = el_sorties( $debut, $fin, $sauf );
+	$pieces   = el_pieces_dispos( $debut, $fin, $sauf );
+	$recettes = el_recettes();
+	$dispos   = array();
 	foreach ( el_stocks() as $produit => $stock ) {
-		$ferme              = isset( $sorties[ $produit ] ) ? $sorties[ $produit ]['ferme'] : 0;
-		$attente            = isset( $sorties[ $produit ] ) ? $sorties[ $produit ]['attente'] : 0;
+		$ferme   = isset( $sorties[ $produit ] ) ? $sorties[ $produit ]['ferme'] : 0;
+		$attente = isset( $sorties[ $produit ] ) ? $sorties[ $produit ]['attente'] : 0;
+		$dispo   = $stock - $ferme;
+		if ( isset( $recettes[ $produit ] ) ) {
+			// Pour un produit fait de pièces : ce que les pièces encore libres permettent de monter.
+			$restes = array();
+			foreach ( $pieces as $piece => $x ) {
+				$restes[ $piece ] = $x['dispo'];
+			}
+			$possible = el_recette_capacite( $recettes[ $produit ], $restes );
+			if ( null !== $possible ) {
+				$dispo = $possible;
+				$ferme = $stock - $possible;
+			}
+		}
 		$dispos[ $produit ] = array(
 			'stock'   => $stock,
 			'ferme'   => $ferme,
 			'attente' => $attente,
-			'dispo'   => $stock - $ferme,
+			'dispo'   => $dispo,
 		);
 	}
 	return $dispos;
@@ -335,9 +359,14 @@ function el_depassements( $dossier ) {
 	if ( ! $dossier || '' === $dossier['debut'] || ! $dossier['lignes'] ) {
 		return array();
 	}
-	$dispos  = el_disponibilites( $dossier['debut'], $dossier['fin'], $dossier['id'] );
-	$manques = array();
+	$dispos   = el_disponibilites( $dossier['debut'], $dossier['fin'], $dossier['id'] );
+	$recettes = el_recettes();
+	$manques  = array();
 	foreach ( $dossier['lignes'] as $l ) {
+		// Les produits faits de pièces sont vérifiés plus bas, pièce par pièce, tous produits confondus.
+		if ( isset( $recettes[ $l['produit'] ] ) ) {
+			continue;
+		}
 		if ( isset( $dispos[ $l['produit'] ] ) && $l['q'] > $dispos[ $l['produit'] ]['dispo'] ) {
 			$manques[] = array(
 				'produit' => $l['produit'],
@@ -346,6 +375,14 @@ function el_depassements( $dossier ) {
 				'dispo'   => max( 0, $dispos[ $l['produit'] ]['dispo'] ),
 			);
 		}
+	}
+	foreach ( el_pieces_manques( $dossier ) as $m ) {
+		$manques[] = array(
+			'produit' => 0,
+			'nom'     => 'Pièce : ' . $m['nom'],
+			'demande' => $m['demande'],
+			'dispo'   => $m['dispo'],
+		);
 	}
 	return $manques;
 }

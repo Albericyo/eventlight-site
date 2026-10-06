@@ -378,6 +378,9 @@ function el_import_etape( $etape ) {
 				if ( null !== $p['stock'] ) {
 					update_post_meta( $id, '_el_stock', (string) (int) $p['stock'] );
 				}
+				if ( ! empty( $p['pieces'] ) ) {
+					update_post_meta( $id, '_el_pieces', array_map( 'intval', $p['pieces'] ) );
+				}
 				foreach ( $galerie as $photo ) {
 					wp_update_post(
 						array(
