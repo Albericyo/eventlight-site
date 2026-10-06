@@ -382,11 +382,19 @@
       })[0];
       return l ? l.q : 0;
     }
+    // max : le stock du produit quand il est suivi (le site WordPress l'indique), sinon absent.
     function regler(item, q) {
       var liste = tout().filter(function (x) {
         return x.slug !== item.slug;
       });
-      if (q > 0) liste.push({ slug: item.slug, nom: item.nom, prix: item.prix, q: Math.min(q, 99) });
+      var max = typeof item.max === "number" ? item.max : null;
+      var plafond = max === null ? 99 : Math.min(max, 99);
+      if (q > plafond) q = plafond;
+      if (q > 0) {
+        var ligne = { slug: item.slug, nom: item.nom, prix: item.prix, q: q };
+        if (max !== null) ligne.max = max;
+        liste.push(ligne);
+      }
       garder(liste);
     }
     function vider() {
@@ -418,17 +426,37 @@
     return (Math.round(n * 100) / 100).toString().replace(".", ",") + " €";
   }
 
+  // Le stock indiqué sur un bouton d'ajout : un nombre, ou null quand le produit n'est pas suivi.
+  function stockDuBouton(b) {
+    var v = b.getAttribute("data-stock");
+    return v !== null && v !== "" && !isNaN(Number(v)) ? Math.max(0, Math.floor(Number(v))) : null;
+  }
+  function exemplaires(n) {
+    return n + " exemplaire" + (n > 1 ? "s" : "");
+  }
   function majBoutonsAjout() {
     $$("[data-add]").forEach(function (b) {
       var q = selection.quantite(b.getAttribute("data-add"));
+      var stock = stockDuBouton(b);
       b.classList.toggle("is-in", q > 0);
+      if (stock === 0) {
+        b.disabled = true;
+        b.textContent = "Indisponible";
+        return;
+      }
       b.textContent = q > 0 ? (b.getAttribute("data-label-in") || "Ajouté") + " (" + q + ")" : b.getAttribute("data-label") || "Ajouter";
     });
   }
   $$("[data-add]").forEach(function (b) {
     b.setAttribute("data-label", b.textContent.trim());
     b.addEventListener("click", function () {
+      var stock = stockDuBouton(b);
       var item = { slug: b.getAttribute("data-add"), nom: b.getAttribute("data-nom"), prix: b.getAttribute("data-prix") };
+      if (stock !== null) item.max = stock;
+      if (stock !== null && selection.quantite(item.slug) >= stock) {
+        annoncer("Nous n'avons que " + exemplaires(stock) + " de ce matériel. <a href=\"" + lien("/devis/#selection") + "\">Voir la sélection</a>");
+        return;
+      }
       selection.regler(item, selection.quantite(item.slug) + 1);
       majBoutonsAjout();
       annoncer(item.nom + " ajouté à votre sélection. <a href=\"" + lien("/devis/#selection") + "\">Voir la sélection</a>");
@@ -447,9 +475,33 @@
     var typeSel = $("#devis-type", form);
     var message = $("#devis-message", form);
 
+    // Les stocks suivis, envoyés par le serveur : { slug: quantité }.
+    var stocks = {};
+    try {
+      stocks = JSON.parse(form.getAttribute("data-stocks") || "{}") || {};
+    } catch (e) {
+      stocks = {};
+    }
+    // Ramène la sélection enregistrée dans le navigateur au stock actuel.
+    function accorderAuStock() {
+      var change = false;
+      selection.tout().forEach(function (x) {
+        if (typeof stocks[x.slug] !== "number") return;
+        var max = stocks[x.slug];
+        if (x.q > max || x.max !== max) {
+          if (x.q > max) change = true;
+          selection.regler({ slug: x.slug, nom: x.nom, prix: x.prix, max: max }, x.q);
+        }
+      });
+      return change;
+    }
+
     var typeImpose = false;
     function rendre() {
       if (!zone) return;
+      if (accorderAuStock()) {
+        annoncer("Certaines quantités ont été ramenées au stock disponible.");
+      }
       var liste = selection.tout();
       zone.hidden = liste.length === 0;
       var ul = $("ul", zone);
@@ -469,6 +521,11 @@
         li.children[0].textContent = x.nom;
         $("output", li).textContent = String(x.q);
         li.children[2].textContent = euros(unit * x.q) + " / jour";
+        var plus = $('button[data-q="1"]', li);
+        if (typeof x.max === "number" && x.q >= x.max) {
+          plus.disabled = true;
+          plus.title = "Stock maximal atteint : " + exemplaires(x.max);
+        }
         $$("button", li).forEach(function (btn) {
           btn.addEventListener("click", function () {
             var d = Number(btn.getAttribute("data-q"));

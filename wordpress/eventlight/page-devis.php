@@ -42,7 +42,7 @@ if ( $el_envoyee ) {
 			<?php endif; ?>
 		</div>
 
-		<form class="split-body form" name="devis" method="POST" action="<?php echo esc_url( el_url( '/devis/' ) ); ?>" data-devis>
+		<form class="split-body form" name="devis" method="POST" action="<?php echo esc_url( el_url( '/devis/' ) ); ?>" data-devis data-stocks="<?php echo esc_attr( wp_json_encode( el_stocks_par_slug(), JSON_FORCE_OBJECT ) ); ?>">
 			<input type="hidden" name="el_action" value="devis">
 			<p class="hp"><label>Ne pas remplir : <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 

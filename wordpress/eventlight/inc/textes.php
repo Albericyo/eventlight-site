@@ -56,10 +56,10 @@ function el_typographie( $html ) {
 	return $sortie;
 }
 
-/** « 40,00 €/j (la paire) » donne montant « 40 », unité « €/j », note « la paire ». */
+/** « 40,00 €/j (la paire) » donne montant « 40 », unité « €/j », note « la paire ». Majuscule, « /jour » et espaces sont acceptés. */
 function el_prix_detail( $valeur ) {
 	$s = (string) $valeur;
-	if ( ! preg_match( '/([\d\s]+)(?:,(\d+))?\s*€(\/j)?\s*(?:\((.+)\))?/u', $s, $m ) ) {
+	if ( ! preg_match( '/([\d\s]+)(?:[,.](\d+))?\s*€\s*(\/\s*j(?:our)?)?\s*(?:\((.+)\))?/iu', $s, $m ) ) {
 		return array(
 			'montant' => $s,
 			'unite'   => '',

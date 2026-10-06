@@ -235,6 +235,30 @@ function el_stocks() {
 	return $stocks;
 }
 
+/** Le stock d'un produit : un nombre, ou null quand il n'est pas suivi. */
+function el_produit_stock( $produit_id ) {
+	$stocks = el_stocks();
+	return isset( $stocks[ (int) $produit_id ] ) ? $stocks[ (int) $produit_id ] : null;
+}
+
+/** Les stocks suivis, par adresse de produit : { slug: quantité }. Sert au plafond côté navigateur. */
+function el_stocks_par_slug() {
+	$carte = array();
+	foreach ( el_stocks() as $id => $stock ) {
+		$post = get_post( $id );
+		if ( $post && 'publish' === $post->post_status ) {
+			$carte[ $post->post_name ] = $stock;
+		}
+	}
+	return $carte;
+}
+
+/** Attribut HTML du bouton « Ajouter » : data-stock="N" quand le stock est suivi, rien sinon. */
+function el_attr_stock( $produit_id ) {
+	$stock = el_produit_stock( $produit_id );
+	return null === $stock ? '' : ' data-stock="' . (int) $stock . '"';
+}
+
 /**
  * Ce qui est sorti, produit par produit, sur une période.
  *

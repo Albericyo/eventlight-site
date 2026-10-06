@@ -65,7 +65,7 @@ un téléphone. Elle donne accès aux noms des clients : ne pas la partager.
 --------
 
 - Les pages « devis », « merci » (rangée sous devis), « contact », « video-mapping »,
-  « mentions-legales » et « charte » doivent garder leur nom dans l'adresse. Leur titre et
+  « mentions-legales » et « charte » (réservée aux personnes connectées : le public a une erreur 404) doivent garder leur nom dans l'adresse. Leur titre et
   leur texte d'introduction se modifient librement.
 - Les adresses lisibles (Réglages > Permaliens, tout sauf « Simple ») sont nécessaires.
 - Si les e-mails n'arrivent pas, le serveur ne sait sans doute pas les envoyer correctement.

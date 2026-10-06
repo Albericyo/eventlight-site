@@ -51,7 +51,7 @@ function el_item( $p, $niveau = 3 ) {
 		<p class="clamp-3"><?php echo esc_html( $p['description'] ); ?></p>
 	</div>
 	<div class="item-foot">
-		<button class="btn btn-s add" type="button" data-add="<?php echo esc_attr( $p['slug'] ); ?>" data-nom="<?php echo esc_attr( $p['nom'] ); ?>" data-prix="<?php echo esc_attr( $p['prix'] ); ?>" aria-label="Ajouter <?php echo esc_attr( $p['nom'] ); ?> à ma sélection">Ajouter</button>
+		<button class="btn btn-s add" type="button" data-add="<?php echo esc_attr( $p['slug'] ); ?>" data-nom="<?php echo esc_attr( $p['nom'] ); ?>" data-prix="<?php echo esc_attr( $p['prix'] ); ?>"<?php echo el_attr_stock( $p['id'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> aria-label="Ajouter <?php echo esc_attr( $p['nom'] ); ?> à ma sélection">Ajouter</button>
 	</div>
 </li>
 	<?php
