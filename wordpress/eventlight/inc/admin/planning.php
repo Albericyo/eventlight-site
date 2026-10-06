@@ -414,6 +414,7 @@ function el_dossier_boite( $post ) {
 			'exemple' => '240 € le 12/03',
 		),
 	);
+	echo '<p class="el-statut-actuel">Statut actuel : ' . el_statut_html( $d['statut'] ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '<div class="el-grille">';
 	el_champs_afficher(
 		$champs,
