@@ -243,53 +243,49 @@
 	border-radius: 50%;
 	background: #8c8f94;
 }
-/* Demande reçue : à traiter */
-.el-statut-demande {
-	background: #fcf0c8;
-	color: #5c3f00;
+/* Une couleur par statut, partagée par les badges et par le calendrier. */
+.el-statut-demande,
+.el-chip-demande {
+	--el-fond: #fcf0c8;
+	--el-texte: #5c3f00;
+	--el-point: #dba617;
 }
-.el-statut-demande::before {
-	background: #dba617;
+.el-statut-encours,
+.el-chip-encours {
+	--el-fond: #ebe3f7;
+	--el-texte: #44207a;
+	--el-point: #7e3bd0;
 }
-/* Devis envoyé : on attend le client */
-.el-statut-devis {
-	background: #dff0fb;
-	color: #0a4b78;
+.el-statut-devis,
+.el-chip-devis {
+	--el-fond: #dff0fb;
+	--el-texte: #0a4b78;
+	--el-point: #2271b1;
 }
-.el-statut-devis::before {
-	background: #2271b1;
+.el-statut-confirmee,
+.el-chip-confirmee {
+	--el-fond: #d4efdc;
+	--el-texte: #0a4d20;
+	--el-point: #00a32a;
 }
-/* Confirmée : le matériel est réservé */
-.el-statut-confirmee {
-	background: #d4efdc;
-	color: #0a4d20;
+.el-statut-terminee,
+.el-chip-terminee {
+	--el-fond: #f0f0f1;
+	--el-texte: #50575e;
+	--el-point: #8c8f94;
 }
-.el-statut-confirmee::before {
-	background: #00a32a;
+.el-statut-annulee,
+.el-chip-annulee {
+	--el-fond: #fbe3e4;
+	--el-texte: #8a1f1f;
+	--el-point: #d63638;
 }
-/* En chiffrage : on prépare le devis */
-.el-statut-encours {
-	background: #ebe3f7;
-	color: #44207a;
+[class*="el-statut-"] {
+	background: var(--el-fond);
+	color: var(--el-texte);
 }
-.el-statut-encours::before {
-	background: #7e3bd0;
-}
-/* Terminée : rangée */
-.el-statut-terminee {
-	background: #f0f0f1;
-	color: #50575e;
-}
-.el-statut-terminee::before {
-	background: #8c8f94;
-}
-/* Sans suite : abandonnée */
-.el-statut-annulee {
-	background: #fbe3e4;
-	color: #8a1f1f;
-}
-.el-statut-annulee::before {
-	background: #d63638;
+[class*="el-statut-"]::before {
+	background: var(--el-point);
 }
 
 /* ------------------------------------------------------------ calendrier */
@@ -363,11 +359,13 @@
 	display: block;
 	margin-top: 3px;
 	padding: 2px 6px;
-	border: 1px solid #1d2327;
+	border: 1px solid var(--el-point, #8c8f94);
 	border-left-width: 4px;
-	background: #1d2327;
-	color: #fff;
+	border-radius: 2px;
+	background: var(--el-fond, #f0f0f1);
+	color: var(--el-texte, #1d2327);
 	font-size: 12px;
+	font-weight: 600;
 	line-height: 1.4;
 	text-decoration: none;
 	white-space: nowrap;
@@ -376,44 +374,19 @@
 }
 a.el-chip:hover,
 a.el-chip:focus {
-	color: #fff;
+	color: var(--el-texte, #1d2327);
 	box-shadow: 0 0 0 2px #2271b1;
 }
-/* Location : même logique, sur fond clair avec un filet épais. */
-.el-chip-location {
-	background: #fff;
-	color: #1d2327;
-}
-a.el-chip-location:hover,
-a.el-chip-location:focus {
-	color: #1d2327;
-}
-/* En attente : contour en pointillés, rien n'est encore bloqué. */
-.el-chip-demande,
-.el-chip-encours,
-.el-chip-devis {
-	border-style: dashed;
-	border-left-style: solid;
-	border-color: #996800;
-	background: #fcf9e8;
-	color: #1d2327;
-}
-a.el-chip-demande:hover,
-a.el-chip-encours:hover,
-a.el-chip-encours:focus,
-a.el-chip-demande:focus,
-a.el-chip-devis:hover,
-a.el-chip-devis:focus {
-	color: #1d2327;
-}
-.el-chip-terminee {
-	border-color: #c3c4c7;
-	background: #f0f0f1;
-	color: #50575e;
-}
-a.el-chip-terminee:hover,
-a.el-chip-terminee:focus {
-	color: #50575e;
+/* Une location porte son genre devant le nom ; un événement n'a rien. */
+.el-chip-genre {
+	margin-right: 5px;
+	padding: 0 4px;
+	border-radius: 2px;
+	background: var(--el-texte);
+	color: var(--el-fond);
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
 }
 .el-chip.suite {
 	border-left-width: 1px;

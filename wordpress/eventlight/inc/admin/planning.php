@@ -157,7 +157,7 @@ function el_page_calendrier() {
 					<span class="el-cal-alerte" title="Stock dépassé ce jour-là">Stock dépassé</span>
 					<?php endif; ?>
 					<?php foreach ( isset( $par_jour[ $j ] ) ? $par_jour[ $j ] : array() as $d ) : ?>
-					<a class="el-chip el-chip-<?php echo esc_attr( $d['statut'] ); ?> el-chip-<?php echo esc_attr( $d['genre'] ); ?><?php echo $d['debut'] < $j ? ' suite' : ''; ?>" href="<?php echo esc_url( get_edit_post_link( $d['id'] ) ); ?>" title="<?php echo esc_attr( $genres[ $d['genre'] ] . ', ' . el_statuts()[ $d['statut'] ] . ', ' . el_periode_fr( $d['debut'], $d['fin'] ) ); ?>"><?php echo esc_html( $d['titre'] ); ?></a>
+					<a class="el-chip el-chip-<?php echo esc_attr( $d['statut'] ); ?> el-chip-<?php echo esc_attr( $d['genre'] ); ?><?php echo $d['debut'] < $j ? ' suite' : ''; ?>" href="<?php echo esc_url( get_edit_post_link( $d['id'] ) ); ?>" title="<?php echo esc_attr( $genres[ $d['genre'] ] . ', ' . el_statuts()[ $d['statut'] ] . ', ' . el_periode_fr( $d['debut'], $d['fin'] ) ); ?>"><?php echo 'location' === $d['genre'] ? '<span class="el-chip-genre">Location</span>' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $d['titre'] ); ?></a>
 					<?php endforeach; ?>
 				</td>
 				<?php endforeach; ?>
@@ -167,10 +167,10 @@ function el_page_calendrier() {
 	</table>
 
 	<p class="el-legende">
-		<span class="el-chip el-chip-confirmee el-chip-prestation">Événement confirmé</span>
-		<span class="el-chip el-chip-confirmee el-chip-location">Location confirmée</span>
-		<span class="el-chip el-chip-devis el-chip-prestation">En attente : demande reçue, en chiffrage ou devis envoyé</span>
-		<span class="el-chip el-chip-terminee el-chip-prestation">Terminé</span>
+		<?php foreach ( array_diff_key( el_statuts(), array( 'annulee' => 1 ) ) as $cle => $nom ) : ?>
+		<span class="el-chip el-chip-<?php echo esc_attr( $cle ); ?>"><?php echo esc_html( $nom ); ?></span>
+		<?php endforeach; ?>
+		<span class="el-chip el-chip-confirmee"><span class="el-chip-genre">Location</span>Une location</span>
 	</p>
 
 	<h2 id="jour">Le <?php echo esc_html( el_date_longue( $jour ) ); ?></h2>
@@ -413,7 +413,7 @@ function el_dossier_boite( $post ) {
 			'exemple' => '240 € le 12/03',
 		),
 	);
-	echo '<p class="el-statut-actuel">Statut actuel : ' . el_statut_html( $d['statut'] ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo '<p class="el-fiche-statut">Statut actuel : ' . el_statut_html( $d['statut'] ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '<div class="el-grille">';
 	el_champs_afficher(
 		$champs,
