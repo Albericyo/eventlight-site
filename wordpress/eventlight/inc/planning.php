@@ -45,6 +45,7 @@ function el_statuts() {
 		'demande'   => 'Demande reçue',
 		'devis'     => 'Devis envoyé',
 		'confirmee' => 'Confirmée',
+		'encours'   => 'En cours',
 		'terminee'  => 'Terminée',
 		'annulee'   => 'Sans suite',
 	);
@@ -52,7 +53,7 @@ function el_statuts() {
 
 /** Les statuts qui sortent réellement le matériel du stock. */
 function el_statuts_fermes() {
-	return array( 'confirmee', 'terminee' );
+	return array( 'confirmee', 'encours', 'terminee' );
 }
 
 /** Les statuts qui ne bloquent rien, mais qu'il faut garder à l'œil. */

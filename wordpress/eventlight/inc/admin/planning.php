@@ -158,6 +158,7 @@ function el_page_calendrier() {
 	<p class="el-legende">
 		<span class="el-chip el-chip-confirmee el-chip-prestation">Événement confirmé</span>
 		<span class="el-chip el-chip-confirmee el-chip-location">Location confirmée</span>
+		<span class="el-chip el-chip-encours el-chip-prestation">En cours</span>
 		<span class="el-chip el-chip-devis el-chip-prestation">En attente : demande reçue ou devis envoyé</span>
 		<span class="el-chip el-chip-terminee el-chip-prestation">Terminé</span>
 	</p>
@@ -724,7 +725,8 @@ function el_dossier_actions_rapides( $actions, $post ) {
 	$suivants = array(
 		'demande'   => array( 'devis' => 'Devis envoyé', 'confirmee' => 'Confirmer', 'annulee' => 'Sans suite' ),
 		'devis'     => array( 'confirmee' => 'Confirmer', 'annulee' => 'Sans suite' ),
-		'confirmee' => array( 'terminee' => 'Terminer', 'annulee' => 'Annuler' ),
+		'confirmee' => array( 'encours' => 'Démarrer', 'terminee' => 'Terminer', 'annulee' => 'Annuler' ),
+		'encours'   => array( 'terminee' => 'Terminer' ),
 	);
 	$rapides  = array();
 	foreach ( isset( $suivants[ $statut ] ) ? $suivants[ $statut ] : array() as $cible => $libelle ) {

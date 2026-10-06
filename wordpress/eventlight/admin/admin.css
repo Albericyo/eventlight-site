@@ -245,6 +245,13 @@
 	background: #1d2327;
 	color: #fff;
 }
+.el-statut-encours {
+	border-color: #1d2327;
+	background: #fff;
+	color: #1d2327;
+	font-weight: 600;
+	box-shadow: inset 3px 0 0 #1d2327;
+}
 .el-statut-terminee,
 .el-statut-annulee {
 	border-color: #c3c4c7;
@@ -464,4 +471,8 @@ a.el-chip-terminee:focus {
 }
 .el-stock-table td {
 	vertical-align: middle;
+}
+
+.el-chip-encours {
+	border-left-color: #ffd98a;
 }
