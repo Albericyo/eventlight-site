@@ -151,7 +151,6 @@ function contenu() {
   ajouter("contact", "contact/index.njk");
   ajouter("video-mapping", "video-mapping/index.njk");
   ajouter("mentions-legales", "mentions-legales/index.njk", { contenu: cgvEnBlocs() });
-  ajouter("charte", "charte/index.njk", { contenu: "", noindex: true });
 
   // Le dernier commit qui a touché aux images : c'est lui que l'import léger télécharge.
   let commit = "";

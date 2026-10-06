@@ -8,7 +8,7 @@ Site statique généré avec **Eleventy (11ty)**, publié sur Netlify. Le conten
 - **Tout part du signe** : un boîtier 11:10, un faisceau de pente 3:8 (41°). Il sert de héros, d'interrupteur, de puce de bouton, et de projecteur dans les plans de feu.
 - **Une seule épaisseur de trait à l'écran** (1,5 px), une seule famille de caractères (Sofia Sans, servie par le site).
 
-La charte complète est un document interne : elle n'est pas publiée. Pour la lire, lance `npm run charte` (page `/charte/` en local) ; sur WordPress, elle n'est visible que connecté : construction du signe, logos, couleurs, typographie, règles d'usage.
+La charte complète est un document interne : elle n'est pas publiée. Pour la lire, lance `npm run charte` (page `/charte/` en local) ; sur WordPress, elle est dans le menu Event'Light > Charte graphique (administrateurs uniquement) : construction du signe, logos, couleurs, typographie, règles d'usage.
 
 ## Développer
 

@@ -15,6 +15,7 @@ function el_menu() {
 	add_menu_page( 'Event\'Light', 'Event\'Light', 'manage_options', 'eventlight', 'el_page_reglages', el_icone_menu(), 26 );
 	add_submenu_page( 'eventlight', 'Réglages du site', 'Réglages', 'manage_options', 'eventlight', 'el_page_reglages', 0 );
 	add_submenu_page( 'eventlight', 'Importer le contenu', 'Importer le contenu', 'manage_options', 'eventlight-import', 'el_page_import' );
+	add_submenu_page( 'eventlight', 'Charte graphique', 'Charte graphique', 'manage_options', 'eventlight-charte', 'el_page_charte' );
 }
 add_action( 'admin_menu', 'el_menu', 9 );
 
@@ -106,3 +107,16 @@ function el_rappel_import() {
 	echo '<div class="notice notice-info"><p>Le thème Event\'Light est en place, mais le site est encore vide. <a href="' . esc_url( admin_url( 'admin.php?page=eventlight-import' ) ) . '">Importer les formules, le catalogue et les réalisations</a></p></div>';
 }
 add_action( 'admin_notices', 'el_rappel_import' );
+
+/** Event'Light > Charte graphique : le document interne, affiché dans un cadre pour garder sa mise en page. */
+function el_page_charte() {
+	$adresse = add_query_arg( 'el-charte', '1', home_url( '/' ) );
+	?>
+	<div class="wrap">
+		<h1>Charte graphique</h1>
+		<p>Document interne : le signe, les logos, les couleurs, la typographie et les règles d'usage. Il n'est pas visible sur le site.
+			<a href="<?php echo esc_url( $adresse ); ?>" target="_blank" rel="noopener">Ouvrir en plein écran</a></p>
+		<iframe src="<?php echo esc_url( $adresse ); ?>" title="Charte graphique d'Event'Light" style="display:block;width:100%;height:calc(100vh - 190px);min-height:520px;border:1px solid #c3c4c7;background:#fff"></iframe>
+	</div>
+	<?php
+}

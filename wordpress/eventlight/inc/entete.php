@@ -25,7 +25,6 @@ function el_noms_courts() {
 		'contact'          => 'Contact',
 		'video-mapping'    => 'Vidéo mapping',
 		'mentions-legales' => 'Mentions légales / CGV',
-		'charte'           => 'Charte graphique',
 	);
 }
 
@@ -464,7 +463,7 @@ function el_page_du_theme() {
 	if ( is_front_page() || is_404() || is_post_type_archive( el_types_publics() ) || is_tax( 'el_categorie' ) || is_singular( el_types_publics() ) ) {
 		return true;
 	}
-	return is_page( array( 'devis', 'merci', 'contact', 'video-mapping', 'charte' ) );
+	return is_page( array( 'devis', 'merci', 'contact', 'video-mapping' ) );
 }
 
 function el_fichiers() {

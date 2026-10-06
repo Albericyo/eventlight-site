@@ -587,7 +587,7 @@ function el_page_import() {
 		'realisations' => (int) wp_count_posts( 'el_realisation' )->publish,
 	);
 	?>
-	<p class="el-import-intro">Cette étape met en place le contenu du site : <?php echo count( $donnees['formules'] ); ?> formules, <?php echo count( $donnees['produits'] ); ?> produits, <?php echo count( $donnees['realisations'] ); ?> réalisations, <?php echo count( el_import_photos() ); ?> photos, <?php echo count( $donnees['questions'] ); ?> questions fréquentes et <?php echo count( $donnees['pages'] ); ?> pages (devis, contact, vidéo mapping, mentions légales, charte).</p>
+	<p class="el-import-intro">Cette étape met en place le contenu du site : <?php echo count( $donnees['formules'] ); ?> formules, <?php echo count( $donnees['produits'] ); ?> produits, <?php echo count( $donnees['realisations'] ); ?> réalisations, <?php echo count( el_import_photos() ); ?> photos, <?php echo count( $donnees['questions'] ); ?> questions fréquentes et <?php echo count( $donnees['pages'] ); ?> pages (devis, contact, vidéo mapping, mentions légales).</p>
 	<p>Rien de ce qui existe déjà dans votre WordPress n'est modifié ni supprimé. Vous pouvez relancer l'import sans risque : ce qui est déjà là reste tel quel.</p>
 	<?php if ( array_sum( $deja ) ) : ?>
 	<p>Déjà en place : <?php echo (int) $deja['formules']; ?> formules, <?php echo (int) $deja['produits']; ?> produits, <?php echo (int) $deja['realisations']; ?> réalisations.</p>
