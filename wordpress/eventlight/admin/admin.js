@@ -67,22 +67,46 @@
 
   /* ------------------------------------------------------------ lignes de matériel */
 
-  function ajouterLigne($bloc, produit, quantite) {
+  // Dans un bloc rangé par catégories : la section d'un produit, ou celle dont on a cliqué le bouton.
+  function sectionDe($bloc, produit, cat) {
+    var $sections = $bloc.find(".el-cat");
+    if (!$sections.length) return null;
+    if (cat !== undefined && cat !== null) return $sections.filter('[data-cat="' + cat + '"]').first();
+    var $trouvee = $();
+    $sections.each(function () {
+      var $m = $($(this).find(".el-ligne-modele").html());
+      if ($m.find('option[value="' + produit + '"]').length) {
+        $trouvee = $(this);
+        return false;
+      }
+    });
+    return $trouvee.length ? $trouvee : $sections.last();
+  }
+
+  function ajouterLigne($bloc, produit, quantite, cat) {
     var rang = Number($bloc.attr("data-suivant")) || 0;
     $bloc.attr("data-suivant", rang + 1);
-    var $ligne = $($bloc.find(".el-ligne-modele").html().replace(/__i__/g, String(rang)));
+    var $section = sectionDe($bloc, produit, cat);
+    var $cadre = $section || $bloc;
+    var $ligne = $($cadre.find(".el-ligne-modele").html().replace(/__i__/g, String(rang)));
     if (produit) $ligne.find("select").val(String(produit));
     if (quantite) $ligne.find('input[type="number"]').val(quantite);
-    $bloc.find("tbody").append($ligne);
+    $cadre.find("tbody").append($ligne);
+    if ($section) $section.addClass("a-des-lignes");
     return $ligne;
   }
 
   $(document).on("click", ".el-ligne-ajouter", function () {
-    ajouterLigne($(this).closest(".el-lignes")).find("select").trigger("focus");
+    var cat = $(this).attr("data-cat");
+    ajouterLigne($(this).closest(".el-lignes"), 0, 0, cat === undefined ? null : cat)
+      .find("select")
+      .trigger("focus");
   });
   $(document).on("click", ".el-ligne-retirer", function () {
     var $bloc = $(this).closest(".el-lignes");
+    var $section = $(this).closest(".el-cat");
     $(this).closest("tr").remove();
+    if ($section.length && !$section.find("tr.el-ligne").length) $section.removeClass("a-des-lignes");
     $bloc.trigger("el:lignes");
   });
 

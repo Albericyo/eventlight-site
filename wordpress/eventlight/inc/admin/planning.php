@@ -481,7 +481,7 @@ function el_dossier_boite_materiel( $post ) {
 		echo '</p></div>';
 	}
 	echo '<p class="description el-dispo-periode" data-sauf="' . (int) $post->ID . '">' . ( '' !== $d['debut'] ? 'Disponibilités ' . esc_html( el_periode_fr( $d['debut'], $d['fin'] ) ) . '.' : 'Indiquez les dates du dossier pour voir ce qui est disponible.' ) . '</p>';
-	echo el_champ_materiel( 'el_dossier[lignes]', $d['lignes'], true ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo el_champ_materiel( 'el_dossier[lignes]', $d['lignes'], true, true ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	// Le matériel renseigné sur les packs des formules, à reporter d'un clic.
 	$packs = array();

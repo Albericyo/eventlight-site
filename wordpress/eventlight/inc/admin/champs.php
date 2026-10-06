@@ -19,7 +19,7 @@ function el_champ_select_realisation( $nom, $id, $valeur ) {
 }
 
 /** Liste déroulante des produits, rangés par catégorie, avec leur stock. */
-function el_champ_options_produits( $valeur = 0 ) {
+function el_champ_options_produits( $valeur = 0, $seulement = '' ) {
 	static $groupes = null;
 	if ( null === $groupes ) {
 		$groupes = array();
@@ -32,6 +32,9 @@ function el_champ_options_produits( $valeur = 0 ) {
 	}
 	$html = '<option value="0">Choisir un produit</option>';
 	foreach ( $groupes as $groupe => $produits ) {
+		if ( '' !== $seulement && $groupe !== $seulement ) {
+			continue;
+		}
 		$html .= '<optgroup label="' . esc_attr( $groupe ) . '">';
 		foreach ( $produits as $pid => $nom ) {
 			$html .= '<option value="' . (int) $pid . '"' . selected( (int) $valeur, $pid, false ) . '>' . esc_html( $nom ) . '</option>';
@@ -77,22 +80,60 @@ function el_champ_photos( $nom, $ids, $multiple = true ) {
  * @param array  $lignes Voir el_lignes_materiel().
  * @param bool   $dispo  Réserve une colonne pour la disponibilité aux dates du dossier.
  */
-function el_champ_materiel( $nom, $lignes, $dispo = false ) {
-	$rangee = function ( $i, $produit, $q ) use ( $nom, $dispo ) {
+function el_champ_materiel( $nom, $lignes, $dispo = false, $par_categorie = false ) {
+	$rangee = function ( $i, $produit, $q, $groupe = '' ) use ( $nom, $dispo ) {
 		return '<tr class="el-ligne">' .
-			'<td><select name="' . esc_attr( $nom . '[' . $i . '][produit]' ) . '" aria-label="Produit">' . el_champ_options_produits( $produit ) . '</select></td>' .
+			'<td><select name="' . esc_attr( $nom . '[' . $i . '][produit]' ) . '" aria-label="Produit">' . el_champ_options_produits( $produit, $groupe ) . '</select></td>' .
 			'<td><input type="number" class="small-text" min="1" max="9999" name="' . esc_attr( $nom . '[' . $i . '][q]' ) . '" value="' . esc_attr( $q ) . '" aria-label="Quantité"></td>' .
 			( $dispo ? '<td class="el-ligne-dispo" aria-live="polite"></td>' : '' ) .
 			'<td><button type="button" class="button-link el-ligne-retirer">Retirer</button></td>' .
 			'</tr>';
 	};
-	$html = '<div class="el-lignes" data-suivant="' . count( $lignes ) . '"><table class="el-lignes-table"><tbody>';
-	foreach ( array_values( $lignes ) as $i => $l ) {
-		$html .= $rangee( $i, $l['produit'], $l['q'] );
+	$lignes = array_values( $lignes );
+
+	if ( ! $par_categorie ) {
+		$html = '<div class="el-lignes" data-suivant="' . count( $lignes ) . '"><table class="el-lignes-table"><tbody>';
+		foreach ( $lignes as $i => $l ) {
+			$html .= $rangee( $i, $l['produit'], $l['q'] );
+		}
+		$html .= '</tbody></table>';
+		$html .= '<button type="button" class="button el-ligne-ajouter">Ajouter du matériel</button>';
+		$html .= '<script type="text/template" class="el-ligne-modele">' . $rangee( '__i__', 0, 1 ) . '</script>';
+		return $html . '</div>';
 	}
-	$html .= '</tbody></table>';
-	$html .= '<button type="button" class="button el-ligne-ajouter">Ajouter du matériel</button>';
-	$html .= '<script type="text/template" class="el-ligne-modele">' . $rangee( '__i__', 0, 1 ) . '</script>';
+
+	// Une section par catégorie de produit : chaque ligne range son produit dans la sienne.
+	$sections = array();
+	$produit_groupe = array();
+	foreach ( el_produits_par_categorie() as $groupe => $produits ) {
+		$sections[ $groupe ] = array();
+		foreach ( $produits as $p ) {
+			$produit_groupe[ $p['id'] ] = $groupe;
+		}
+	}
+	$sections['Autres'] = isset( $sections['Autres'] ) ? $sections['Autres'] : array();
+	foreach ( $lignes as $i => $l ) {
+		$groupe                    = isset( $produit_groupe[ $l['produit'] ] ) ? $produit_groupe[ $l['produit'] ] : 'Autres';
+		$sections[ $groupe ][ $i ] = $l;
+	}
+	$html = '<div class="el-lignes el-lignes-cat" data-suivant="' . count( $lignes ) . '">';
+	$n    = 0;
+	foreach ( $sections as $groupe => $siennes ) {
+		if ( 'Autres' === $groupe && ! $siennes && ! el_produits_de_categorie( 0 ) ) {
+			continue; // Aucun produit sans catégorie, et aucune ligne dedans : pas de section.
+		}
+		$html .= '<section class="el-cat' . ( $siennes ? ' a-des-lignes' : '' ) . '" data-cat="' . $n . '">';
+		$html .= '<h4 class="el-cat-titre">' . esc_html( $groupe ) . '</h4>';
+		$html .= '<table class="el-lignes-table"><tbody>';
+		foreach ( $siennes as $i => $l ) {
+			$html .= $rangee( $i, $l['produit'], $l['q'], $groupe );
+		}
+		$html .= '</tbody></table>';
+		$html .= '<button type="button" class="button el-ligne-ajouter" data-cat="' . $n . '">Ajouter : ' . esc_html( $groupe ) . '</button>';
+		$html .= '<script type="text/template" class="el-ligne-modele" data-cat="' . $n . '">' . $rangee( '__i__', 0, 1, $groupe ) . '</script>';
+		$html .= '</section>';
+		++$n;
+	}
 	return $html . '</div>';
 }
 
