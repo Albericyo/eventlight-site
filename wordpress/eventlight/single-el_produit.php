@@ -64,7 +64,7 @@ get_header();
 			<p class="price"><b><?php echo esc_html( $el_prix['montant'] ); ?>&nbsp;<?php echo esc_html( $el_prix['unite'] ); ?></b><?php echo '' !== $el_prix['note'] ? '<small>' . esc_html( $el_prix['note'] ) . '</small>' : ''; ?><small>Même tarif pour le week-end</small></p>
 			<p class="lede"><?php echo esc_html( $el_produit['description'] ); ?></p>
 			<div class="actions">
-				<button class="btn btn-plein add" type="button" data-add="<?php echo esc_attr( $el_produit['slug'] ); ?>" data-nom="<?php echo esc_attr( $el_produit['nom'] ); ?>" data-prix="<?php echo esc_attr( $el_produit['prix'] ); ?>" data-label-in="Dans ma sélection">Ajouter à ma sélection</button>
+				<button class="btn btn-plein add" type="button" data-add="<?php echo esc_attr( $el_produit['slug'] ); ?>" data-nom="<?php echo esc_attr( $el_produit['nom'] ); ?>" data-prix="<?php echo esc_attr( $el_produit['prix'] ); ?>"<?php echo el_attr_stock( $el_produit['id'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> data-label-in="Dans ma sélection">Ajouter à ma sélection</button>
 				<a class="btn" href="<?php echo esc_url( el_url( '/devis/' ) . '?type=' . rawurlencode( 'Location de matériel' ) ); ?>">Demander un devis</a>
 			</div>
 			<?php if ( $el_produit['details'] ) : ?>

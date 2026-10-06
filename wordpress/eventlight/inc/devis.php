@@ -47,6 +47,7 @@ function el_devis_lire() {
 
 	// La sélection de matériel, envoyée par le script du site : [{ slug, q }].
 	$lignes = array();
+	$ajuste = false;
 	$brut   = isset( $_POST['selection'] ) && is_string( $_POST['selection'] ) ? json_decode( wp_unslash( $_POST['selection'] ), true ) : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	if ( is_array( $brut ) ) {
 		foreach ( array_slice( $brut, 0, 60 ) as $l ) {
@@ -54,10 +55,19 @@ function el_devis_lire() {
 			$q       = isset( $l['q'] ) ? (int) $l['q'] : 0;
 			$produit = '' !== $slug ? get_page_by_path( $slug, OBJECT, 'el_produit' ) : null;
 			if ( $produit && $q > 0 ) {
-				$lignes[] = array(
-					'produit' => $produit->ID,
-					'q'       => min( $q, 99 ),
-				);
+				$q     = min( $q, 99 );
+				$stock = el_produit_stock( $produit->ID );
+				// Jamais plus que ce qu'on possède : même si la page a été trafiquée ou était périmée.
+				if ( null !== $stock && $q > $stock ) {
+					$q       = $stock;
+					$ajuste = true;
+				}
+				if ( $q > 0 ) {
+					$lignes[] = array(
+						'produit' => $produit->ID,
+						'q'       => $q,
+					);
+				}
 			}
 		}
 	}
@@ -72,7 +82,7 @@ function el_devis_lire() {
 		'date_evenement' => el_est_date( $date ) ? $date : '',
 		'invites'        => $invites ? (string) $invites : '',
 		'message'        => $zone( 'message', 5000 ),
-		'materiel'       => $zone( 'materiel', 3000 ),
+		'materiel'       => $zone( 'materiel', 3000 ) . ( $ajuste ? "\n(Quantités ramenées au stock disponible.)" : '' ),
 		'lignes'         => $lignes,
 	);
 	// phpcs:enable
