@@ -192,6 +192,7 @@ function contenu() {
         usages: p.usages || [],
         youtube: videos[p.slug] || "",
         stock: stock ? Number(stock[1]) : null,
+        pieces: p.pieces || {},
         images: images("location", p.slug),
       };
     }),

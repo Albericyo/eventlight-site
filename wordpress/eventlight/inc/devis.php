@@ -71,6 +71,9 @@ function el_devis_lire() {
 			}
 		}
 	}
+	// Les produits faits de pièces (totems, ponts) se partagent les mêmes pièces : on les plafonne ensemble.
+	list( $lignes, $trop ) = el_pieces_plafonner( $lignes );
+	$ajuste                = $ajuste || $trop;
 	$invites = isset( $_POST['invites'] ) ? absint( wp_unslash( $_POST['invites'] ) ) : 0;
 
 	return array(

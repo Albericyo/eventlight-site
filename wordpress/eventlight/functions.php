@@ -12,6 +12,7 @@
  *   medias        images adaptatives, type de fond
  *   composants    morceaux de page réutilisés
  *   entete        balises de l'en-tête, styles, script, navigation
+ *   pieces        pièces de structure et recettes des produits
  *   planning      demandes de devis, réservations, stock et disponibilités
  *   devis         réception du formulaire de devis, e-mails
  *   redirections  anciennes adresses du site
@@ -20,13 +21,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$el_fichiers = array( 'textes', 'plan-de-feu', 'pictos', 'reglages', 'types', 'donnees', 'medias', 'composants', 'entete', 'planning', 'devis', 'redirections' );
+$el_fichiers = array( 'textes', 'plan-de-feu', 'pictos', 'reglages', 'types', 'donnees', 'medias', 'composants', 'entete', 'pieces', 'planning', 'devis', 'redirections' );
 foreach ( $el_fichiers as $el_fichier ) {
 	require_once get_theme_file_path( 'inc/' . $el_fichier . '.php' );
 }
 
 if ( is_admin() ) {
-	foreach ( array( 'champs', 'contenus', 'reglages', 'planning', 'import' ) as $el_fichier ) {
+	foreach ( array( 'champs', 'contenus', 'reglages', 'planning', 'pieces', 'import' ) as $el_fichier ) {
 		require_once get_theme_file_path( 'inc/admin/' . $el_fichier . '.php' );
 	}
 }

@@ -196,6 +196,7 @@
       "04.jpg"
     ],
     "global-truss-4-points": [],
+    "global-truss-4-points-2-m": [],
     "jb-challenger-bsw": [
       "01.png",
       "02.jpg",
@@ -213,6 +214,7 @@
     ],
     "pack-structure-f24200": [],
     "plugger-monotube": [],
-    "totem-4-points": []
+    "totem-4-points": [],
+    "totem-4-points-2-m": []
   }
 }

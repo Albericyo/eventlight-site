@@ -5,7 +5,11 @@
     "categorie": "Projecteurs robotisés",
     "prix": "40,00 €/j",
     "description": "Le CHALLENGER BSW de chez JB SYSTEMS est une lyre 150 W Beam/Spot/Wash exceptionnelle, équipée d'un zoom motorisé, d'une mise au point automatique et d'un prisme rotatif à 3 facettes.",
-    "usages": ["mariage", "anniversaire", "manifestation-sportive"],
+    "usages": [
+      "mariage",
+      "anniversaire",
+      "manifestation-sportive"
+    ],
     "details": [
       "Lyre 3 en 1 Beam / Spot / Wash, LED 150 W",
       "Mise au point et zoom contrôlés par DMX",
@@ -23,7 +27,11 @@
     "categorie": "Projecteurs robotisés",
     "prix": "35,00 €/j",
     "description": "Lyre motorisée type beam conçue pour les spectacles et événements professionnels. Lampe 230 W, faisceau serré (~2,5°), roues de couleurs et gobos, prismes rotatifs, focus motorisé. Contrôle DMX, W-DMX sans fil, automatique ou via la musique.",
-    "usages": ["mariage", "comite-entreprise", "manifestation-sportive"],
+    "usages": [
+      "mariage",
+      "comite-entreprise",
+      "manifestation-sportive"
+    ],
     "details": [
       "Lampe YODN R1 100 W fournie",
       "14 canaux DMX, 14 gobos fixes + ouvert, 13 couleurs + blanc",
@@ -38,7 +46,10 @@
     "categorie": "Projecteurs robotisés",
     "prix": "35,00 €/j",
     "description": "Lyre LED RGBW de haute puissance, polyvalente et performante. LED, mouvements PAN & TILT précis, angle de zoom réglable, nombreux effets disponibles.",
-    "usages": ["mariage", "comite-entreprise"]
+    "usages": [
+      "mariage",
+      "comite-entreprise"
+    ]
   },
   {
     "slug": "eurolite-parled-sls-7-hcl-floor",
@@ -46,7 +57,10 @@
     "categorie": "Projecteurs statiques",
     "prix": "9,00 €/j",
     "description": "Projecteur LED plat et compact, idéal pour créer des ambiances lumineuses sur scène, en soirée ou en installation fixe. 7 LED 10 W 6-en-1 (RGBAW/UV). Mode autonome, DMX, maître/esclave ou détection sonore, télécommande infrarouge.",
-    "usages": ["anniversaire", "mariage"]
+    "usages": [
+      "anniversaire",
+      "mariage"
+    ]
   },
   {
     "slug": "boomtone-ez-box-4x15w",
@@ -54,7 +68,11 @@
     "categorie": "Projecteurs statiques",
     "prix": "20,00 €/j",
     "description": "Projecteur LED BoomTone DJ EZ-BOX 4x15W sur batterie, avec connexion Wi-Fi pour piloter à distance et transmettre le signal DMX sans fil.",
-    "usages": ["anniversaire", "mariage", "comite-entreprise"]
+    "usages": [
+      "anniversaire",
+      "mariage",
+      "comite-entreprise"
+    ]
   },
   {
     "slug": "eurolite-led-pix-144-rgb-bar",
@@ -62,7 +80,10 @@
     "categorie": "Projecteurs statiques",
     "prix": "15,00 €/j",
     "description": "Barre LED d'environ 1 mètre dotée de 144 LEDs SMD RGB, réparties en 8 segments pixelisés pour des effets de lumière dynamiques et précis.",
-    "usages": ["mariage", "comite-entreprise"]
+    "usages": [
+      "mariage",
+      "comite-entreprise"
+    ]
   },
   {
     "slug": "elokance-800c",
@@ -70,7 +91,11 @@
     "categorie": "Son",
     "prix": "50,00 €/j",
     "description": "Système amplifié 3 voies 800 W RMS, composé de 2 ELO 10C et 1 ELO SUB15AC. Livré avec 2 pieds d'enceintes et 2 câbles speakon 6 m.",
-    "usages": ["mariage", "anniversaire", "manifestation-sportive"]
+    "usages": [
+      "mariage",
+      "anniversaire",
+      "manifestation-sportive"
+    ]
   },
   {
     "slug": "fbt-x-lite-110a",
@@ -78,7 +103,10 @@
     "categorie": "Son",
     "prix": "45,00 €/j",
     "description": "Enceinte active compacte et puissante, 1500 W Class D, haut-parleur 10\", SPL max 127 dB. 13 kg, mixer 3 voies intégré, Bluetooth 5.0, DSP 4 presets.",
-    "usages": ["mariage", "comite-entreprise"]
+    "usages": [
+      "mariage",
+      "comite-entreprise"
+    ]
   },
   {
     "slug": "fbt-x-sub-115sa",
@@ -86,7 +114,10 @@
     "categorie": "Son",
     "prix": "55,00 €/j",
     "description": "Caisson de basse amplifié, 1200 W, bass-reflex avec haut-parleur de 15\", boîtier en contreplaqué de bouleau de 15 mm.",
-    "usages": ["mariage", "manifestation-sportive"]
+    "usages": [
+      "mariage",
+      "manifestation-sportive"
+    ]
   },
   {
     "slug": "mac-mah-micro-sans-fil",
@@ -94,7 +125,11 @@
     "categorie": "Son",
     "prix": "20,00 €/j",
     "description": "Système complet micro sans fil main, récepteur/émetteur UHF 100 M, idéal pour animations, chant, conférences et salles de spectacle. Portée 50-80 m, mallette ABS robuste.",
-    "usages": ["comite-entreprise", "mariage", "manifestation-sportive"]
+    "usages": [
+      "comite-entreprise",
+      "mariage",
+      "manifestation-sportive"
+    ]
   },
   {
     "slug": "evolite-hazebox",
@@ -102,7 +137,10 @@
     "categorie": "Effets",
     "prix": "40,00 €/j",
     "description": "Machine à brouillard professionnelle 1500 W en flight case. Produit un brouillard très fin qui sublime vos éclairages.",
-    "usages": ["mariage", "anniversaire"]
+    "usages": [
+      "mariage",
+      "anniversaire"
+    ]
   },
   {
     "slug": "fogspray-3000-rgb",
@@ -110,7 +148,10 @@
     "categorie": "Effets",
     "prix": "30,00 €/j",
     "description": "Machine à fumée verticale et horizontale de 3000 W, LED RGB pour colorer les projections de fumée sur plus de 6 mètres de hauteur.",
-    "usages": ["mariage", "manifestation-sportive"]
+    "usages": [
+      "mariage",
+      "manifestation-sportive"
+    ]
   },
   {
     "slug": "evo-spark-600",
@@ -118,7 +159,10 @@
     "categorie": "Effets",
     "prix": "110,00 €/j (la paire)",
     "description": "Machine à étincelles professionnelle, hauteur du jet réglable de 1 à 6 mètres, pilotable par télécommande ou en DMX.",
-    "usages": ["mariage", "anniversaire"]
+    "usages": [
+      "mariage",
+      "anniversaire"
+    ]
   },
   {
     "slug": "pack-structure-f24200",
@@ -126,23 +170,73 @@
     "categorie": "Structures",
     "prix": "40,00 €/j",
     "description": "Pack complet : 2× Varytec Wind up 85 kg, 2× Varytec Truss Adapter, 2× Truss F24200.",
-    "usages": ["mariage", "comite-entreprise", "manifestation-sportive"]
+    "usages": [
+      "mariage",
+      "comite-entreprise",
+      "manifestation-sportive"
+    ],
+    "pieces": {
+      "treuil": 2,
+      "truss-2m": 2
+    }
   },
   {
     "slug": "global-truss-4-points",
-    "nom": "Global Truss - 4 points (1,50 m ou 2 m)",
+    "nom": "Global Truss - 4 points, 1,50 m",
     "categorie": "Structures",
     "prix": "11,00 €/j",
-    "description": "Longueur 1,50 m ou 2 m, distance des tubes 22 cm, diamètre du tube principal 35 mm.",
-    "usages": ["mariage", "manifestation-sportive"]
+    "description": "Longueur 1,50 m, distance des tubes 22 cm, diamètre du tube principal 35 mm.",
+    "usages": [
+      "mariage",
+      "manifestation-sportive"
+    ],
+    "pieces": {
+      "truss-1-5m": 1
+    }
+  },
+  {
+    "slug": "global-truss-4-points-2-m",
+    "nom": "Global Truss - 4 points, 2 m",
+    "categorie": "Structures",
+    "prix": "11,00 €/j",
+    "description": "Longueur 2 m, distance des tubes 22 cm, diamètre du tube principal 35 mm.",
+    "usages": [
+      "mariage",
+      "manifestation-sportive"
+    ],
+    "pieces": {
+      "truss-2m": 1
+    }
   },
   {
     "slug": "totem-4-points",
-    "nom": "Totem - 4 points (1,50 m ou 2 m)",
+    "nom": "Totem - 4 points, 1,50 m",
     "categorie": "Structures",
     "prix": "25,00 €/j",
-    "description": "Embase 450 × 450 mm, structure 1,50 m ou 2 m, platine 29 cm, habillage lycra blanc.",
-    "usages": ["mariage", "anniversaire"]
+    "description": "Embase 450 × 450 mm, structure 1,50 m, platine 29 cm, habillage lycra blanc.",
+    "usages": [
+      "mariage",
+      "anniversaire"
+    ],
+    "pieces": {
+      "truss-1-5m": 1,
+      "embase": 1
+    }
+  },
+  {
+    "slug": "totem-4-points-2-m",
+    "nom": "Totem - 4 points, 2 m",
+    "categorie": "Structures",
+    "prix": "25,00 €/j",
+    "description": "Embase 450 × 450 mm, structure 2 m, platine 29 cm, habillage lycra blanc.",
+    "usages": [
+      "mariage",
+      "anniversaire"
+    ],
+    "pieces": {
+      "truss-2m": 1,
+      "embase": 1
+    }
   },
   {
     "slug": "plugger-monotube",
@@ -150,6 +244,12 @@
     "categorie": "Structures",
     "prix": "12,00 €/j",
     "description": "Support pour enceinte ou éclairage Plugger ST180, embase carrée en acier, tube 35 mm télescopique, pas de vis M10 femelle. Hauteur 110-180 cm, charge max 25 kg.",
-    "usages": ["mariage", "comite-entreprise"]
+    "usages": [
+      "mariage",
+      "comite-entreprise"
+    ],
+    "pieces": {
+      "monotube": 1
+    }
   }
 ]

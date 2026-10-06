@@ -75,6 +75,7 @@ function el_page_calendrier() {
 	$dossiers  = el_dossiers_entre( $debut, $fin );
 	$par_jour  = array();
 	$sorties   = array();
+	$lignes_jour = array();
 	$fermes    = el_statuts_fermes();
 	foreach ( $dossiers as $d ) {
 		foreach ( el_jours( max( $d['debut'], $debut ), min( $d['fin'], $fin ) ) as $j ) {
@@ -82,6 +83,7 @@ function el_page_calendrier() {
 			if ( in_array( $d['statut'], $fermes, true ) ) {
 				foreach ( $d['lignes'] as $l ) {
 					$sorties[ $j ][ $l['produit'] ] = ( isset( $sorties[ $j ][ $l['produit'] ] ) ? $sorties[ $j ][ $l['produit'] ] : 0 ) + $l['q'];
+					$lignes_jour[ $j ][]            = $l;
 				}
 			}
 		}
@@ -91,6 +93,15 @@ function el_page_calendrier() {
 	foreach ( $sorties as $j => $produits ) {
 		foreach ( $produits as $pid => $q ) {
 			if ( isset( $stocks[ $pid ] ) && $q > $stocks[ $pid ] ) {
+				$depasses[ $j ] = true;
+			}
+		}
+	}
+	// Les pièces de structure : un jour où on en promet plus qu'on n'en a est aussi un jour de dépassement.
+	$pieces_stock = el_pieces_stocks();
+	foreach ( $lignes_jour as $j => $lignes ) {
+		foreach ( el_pieces_utilisees( $lignes ) as $piece => $q ) {
+			if ( isset( $pieces_stock[ $piece ] ) && $q > $pieces_stock[ $piece ] ) {
 				$depasses[ $j ] = true;
 			}
 		}
@@ -267,7 +278,11 @@ function el_page_stock() {
 				<tr>
 					<td><label for="el-stock-<?php echo (int) $p['id']; ?>"><?php echo esc_html( $p['nom'] ); ?></label></td>
 					<td><?php echo esc_html( $p['prix'] ); ?></td>
+					<?php if ( el_recette( $p['id'] ) ) : ?>
+					<td><?php echo (int) el_produit_stock( $p['id'] ); ?> <span class="description">calculé d'après les <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=el_produit&page=el-pieces' ) ); ?>">pièces</a></span></td>
+					<?php else : ?>
 					<td><input type="number" class="small-text" min="0" id="el-stock-<?php echo (int) $p['id']; ?>" name="el_stock[<?php echo (int) $p['id']; ?>]" value="<?php echo esc_attr( (string) get_post_meta( $p['id'], '_el_stock', true ) ); ?>"></td>
+					<?php endif; ?>
 				</tr>
 					<?php endforeach; ?>
 				<?php endforeach; ?>

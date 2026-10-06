@@ -431,30 +431,75 @@
     var v = b.getAttribute("data-stock");
     return v !== null && v !== "" && !isNaN(Number(v)) ? Math.max(0, Math.floor(Number(v))) : null;
   }
+  // Les pièces de structure, envoyées par le site WordPress : { pieces: { pièce: quantité }, recettes: { produit: { pièce: quantité } } }.
+  var donneesPieces = (function () {
+    var e = doc.getElementById("el-pieces");
+    if (!e) return null;
+    try {
+      var d = JSON.parse(e.textContent);
+      return d && d.recettes && d.pieces ? d : null;
+    } catch (x) {
+      return null;
+    }
+  })();
+  // Combien d'exemplaires de ce produit les pièces permettent encore, une fois comptées celles du reste
+  // de la sélection. Null pour un produit qui n'est pas fait de pièces.
+  function plafondPieces(slug) {
+    if (!donneesPieces || !donneesPieces.recettes[slug]) return null;
+    var recette = donneesPieces.recettes[slug];
+    var utilise = {};
+    selection.tout().forEach(function (x) {
+      var r = donneesPieces.recettes[x.slug];
+      if (x.slug === slug || !r) return;
+      Object.keys(r).forEach(function (p) {
+        utilise[p] = (utilise[p] || 0) + r[p] * x.q;
+      });
+    });
+    var max = null;
+    Object.keys(recette).forEach(function (p) {
+      if (typeof donneesPieces.pieces[p] !== "number") return;
+      var n = Math.max(0, Math.floor((donneesPieces.pieces[p] - (utilise[p] || 0)) / recette[p]));
+      max = max === null ? n : Math.min(max, n);
+    });
+    return max;
+  }
+  // Le plus qu'on puisse en prendre : le stock du produit, et les pièces qu'il reste.
+  function plafondProduit(slug, stock) {
+    var p = plafondPieces(slug);
+    if (p === null) return stock;
+    return stock === null ? p : Math.min(p, stock);
+  }
   function exemplaires(n) {
     return n + " exemplaire" + (n > 1 ? "s" : "");
   }
   function majBoutonsAjout() {
     $$("[data-add]").forEach(function (b) {
-      var q = selection.quantite(b.getAttribute("data-add"));
-      var stock = stockDuBouton(b);
+      var slug = b.getAttribute("data-add");
+      var q = selection.quantite(slug);
+      var stock = plafondProduit(slug, stockDuBouton(b));
       b.classList.toggle("is-in", q > 0);
       if (stock === 0) {
         b.disabled = true;
         b.textContent = "Indisponible";
         return;
       }
+      b.disabled = false;
       b.textContent = q > 0 ? (b.getAttribute("data-label-in") || "Ajouté") + " (" + q + ")" : b.getAttribute("data-label") || "Ajouter";
     });
   }
   $$("[data-add]").forEach(function (b) {
     b.setAttribute("data-label", b.textContent.trim());
     b.addEventListener("click", function () {
-      var stock = stockDuBouton(b);
       var item = { slug: b.getAttribute("data-add"), nom: b.getAttribute("data-nom"), prix: b.getAttribute("data-prix") };
+      var stock = plafondProduit(item.slug, stockDuBouton(b));
       if (stock !== null) item.max = stock;
       if (stock !== null && selection.quantite(item.slug) >= stock) {
-        annoncer("Nous n'avons que " + exemplaires(stock) + " de ce matériel. <a href=\"" + lien("/devis/#selection") + "\">Voir la sélection</a>");
+        annoncer(
+          (plafondPieces(item.slug) !== null
+            ? "Il ne reste plus de quoi en monter un de plus : les pièces sont prises par le reste de votre sélection."
+            : "Nous n'avons que " + exemplaires(stock) + " de ce matériel.") +
+            " <a href=\"" + lien("/devis/#selection") + "\">Voir la sélection</a>"
+        );
         return;
       }
       selection.regler(item, selection.quantite(item.slug) + 1);
@@ -485,9 +530,10 @@
     // Ramène la sélection enregistrée dans le navigateur au stock actuel.
     function accorderAuStock() {
       var change = false;
-      selection.tout().forEach(function (x) {
-        if (typeof stocks[x.slug] !== "number") return;
-        var max = stocks[x.slug];
+      // De la dernière ligne à la première : ce qui a été choisi en premier est gardé en priorité.
+      selection.tout().reverse().forEach(function (x) {
+        var max = plafondProduit(x.slug, typeof stocks[x.slug] === "number" ? stocks[x.slug] : null);
+        if (max === null) return;
         if (x.q > max || x.max !== max) {
           if (x.q > max) change = true;
           selection.regler({ slug: x.slug, nom: x.nom, prix: x.prix, max: max }, x.q);
@@ -522,9 +568,10 @@
         $("output", li).textContent = String(x.q);
         li.children[2].textContent = euros(unit * x.q) + " / jour";
         var plus = $('button[data-q="1"]', li);
-        if (typeof x.max === "number" && x.q >= x.max) {
+        var cap = plafondProduit(x.slug, typeof stocks[x.slug] === "number" ? stocks[x.slug] : null);
+        if (cap !== null && x.q >= cap) {
           plus.disabled = true;
-          plus.title = "Stock maximal atteint : " + exemplaires(x.max);
+          plus.title = plafondPieces(x.slug) !== null ? "Plus assez de pièces pour en monter un de plus" : "Stock maximal atteint : " + exemplaires(cap);
         }
         $$("button", li).forEach(function (btn) {
           btn.addEventListener("click", function () {
