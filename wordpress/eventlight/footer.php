@@ -57,7 +57,7 @@ $el_site = el_site();
 		</div>
 	</div>
 	<div class="wrap foot-legal">
-		<p>© <?php echo esc_html( wp_date( 'Y' ) ); ?> Event'Light, <?php echo esc_html( $el_site['address'] ); ?>. SIRET <?php echo esc_html( $el_site['siret'] ); ?>. Prix TTC, <?php echo esc_html( $el_site['tva'] ); ?>. Les tarifs de location à la journée valent aussi pour le week-end. <a href="<?php echo esc_url( el_url( '/mentions-legales/' ) ); ?>">Mentions légales et CGV</a>, <a href="<?php echo esc_url( el_url( '/charte/' ) ); ?>">logo et charte graphique</a></p>
+		<p>© <?php echo esc_html( wp_date( 'Y' ) ); ?> Event'Light, <?php echo esc_html( $el_site['address'] ); ?>. SIRET <?php echo esc_html( $el_site['siret'] ); ?>. Prix TTC, <?php echo esc_html( $el_site['tva'] ); ?>. Les tarifs de location à la journée valent aussi pour le week-end. <a href="<?php echo esc_url( el_url( '/mentions-legales/' ) ); ?>">Mentions légales et CGV</a><?php if ( current_user_can( 'edit_pages' ) ) : ?>, <a href="<?php echo esc_url( el_url( '/charte/' ) ); ?>">logo et charte graphique (interne)</a><?php endif; ?></p>
 		<button class="switch" type="button" data-salle aria-pressed="false">Éteindre la salle</button>
 	</div>
 </footer>

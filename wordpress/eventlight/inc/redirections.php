@@ -37,6 +37,10 @@ add_filter( 'wp_sitemaps_add_provider', 'el_plan_sans_comptes', 10, 2 );
 
 function el_plan_sans_pages_cachees( $args, $type ) {
 	if ( 'page' === $type ) {
+		$charte = get_page_by_path( 'charte' );
+		if ( $charte ) {
+			$args['post__not_in'] = array( $charte->ID );
+		}
 		$args['meta_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 			'relation' => 'OR',
 			array(
@@ -53,6 +57,21 @@ function el_plan_sans_pages_cachees( $args, $type ) {
 	return $args;
 }
 add_filter( 'wp_sitemaps_posts_query_args', 'el_plan_sans_pages_cachees', 10, 2 );
+
+/**
+ * La charte graphique est un document interne : seules les personnes connectées qui peuvent
+ * modifier des pages la voient. Pour tous les autres, la page n'existe pas.
+ */
+function el_charte_reservee() {
+	if ( ! is_page( 'charte' ) || current_user_can( 'edit_pages' ) ) {
+		return;
+	}
+	global $wp_query;
+	$wp_query->set_404();
+	status_header( 404 );
+	nocache_headers();
+}
+add_action( 'template_redirect', 'el_charte_reservee', 1 );
 
 /** Les trois pages de liste (formules, location, réalisations) figurent aussi dans le plan du site. */
 function el_plan_listes() {
