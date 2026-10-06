@@ -1,8 +1,9 @@
 <?php
 /**
- * Template Name: Charte graphique
+ * Charte graphique : le signe, le logo, les couleurs, la typographie et les règles d'usage.
  *
- * Le signe, le logo, les couleurs, la typographie et les règles d'usage. Page non indexée.
+ * Document interne. Il n'existe pas comme page du site : il est servi par el_charte_servir()
+ * (inc/redirections.php) aux seuls administrateurs, et affiché dans le menu Event'Light > Charte graphique.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -18,8 +19,7 @@ get_header();
 ?>
 <div class="wrap">
 	<header class="page-head">
-		<?php el_fil(); ?>
-		<h1><?php the_title(); ?></h1>
+		<h1>Charte graphique</h1>
 		<p class="lede">Un mur gris aluminium, de la lumière blanche, un trait noir. Tout part du signe : un boîtier, un faisceau.</p>
 	</header>
 </div>

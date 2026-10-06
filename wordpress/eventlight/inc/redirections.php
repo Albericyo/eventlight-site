@@ -37,10 +37,6 @@ add_filter( 'wp_sitemaps_add_provider', 'el_plan_sans_comptes', 10, 2 );
 
 function el_plan_sans_pages_cachees( $args, $type ) {
 	if ( 'page' === $type ) {
-		$charte = get_page_by_path( 'charte' );
-		if ( $charte ) {
-			$args['post__not_in'] = array( $charte->ID );
-		}
 		$args['meta_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 			'relation' => 'OR',
 			array(
@@ -59,19 +55,74 @@ function el_plan_sans_pages_cachees( $args, $type ) {
 add_filter( 'wp_sitemaps_posts_query_args', 'el_plan_sans_pages_cachees', 10, 2 );
 
 /**
- * La charte graphique est un document interne : seules les personnes connectées qui peuvent
- * modifier des pages la voient. Pour tous les autres, la page n'existe pas.
+ * La charte graphique est un document interne : elle n'est pas une page du site.
+ * Elle est servie à l'adresse /?el-charte=1 aux seuls administrateurs (c'est ce qu'affiche
+ * le menu Event'Light > Charte graphique). Pour tous les autres, cette adresse n'existe pas.
  */
-function el_charte_reservee() {
-	if ( ! is_page( 'charte' ) || current_user_can( 'edit_pages' ) ) {
+function el_charte_servir() {
+	// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	if ( ! isset( $_GET['el-charte'] ) ) {
 		return;
 	}
-	global $wp_query;
-	$wp_query->set_404();
-	status_header( 404 );
+	if ( ! current_user_can( 'manage_options' ) ) {
+		global $wp_query;
+		$wp_query->set_404();
+		status_header( 404 );
+		nocache_headers();
+		return;
+	}
 	nocache_headers();
+	header( 'X-Robots-Tag: noindex, nofollow' );
+	status_header( 200 );
+	add_filter( 'show_admin_bar', '__return_false' );
+	add_filter(
+		'pre_get_document_title',
+		function () {
+			return 'Charte graphique | Event\'Light';
+		}
+	);
+	require get_theme_file_path( 'inc/charte.php' );
+	exit;
 }
-add_action( 'template_redirect', 'el_charte_reservee', 1 );
+add_action( 'template_redirect', 'el_charte_servir', 1 );
+
+/**
+ * Les premières versions du thème créaient une page « charte » publique. On la supprime, une seule fois,
+ * si c'est bien la page créée par l'import (gabarit page-charte.php).
+ */
+function el_retirer_page_charte() {
+	if ( get_option( 'el_charte_retiree' ) ) {
+		return;
+	}
+	$pages = get_posts(
+		array(
+			'post_type'      => 'page',
+			'post_status'    => array( 'any', 'trash' ),
+			'name'           => 'charte',
+			'posts_per_page' => 5,
+			'no_found_rows'  => true,
+		)
+	);
+	$pages = array_merge(
+		$pages,
+		get_posts(
+			array(
+				'post_type'      => 'page',
+				'post_status'    => 'trash',
+				'name'           => 'charte__trashed',
+				'posts_per_page' => 5,
+				'no_found_rows'  => true,
+			)
+		)
+	);
+	foreach ( $pages as $p ) {
+		if ( 'page-charte.php' === get_post_meta( $p->ID, '_wp_page_template', true ) ) {
+			wp_delete_post( $p->ID, true );
+		}
+	}
+	update_option( 'el_charte_retiree', '1', false );
+}
+add_action( 'init', 'el_retirer_page_charte', 20 );
 
 /** Les trois pages de liste (formules, location, réalisations) figurent aussi dans le plan du site. */
 function el_plan_listes() {
