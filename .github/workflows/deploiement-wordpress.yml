@@ -1,0 +1,45 @@
+name: Déploiement du thème WordPress
+
+# Se lance à chaque push sur main qui touche le thème, ou à la main
+# (onglet Actions > Déploiement du thème WordPress > Run workflow).
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wordpress/**'
+      - 'src/assets/**'
+      - 'src/_data/**'
+      - 'scripts/build-wordpress.js'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Construit le thème complet dans wordpress/eventlight/ (assets, logo, données).
+      - run: npm run wordpress -- --sans-zip
+
+      # InfinityFree : FTP simple, pas de SSH. L'action n'envoie que les fichiers modifiés.
+      # import/ n'est utile que pour la première installation : on ne le renvoie pas.
+      - name: Envoi par FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          local-dir: wordpress/eventlight/
+          server-dir: ${{ secrets.FTP_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            import/img/**

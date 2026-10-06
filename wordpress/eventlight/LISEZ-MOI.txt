@@ -1,0 +1,80 @@
+EVENT'LIGHT, LE THÈME WORDPRESS
+================================
+
+Le site d'Event'Light pour WordPress : formules, catalogue de location, réalisations,
+formulaire de devis, et un planning des réservations avec le stock du matériel.
+Aucune extension n'est nécessaire. WordPress 6.0 ou plus récent, PHP 7.4 ou plus récent.
+
+
+INSTALLER
+---------
+
+1. Dans WordPress : Apparence > Thèmes > Ajouter un thème > Téléverser un thème.
+   Choisir eventlight-theme.zip, puis Activer.
+2. Menu Event'Light > Importer le contenu, bouton « Importer le contenu ».
+   L'import crée les formules, les produits, les réalisations, leurs photos et les pages.
+   Il ne modifie et ne supprime rien de ce qui existe déjà. On peut le relancer sans risque.
+3. Menu Event'Light > Réglages, onglet « Devis et mentions » :
+   - l'adresse qui reçoit les demandes de devis ;
+   - le nom et l'adresse de l'hébergeur, obligatoires dans les mentions légales ;
+   - le directeur de la publication.
+4. Menu Location > Stock : indiquer la quantité de chaque produit.
+5. Envoyer une demande de devis depuis le site pour vérifier que l'e-mail arrive.
+
+Si l'hébergeur refuse le fichier parce qu'il est trop gros, utiliser
+eventlight-theme-leger.zip : c'est le même thème sans les photos, que l'import
+télécharge alors lui-même.
+
+
+AU QUOTIDIEN
+------------
+
+Changer un prix, le contenu d'un pack ......... Formules
+Ajouter du matériel, changer un tarif,
+une photo, une quantité en stock .............. Location
+Ajouter une réalisation ....................... Réalisations
+Téléphones, adresse, textes des pages,
+images du haut de la page d'accueil ........... Event'Light > Réglages
+Questions du bas de la page d'accueil ......... Event'Light > Questions fréquentes
+Conditions générales de vente ................. Pages > Mentions légales
+
+Le schéma d'un pack se dessine tout seul d'après ses lignes : « Système son »,
+« 4 totems », « Brouillard », « Étincelles froides », « Fumée lourde », « Animateur »,
+« Micro », « Pupitre », « Geysers », « Éclairage architectural », « Cérémonie ».
+
+
+DEMANDES DE DEVIS ET PLANNING
+-----------------------------
+
+Chaque demande envoyée depuis le site arrive par e-mail et s'enregistre dans le menu
+Planning, avec le statut « Demande reçue ». Un dossier avance ensuite de statut en statut :
+devis envoyé, confirmée, terminée, ou sans suite.
+
+Le matériel d'un dossier sort du stock quand le dossier est confirmé. Le calendrier montre
+les locations et les événements du mois. En cliquant sur un jour, on voit ce qui sort et ce
+qui reste disponible. Un dépassement de stock est signalé en rouge, mais jamais bloqué :
+à vous de décider (sous-location, autre matériel).
+
+Pour ajouter une réservation prise par téléphone : Planning > Ajouter une réservation.
+
+En bas du calendrier, une adresse permet de suivre le planning depuis Google Agenda ou
+un téléphone. Elle donne accès aux noms des clients : ne pas la partager.
+
+
+À SAVOIR
+--------
+
+- Les pages « devis », « merci » (rangée sous devis), « contact », « video-mapping »,
+  « mentions-legales » et « charte » doivent garder leur nom dans l'adresse. Leur titre et
+  leur texte d'introduction se modifient librement.
+- Les adresses lisibles (Réglages > Permaliens, tout sauf « Simple ») sont nécessaires.
+- Si les e-mails n'arrivent pas, le serveur ne sait sans doute pas les envoyer correctement.
+  Une extension d'envoi par SMTP règle le problème. En attendant, aucune demande n'est
+  perdue : elles restent toutes dans le menu Planning.
+- Les photos envoyées dans la médiathèque sont classées d'office : objet détouré sur blanc,
+  photo, visuel sur fond noir. Ce classement décide du cadrage sur le site. Il se corrige
+  dans la fiche de l'image, champ « Affichage sur le site ».
+- Pour mettre le thème à jour, téléverser le nouveau fichier .zip de la même façon et
+  accepter le remplacement. Le contenu n'est pas touché.
+
+Les polices Sofia Sans sont sous licence SIL Open Font License (voir assets/fonts).

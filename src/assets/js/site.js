@@ -50,11 +50,13 @@
     } catch (e) {}
   }
 
-  // Sur le site, les liens sont absolus ("/devis/"). Dans un aperçu servi depuis un sous-dossier,
-  // la page indique son préfixe dans data-base et les liens deviennent relatifs.
+  // Sur le site, les liens sont absolus ("/devis/"). Deux exceptions, annoncées par la page :
+  // - data-racine : le site vit dans un sous-dossier (WordPress installé dans /site/), on le préfixe ;
+  // - data-base : aperçu servi sans serveur, les liens deviennent relatifs.
   var BASE = root.getAttribute("data-base");
+  var RACINE = root.getAttribute("data-racine") || "";
   function lien(chemin) {
-    if (BASE === null) return chemin;
+    if (BASE === null) return RACINE + chemin;
     var p = chemin.replace(/^\//, "");
     var suite = "";
     var i = p.search(/[?#]/);
@@ -441,6 +443,7 @@
     if (!form) return;
     var zone = $("[data-selection]", form);
     var champ = $("#devis-materiel", form);
+    var detail = $("#devis-selection", form);
     var typeSel = $("#devis-type", form);
     var message = $("#devis-message", form);
 
@@ -478,6 +481,16 @@
       var t = $("[data-selection-total]", zone);
       if (t) t.textContent = euros(total) + " par jour";
       if (champ) champ.value = lignes.join("\n");
+      // La même sélection, lisible par le serveur quand il sait en faire une réservation.
+      if (detail) {
+        detail.value = liste.length
+          ? JSON.stringify(
+              liste.map(function (x) {
+                return { slug: x.slug, q: x.q };
+              })
+            )
+          : "";
+      }
       if (liste.length && typeSel && !typeSel.dataset.touche && !typeImpose) {
         typeSel.value = "Location de matériel";
       }
