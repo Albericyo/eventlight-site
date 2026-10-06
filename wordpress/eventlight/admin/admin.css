@@ -267,28 +267,13 @@
 .el-statut-confirmee::before {
 	background: #00a32a;
 }
-/* En cours : l'événement a lieu */
+/* En chiffrage : on prépare le devis */
 .el-statut-encours {
-	background: #1d2327;
-	color: #fff;
+	background: #ebe3f7;
+	color: #44207a;
 }
 .el-statut-encours::before {
-	background: #ffd98a;
-	box-shadow: 0 0 0 0 rgba(255, 217, 138, 0.7);
-	animation: el-statut-pouls 2s ease-out infinite;
-}
-@keyframes el-statut-pouls {
-	70% {
-		box-shadow: 0 0 0 6px rgba(255, 217, 138, 0);
-	}
-	100% {
-		box-shadow: 0 0 0 0 rgba(255, 217, 138, 0);
-	}
-}
-@media (prefers-reduced-motion: reduce) {
-	.el-statut-encours::before {
-		animation: none;
-	}
+	background: #7e3bd0;
 }
 /* Terminée : rangée */
 .el-statut-terminee {
@@ -405,6 +390,7 @@ a.el-chip-location:focus {
 }
 /* En attente : contour en pointillés, rien n'est encore bloqué. */
 .el-chip-demande,
+.el-chip-encours,
 .el-chip-devis {
 	border-style: dashed;
 	border-left-style: solid;
@@ -413,6 +399,8 @@ a.el-chip-location:focus {
 	color: #1d2327;
 }
 a.el-chip-demande:hover,
+a.el-chip-encours:hover,
+a.el-chip-encours:focus,
 a.el-chip-demande:focus,
 a.el-chip-devis:hover,
 a.el-chip-devis:focus {
@@ -519,9 +507,6 @@ a.el-chip-terminee:focus {
 	vertical-align: middle;
 }
 
-.el-chip-encours {
-	border-left-color: #ffd98a;
-}
 
 /* Matériel d'un dossier, rangé par catégorie de produit */
 .el-lignes-cat .el-cat {

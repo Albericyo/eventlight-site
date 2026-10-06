@@ -169,8 +169,7 @@ function el_page_calendrier() {
 	<p class="el-legende">
 		<span class="el-chip el-chip-confirmee el-chip-prestation">Événement confirmé</span>
 		<span class="el-chip el-chip-confirmee el-chip-location">Location confirmée</span>
-		<span class="el-chip el-chip-encours el-chip-prestation">En cours</span>
-		<span class="el-chip el-chip-devis el-chip-prestation">En attente : demande reçue ou devis envoyé</span>
+		<span class="el-chip el-chip-devis el-chip-prestation">En attente : demande reçue, en chiffrage ou devis envoyé</span>
 		<span class="el-chip el-chip-terminee el-chip-prestation">Terminé</span>
 	</p>
 
@@ -739,10 +738,10 @@ function el_dossier_actions_rapides( $actions, $post ) {
 	unset( $actions['inline hide-if-no-js'], $actions['view'] );
 	$statut   = el_meta( $post->ID, 'statut' );
 	$suivants = array(
-		'demande'   => array( 'devis' => 'Devis envoyé', 'confirmee' => 'Confirmer', 'annulee' => 'Sans suite' ),
+		'demande'   => array( 'encours' => 'Chiffrer', 'devis' => 'Devis envoyé', 'confirmee' => 'Confirmer', 'annulee' => 'Sans suite' ),
+		'encours'   => array( 'devis' => 'Devis envoyé', 'confirmee' => 'Confirmer', 'annulee' => 'Sans suite' ),
 		'devis'     => array( 'confirmee' => 'Confirmer', 'annulee' => 'Sans suite' ),
-		'confirmee' => array( 'encours' => 'Démarrer', 'terminee' => 'Terminer', 'annulee' => 'Annuler' ),
-		'encours'   => array( 'terminee' => 'Terminer' ),
+		'confirmee' => array( 'terminee' => 'Terminer', 'annulee' => 'Annuler' ),
 	);
 	$rapides  = array();
 	foreach ( isset( $suivants[ $statut ] ) ? $suivants[ $statut ] : array() as $cible => $libelle ) {

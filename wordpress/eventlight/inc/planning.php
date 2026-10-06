@@ -3,7 +3,7 @@
  * Demandes de devis, réservations, stock et disponibilités.
  *
  * Une demande et une réservation sont le même objet, un « dossier », qui avance d'un statut à
- * l'autre : demande reçue, devis envoyé, confirmée, terminée, ou sans suite. Un dossier porte
+ * l'autre : demande reçue, en chiffrage, devis envoyé, confirmée, terminée, ou sans suite. Un dossier porte
  * des dates et des lignes de matériel. Seuls les dossiers confirmés (ou terminés) sortent le
  * matériel du stock ; les autres sont comptés à part, « en attente ».
  */
@@ -43,9 +43,9 @@ add_action( 'init', 'el_planning_type' );
 function el_statuts() {
 	return array(
 		'demande'   => 'Demande reçue',
+		'encours'   => 'En chiffrage',
 		'devis'     => 'Devis envoyé',
 		'confirmee' => 'Confirmée',
-		'encours'   => 'En cours',
 		'terminee'  => 'Terminée',
 		'annulee'   => 'Sans suite',
 	);
@@ -53,12 +53,12 @@ function el_statuts() {
 
 /** Les statuts qui sortent réellement le matériel du stock. */
 function el_statuts_fermes() {
-	return array( 'confirmee', 'encours', 'terminee' );
+	return array( 'confirmee', 'terminee' );
 }
 
 /** Les statuts qui ne bloquent rien, mais qu'il faut garder à l'œil. */
 function el_statuts_en_attente() {
-	return array( 'demande', 'devis' );
+	return array( 'demande', 'encours', 'devis' );
 }
 
 function el_genres() {
